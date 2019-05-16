@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+const users=require('./routes/api/users');
+
 //Setup MySQL
 const mysql = require("mysql");
 //Create Connection
@@ -30,6 +32,9 @@ app.get("/employees", (req, res) => {
 });
 
 app.get("/", (req, res) => res.send("Hello"));
+
+
+app.use("/api/users",users);
 
 const port = process.env.port || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port} `));
