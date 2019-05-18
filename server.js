@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
-
+const bodyParser=require("body-parser");
+//Body Parser Middleware
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 const users=require('./routes/api/users');
-
 //Setup MySQL
 const mysql = require("mysql");
 //Create Connection
@@ -17,6 +19,8 @@ mysqlConnection.connect(err => {
   if (!err) console.log("connected");
   else console.log(err);
 });
+
+
 //Run query
 //Get all employees
 app.get("/employees", (req, res) => {
