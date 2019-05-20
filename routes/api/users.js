@@ -12,6 +12,11 @@ const databaseOptions = require("../../config/database");
 const mysqlConnection = mysql.createConnection(databaseOptions);
 //Connect to database
 mysqlConnection.connect();
+
+//Load input validation
+const validateRegisterInput = require('../../validation/Register');
+
+
 //@route GET api/users/test
 //@desc  Test users route
 //@access Public
@@ -21,6 +26,11 @@ router.get("/test", (req, res) => res.json({ hi: "hello" }));
 //@desc  Register users
 //@access Public
 router.post("/register", (req, res) => {
+  const { errors, isValid }=validateRegisterInput(req.body);
+  //Check Validation
+  if(!isValid){
+    return res.status(400).json({errors});
+  }
   let { username, user_password, email, user_type } = req.body;
   //Generate salt and hash it
   let salt = bcrypt.genSaltSync(10);

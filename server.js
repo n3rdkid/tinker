@@ -6,7 +6,7 @@ const passport =require('passport');
 
 //Body Parser Middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended:false}));
 
 //Passport middleware
 app.use(passport.initialize());
