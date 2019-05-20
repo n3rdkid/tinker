@@ -10,7 +10,8 @@ const passport = require("passport");
 //For Database
 const databaseOptions = require("../../config/database");
 const mysqlConnection = mysql.createConnection(databaseOptions);
-
+//Connect to database
+mysqlConnection.connect();
 //@route GET api/users/test
 //@desc  Test users route
 //@access Public
@@ -47,12 +48,12 @@ router.post("/signin", (req, res) => {
       };
       jwt.sign(
         payload,
-        keys.secretKey,
+        keys.secretOrKey,
         {
           expiresIn: 3600
         },
         (err, token) => {
-          res.json({ success: true, token: `Bearer` + token });
+          res.json({ success: true, token: `Bearer ` + token });
         }
       );
     } else {
@@ -69,8 +70,12 @@ router.get(
   "/dashboard",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    res.json({message:"success"});
+
+    res.json({msg:"success"});
   }
 );
+
+
+
 
 module.exports = router;
