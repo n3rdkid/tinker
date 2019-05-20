@@ -70,8 +70,7 @@ router.get(
   "/dashboard",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-
-    res.json({msg:"success"});
+    res.json(req.user);
   }
 );
 

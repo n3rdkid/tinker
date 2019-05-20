@@ -7,17 +7,26 @@ const keys = require("./keys");
 const options = {};
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 options.secretOrKey = keys.secretOrKey;
-mysqlConnection.connect(err => {if(err)console.log(err)});
+mysqlConnection.connect(err => {
+  if (err) console.log(err);
+});
 module.exports = passport => {
   passport.use(
     new JwtStrategy(options, (jwt_payload, next) => {
-  mysqlConnection.query("SELECT * FROM users where username=?",jwt_payload.username,(err,rows)=>{
-    if(!err)
-    next(null,rows[0]);
-    else
-    next(null,false);
-  });
-
+      mysqlConnection.query(
+        "SELECT * FROM users where username=?",
+        jwt_payload.username,
+        (err, rows) => {
+          if (!err) {
+            let user={
+              username:rows[0].username,
+              email:rows[0].email
+            }
+            return next(null,user);
+          }else
+          return next(null,false);
+        }
+      );
     })
   );
 };
