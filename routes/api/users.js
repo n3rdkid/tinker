@@ -13,8 +13,10 @@ const mysqlConnection = mysql.createConnection(databaseOptions);
 //Connect to database
 mysqlConnection.connect();
 
-//Load input validation
+//Load Register validation
 const validateRegisterInput = require('../../validation/Register');
+//Load Register validation
+const validateLoginInput = require('../../validation/Login');
 
 
 //@route GET api/users/test
@@ -48,9 +50,14 @@ router.post("/register", (req, res) => {
   );
 });
 router.post("/signin", (req, res) => {
+  const { errors, isValid }=validateLoginInput(req.body);
+  //Check Validation
+  if(!isValid){
+    return res.status(400).json({errors});
+  }
   let statement = "SELECT * FROM users WHERE username=?";
   let { username, password } = req.body;
-  mysqlConnection.query(statement, [username, password], (err, rows) => {
+  mysqlConnection.query(statement, username, (err, rows) => {
     if (bcrypt.compareSync(password, rows[0].user_password)) {
       //"Authorized"
       const payload = {
@@ -66,9 +73,10 @@ router.post("/signin", (req, res) => {
           res.json({ success: true, token: `Bearer ` + token });
         }
       );
+     
     } else {
       //Not authorized"
-      res.status(400).json({ error: "No user" });
+      res.status(400).json({error:"Unauthorized"});
     }
   });
 });

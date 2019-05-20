@@ -1,9 +1,15 @@
 const Validator = require('validator');
 const isEmpty =require('./isEmpty');
-module.exports = function validateRegisterInput(data) {
+module.exports = function validateLoginInput(data) {
   let errors ={};
-  if(!Validator.isLength(data.name,{min:6,max:30}))
-  errors.name="Name must be between 6 and 30 characters!";
+  //Soemthing needs to be passed
+  data.username=!isEmpty(data.username)?data.username:'';
+  data.password=!isEmpty(data.password)?data.password:'';
+  if(Validator.isEmpty(data.username))
+  errors.username="Username is required!";
+  if(Validator.isEmpty(data.password))
+  errors.password="Password is required!";
+
 
   return{
     errors,
