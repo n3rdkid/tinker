@@ -4,8 +4,11 @@ const router = express.Router();
 //For encryption
 const bcrypt = require("bcryptjs");
 const mysql = require("mysql");
+const jwt = require("jsonwebtoken");
+const keys = require("../../config/keys");
+const passport = require("passport");
 //For Database
-const databaseOptions = require("../../config/config");
+const databaseOptions = require("../../config/database");
 const mysqlConnection = mysql.createConnection(databaseOptions);
 
 //@route GET api/users/test
@@ -18,9 +21,10 @@ router.get("/test", (req, res) => res.json({ hi: "hello" }));
 //@access Public
 router.post("/register", (req, res) => {
   let { username, user_password, email, user_type } = req.body;
- //Generate salt and hash it
-  let salt= bcrypt.genSaltSync(10);
-  user_password=bcrypt.hashSync(user_password, salt);
+  //Generate salt and hash it
+  let salt = bcrypt.genSaltSync(10);
+  console.log(req);
+  user_password = bcrypt.hashSync(user_password, salt);
   let statement = "INSERT INTO users VALUES (?,?,?,?)";
   mysqlConnection.query(
     statement,
@@ -36,13 +40,37 @@ router.post("/signin", (req, res) => {
   let statement = "SELECT * FROM users WHERE username=?";
   let { username, password } = req.body;
   mysqlConnection.query(statement, [username, password], (err, rows) => {
-    if (!err){ 
-     if(bcrypt.compareSync(password,rows[0].user_password)) 
-     res.send("Authorized")
-     else 
-     res.send("not authorized");
+    if (bcrypt.compareSync(password, rows[0].user_password)) {
+      //"Authorized"
+      const payload = {
+        username: rows[0].username
+      };
+      jwt.sign(
+        payload,
+        keys.secretKey,
+        {
+          expiresIn: 3600
+        },
+        (err, token) => {
+          res.json({ success: true, token: `Bearer` + token });
+        }
+      );
+    } else {
+      //Not authorized"
+      res.status(400).json({ error: "No user" });
     }
-    else res.send("No user found");
   });
 });
+
+//@route GET api/users/current
+//@desc  Return current user
+//@access Private
+router.get(
+  "/dashboard",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    res.json({message:"success"});
+  }
+);
+
 module.exports = router;
