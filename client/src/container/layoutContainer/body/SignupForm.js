@@ -1,14 +1,13 @@
 import React from "react";
+import axios from "axios";
 class SignupForm extends React.Component {
   state = {
-    firstName: "",
-    lastName: "",
-    userName: "",
+    username:"",
     email: "",
-    password: "",
-    userType: ""
+    user_password: "",
+    user_type:"student"
   };
-  change = e => {
+  changeHandler = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -17,72 +16,34 @@ class SignupForm extends React.Component {
   onSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
-    this.setState({
-      firstName: "",
-      lastName: "",
-      userName: "",
-      email: "",
-      password: "",
-      userType: ""
-    });
-    axios.post("localhost:5000/register", user);
+    axios.post("http://localhost:5000/api/users/register", this.state).then(()=>console.log("succsss")).catch(err=>console.log(err.response.data));
   };
 
   render() {
     return (
       <form>
         <input
-          name="firstName"
-          placeholder="FirstName"
-          value={this.state.firstName}
-          onChange={e => this.change(e)}
+          name="username"
+          placeholder="Username"
+          value={this.state.username}
+          onChange={e => this.changeHandler(e)}
         />
         <br />
-        <input
-          name="lastName"
-          placeholder="LastName"
-          value={this.state.lastName}
-          onChange={e => this.change(e)}
-        />
-        <br />
-        <input
-          name="userName"
-          placeholder="UserName"
-          value={this.state.userName}
-          onChange={e => this.change(e)}
-        />
-        <br />
+         <br />
         <input
           name="email"
           placeholder="Email"
           value={this.state.email}
-          onChange={e => this.change(e)}
+          onChange={e => this.changeHandler(e)}
         />
         <br />
         <input
-          name="password"
+          name="user_password"
           placeholder="Password"
           type="password"
-          value={this.state.password}
-          onChange={e => this.change(e)}
+          value={this.state.user_password}
+          onChange={e => this.changeHandler(e)}
         />
-        <br />
-        <input
-          name="usertype"
-          type="radio"
-          value="teacher"
-          onSelect={e => e.setState({ userType: "teacher" })}
-        />
-        Teacher
-        <input
-          name="usertype"
-          type="radio"
-          value="student"
-          onSelect={() => {
-            this.setState({ userType: "student" });
-          }}
-        />
-        Student
         <br />
         <button onClick={e => this.onSubmit(e)}>Submit</button>
       </form>

@@ -28,6 +28,8 @@ router.get("/test", (req, res) => res.json({ hi: "hello" }));
 //@desc  Register users
 //@access Public
 router.post("/register", (req, res) => {
+
+
   const { errors, isValid }=validateRegisterInput(req.body);
   //Check Validation
   if(!isValid){
@@ -36,7 +38,6 @@ router.post("/register", (req, res) => {
   let { username, user_password, email, user_type } = req.body;
   //Generate salt and hash it
   let salt = bcrypt.genSaltSync(10);
-  console.log(req);
   user_password = bcrypt.hashSync(user_password, salt);
   let statement = "INSERT INTO users VALUES (?,?,?,?)";
   mysqlConnection.query(
