@@ -25,6 +25,7 @@ class SignupForm extends React.Component {
       password: "",
       userType: ""
     });
+    axios.post("localhost:5000/register", user);
   };
 
   render() {
