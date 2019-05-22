@@ -26,19 +26,32 @@ Dumping Data on User table
 INSERT INTO users VALUES ('test','test','test@gmail.com',2);
 SELECT * FROM users;
 
-
-
 /*----------------------------
 
-Create Challenge table
-
+Create Label table
 
 ------------------------------*/
+CREATE TABLE IF NOT EXISTS Labels(
+id INT PRIMARY KEY AUTO_INCREMENT,
+label VARCHAR(20) UNIQUE
+);
+
+/*----------------------------
+Dumping Data on Labels table
+------------------------------*/
+INSERT INTO Labels VALUES (1,'function');
+SELECT * FROM labels;
+/*----------------------------
+Create Challenge table
+-----------------------------*/
 CREATE TABLE IF NOT EXISTS challenges (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	instruction TEXT,
-	starter TEXT	
+	starter TEXT,
+	label VARCHAR(20),
+	FOREIGN KEY (label) REFERENCES labels(label)
 );
+SELECT *FROM challenges;
 /*----------------------------
 
 Dumping Data on Challenges table
@@ -52,7 +65,7 @@ All you have to do is type return \"hello Tinker\" between the curly braces and 
 Don't forget to return the result.
 If you get stuck on a challenge, find help in the Resources tab.","function hello() {
 
-}");
+}",'function');
 SELECT * FROM challenges;
 
 
@@ -64,6 +77,7 @@ Create Submissions table
 CREATE TABLE IF NOT EXISTS submissions (
 	id INT PRIMARY KEY AUTO_INCREMENT ,
 	submission TEXT,
+	score INT,
 	username VARCHAR(100),
 	challenge_id INT,
 	FOREIGN KEY (username) REFERENCES users(username),
@@ -75,7 +89,7 @@ Dumping Data on Submissions table
 INSERT INTO submissions VALUES(1,"
 function hello() {
 	return \"hello tinker\";
-}",'test',1);
+}",10,'test',1);
 SELECT * FROM submissions;
 /*----------------------------
 Create Test table

@@ -1,4 +1,3 @@
-//Handles Username Password Email
 const express = require("express");
 const router = express.Router();
 //For encryption
