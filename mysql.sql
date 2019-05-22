@@ -40,6 +40,7 @@ label VARCHAR(20) UNIQUE
 Dumping Data on Labels table
 ------------------------------*/
 INSERT INTO Labels VALUES (1,'function');
+INSERT INTO Labels VALUES (2,'array');
 SELECT * FROM labels;
 /*----------------------------
 Create Challenge table
@@ -66,6 +67,7 @@ Don't forget to return the result.
 If you get stuck on a challenge, find help in the Resources tab.","function hello() {
 
 }",'function');
+INSERT INTO challenges VALUES(2,"Just Do It Bruh!!","Starter bruh!",'array');
 SELECT * FROM challenges;
 
 
