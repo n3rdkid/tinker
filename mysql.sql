@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS submissions (
 /*----------------------------
 Dumping Data on Submissions table
 ------------------------------*/
-INSERT INTO submissions VALUES(1,"
+INSERT INTO submissions (submission,score,username,challenge_id) VALUES("
 function hello() {
 	return \"hello tinker\";
 }",10,'test',1);

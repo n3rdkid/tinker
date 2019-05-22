@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
-
+const validateSubmissionInput= require('../../validation/ChallengesModule/Submission');
 //For Database
 const databaseOptions = require("../../config/database");
 const mysqlConnection = mysql.createConnection(databaseOptions);
@@ -13,7 +13,7 @@ mysqlConnection.connect();
 //@desc  Test challenges route
 //@access Public
 router.get("/test", (req, res) => res.json({ hi: "You are live!" }));
-//@route GET api/challenges/test
+//@route GET api/challenges
 //@desc  Request a particular challenge
 //@access Public
 router.get("/:id", (req, res) => {
@@ -41,19 +41,24 @@ router.get("/:id", (req, res) => {
     }
   });
 });
-//@route POST api/challenges/test
+//@route POST api/challenges/
 //@desc  Request a particular challenge
 //@access Public
-router.get("/:id", (req, res) => {
-  let id = req.params.id;
+router.post("/", (req, res) => {
+  console.log(req.body);
+  const { errors, isValid }=validateSubmissionInput(req.body);
+  //Check Validation
+  if(!isValid){
+    return res.status(400).json({errors});
+  }
+  let { submission, score, username, challenge_id } = req.body;
   let statement =
-    "SELECT * FROM challenges WHERE id=?;SELECT * FROM tests WHERE challenge_id=?";
-  mysqlConnection.query(statement, [id, id], (err, results, fields) => {
+    "INSERT INTO submissions (submission,score,username,challenge_id) VALUES(?,?,?,?)";
+  mysqlConnection.query(statement, [submission, score,username,challenge_id], (err, results, fields) => {
     if (!err) {
-      console.log(results[0]);
-      console.log(results[1]);
-    } else {
-      return res.status(400).json({ error: "No such challenge" });
+      res.send(results[0]);
+     } else {
+      return res.status(400).json({err });
     }
   });
 });
