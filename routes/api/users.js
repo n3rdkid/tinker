@@ -28,8 +28,6 @@ router.get("/test", (req, res) => res.json({ hi: "hello" }));
 //@desc  Register users
 //@access Public
 router.post("/register", (req, res) => {
-
-
   const { errors, isValid }=validateRegisterInput(req.body);
   //Check Validation
   if(!isValid){
@@ -45,6 +43,7 @@ router.post("/register", (req, res) => {
     [username, user_password, email, user_type],
     (err, rows, fields) => {
       if (!err) {
+        console.log("here I am");
         res.send(rows);
       } else res.send("User already exists");
     }
