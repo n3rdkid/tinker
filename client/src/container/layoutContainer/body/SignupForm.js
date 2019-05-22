@@ -15,7 +15,6 @@ class SignupForm extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
     axios.post("http://localhost:5000/api/users/register", this.state).then(()=>console.log("succsss")).catch(err=>console.log(err.response.data));
   };
 
