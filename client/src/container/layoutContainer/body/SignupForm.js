@@ -2,10 +2,10 @@ import React from "react";
 import axios from "axios";
 class SignupForm extends React.Component {
   state = {
-    username:"",
+    username: "",
     email: "",
     user_password: "",
-    user_type:"student"
+    user_type: "student"
   };
   changeHandler = e => {
     this.setState({
@@ -15,7 +15,10 @@ class SignupForm extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    axios.post("http://localhost:5000/api/users/register", this.state).then(()=>console.log("succsss")).catch(err=>console.log(err.response.data));
+    axios
+      .post("http://localhost:5000/api/users/register", this.state)
+      .then(() => console.log("succsss"))
+      .catch(err => console.log(err.response.data));
   };
 
   render() {
@@ -28,7 +31,7 @@ class SignupForm extends React.Component {
           onChange={e => this.changeHandler(e)}
         />
         <br />
-         <br />
+        <br />
         <input
           name="email"
           placeholder="Email"
