@@ -4,6 +4,7 @@ const app = express();
 
 const bodyParser=require("body-parser");
 const users=require('./routes/api/users');
+const challenges=require('./routes/api/challenges');
 const passport =require('passport');
 
 //Body Parser Middleware
@@ -19,6 +20,7 @@ require('./config/passport')(passport);
 
 //Routes
 app.use("/api/users",users);
+app.use("/api/challenges",challenges);
 
 
 

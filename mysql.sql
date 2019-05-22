@@ -127,3 +127,4 @@ Dumping Data on Test table
 INSERT INTO resources VALUES(1,'JavaScript Functions Tutorial','javascript.info','Functions are the main “building blocks” of the program. They allow the code to be called many times without repetition.',1);
 
 SELECT * FROM resources;
+
