@@ -2,6 +2,7 @@ import React from "react";
 import "../../../../node_modules/codemirror/lib/codemirror.css";
 import "../../../../node_modules/codemirror/theme/material.css";
 import QuizQuestion from "../../../components/Quiz/QuizQuestion";
+import CountDownTimer from "../container/CountDownTImer";
 
 let testCases = [
   { no: 1, test: `rot13("SERR PBQR PNZC")`, result: "FREE CODE CAMP" },
@@ -113,7 +114,12 @@ class Quiz extends React.Component {
         </div>
       );
     }
-    return <div> {quiz}</div>;
+    return (
+      <div>
+        {" "}
+        <CountDownTimer /> {quiz}
+      </div>
+    );
   }
 }
 
