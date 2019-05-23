@@ -28,7 +28,6 @@ router.get("/", (req, res) => {
 });
 
 //@route GET api/challenges/:id
-//@desc  Request a particular challenge
 //@access Public
 router.get("/:id", (req, res) => {
   let id = req.params.id;
