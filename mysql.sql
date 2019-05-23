@@ -130,3 +130,23 @@ INSERT INTO resources VALUES(1,'JavaScript Functions Tutorial','javascript.info'
 
 SELECT * FROM resources;
 
+/*
+
+
+
+
+
+QUIZ MODULE
+
+
+
+
+*/
+CREATE TABLE IF NOT EXISTS quiz (
+	id INT PRIMARY KEY AUTO_INCREMENT ,
+	title VARCHAR(100),
+	link VARCHAR(300),
+	description VARCHAR(100),
+	challenge_id INT,
+	FOREIGN KEY (challenge_id) REFERENCES challenges(id)
+);

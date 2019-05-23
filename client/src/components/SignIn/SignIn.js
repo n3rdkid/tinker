@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-class SigninForm extends React.Component {
+class SignIn extends React.Component {
   state = {
     username: "",
     password: ""
@@ -49,4 +49,4 @@ class SigninForm extends React.Component {
   }
 }
 
-export default SigninForm;
+export default SignIn;
