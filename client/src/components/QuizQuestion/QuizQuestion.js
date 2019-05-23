@@ -9,15 +9,17 @@ class QuizQuestion extends React.Component {
   //      answerList.push(<li id={answer} key={question.id.concat(answer)} onClick={props.clicked} className="list-group-item my-1 p-3">{question.answers[answer]}</li>)
   // }
   state = {
-    id: "",
-    question: "",
-    timelimit: ""
+    questions: {}
+    // id: "",
+    // question: "",
+    // timelimit: ""
   };
   componentDidMount() {
     axios
       .get("http://localhost:5000/api/quiz/")
       .then(response => {
-        this.setState({ questions: response.data.questions.map(el => el) });
+        this.setState({ questions: response.data.questions });
+        //this.setState({ questions: response.data.questions.map(el => el) });
         // this.setState(prevState => ({
         //   id: [...prevState.id],
         //   question: [...prevState.question],
@@ -44,7 +46,7 @@ class QuizQuestion extends React.Component {
               </div>
               <div className="card-body">
                 <h2 className="text-dark">
-                  Question is: {/*this.state.questions*/}
+                  Question is: {console.log(this.state.questions)}
                 </h2>
                 <p className="bg-light py-2">{/*question.code*/}</p>
                 <div className="answers">

@@ -47,6 +47,7 @@ Create Challenge table
 -----------------------------*/
 CREATE TABLE IF NOT EXISTS challenges (
 	id INT PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(60),
 	instruction TEXT,
 	starter TEXT,
 	label VARCHAR(20),
@@ -57,7 +58,7 @@ SELECT *FROM challenges;
 
 Dumping Data on Challenges table
 ------------------------------*/
-INSERT INTO challenges VALUES(1,"
+INSERT INTO challenges VALUES(1,"How Tinker Works","
 This is an introduction to how challenges on Tinker work. In the Code tab you'll see a starter function that looks like this:
 function hello() {
 
@@ -67,7 +68,7 @@ Don't forget to return the result.
 If you get stuck on a challenge, find help in the Resources tab.","function hello() {
 
 }",'function');
-INSERT INTO challenges VALUES(2,"Just Do It Bruh!!","Starter bruh!",'array');
+INSERT INTO challenges VALUES(2,"This is title Dawg","Just Do It Bruh!!","Starter bruh!",'array');
 SELECT * FROM challenges;
 
 
