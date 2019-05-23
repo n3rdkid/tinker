@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "./ChallengeItem.css";
 
 class ChallengeItem extends React.Component {
   state = {
@@ -9,7 +10,9 @@ class ChallengeItem extends React.Component {
     axios
       .get("http://localhost:5000/api/challenges")
       .then(response => {
-        this.setState({data:response.data});
+        this.setState({
+          data: response.data
+        });
         console.log(response.data[0]);
       })
       .catch(error => console.log(error));
@@ -17,25 +20,20 @@ class ChallengeItem extends React.Component {
 
   render() {
     let container;
-    if(this.state.data==="")
-      container=<p>No data found</p>
+    if (this.state.data === "") container = <p> No data found </p>;
     else
-    container=(  
-      <div className="container">
-      <h3> {this.state.data[0].title}</h3>
-      <p className="lead">{this.state.data[0].instruction}</p>
-      <p>
-        <button class="ui right floated button">Easy</button>
-      </p>
+      container = (
+        <div className="container challengeItem">
+          <h4> {this.state.data[0].title} </h4>
+          <small className="lead">
+            {this.state.data[0].instruction.substring(0, 300) + "..."}
+         </small>
+         <br/>
 
-      <div class="ui section divider" />
-      </div>);
-    return (
-      
-      <div>
-      {container}
-      </div>
-    );
+         <label className="badge badge-pill badge-primary">{this.state.data[0].label}</label>
+        </div>
+      );
+    return (<div> {container} </div>);
   }
 }
 
