@@ -1,10 +1,11 @@
 import React from "react";
-import Quiz from "../src/container/body/Quiz";
+import Challenge from "./container/layoutContainer/body/Challenge";
+
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Quiz />
+        <Challenge />
       </div>
     );
   }
