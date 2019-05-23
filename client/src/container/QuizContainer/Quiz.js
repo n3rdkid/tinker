@@ -1,5 +1,5 @@
 import React from "react";
-import QuizQuestion from "../../components/QuizQuestion/QuizQuestion"
+import QuizQuestion from "../../components/QuizQuestion/QuizQuestion";
 import CountDownTimer from "../../components/Countdown/CountDownTImer";
 
 let testCases = [
