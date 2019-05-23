@@ -13,7 +13,25 @@ mysqlConnection.connect();
 //@desc  Test challenges route
 //@access Public
 router.get("/test", (req, res) => res.json({ hi: "You are live!" }));
-//@route GET api/challenges
+//@route GET api/challenges/:id 
+//@desc  Request a particular challenge
+//@access Public
+router.get("/", (req, res) => {
+  let statement =
+    "SELECT * FROM challenges";
+  mysqlConnection.query(statement, (err, results) => {
+    if (!err) {
+      res.send(results);
+    } else {
+      return res.status(400).json({ error: "No such challenge" });
+    }
+  });
+});
+
+
+
+
+//@route GET api/challenges/:id 
 //@desc  Request a particular challenge
 //@access Public
 router.get("/:id", (req, res) => {
