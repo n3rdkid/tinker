@@ -1,8 +1,6 @@
 import React from "react";
-import "../../../../node_modules/codemirror/lib/codemirror.css";
-import "../../../../node_modules/codemirror/theme/material.css";
-import QuizQuestion from "../../../components/Quiz/QuizQuestion";
-import CountDownTimer from "../container/CountDownTImer";
+import QuizQuestion from "../../components/QuizQuestion/QuizQuestion"
+import CountDownTimer from "../../components/Countdown/CountDownTImer";
 
 let testCases = [
   { no: 1, test: `rot13("SERR PBQR PNZC")`, result: "FREE CODE CAMP" },
