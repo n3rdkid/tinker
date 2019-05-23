@@ -5,20 +5,13 @@ class SigninForm extends React.Component {
     username: "",
     password: ""
   };
-  onSubmit = async term => {
-    // e.preventDefault();
-    console.log(this.state);
-    axios.post(`http://localhost:5000/api/users/signin`).then(res => {
-      console.log(res);
-      console.log(res.data);
-    });
-
-    // axios
-    //   .post("http://localhost:5000/api/users/register", this.state)
-    //   .then(() => console.log("succsss"))
-    //   .catch(err => console.log(err.response.data));
+  onSubmit = e => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/api/users/signin", this.state)
+      .then(() => console.log("Signin success"))
+      .catch(err => console.log(err.response.data));
   };
-
   changeState = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
