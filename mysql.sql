@@ -194,7 +194,6 @@ INSERT INTO answers VALUES (16,"Answer 4",4);
 SELECT * FROM answers;
 
 
-
 /*----------------------------
 Creating answers table
 ------------------------------*/
@@ -209,6 +208,9 @@ CREATE TABLE IF NOT EXISTS correctAnswer(
 Dumping Data on correctAnswer table
 ------------------------------*/
 INSERT INTO correctAnswer VALUES (1,1,1);
-INSERT INTO correctAnswer VALUES (2,1,2);
-INSERT INTO correctAnswer VALUES (3,1,3);
-INSERT INTO correctAnswer VALUES (4,1,4);
+INSERT INTO correctAnswer VALUES (2,2,2);
+INSERT INTO correctAnswer VALUES (3,3,3);
+INSERT INTO correctAnswer VALUES (4,4,4);
+SELECT * FROM correctAnswer;
+
+SELECT * FROM quiz INNER JOIN answers ON quiz.id=answers.`quiz_id`;
