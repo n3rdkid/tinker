@@ -172,25 +172,25 @@ CREATE TABLE IF NOT EXISTS answers(
 /*----------------------------
 Dumping Data on answers table
 ------------------------------*/
-INSERT INTO answers VALUES (1,"Answer 1",1);
-INSERT INTO answers VALUES (2,"Answer 2",1);
-INSERT INTO answers VALUES (3,"Answer 3",1);
-INSERT INTO answers VALUES (4,"Answer 4",1);
+INSERT INTO answers VALUES (1,"Question 1 Answer 1",1);
+INSERT INTO answers VALUES (2,"Question 1 Answer 2",1);
+INSERT INTO answers VALUES (3,"Question 1 Answer 3",1);
+INSERT INTO answers VALUES (4,"Question 1 Answer 4",1);
 
-INSERT INTO answers VALUES (5,"Answer 1",2);
-INSERT INTO answers VALUES (6,"Answer 2",2);
-INSERT INTO answers VALUES (7,"Answer 3",2);
-INSERT INTO answers VALUES (8,"Answer 4",2);
+INSERT INTO answers VALUES (5,"Question 2 Answer 1",2);
+INSERT INTO answers VALUES (6,"Question 2 Answer 2",2);
+INSERT INTO answers VALUES (7,"Question 2 Answer 3",2);
+INSERT INTO answers VALUES (8,"Question 2 Answer 4",2);
 
-INSERT INTO answers VALUES (9,"Answer 1",3);
-INSERT INTO answers VALUES (10,"Answer 2",3);
-INSERT INTO answers VALUES (11,"Answer 3",3);
-INSERT INTO answers VALUES (12,"Answer 4",3);
+INSERT INTO answers VALUES (9,"Question 3 Answer 1",3);
+INSERT INTO answers VALUES (10,"Question 3 Answer 2",3);
+INSERT INTO answers VALUES (11,"Question 3 Answer 3",3);
+INSERT INTO answers VALUES (12,"Question 3 Answer 4",3);
 
-INSERT INTO answers VALUES (13,"Answer 1",4);
-INSERT INTO answers VALUES (14,"Answer 2",4);
-INSERT INTO answers VALUES (15,"Answer 3",4);
-INSERT INTO answers VALUES (16,"Answer 4",4);
+INSERT INTO answers VALUES (13,"Question 4 Answer 1",4);
+INSERT INTO answers VALUES (14,"Question 4 Answer 2",4);
+INSERT INTO answers VALUES (15,"Question 4 Answer 3",4);
+INSERT INTO answers VALUES (16,"Question 4 Answer 4",4);
 
 SELECT * FROM answers;
 

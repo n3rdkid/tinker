@@ -1,9 +1,10 @@
 import React from "react";
 
-class CountDownTImer extends React.Component {
-  constructor() {
-    super();
-    this.state = { time: {}, seconds: 20 };
+class CountDownTimer extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+    this.state = { time: {}, seconds:this.props.timeLimit };
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
@@ -61,4 +62,4 @@ class CountDownTImer extends React.Component {
   }
 }
 
-export default CountDownTImer;
+export default CountDownTimer;

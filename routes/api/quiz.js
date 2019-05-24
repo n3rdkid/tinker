@@ -43,7 +43,6 @@ router.post(
   // passport.authenticate("jwt", { session: false }),
   (req, res) => {
     let questionId = req.params.id;
-    console.log(questionId);
     //For fetching question
     let statement = "SELECT * FROM answers WHERE quiz_id = ?;SELECT * FROM correctAnswer WHERE quiz_id=?";
     mysqlConnection.query(statement, [questionId, questionId], (err, results, fields) => {
