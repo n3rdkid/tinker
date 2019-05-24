@@ -13,18 +13,16 @@ class Quiz extends React.Component {
       .then(response => {
         this.setState({ questions: response.data.questions });
       })
-      .catch(error => console.log(error)); 
+      .catch(error => console.log(error));
   }
-  
+
   render() {
-    let display=<p>Add a spinner</p>
-    if(this.state.questions!==null)
-   display= <QuizQuestion
-          questions={this.state.questions}
-        />
+    let display = <p>Add a spinner</p>;
+    if (this.state.questions !== null)
+      display = <QuizQuestion questions={this.state.questions} />;
     return (
       <div className="container">
-        {display}
+       {display}
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React from "react";
 import "./QuizQuestion.css";
 import axios from "axios";
+import Countdown from "../Countdown/CountDownTimer";
 class QuizQuestion extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +13,7 @@ class QuizQuestion extends React.Component {
       nextQuestion: 0
     };
   }
-  clickHandler =async ( e) => {
+  clickHandler = async e => {
     let score = this.state.score;
     let nextQuestion = this.state.nextQuestion;
     console.log(
@@ -20,8 +21,8 @@ class QuizQuestion extends React.Component {
     );
     if (e.target.id == this.state.correctAnswer) {
       score += 5;
-    } 
-     
+    }
+
     nextQuestion++;
     await this.setState({ score: score, nextQuestion: nextQuestion });
     this.loadData();
@@ -58,9 +59,13 @@ class QuizQuestion extends React.Component {
   }
 
   render() {
-    console.log(this.state.questions)
+    console.log(this.state.questions);
+    let timeLimit=0;
+    
+    for(let question of this.state.questions)
+    timeLimit+=question.timeLimit;
     let answers = this.state.answers;
-    let question=this.state.questions[this.state.nextQuestion].question;
+    let question = this.state.questions[this.state.nextQuestion].question;
     let answerList = [];
 
     if (answers !== null) {
@@ -93,9 +98,7 @@ class QuizQuestion extends React.Component {
               </div>
               <div className="card-body">
                 <h2 className="text-dark" />
-                <p className="bg-light py-2">
-                  {question}
-                </p>
+                <p className="bg-light py-2">{question}</p>
 
                 <div className="answers">
                   <ul className="list-group">{answerList} </ul>
@@ -103,10 +106,11 @@ class QuizQuestion extends React.Component {
               </div>
             </div>
           </div>
-
+        
           <div className="col-sm-3">
+      
             <h2 className="text-center py-3 text-danger">
-              {/*question.time*/}
+              <Countdown timeLimit={timeLimit}/>
             </h2>
           </div>
         </div>
