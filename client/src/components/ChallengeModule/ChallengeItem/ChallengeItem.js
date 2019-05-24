@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./ChallengeItem.css";
-
+import Spinner from '../../../UI/Spinner/Spinner';
 class ChallengeItem extends React.Component {
   state = {
     data: ""
@@ -20,7 +20,7 @@ class ChallengeItem extends React.Component {
 
   render() {
     let container;
-    if (this.state.data === "") container = <p> No data found </p>;
+    if (this.state.data === "") container = <p><Spinner/>> </p>;
     else
       container = (
         <div className="container challengeItem">
