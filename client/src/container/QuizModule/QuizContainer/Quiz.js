@@ -6,7 +6,8 @@ class Quiz extends React.Component {
   state = {
     questions: null,
     score: 0,
-    nextQuestion: 0
+    nextQuestion: 0,
+    answers: null
   };
 
   componentDidMount() {
@@ -15,17 +16,18 @@ class Quiz extends React.Component {
       .then(response => {
         this.setState({ questions: response.data.questions });
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(error)); 
   }
+  
   clickHandler = e => {
     let score = this.state.score;
     let nextQuestion = this.state.nextQuestion;
-    if (
-      e.target.id ===
-      this.state.questions[this.state.nextQuestion].correctAnswer
-    ) {
+    if(nextQuestion>=20)
+    return;
+    if (e.target.id == this.state.correctAnswer) {
       e.target.classList.add("bg-success", "text-white");
       score += 5;
+      this.loadNextAnswers();
     } else {
       e.target.classList.add("bg-danger", "text-white");
     }
@@ -33,36 +35,22 @@ class Quiz extends React.Component {
     setTimeout(() => {
       this.setState({ score: score, nextQuestion: nextQuestion });
     }, 1000);
+    console.log("Re rending")
   };
   render() {
     let loadedQuestion = <p>Loading Questions</p>;
-    if (this.state.questions !== null) {
-      loadedQuestion = this.state.questions[0];
+    let loadedAnswers = [];
+    if (this.state.questions !== null && this.state.answers !== null) {
+      loadedQuestion = this.state.questions[this.state.nextQuestion];
+      loadedAnswers = this.state.answers;
     }
     return (
       <div className="container">
-        <QuizQuestion question={loadedQuestion} answers={ [
-        {
-            "id": 1,
-            "answer": "Answer 1",
-            "quiz_id": 1
-        },
-        {
-            "id": 2,
-            "answer": "Answer 2",
-            "quiz_id": 1
-        },
-        {
-            "id": 3,
-            "answer": "Answer 3",
-            "quiz_id": 1
-        },
-        {
-            "id": 4,
-            "answer": "Answer 4",
-            "quiz_id": 1
-        }
-    ]} />
+        <QuizQuestion
+          clicked={this.clickHandler}
+          question={loadedQuestion}
+          answers={loadedAnswers}
+        />
       </div>
     );
   }
