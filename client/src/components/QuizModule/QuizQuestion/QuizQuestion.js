@@ -1,7 +1,7 @@
 import React from "react";
 import "./QuizQuestion.css";
 import axios from "axios";
-import Countdown from "../Countdown/CountDownTimer";
+import Countdown from "../Countdown/CountDownTImer";
 class QuizQuestion extends React.Component {
   constructor(props) {
     super(props);
@@ -60,10 +60,9 @@ class QuizQuestion extends React.Component {
 
   render() {
     console.log(this.state.questions);
-    let timeLimit=0;
-    
-    for(let question of this.state.questions)
-    timeLimit+=question.timeLimit;
+    let timeLimit = 0;
+
+    for (let question of this.state.questions) timeLimit += question.timeLimit;
     let answers = this.state.answers;
     let question = this.state.questions[this.state.nextQuestion].question;
     let answerList = [];
@@ -106,11 +105,10 @@ class QuizQuestion extends React.Component {
               </div>
             </div>
           </div>
-        
+
           <div className="col-sm-3">
-      
             <h2 className="text-center py-3 text-danger">
-              <Countdown timeLimit={timeLimit}/>
+              <Countdown timeLimit={timeLimit} />
             </h2>
           </div>
         </div>

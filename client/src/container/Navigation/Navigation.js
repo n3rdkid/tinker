@@ -8,6 +8,7 @@ const Navigation = () => {
       <NavLink to="/Signup">Register</NavLink>
       <NavLink to="/Quiz">Quiz</NavLink>
       <NavLink to="/Challenge">Challenges</NavLink>
+      <NavLink to="/AddChallenge">Add Challenge</NavLink>
     </div>
   );
 };
