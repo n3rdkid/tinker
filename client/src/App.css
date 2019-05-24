@@ -1,0 +1,9 @@
+a {
+  border: 3px solid black;
+  margin: 5px;
+  background: black;
+  color: white;
+}
+a:hover {
+  background: darkblue;
+}
