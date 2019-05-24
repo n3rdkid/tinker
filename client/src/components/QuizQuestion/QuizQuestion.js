@@ -3,33 +3,6 @@ import "./QuizQuestion.css";
 import axios from "axios";
 
 class QuizQuestion extends React.Component {
-  // const question = props.question;
-  // const answerList= [];
-  //   for(let answer in question.answers){
-  //      answerList.push(<li id={answer} key={question.id.concat(answer)} onClick={props.clicked} className="list-group-item my-1 p-3">{question.answers[answer]}</li>)
-  // }
-  state = {
-    questions: {}
-    // id: "",
-    // question: "",
-    // timelimit: ""
-  };
-  componentDidMount() {
-    axios
-      .get("http://localhost:5000/api/quiz/")
-      .then(response => {
-        this.setState({ questions: response.data.questions });
-        //this.setState({ questions: response.data.questions.map(el => el) });
-        // this.setState(prevState => ({
-        //   id: [...prevState.id],
-        //   question: [...prevState.question],
-        //   timelimit: [...prevState.timelimit]
-        // }));
-        console.log(response.data.questions);
-      })
-      .catch(error => console.log(error));
-  }
-
   render() {
     return (
       <div className="container">
@@ -46,7 +19,7 @@ class QuizQuestion extends React.Component {
               </div>
               <div className="card-body">
                 <h2 className="text-dark">
-                  Question is: {console.log(this.state.questions)}
+                  Question is: {console.log(this.state.questions[0])}
                 </h2>
                 <p className="bg-light py-2">{/*question.code*/}</p>
                 <div className="answers">
