@@ -8,60 +8,64 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="Dashboard.css">
-    <title>Admin Dashboards!</title>
+    <title>Admin Dashboard</title>
   </head>
   <body>
       <nav class="navbar navbar-expand-md navbar-light">
-          <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-target="my navbar">
-              <span class="navbar-toggler-icon"></span>
-          </button> 
-          <div class="collapse navbar-collapse" id="my navbar">
+            <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggler="collapse" data-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button> 
+                
+          <div class="collapse navbar-collapse bg-dark h-100vh" id="my navbar">
          
-              <div class="container-fluid">
-                  <div class="row">
-                      <div class="col-lg-3 sidebar fixed-top">
-                          <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">
-                              Code and Create
-                          </a>
-                          <div class="bottom-border pb-3">
-                              <img src="baby/chess.jpg" width="50" class="rounded">
-                              <a href="#" class="text-white">chess</a>
-                          </div>
-                          <ul class="navbar-nav flex-column mt-4">
-                              <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
-                                  <i class="fas fa-home text-light fa-lg mr-3"></i>/i>Dashboard
-                              </a></li>
-                              <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
-                                    <i class="fas fa-user text-light fa-lg mr-3"></i>Profille
-                                </a></li>
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
-                                  <i class="fas fa-envalop text-light fa-lg mr-3"></i>Inbox
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 sidebar fixed-top">
+                            <a href="#" class="navbar-brand text-success d-block mx-auto text-center py-3 mb-4 bottom-border">
+                                Code and Create</a>
+                            <div class="bottom-border pb-3">
+                                <img src="baby/chess.jpg" width="50" class="rounded-circle mr-3">
+                                <a href="#" class="text-success">chess</a>
+                            </div>
+                            <ul class="navbar-nav flex-column mt-4">
+                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
+                                        <i class="fas fa-home text-light fa-lg mr-3"></i>/i>Dashboard
                                     </a></li>
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
-                                 <i class="fas fa-shopping text-light fa-lg mr-3"></i>Sale
-                                                </a></li>
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
-                                <i class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics
-                                    </a></li>
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
-                                <i class="fas fa-chartbar text-light fa-lg mr-3"></i>Chart
-                                </a></li>
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
-                                 <i class="fas fa-table text-light fa-lg mr-3"></i>Table
-                                 </a></li>
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
-                                     <i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings
-                                     </a></li>
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
-                             <i class="fas fa-file-alt text-light fa-lg mr-3"></i>Documentation
+                                    <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
+                                          <i class="fas fa-user text-light fa-lg mr-3"></i>Profille
                                       </a></li>
-                                                                           
-                        
-                          </ul>
-                      </div>                          
-                  </div>
-                  </div>
+                                      <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
+                                        <i class="fas fa-envalop text-light fa-lg mr-3"></i>Inbox
+                                          </a></li>
+                                      <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
+                                       <i class="fas fa-shopping text-light fa-lg mr-3"></i>Sale
+                                                      </a></li>
+                                      <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
+                                      <i class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics
+                                          </a></li>
+                                      <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
+                                      <i class="fas fa-chartbar text-light fa-lg mr-3"></i>Chart
+                                      </a></li>
+                                      <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
+                                       <i class="fas fa-table text-light fa-lg mr-3"></i>Table
+                                       </a></li>
+                                      <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
+                                           <i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings
+                                           </a></li>
+                                      <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb- sidebar-link">
+                                   <i class="fas fa-file-alt text-light fa-lg mr-3"></i>Documentation
+                                            </a></li>
+                                                                                 
+                              
+                                </ul>
+          
+              
+
               </div>
+              </div>
+              </div>
+              </div>
+              
                   </nav>
      
     

@@ -1,11 +1,19 @@
-.sidebar{
-    height: 100vh;
-    background: linear-gradient(rgb(0,0,0,0.7) rgb(0,0,0,.9) url(baby/chess.jpg));
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: 5px 1px 25px(#999);
-}
+body{
+    font-family:'Montserrat' , sans-serif;
+    background-color: #eee;
+    
+    
+    
+    
+    .sidebar{
+        height: 100vh;
+        background: linear-gradient(rgb(0,0,0,0.7) rgb(0,0,0,0.9) url(baby/chess.jpg));
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: 5px 1px 25px #999;
+    }   
+    
 .bottom-border{
     border-bottom: 1px groove(#999);
 }
