@@ -1,38 +1,16 @@
 import React from "react";
 import "./QuizQuestion.css";
 import axios from "axios";
+const quizQuestion =(props)=> {
+ let questions=props.question;
+let answers=props.answers;
 
-class QuizQuestion extends React.Component {
-  // const question = props.question;
-  // const answerList= [];
-  //   for(let answer in question.answers){
-  //      answerList.push(<li id={answer} key={question.id.concat(answer)} onClick={props.clicked} className="list-group-item my-1 p-3">{question.answers[answer]}</li>)
-  // }
-  state = {
-    questions: {}
-    // id: "",
-    // question: "",
-    // timelimit: ""
-  };
-  componentDidMount() {
-    axios
-      .get("http://localhost:5000/api/quiz/")
-      .then(response => {
-        this.setState({ questions: response.data.questions });
-        //this.setState({ questions: response.data.questions.map(el => el) });
-        // this.setState(prevState => ({
-        //   id: [...prevState.id],
-        //   question: [...prevState.question],
-        //   timelimit: [...prevState.timelimit]
-        // }));
-        console.log(response.data.questions);
-      })
-      .catch(error => console.log(error));
-  }
+let answerList=[];
 
-  render() {
-    return (
-      <div className="container">
+for(let answer of answers){
+  answerList.push(<li id={answer.id} key={answer.id+answer.id} onClick={props.clicked} className="list-group-item my-1 p-3">{answer.answer}</li>)
+}
+return (
         <div className="row my-5">
           <div className="col-sm-9">
             <div className="card text-muted py-2">
@@ -45,18 +23,11 @@ class QuizQuestion extends React.Component {
                 </h5>
               </div>
               <div className="card-body">
-                <h2 className="text-dark">
-                  Question is: {console.log(this.state.questions)}
-                </h2>
-                <p className="bg-light py-2">{/*question.code*/}</p>
+                <h2 className="text-dark" />
+                <p className="bg-light py-2">{questions.question}</p>
                 <div className="answers">
                   <ul className="list-group">
-                    {/* {answerList} */}
-                    {/* <li className="list-group-item my-1 p-3">Symbol</li>
-          <li className="list-group-item my-1 p-3 bg-danger text-white">String</li>
-          <li className="list-group-item my-1 p-3  border-success border-3">Number</li>
-          <li className="list-group-item my-1 p-3">Boolean</li> */}
-                  </ul>
+                    {answerList}                  </ul>
                 </div>
               </div>
             </div>
@@ -68,8 +39,6 @@ class QuizQuestion extends React.Component {
             </h2>
           </div>
         </div>
-      </div>
-    );
-  }
+)
 }
-export default QuizQuestion;
+export default quizQuestion;
