@@ -10,8 +10,13 @@
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-router": "^5.0.0",
+<<<<<<< HEAD
     "react-scripts": "3.0.1",
     "redux": "^4.0.1"
+=======
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "3.0.1"
+>>>>>>> 551771f09513e072f825951c780713c29fc1b468
   },
   "scripts": {
     "start": "react-scripts start",
