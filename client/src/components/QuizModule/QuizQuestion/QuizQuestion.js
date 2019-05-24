@@ -11,6 +11,7 @@ for(let answer of answers){
   answerList.push(<li id={answer.id} key={answer.id+answer.id} onClick={props.clicked} className="list-group-item my-1 p-3">{answer.answer}</li>)
 }
 return (
+
         <div className="row my-5">
           <div className="col-sm-9">
             <div className="card text-muted py-2">
@@ -25,6 +26,7 @@ return (
               <div className="card-body">
                 <h2 className="text-dark" />
                 <p className="bg-light py-2">{questions.question}</p>
+
                 <div className="answers">
                   <ul className="list-group">
                     {answerList}                  </ul>
