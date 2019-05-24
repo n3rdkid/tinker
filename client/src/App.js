@@ -9,18 +9,20 @@ import ChallengeItem from "./components/ChallengeModule/ChallengeItem/ChallengeI
 import Navigation from "./container/Navigation/Navigation";
 class App extends React.Component {
   render() {
+    console.log("loading qiz")
     return (
-      <BrowserRouter>
-        <div>
-          <Navigation />
-          <div>
-            <Route path="/" component={SignIn} exact />
-            <Route path="/Signup" component={SignUp} />
-            <Route path="/Quiz" component={Quiz} />
-            <Route path="/Challenge" component={ChallengeItem} />
-          </div>
-        </div>
-      </BrowserRouter>
+      <Quiz/>
+      // <BrowserRouter>
+      //   <div>
+      //     <Navigation />
+      //     <div>
+      //       <Route path="/" component={SignIn} exact />
+      //       <Route path="/Signup" component={SignUp} />
+      //       <Route path="/Quiz" component={Quiz} />
+      //       <Route path="/Challenge" component={ChallengeItem} />
+      //     </div>
+      //   </div>
+      // </BrowserRouter>
     );
   }
 }
