@@ -11,18 +11,17 @@ class App extends React.Component {
   render() {
     console.log("loading qiz")
     return (
-      <Quiz/>
-      // <BrowserRouter>
-      //   <div>
-      //     <Navigation />
-      //     <div>
-      //       <Route path="/" component={SignIn} exact />
-      //       <Route path="/Signup" component={SignUp} />
-      //       <Route path="/Quiz" component={Quiz} />
-      //       <Route path="/Challenge" component={ChallengeItem} />
-      //     </div>
-      //   </div>
-      // </BrowserRouter>
+      <BrowserRouter>
+        <div>
+          <Navigation />
+          <div>
+            <Route path="/" component={SignIn} exact />
+            <Route path="/Signup" component={SignUp} />
+            <Route path="/Quiz" component={Quiz} />
+            <Route path="/Challenge" component={ChallengeItem} />
+          </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }

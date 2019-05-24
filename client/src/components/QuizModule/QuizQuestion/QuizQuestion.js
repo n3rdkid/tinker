@@ -19,16 +19,11 @@ class QuizQuestion extends React.Component {
       `You pressed ${e.target.id} Correct answer : ${this.state.correctAnswer}`
     );
     if (e.target.id == this.state.correctAnswer) {
-      e.target.classList.add("bg-success", "text-white");
       score += 5;
-    } else {
-      e.target.classList.add("bg-danger", "text-white");
-    }
+    } 
+     
     nextQuestion++;
-    await this.setState({ score: score, nextQuestion: nextQuestion },()=>{
-      console.log("State inside Clicked");
-      console.dir(this.state);
-    });
+    await this.setState({ score: score, nextQuestion: nextQuestion });
     this.loadData();
   };
   componentDidMount() {
@@ -63,7 +58,9 @@ class QuizQuestion extends React.Component {
   }
 
   render() {
+    console.log(this.state.questions)
     let answers = this.state.answers;
+    let question=this.state.questions[this.state.nextQuestion].question;
     let answerList = [];
 
     if (answers !== null) {
@@ -97,7 +94,7 @@ class QuizQuestion extends React.Component {
               <div className="card-body">
                 <h2 className="text-dark" />
                 <p className="bg-light py-2">
-                  {this.props.questions[this.state.nextQuestion].question}
+                  {question}
                 </p>
 
                 <div className="answers">
