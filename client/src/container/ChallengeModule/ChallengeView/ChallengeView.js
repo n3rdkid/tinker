@@ -1,4 +1,7 @@
 import React from "react";
+import { UnControlled as CodeMirror } from "react-codemirror2";
+import "../../../../node_modules/codemirror/lib/codemirror.css";
+import "../../../../node_modules/codemirror/theme/material.css";
 class ChallengeView extends React.Component {
   render() {
     return (
@@ -31,6 +34,28 @@ class ChallengeView extends React.Component {
             <h3>Resources</h3>
           </div>
         </div>
+        <CodeMirror
+          className="col-md-8"
+          value={`function rot13(str) { // LBH QVQ VG!
+
+return str;
+}
+// Change the inputs below to test
+rot13("SERR PBQR PNZC");`}
+          options={{
+            theme: "material",
+            lineNumbers: true,
+            mode: "jsx",
+            tabSize: 2,
+            autofocus: true,
+            foldGutter: false,
+            gutters: [],
+            styleSelectedText: true
+          }}
+          onChange={(editor, data, value) => {
+
+          }}
+        />
       </div>
     );
   }
