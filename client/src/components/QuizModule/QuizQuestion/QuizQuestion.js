@@ -1,7 +1,7 @@
 import React from "react";
 import "./QuizQuestion.css";
 import axios from "axios";
-import Countdown from "../Countdown/CountDownTImer";
+import Countdown from "../Countdown/CountDownTimer";
 class QuizQuestion extends React.Component {
   constructor(props) {
     super(props);
