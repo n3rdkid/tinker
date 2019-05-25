@@ -41,6 +41,7 @@ Dumping Data on Labels table
 ------------------------------*/
 INSERT INTO Labels VALUES (1,'function');
 INSERT INTO Labels VALUES (2,'array');
+INSERT INTO Labels VALUES (3,'condition');
 SELECT * FROM labels;
 /*----------------------------
 Create Challenge table
@@ -54,6 +55,7 @@ CREATE TABLE IF NOT EXISTS challenges (
 	FOREIGN KEY (label) REFERENCES labels(label)
 );
 SELECT *FROM challenges;
+
 /*----------------------------
 
 Dumping Data on Challenges table
@@ -68,7 +70,10 @@ Don't forget to return the result.
 If you get stuck on a challenge, find help in the Resources tab.","function hello() {
 
 }",'function');
-INSERT INTO challenges VALUES(2,"This is title Dawg","Just Do It Bruh!!","Starter bruh!",'array');
+INSERT INTO challenges VALUES(2,"Odd Test","Return true for odd else false!","function odd(n){
+
+return false;
+}",'condition');
 SELECT * FROM challenges;
 
 
@@ -109,10 +114,10 @@ CREATE TABLE IF NOT EXISTS tests (
 Dumping Data on Test table
 ------------------------------*/
 INSERT INTO tests VALUES(1,'hello()','hello tinker',1);
-INSERT INTO tests VALUES(2,'hello()','hello tinker',2);
-INSERT INTO tests VALUES(3,'hello()','hello tinker',2);
-INSERT INTO tests VALUES(4,'hello()','hello tinker',2);
-INSERT INTO tests VALUES(5,'hello()','hello tinker',2);
+INSERT INTO tests VALUES(2,'odd(1)','true',2);
+INSERT INTO tests VALUES(3,'odd(2)','false',2);
+INSERT INTO tests VALUES(4,'odd(3)','true',2);
+INSERT INTO tests VALUES(5,'odd(4)','false',2);
 SELECT * FROM tests;
 
 /*----------------------------
