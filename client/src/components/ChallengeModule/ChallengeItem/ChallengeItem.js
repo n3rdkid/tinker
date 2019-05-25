@@ -18,8 +18,9 @@ class ChallengeItem extends React.Component {
       .catch(error => console.log(error));
   }
   clickHandler = e => {
-    let id = e.target.parentElement.id || e.target.id;
+    let id = e.target.id|| e.target.parentElement.id ;  console.log("Click handler "+id)
     this.props.history.push(`/challenges/${id}`);
+  
   };
 
   render() {

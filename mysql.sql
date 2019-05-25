@@ -109,7 +109,10 @@ CREATE TABLE IF NOT EXISTS tests (
 Dumping Data on Test table
 ------------------------------*/
 INSERT INTO tests VALUES(1,'hello()','hello tinker',1);
-
+INSERT INTO tests VALUES(2,'hello()','hello tinker',2);
+INSERT INTO tests VALUES(3,'hello()','hello tinker',2);
+INSERT INTO tests VALUES(4,'hello()','hello tinker',2);
+INSERT INTO tests VALUES(5,'hello()','hello tinker',2);
 SELECT * FROM tests;
 
 /*----------------------------
@@ -128,6 +131,10 @@ CREATE TABLE IF NOT EXISTS resources (
 Dumping Data on Test table
 ------------------------------*/
 INSERT INTO resources VALUES(1,'JavaScript Functions Tutorial','javascript.info','Functions are the main “building blocks” of the program. They allow the code to be called many times without repetition.',1);
+INSERT INTO resources VALUES(2,'Title 2 Functions Tutorial','2.info',' The',1);
+INSERT INTO resources VALUES(3,'Title 3 Functions Tutorial','3.info','repetition.',1);
+INSERT INTO resources VALUES(4,'4 Functions Tutorial','4.info','kills',1);
+INSERT INTO resources VALUES(5,'5 Functions Tutorial','5.info','Functions ',1);
 
 SELECT * FROM resources;
 

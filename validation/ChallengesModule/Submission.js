@@ -13,7 +13,7 @@ module.exports = function validateSubmissionInput(data) {
   errors.score="Please send a score!"; 
   if(Validator.isEmpty(data.username))
   errors.username="Username is required!";
-  if(Validator.isEmpty(data.challenge_id))
+  if(Validator.isEmpty(data.challenge_id)) 
   errors.challenge_id="Challenge id is required!";
 
   return{

@@ -17,7 +17,7 @@ class ChallengeView extends React.Component {
   }
 
   componentDidMount() {
-    console.log("loading data")
+    console.log("loading data "+this.state.questionId)
     console.log(`http://localhost:5000/api/challenges/${this.state.questionId}`)
     axios
       .get(`http://localhost:5000/api/challenges/${this.state.questionId}`)
@@ -26,9 +26,7 @@ class ChallengeView extends React.Component {
           {
             question: response.data.challenge,
             testCases:response.data.tests
-          },
-          () =>   console.log(this.state.question.starter)
-        );
+          }        );
       }).catch(error => console.log(error));
   }
 
