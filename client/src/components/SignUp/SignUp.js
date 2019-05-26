@@ -1,5 +1,8 @@
 import React from "react";
 import axios from "axios";
+import {connect} from "react-redux";
+// import propTypes from "propTypes";
+import {registerUser} from "../../actions/authActions";
 class SignUp extends React.Component {
   state = {
     username: "",
@@ -15,15 +18,19 @@ class SignUp extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/api/users/register", this.state)
-      .then(() => console.log("succsss"))
-      .catch(err => console.log(err.response.data));
+    this.props.registerUser(this.state);
+  //   axios
+  //     .post("http://localhost:5000/api/users/register", this.state)
+  //     .then(() => console.log("succsss"))
+  //     .catch(err => console.log(err.response.data));
   };
 
   render() {
+    const {erros }=this.state;
+    const {user}=this.props.auth;
     return (
       <form>
+        {user?user.username:null}
         <input
           name="username"
           placeholder="Username"
@@ -52,5 +59,8 @@ class SignUp extends React.Component {
     );
   }
 }
+const mapStateToProps =(state)=>({
+  auth:state.auth
+});
 
-export default SignUp;
+export default connect(mapStateToProps,{registerUser})(SignUp);

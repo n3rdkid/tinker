@@ -19,6 +19,7 @@ class App extends React.Component {
   render() {
     console.log("loading qiz");
     return (
+      <Provider store={store}>
       <BrowserRouter>
         <div>
           <Navigation />
@@ -37,6 +38,7 @@ class App extends React.Component {
           </div>
         </div>
       </BrowserRouter>
+      </Provider>
     );
   }
 }
