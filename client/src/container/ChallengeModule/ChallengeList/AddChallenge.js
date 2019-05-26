@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import ButtonToolbar from "react-bootstrap/Button";
 class AddChallenge extends React.Component {
   state = {
     instruction: "",
@@ -46,7 +47,11 @@ class AddChallenge extends React.Component {
           value={this.state.label}
         />
         <br />
-        <button onClick={e => this.onSubmit(e)}>Submit</button>
+        <ButtonToolbar>
+          <button variant="primary" onClick={e => this.onSubmit(e)}>
+            Submit
+          </button>
+        </ButtonToolbar>
       </div>
     );
   }

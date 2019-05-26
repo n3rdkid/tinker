@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import "./App.css";
+import Home from "./container/Home";
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import Quiz from "./container/QuizModule/QuizContainer/Quiz";
@@ -20,10 +21,11 @@ class App extends React.Component {
           <Navigation />
           <div>
             <Switch>
-              <Route path="/" component={SignIn} exact />
+              <Route path="/" component={Home} exact />
+              <Route path="/Signin" component={SignIn} />
               <Route path="/Signup" component={SignUp} />
               <Route path="/Quiz" component={Quiz} />
-              <Route path="/Challenges" component={ChallengeItem} exact />
+              <Route path="/Challenges" component={ChallengeItem} />
               <Route path="/AddChallenge" component={AddChallenge} />
               <Route path="/challenges/:id" component={ChallengeView} />
               <Route path="/AddResources" component={AddResources} />
