@@ -85,19 +85,20 @@ Create Submissions table
 CREATE TABLE IF NOT EXISTS submissions (
 	id INT PRIMARY KEY AUTO_INCREMENT ,
 	submission TEXT,
-	score INT,
+	timeTaken INT,
 	username VARCHAR(100),
 	challenge_id INT,
+	submisison_date DATETIME,
 	FOREIGN KEY (username) REFERENCES users(username),
 	FOREIGN KEY (challenge_id) REFERENCES challenges(id)
 );
 /*----------------------------
 Dumping Data on Submissions table
 ------------------------------*/
-INSERT INTO submissions (submission,score,username,challenge_id) VALUES("
+INSERT INTO submissions (submission,timeTaken,username,challenge_id,submisison_date) VALUES("
 function hello() {
 	return \"hello tinker\";
-}",10,'test',1);
+}",10,'test',1,NOW());
 SELECT * FROM submissions;
 /*----------------------------
 Create Test table

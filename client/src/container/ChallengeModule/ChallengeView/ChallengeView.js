@@ -11,9 +11,11 @@ class ChallengeView extends React.Component {
     this.state = {
       questionId: this.props.match.params.id,
       question: null,
-      testCases: null
+      testCases: null,
+      submitEnabled: false
     };
     this.scriptEvaluator = this.scriptEvaluator.bind(this);
+    this.submitSolution = this.submitSolution.bind(this);
   }
 
   componentDidMount() {
@@ -34,12 +36,12 @@ class ChallengeView extends React.Component {
   }
 
   scriptEvaluator() {
+    let testCasesPassed = 0;
     const iframe = document.querySelector("#myFrame");
     let iframe_doc = iframe.contentDocument;
     let temp;
     let result = [];
     let testCaseNo = 1;
-    let executionTime;
     for (let testcase of this.state.testCases) {
       console.log(testcase.test);
       let t1 = performance.now();
@@ -47,29 +49,49 @@ class ChallengeView extends React.Component {
       let t2 = performance.now();
       console.log("This is your output" + temp);
       if (typeof temp === "boolean") temp = temp.toString();
-      let testButton=document
-      .querySelector(`#test${testCaseNo}`);
+      let testButton = document.querySelector(`#test${testCaseNo}`);
       if (temp === testcase.result) {
-        if(testButton.classList.contains('bg-danger'))
-        testButton.classList.remove("bg-danger","text-white")
-        testButton.classList.add("bg-success","text-white");
+        testCasesPassed++;
+        if (testButton.classList.contains("bg-danger"))
+          testButton.classList.remove("bg-danger", "text-white");
+        testButton.classList.add("bg-success", "text-white");
         result += `<p>Test ${testCaseNo++} pass! Expected : ${
           testcase.result
         } Outcome : ${temp} Execution time ${(t2 - t1).toFixed(2)} ms"</p>`;
       } else {
         document
           .querySelector(`#test${testCaseNo}`)
-          .classList.add("bg-danger","text-white");
+          .classList.add("bg-danger", "text-white");
         result += `<p>Test ${testCaseNo++} fail! Expected : ${
           testcase.result
         } Outcome : ${temp}  Execution time ${(t2 - t1).toFixed(2)} ms"</p>`;
+        if(this.state.submitEnabled)
+        this.setState({submitEnabled:false})
       }
+      if(testCasesPassed===this.state.testCases.length)
+      this.setState({submitEnabled:true})
     }
     iframe_doc.open();
     iframe_doc.write(result);
     iframe_doc.close();
   }
-
+  submitSolution() {
+ 
+    let submission={
+      submission:currentValue,
+      timeTaken:""+5000,
+      username:"test",
+      challenge_id:this.state.questionId
+    };
+ 
+    axios
+    .post("http://localhost:5000/api/challenges",submission)
+    .then(response => {
+      console.log("Submitted");
+      console.log(submission);
+    })
+    .catch(error => console.log(error));
+  }
   render() {
     let codeMirror = <Spinner />;
     let testCases = [];
@@ -101,6 +123,26 @@ class ChallengeView extends React.Component {
         );
       }
     }
+    let submitButton;
+    if (this.state.submitEnabled)
+      submitButton = (
+        <button
+          onClick={this.submitSolution}
+          class="btn btn-outline-success"
+        >
+          Submit
+        </button>
+      );
+      else
+      submitButton = (
+        <button
+        disabled
+          onClick={this.submitSolution}
+          class="btn btn-outline-dark"
+        >
+          Submit
+        </button>
+      );
     return (
       <>
         <div>
@@ -143,6 +185,7 @@ class ChallengeView extends React.Component {
             Run
           </button>
           {testCases}
+          {submitButton}
         </div>
       </>
     );
