@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {Provider} from "react-redux";
+import store from "./store";
 
 import "./App.css";
 import Home from "./container/Home";
@@ -13,6 +15,7 @@ import ChallengeView from "./container/ChallengeModule/ChallengeView/ChallengeVi
 import AddResources from "./container/ChallengeModule/AddResources";
 import AddAssignment from "./container/AssignmentModule/AddAssignment";
 class App extends React.Component {
+ 
   render() {
     console.log("loading qiz");
     return (
