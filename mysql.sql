@@ -177,7 +177,7 @@ INSERT INTO `quiz` (`id`, `question`, `timeLimit`) VALUES
 (7, 'How do you call a function in Javascript', 15),
 (8, 'How do you write an IF statement in Javascript', 20),
 (9, 'How can you add a comment in a Javascript', 15),
-(10, 'How do you round the number 7.25, to a nearest integer', 20)
+(10, 'How do you round the number 7.25, to a nearest integer', 20);
 
 SELECT * FROM quiz;
 /*----------------------------
@@ -264,5 +264,3 @@ INSERT INTO `correctanswer` (`id`, `quiz_id`, `ans_id`) VALUES
 (9, 9, 30),
 (10, 10, 35);
 SELECT * FROM correctAnswer;
-
-SELECT * FROM quiz INNER JOIN answers ON quiz.id=answers.`quiz_id`;
