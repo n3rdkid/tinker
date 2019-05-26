@@ -167,10 +167,17 @@ CREATE TABLE IF NOT EXISTS quiz (
 /*----------------------------
 Dumping Data on quiz table
 ------------------------------*/
-INSERT INTO quiz VALUES(1,"0.4 + 0.04 = ?",25);
-INSERT INTO quiz VALUES(2,"Dummy Question 2",60);
-INSERT INTO quiz VALUES(3,"Dummy Question 3",70);
-INSERT INTO quiz VALUES(4,"Dummy Question 4",80);
+INSERT INTO `quiz` (`id`, `question`, `timeLimit`) VALUES
+(1, '0.4 + 0.04 = ?', 25),
+(2, 'Inside which HTML element do we put the Javascript?', 25),
+(3, 'What is the correct place to insert a Javascript?', 25),
+(4, 'What is the correct syntax for referring to an external script called \"xxx.js\"?', 30),
+(5, 'How do you write \"Hello World\" in an alert box?', 25),
+(6, 'How do you create a function in Javascript', 15),
+(7, 'How do you call a function in Javascript', 15),
+(8, 'How do you write an IF statement in Javascript', 20),
+(9, 'How can you add a comment in a Javascript', 15),
+(10, 'How do you round the number 7.25, to a nearest integer', 20)
 
 SELECT * FROM quiz;
 /*----------------------------
@@ -185,25 +192,49 @@ CREATE TABLE IF NOT EXISTS answers(
 /*----------------------------
 Dumping Data on answers table
 ------------------------------*/
-INSERT INTO answers VALUES (1,"Question 1 Answer 1",1);
-INSERT INTO answers VALUES (2,"Question 1 Answer 2",1);
-INSERT INTO answers VALUES (3,"Question 1 Answer 3",1);
-INSERT INTO answers VALUES (4,"Question 1 Answer 4",1);
+INSERT INTO `answers` (`id`, `answer`, `quiz_id`) VALUES
+(1, '0.404', 1),
+(2, '0.440', 1),
+(3, '0.044', 1),
+(4, '4.44', 1),
+(5, '<javascript?', 2),
+(6, '<scripting>', 2),
+(7, '<js>', 2),
+(8, '<script>', 2),
+(9, 'Both the <head> section and the <body> section are correct.', 3),
+(10, 'The <body> section', 3),
+(11, 'The <head> section', 3),
+(12, 'The <title> section', 3),
+(13, '<script href=\"xxx.js\">', 4),
+(14, '<script src=\"xxx.js\">', 4),
+(15, '<script name=\"xxx.js\"', 4),
+(16, '<script link=\"xxx.js\">', 4),
+(17, 'alert(\"Hello World\");', 5),
+(18, 'msgBox(\"Hello World\");', 5),
+(19, 'alertBox(\"Hello world\");', 5),
+(20, 'msg(\"Hello World\");', 5),
+(21, 'fucntion = myFunction()', 7),
+(22, 'function: myFunction()', 7),
+(23, 'function myFunction()', 7),
+(24, 'funciton() myFunction', 7),
+(25, 'if i==5 then', 8),
+(26, 'if i=5 then', 8),
+(27, 'if (i==5)', 8),
+(28, 'if i==5', 8),
+(29, '\"This is a comment', 9),
+(30, '//This is a comment', 9),
+(31, '<!--This is a comment', 9),
+(32, '!This is a comment', 9),
+(33, 'Math.rnd(7.25)', 10),
+(34, 'rnd(7.25)', 10),
+(35, 'Math.round(7.25)', 10),
+(36, 'round(7.25)', 10),
+(37, 'call function myFunction()', 6),
+(38, 'cal myFunction()', 6),
+(39, 'myFunction()', 6),
+(40, 'call()', 6);
 
-INSERT INTO answers VALUES (5,"Question 2 Answer 1",2);
-INSERT INTO answers VALUES (6,"Question 2 Answer 2",2);
-INSERT INTO answers VALUES (7,"Question 2 Answer 3",2);
-INSERT INTO answers VALUES (8,"Question 2 Answer 4",2);
 
-INSERT INTO answers VALUES (9,"Question 3 Answer 1",3);
-INSERT INTO answers VALUES (10,"Question 3 Answer 2",3);
-INSERT INTO answers VALUES (11,"Question 3 Answer 3",3);
-INSERT INTO answers VALUES (12,"Question 3 Answer 4",3);
-
-INSERT INTO answers VALUES (13,"Question 4 Answer 1",4);
-INSERT INTO answers VALUES (14,"Question 4 Answer 2",4);
-INSERT INTO answers VALUES (15,"Question 4 Answer 3",4);
-INSERT INTO answers VALUES (16,"Question 4 Answer 4",4);
 
 SELECT * FROM answers;
 
@@ -221,10 +252,17 @@ CREATE TABLE IF NOT EXISTS correctAnswer(
 /*----------------------------
 Dumping Data on correctAnswer table
 ------------------------------*/
-INSERT INTO correctAnswer VALUES (1,1,1);
-INSERT INTO correctAnswer VALUES (2,2,2);
-INSERT INTO correctAnswer VALUES (3,3,3);
-INSERT INTO correctAnswer VALUES (4,4,4);
+INSERT INTO `correctanswer` (`id`, `quiz_id`, `ans_id`) VALUES
+(1, 1, 1),
+(2, 2, 8),
+(3, 3, 3),
+(4, 4, 4),
+(5, 5, 17),
+(6, 6, 22),
+(7, 7, 39),
+(8, 8, 27),
+(9, 9, 30),
+(10, 10, 35);
 SELECT * FROM correctAnswer;
 
 SELECT * FROM quiz INNER JOIN answers ON quiz.id=answers.`quiz_id`;
