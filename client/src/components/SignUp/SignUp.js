@@ -10,6 +10,13 @@ class SignUp extends React.Component {
     user_password: "",
     user_type: "student"
   };
+  componentWillReceiveProps(nextProps)
+  {
+    if(nextProps.errors)
+    {
+      this.setState({errors:nextProps.errors});
+    }
+  }
   changeHandler = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -19,18 +26,15 @@ class SignUp extends React.Component {
   onSubmit = e => {
     e.preventDefault();
     this.props.registerUser(this.state);
-  //   axios
-  //     .post("http://localhost:5000/api/users/register", this.state)
-  //     .then(() => console.log("succsss"))
-  //     .catch(err => console.log(err.response.data));
+
   };
 
   render() {
-    const {erros }=this.state;
+    const {errors }=this.state;
     const {user}=this.props.auth;
     return (
       <form>
-        {user?user.username:null}
+        {errors}
         <input
           name="username"
           placeholder="Username"
@@ -60,7 +64,8 @@ class SignUp extends React.Component {
   }
 }
 const mapStateToProps =(state)=>({
-  auth:state.auth
+  auth:state.auth,
+  errors:state.errors
 });
 
 export default connect(mapStateToProps,{registerUser})(SignUp);

@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
 import store from "./store";
 
 import "./App.css";
@@ -15,29 +15,28 @@ import ChallengeView from "./container/ChallengeModule/ChallengeView/ChallengeVi
 import AddResources from "./container/ChallengeModule/AddResources";
 import AddAssignment from "./container/AssignmentModule/AddAssignment";
 class App extends React.Component {
- 
   render() {
     console.log("loading qiz");
     return (
       <Provider store={store}>
-      <BrowserRouter>
-        <div>
-          <Navigation />
+        <BrowserRouter>
           <div>
-            <Switch>
-              <Route path="/" component={Home} exact />
-              <Route path="/Challenges" component={ChallengeItem} exact />
-              <Route path="/Signin" component={SignIn} />
-              <Route path="/Signup" component={SignUp} />
-              <Route path="/Quiz" component={Quiz} />
-              <Route path="/AddChallenge" component={AddChallenge} />
-              <Route path="/challenges/:id" component={ChallengeView} />
-              <Route path="/AddResources" component={AddResources} />
-              <Route path="/AddAssignment" component={AddAssignment} />
-            </Switch>
+            <Navigation />
+            <div>
+              <Switch>
+                <Route path="/" component={Home} exact />
+                <Route path="/Signin" component={SignIn} />
+                <Route path="/Signup" component={SignUp} />
+                <Route path="/Quiz" component={Quiz} />
+                <Route path="/Challenges" component={ChallengeItem} />
+                <Route path="/AddChallenge" component={AddChallenge} />
+                <Route path="/challenges/:id" component={ChallengeView} />
+                <Route path="/AddResources" component={AddResources} />
+                <Route path="/AddAssignment" component={AddAssignment} />
+              </Switch>
+            </div>
           </div>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
       </Provider>
     );
   }
