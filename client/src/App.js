@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route,Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import "./App.css";
 import SignIn from "./components/SignIn/SignIn";
@@ -9,6 +9,7 @@ import Navigation from "./container/Navigation/Navigation";
 import AddChallenge from "./container/ChallengeModule/ChallengeList/AddChallenge";
 import ChallengeItem from "./components/ChallengeModule/ChallengeItem/ChallengeItem";
 import ChallengeView from "./container/ChallengeModule/ChallengeView/ChallengeView";
+import AddResources from "./container/ChallengeModule/AddResources";
 class App extends React.Component {
   render() {
     console.log("loading qiz");
@@ -24,6 +25,7 @@ class App extends React.Component {
               <Route path="/Challenges" component={ChallengeItem} exact />
               <Route path="/AddChallenge" component={AddChallenge} />
               <Route path="/challenges/:id" component={ChallengeView} />
+              <Route path="/AddResources" component={AddResources} />
             </Switch>
           </div>
         </div>
