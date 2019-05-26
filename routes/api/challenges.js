@@ -70,12 +70,12 @@ router.post("/", (req, res) => {
   if (!isValid) {
     return res.status(400).json({ errors });
   }
-  let { submission, score, username, challenge_id } = req.body;
+  let { submission, timeTaken, username, challenge_id } = req.body;
   let statement =
-    "INSERT INTO submissions (submission,score,username,challenge_id) VALUES(?,?,?,?)";
+    "INSERT INTO submissions (submission,timeTaken,username,challenge_id,submisison_date) VALUES(?,?,?,?,NOW());";
   mysqlConnection.query(
     statement,
-    [submission, score, username, challenge_id],
+    [submission, timeTaken, username, challenge_id],
     (err, results, fields) => {
       if (!err) {
         res.send(results[0]);
