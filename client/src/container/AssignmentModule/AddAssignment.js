@@ -1,24 +1,20 @@
 import React from "react";
 import axios from "axios";
-class AddResources extends React.Component {
+class AddAssignment extends React.Component {
   state = {
+    assignment_id: "",
     title: "",
-    link: "",
     description: "",
-    challenge_id: ""
+    example: "",
+    testcase: ""
   };
   onSubmit = e => {
     e.preventDefault();
     console.log(this.state);
-    axios
-      .post(
-        `http://localhost:5000/api/challenges/resources/${
-          this.state.challenge_id
-        }`,
-        this.state
-      )
-      .then(() => console.log("Resource added sucessfully"))
-      .catch(err => console.log(err.response.data));
+    // axios
+    //   .post(`http://localhost:5000/api/challenges/resources/`, this.state)
+    //   .then(() => console.log("Resource added sucessfully"))
+    //   .catch(err => console.log(err.response.data));
   };
   changeState = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -27,12 +23,12 @@ class AddResources extends React.Component {
     return (
       <div>
         <input
-          name="challenge_id"
-          placeholder="Challenge_id"
+          name="assignment_id"
+          placeholder="Assignment id"
           size="150"
           type="text"
           onChange={e => this.changeState(e)}
-          value={this.state.challenge_id}
+          value={this.state.assignment_id}
         />
         <input
           name="title"
@@ -43,20 +39,28 @@ class AddResources extends React.Component {
           value={this.state.title}
         />
         <input
-          name="link"
-          placeholder="Link.."
+          name="description"
+          placeholder="Description.."
           size="150"
           type="text"
           onChange={e => this.changeState(e)}
-          value={this.state.link}
+          value={this.state.description}
         />
         <input
-          name="description"
-          placeholder="Description.."
+          name="example"
+          placeholder="Example.."
           size="100"
           type="text"
           onChange={e => this.changeState(e)}
-          value={this.state.description}
+          value={this.state.example}
+        />
+        <input
+          name="testcase"
+          placeholder="Testcase.."
+          size="100"
+          type="text"
+          onChange={e => this.changeState(e)}
+          value={this.state.testcase}
         />
         <br />
         <button onClick={e => this.onSubmit(e)}>Submit</button>
@@ -64,4 +68,4 @@ class AddResources extends React.Component {
     );
   }
 }
-export default AddResources;
+export default AddAssignment;

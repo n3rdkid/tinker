@@ -10,6 +10,7 @@ import AddChallenge from "./container/ChallengeModule/ChallengeList/AddChallenge
 import ChallengeItem from "./components/ChallengeModule/ChallengeItem/ChallengeItem";
 import ChallengeView from "./container/ChallengeModule/ChallengeView/ChallengeView";
 import AddResources from "./container/ChallengeModule/AddResources";
+import AddAssignment from "./container/AssignmentModule/AddAssignment";
 class App extends React.Component {
   render() {
     console.log("loading qiz");
@@ -26,6 +27,7 @@ class App extends React.Component {
               <Route path="/AddChallenge" component={AddChallenge} />
               <Route path="/challenges/:id" component={ChallengeView} />
               <Route path="/AddResources" component={AddResources} />
+              <Route path="/AddAssignment" component={AddAssignment} />
             </Switch>
           </div>
         </div>
