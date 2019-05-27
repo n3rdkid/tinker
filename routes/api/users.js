@@ -13,10 +13,9 @@ const mysqlConnection = mysql.createConnection(databaseOptions);
 mysqlConnection.connect();
 
 //Load Register validation
-const validateRegisterInput = require('../../validation/Register');
+const validateRegisterInput = require("../../validation/Register");
 //Load Register validation
-const validateLoginInput = require('../../validation/Login');
-
+const validateLoginInput = require("../../validation/Login");
 
 //@route GET api/users/test
 //@desc  Test users route
@@ -27,10 +26,10 @@ router.get("/test", (req, res) => res.json({ hi: "hello" }));
 //@desc  Register users
 //@access Public
 router.post("/register", (req, res) => {
-  const { errors, isValid }=validateRegisterInput(req.body);
+  const { errors, isValid } = validateRegisterInput(req.body);
   //Check Validation
-  if(!isValid){
-    return res.status(400).json({errors});
+  if (!isValid) {
+    return res.status(400).json({ errors });
   }
   let { username, user_password, email, user_type } = req.body;
   //Generate salt and hash it
@@ -49,33 +48,34 @@ router.post("/register", (req, res) => {
   );
 });
 router.post("/signin", (req, res) => {
-  const { errors, isValid }=validateLoginInput(req.body);
+  const { errors, isValid } = validateLoginInput(req.body);
   //Check Validation
-  if(!isValid){
-    return res.status(400).json({errors});
+  if (!isValid) {
+    return res.status(400).json({ errors });
   }
   let statement = "SELECT * FROM users WHERE username=?";
   let { username, password } = req.body;
   mysqlConnection.query(statement, username, (err, rows) => {
-    if (bcrypt.compareSync(password, rows[0].user_password)) {
-      //"Authorized"
-      const payload = {
-        username: rows[0].username
-      };
-      jwt.sign(
-        payload,
-        keys.secretOrKey,
-        {
-          expiresIn: 3600
-        },
-        (err, token) => {
-          res.json({ success: true, token: `Bearer ` + token });
-        }
-      );
-     
+    if (!err && rows[0]) {
+      if (bcrypt.compareSync(password, rows[0].user_password)) {
+        //"Authorized"
+        const payload = {
+          username: rows[0].username
+        };
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          {
+            expiresIn: 3600
+          },
+          (err, token) => {
+            res.json({ success: true, token: `Bearer ` + token });
+          }
+        );
+      }
     } else {
       //Not authorized"
-      res.status(400).json({error:"Unauthorized"});
+      res.status(400).json({ error: "Unauthorized" });
     }
   });
 });
@@ -90,8 +90,5 @@ router.get(
     res.json(req.user);
   }
 );
-
-
-
 
 module.exports = router;
