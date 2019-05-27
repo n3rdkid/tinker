@@ -3,6 +3,7 @@ import axios from "axios";
 import {connect} from "react-redux";
 // import propTypes from "propTypes";
 import {registerUser} from "../../actions/authActions";
+import {withRouter} from "react-router-dom";
 class SignUp extends React.Component {
   state = {
     username: "",
@@ -25,7 +26,7 @@ class SignUp extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.registerUser(this.state);
+    this.props.registerUser(this.state,this.props.history);
 
   };
 
@@ -68,4 +69,4 @@ const mapStateToProps =(state)=>({
   errors:state.errors
 });
 
-export default connect(mapStateToProps,{registerUser})(SignUp);
+export default connect(mapStateToProps,{registerUser})(withRouter(SignUp));

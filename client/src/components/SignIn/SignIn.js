@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import {connect} from "react-redux";
+import {loginUser} from "../../actions/authActions"
 class SignIn extends React.Component {
   state = {
     username: "",
@@ -7,14 +9,20 @@ class SignIn extends React.Component {
   };
   onSubmit = e => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/api/users/signin", this.state)
-      .then(() => console.log("Signin success"))
-      .catch(err => console.log(err.response.data));
+    this.props.loginUser(this.state)
   };
   changeState = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+  componentWillReceiveProps(nextProps)
+  {
+    if(nextProps.auth.isAuthenticated)
+    {
+      this.props.history.push('/dashboard')
+    }
+    if(nextProps.errors)
+    this.setState({errors:nextProps.errors})
+  }
 
   render() {
     return (
@@ -41,5 +49,9 @@ class SignIn extends React.Component {
     );
   }
 }
+const mapStateToProps =(state) =>({
+auth:state.auth,
+errors:state.errors
+});
 
-export default SignIn;
+export default connect(mapStateToProps,{loginUser})(SignIn);
