@@ -20,11 +20,7 @@ class Quiz extends React.Component {
     let display = <p>Add a spinner</p>;
     if (this.state.questions !== null)
       display = <QuizQuestion questions={this.state.questions} />;
-    return (
-      <div className="container">
-       {display}
-      </div>
-    );
+    return <div className="container">{display}</div>;
   }
 }
 

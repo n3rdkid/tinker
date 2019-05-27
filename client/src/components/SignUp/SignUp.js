@@ -1,5 +1,9 @@
 import React from "react";
 import axios from "axios";
+import {connect} from "react-redux";
+// import propTypes from "propTypes";
+import {registerUser} from "../../actions/authActions";
+import {withRouter} from "react-router-dom";
 class SignUp extends React.Component {
   state = {
     username: "",
@@ -7,6 +11,13 @@ class SignUp extends React.Component {
     user_password: "",
     user_type: "student"
   };
+  componentWillReceiveProps(nextProps)
+  {
+    if(nextProps.errors)
+    {
+      this.setState({errors:nextProps.errors});
+    }
+  }
   changeHandler = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -15,15 +26,16 @@ class SignUp extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/api/users/register", this.state)
-      .then(() => console.log("succsss"))
-      .catch(err => console.log(err.response.data));
+    this.props.registerUser(this.state,this.props.history);
+
   };
 
   render() {
+    const {errors }=this.state;
+    const {user}=this.props.auth;
     return (
       <form>
+        {errors}
         <input
           name="username"
           placeholder="Username"
@@ -52,5 +64,9 @@ class SignUp extends React.Component {
     );
   }
 }
+const mapStateToProps =(state)=>({
+  auth:state.auth,
+  errors:state.errors
+});
 
-export default SignUp;
+export default connect(mapStateToProps,{registerUser})(withRouter(SignUp));

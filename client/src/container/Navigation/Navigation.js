@@ -23,7 +23,7 @@ const Navigation = () => {
               <NavDropdown.Item href="/AddResources">
                 Add Resources
               </NavDropdown.Item>
-              <NavDropdown.Item href="AddAssignment">
+              <NavDropdown.Item href="/Assignment">
                 Add Assignment
               </NavDropdown.Item>
             </NavDropdown>
