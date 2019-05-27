@@ -14,6 +14,7 @@ class QuizQuestion extends React.Component {
       timeLimit: 20
     };
   }
+
   setTimeLimit = () => {
     console.log(this.state.questions);
     this.setState({
@@ -22,7 +23,7 @@ class QuizQuestion extends React.Component {
     console.log(this.state.timeLimit);
   };
   clickHandler = async e => {
-    console.log(e);
+    this.refs.child.resetTime();
     let score = this.state.score;
     let nextQuestion = this.state.nextQuestion;
     if (e.target.id == this.state.correctAnswer) {
@@ -118,6 +119,7 @@ class QuizQuestion extends React.Component {
                 } Time limit :${this.state.timeLimit}`
               )}
               <Countdown
+                ref="child"
                 timeLimit={
                   this.state.questions[this.state.nextQuestion].timeLimit
                 }

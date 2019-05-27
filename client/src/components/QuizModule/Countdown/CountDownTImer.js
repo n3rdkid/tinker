@@ -44,6 +44,19 @@ class CountDownTimer extends React.Component {
       this.timer = setInterval(this.countDown, 1000);
     }
   }
+  resetTime(){
+    this.setState({ seconds: this.props.timeLimit });
+  }
+  resetTimeAndChangeQuestion() {
+    this.setState({ seconds: this.props.timeLimit });
+    let e = {
+      target: {
+        id: 0
+      }
+    };
+    e.target.id = 0;
+    this.props.nextQuestion(e);
+  }
 
   countDown() {
     // Remove one second, set state so a re-render happens.
@@ -55,13 +68,7 @@ class CountDownTimer extends React.Component {
 
     // Check if we're at zero.
     if (seconds === 0) {
-      this.setState({ seconds: this.props.timeLimit });
-      let e = {
-        target: {
-          id: 0
-        }
-      };
-      this.props.nextQuestion(e);
+        this.resetTimeAndChangeQuestion();
     }
   }
 
