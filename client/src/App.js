@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
-
 import "./App.css";
 import Home from "./container/Home";
 import SignIn from "./components/SignIn/SignIn";
@@ -15,6 +14,17 @@ import ChallengeView from "./container/ChallengeModule/ChallengeView/ChallengeVi
 import AddResources from "./container/ChallengeModule/AddResources";
 //import AddAssignment from "./container/AssignmentModule/AddAssignment";
 import Assignment from "./components/Assignment/Assignment";
+import AddAssignment from "./container/AssignmentModule/AddAssignment";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser } from "./actions/authActions";
+
+if (localStorage.jwtToken) {
+  setAuthToken(localStorage.jwtToken);
+  const decoded = jwt_decode(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(decoded));
+}
+
 class App extends React.Component {
   render() {
     console.log("loading qiz");
