@@ -56,11 +56,11 @@ class CountDownTimer extends React.Component {
   }
 
   render() {
+    this.startTimer()
     //  console.log(this.state.seconds);
     return (
       <div>
         <h1 key="timer">
-          {this.startTimer()}
           Time: {this.state.seconds}
         </h1>
       </div>

@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import {connect} from "react-redux";
+import {loginUser} from "../../actions/authActions";
 
 class SignIn extends React.Component {
   state = {

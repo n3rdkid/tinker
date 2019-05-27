@@ -24,9 +24,6 @@ class QuizQuestion extends React.Component {
   clickHandler = async e => {
     let score = this.state.score;
     let nextQuestion = this.state.nextQuestion;
-    console.log(
-      `You pressed ${e.target.id} Correct answer : ${this.state.correctAnswer}`
-    );
     if (e.target.id == this.state.correctAnswer) {
       score += 5;
     }

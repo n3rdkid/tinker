@@ -36,10 +36,10 @@ router.post("/register", (req, res) => {
   //Generate salt and hash it
   let salt = bcrypt.genSaltSync(10);
   user_password = bcrypt.hashSync(user_password, salt);
-  let statement = "INSERT INTO users VALUES (?,?,?,?)";
+  let statement = "INSERT INTO users VALUES (?,?,?)";
   mysqlConnection.query(
     statement,
-    [username, user_password, email, user_type],
+    [username, user_password, email],
     (err, rows, fields) => {
       if (!err) {
         console.log("here I am");
