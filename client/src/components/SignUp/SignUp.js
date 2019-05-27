@@ -11,6 +11,13 @@ class SignUp extends React.Component {
     user_password: "",
     user_type: "student"
   };
+  componentDidMount()
+  {
+    if(this.props.auth.isAuthenticated)
+    {
+      this.props.history.push('/login');
+    }
+  }
   componentWillReceiveProps(nextProps)
   {
     if(nextProps.errors)

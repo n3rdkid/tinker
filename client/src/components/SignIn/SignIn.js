@@ -14,6 +14,13 @@ class SignIn extends React.Component {
     e.preventDefault();
     this.props.loginUser(this.state);
   };
+  componentDidMount()
+  {
+    if(this.props.auth.isAuthenticated)
+    {
+      this.props.history.push('/dashboard');
+    }
+  }
   changeState = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
