@@ -22,6 +22,7 @@ class QuizQuestion extends React.Component {
     console.log(this.state.timeLimit);
   };
   clickHandler = async e => {
+    console.log(e);
     let score = this.state.score;
     let nextQuestion = this.state.nextQuestion;
     if (e.target.id == this.state.correctAnswer) {
@@ -120,6 +121,7 @@ class QuizQuestion extends React.Component {
                 timeLimit={
                   this.state.questions[this.state.nextQuestion].timeLimit
                 }
+                nextQuestion={this.clickHandler}
               />
             </h2>
           </div>

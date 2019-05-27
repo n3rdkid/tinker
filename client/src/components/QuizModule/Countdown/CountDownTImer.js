@@ -6,7 +6,8 @@ class CountDownTimer extends React.Component {
     console.log(props);
     this.state = {
       time: {},
-      seconds: this.props.timeLimit
+      seconds: 0,
+      timeLimit: this.props.timeLimit
     };
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
@@ -36,6 +37,9 @@ class CountDownTimer extends React.Component {
   }
 
   startTimer() {
+    if (this.state.seconds == 0) {
+      this.setState({ seconds: this.state.timeLimit });
+    }
     if (this.timer == 0 && this.state.seconds > 0) {
       this.timer = setInterval(this.countDown, 1000);
     }
@@ -52,17 +56,21 @@ class CountDownTimer extends React.Component {
     // Check if we're at zero.
     if (seconds === 0) {
       this.setState({ seconds: this.props.timeLimit });
+      let e = {
+        target: {
+          id: 0
+        }
+      };
+      this.props.nextQuestion(e);
     }
   }
 
   render() {
-    this.startTimer()
+    this.startTimer();
     //  console.log(this.state.seconds);
     return (
       <div>
-        <h1 key="timer">
-          Time: {this.state.seconds}
-        </h1>
+        <h1 key="timer">Time: {this.state.seconds}</h1>
       </div>
     );
   }
