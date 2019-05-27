@@ -10,9 +10,17 @@ class QuizQuestion extends React.Component {
       answers: null,
       correctAnswer: 0,
       score: 0,
-      nextQuestion: 0
+      nextQuestion: 0,
+      timeLimit: 20
     };
   }
+  setTimeLimit = () => {
+    console.log(this.state.questions);
+    this.setState({
+      timeLimit: this.state.questions[this.state.nextQuestion].timeLimit
+    });
+    console.log(this.state.timeLimit);
+  };
   clickHandler = async e => {
     let score = this.state.score;
     let nextQuestion = this.state.nextQuestion;
@@ -26,6 +34,7 @@ class QuizQuestion extends React.Component {
     nextQuestion++;
     await this.setState({ score: score, nextQuestion: nextQuestion });
     this.loadData();
+    this.setTimeLimit();
   };
   componentDidMount() {
     axios
@@ -59,10 +68,7 @@ class QuizQuestion extends React.Component {
   }
 
   render() {
-    console.log(this.state.questions);
-    let timeLimit = 0;
-
-    for (let question of this.state.questions) timeLimit += question.timeLimit;
+    let timeLimits = this.state.questions[this.state.nextQuestion].timeLimit;
     let answers = this.state.answers;
     let question = this.state.questions[this.state.nextQuestion].question;
     let answerList = [];
@@ -108,7 +114,16 @@ class QuizQuestion extends React.Component {
 
           <div className="col-sm-3">
             <h2 className="text-center py-3 text-danger">
-              <Countdown timeLimit={timeLimit} />
+              {console.log(
+                `Your next qeuestion is ${
+                  this.state.nextQuestion
+                } Time limit :${this.state.timeLimit}`
+              )}
+              <Countdown
+                timeLimit={
+                  this.state.questions[this.state.nextQuestion].timeLimit
+                }
+              />
             </h2>
           </div>
         </div>
