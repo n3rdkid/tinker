@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
@@ -33,7 +34,7 @@ class Navigation extends React.Component {
     );
 
     return (
-      <div>
+      <Container fluid>
         <Navbar bg="light" expand="lg">
           <Navbar.Brand href="/">Tinker</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -42,7 +43,7 @@ class Navigation extends React.Component {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/Quiz">Quiz</Nav.Link>
               <Nav.Link href="/Challenges">Challenges</Nav.Link>
-              <NavDropdown title="Add" id="basic-nav-dropdown">
+              {/* <NavDropdown title="Add" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/AddChallenge">
                   Add Challenge
                 </NavDropdown.Item>
@@ -52,12 +53,12 @@ class Navigation extends React.Component {
                 <NavDropdown.Item href="/Assignment">
                   Add Assignment
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav>
             {isAuthenticated ? authLinks : guestLinks}
           </Navbar.Collapse>
         </Navbar>
-      </div>
+      </Container>
     );
   }
 }
