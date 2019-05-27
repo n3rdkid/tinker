@@ -28,7 +28,7 @@ class App extends React.Component {
                 <Route path="/Signin" component={SignIn} />
                 <Route path="/Signup" component={SignUp} />
                 <Route path="/Quiz" component={Quiz} />
-                <Route path="/Challenges" component={ChallengeItem} />
+                <Route path="/Challenges" component={ChallengeItem} exact />
                 <Route path="/AddChallenge" component={AddChallenge} />
                 <Route path="/challenges/:id" component={ChallengeView} />
                 <Route path="/AddResources" component={AddResources} />

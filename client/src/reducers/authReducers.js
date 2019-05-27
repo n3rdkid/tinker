@@ -1,4 +1,3 @@
-
 import authActions from "../actions/authActions";
 const initialState = {
   isAuthenticated: false,
