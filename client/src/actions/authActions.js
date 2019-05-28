@@ -3,6 +3,7 @@ import axios from "axios";
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from "jwt-decode";
 export const registerUser = (userData, history) => dispatch => {
+  console.log(userData)
   axios
     .post("http://localhost:5000/api/users/register", userData)
     .then(() => history.push("/challenges"))
