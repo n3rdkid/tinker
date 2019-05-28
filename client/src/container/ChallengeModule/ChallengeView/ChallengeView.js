@@ -65,32 +65,30 @@ class ChallengeView extends React.Component {
         result += `<p>Test ${testCaseNo++} fail! Expected : ${
           testcase.result
         } Outcome : ${temp}  Execution time ${(t2 - t1).toFixed(2)} ms"</p>`;
-        if(this.state.submitEnabled)
-        this.setState({submitEnabled:false})
+        if (this.state.submitEnabled) this.setState({ submitEnabled: false });
       }
-      if(testCasesPassed===this.state.testCases.length)
-      this.setState({submitEnabled:true})
+      if (testCasesPassed === this.state.testCases.length)
+        this.setState({ submitEnabled: true });
     }
     iframe_doc.open();
     iframe_doc.write(result);
     iframe_doc.close();
   }
   submitSolution() {
- 
-    let submission={
-      submission:currentValue,
-      timeTaken:""+5000,
-      username:"test",
-      challenge_id:this.state.questionId
+    let submission = {
+      submission: currentValue,
+      timeTaken: "" + 5000,
+      username: "test",
+      challenge_id: this.state.questionId
     };
- 
+
     axios
-    .post("http://localhost:5000/api/challenges",submission)
-    .then(response => {
-      console.log("Submitted");
-      console.log(submission);
-    })
-    .catch(error => console.log(error));
+      .post("http://localhost:5000/api/challenges", submission)
+      .then(response => {
+        console.log("Submitted");
+        console.log(submission);
+      })
+      .catch(error => console.log(error));
   }
   render() {
     let codeMirror = <Spinner />;
@@ -126,17 +124,14 @@ class ChallengeView extends React.Component {
     let submitButton;
     if (this.state.submitEnabled)
       submitButton = (
-        <button
-          onClick={this.submitSolution}
-          class="btn btn-outline-success"
-        >
+        <button onClick={this.submitSolution} class="btn btn-outline-success">
           Submit
         </button>
       );
-      else
+    else
       submitButton = (
         <button
-        disabled
+          disabled
           onClick={this.submitSolution}
           class="btn btn-outline-dark"
         >
