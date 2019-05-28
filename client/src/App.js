@@ -18,16 +18,16 @@ import AddAssignment from "./container/AssignmentModule/AddAssignment";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
+import DashBoard from "./dashboard/Dashboard";
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
   store.dispatch(setCurrentUser(decoded));
-  const currentTime =Date.now()/1000;
-  if(decoded.exp<currentTime)
-  {
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
     store.dispatch(logoutUser());
-    window.location.href="/signin";
+    window.location.href = "/signin";
   }
 }
 
@@ -41,7 +41,7 @@ class App extends React.Component {
             <Navigation />
             <div>
               <Switch>
-                <Route path="/" component={Home} exact />
+                <Route path="/" component={DashBoard} exact />
                 <Route path="/Signin" component={SignIn} />
                 <Route path="/Signup" component={SignUp} />
                 <Route path="/Quiz" component={Quiz} />

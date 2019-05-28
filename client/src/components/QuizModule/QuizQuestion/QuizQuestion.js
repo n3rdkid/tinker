@@ -11,7 +11,7 @@ class QuizQuestion extends React.Component {
       correctAnswer: 0,
       score: 0,
       nextQuestion: 0,
-      timeLimit: 20
+      timeLimit: 0
     };
   }
 
