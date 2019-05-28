@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </Card.Text>
-                <Button variant="outline-info">Quiz</Button>
+                <Button variant="outline-success">Quiz</Button>
               </Card.Body>
             </Card>
           </Col>
@@ -58,7 +58,7 @@ class Dashboard extends React.Component {
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </Card.Text>
-                <Button variant="outline-info">Challenge</Button>
+                <Button variant="outline-success">Challenge</Button>
               </Card.Body>
             </Card>
           </Col>

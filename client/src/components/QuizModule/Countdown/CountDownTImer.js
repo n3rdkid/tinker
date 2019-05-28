@@ -44,7 +44,7 @@ class CountDownTimer extends React.Component {
       this.timer = setInterval(this.countDown, 1000);
     }
   }
-  resetTime(){
+  resetTime() {
     this.setState({ seconds: this.props.timeLimit });
   }
   resetTimeAndChangeQuestion() {
@@ -65,10 +65,12 @@ class CountDownTimer extends React.Component {
       time: this.secondsToTime(seconds),
       seconds: seconds
     });
-
+    if (seconds <= 10) {
+      document.getElementById("quizTimer").classList.add("text-danger");
+    }
     // Check if we're at zero.
     if (seconds === 0) {
-        this.resetTimeAndChangeQuestion();
+      this.resetTimeAndChangeQuestion();
     }
   }
 

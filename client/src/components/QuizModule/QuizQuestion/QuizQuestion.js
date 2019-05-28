@@ -112,12 +112,7 @@ class QuizQuestion extends React.Component {
           </div>
 
           <div className="col-sm-3">
-            <h2 className="text-center py-3 text-danger">
-              {console.log(
-                `Your next qeuestion is ${
-                  this.state.nextQuestion
-                } Time limit :${this.state.timeLimit}`
-              )}
+            <h2 id="quizTimer" className="text-center py-3 text-success">
               <Countdown
                 ref="child"
                 timeLimit={
