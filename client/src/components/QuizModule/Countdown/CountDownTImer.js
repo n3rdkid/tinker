@@ -67,6 +67,8 @@ class CountDownTimer extends React.Component {
     });
     if (seconds <= 10) {
       document.getElementById("quizTimer").classList.add("text-danger");
+    } else {
+      document.getElementById("quizTimer").classList.remove("text-danger");
     }
     // Check if we're at zero.
     if (seconds === 0) {
