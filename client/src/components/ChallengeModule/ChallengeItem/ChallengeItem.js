@@ -61,14 +61,26 @@ class ChallengeItem extends React.Component {
         <Container>
           <Row>
             <Col xs={3}>
-              <Card style={{ width: "18rem" }}>
-                <Card.Header>Challenges</Card.Header>
-                <ListGroup variant="flush">
-                  <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                  <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                  <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-                  <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                  <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+              <Card border="danger" style={{ width: "18rem" }}>
+                <Card.Header style={{ backgroundColor: "#78B0CD" }}>
+                  Challenges
+                </Card.Header>
+                <ListGroup variant="outline-success">
+                  <ListGroup.Item action variant="success">
+                    Odd Test
+                  </ListGroup.Item>
+                  <ListGroup.Item action variant="success">
+                    Prime Test
+                  </ListGroup.Item>
+                  <ListGroup.Item action variant="success">
+                    Tower of honai problem
+                  </ListGroup.Item>
+                  <ListGroup.Item action variant="success">
+                    Chicken Leg problem
+                  </ListGroup.Item>
+                  <ListGroup.Item action variant="success">
+                    Budget calculation
+                  </ListGroup.Item>
                 </ListGroup>
               </Card>
             </Col>
