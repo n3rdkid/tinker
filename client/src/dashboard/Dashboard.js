@@ -39,7 +39,7 @@ class Dashboard extends React.Component {
             <Card border="info" style={{ width: "18rem" }}>
               <Card.Body>
                 <Card.Title>Due </Card.Title>
-                <ProgressBar variant="success" now={60} label={`60%`} />
+                <ProgressBar striped variant="success" label={"60%"} now={60} />
                 <Card.Text>
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
@@ -52,7 +52,7 @@ class Dashboard extends React.Component {
             <Card border="info" style={{ width: "18rem" }}>
               <Card.Body>
                 <Card.Title>Challenge</Card.Title>
-                <ProgressBar variant="success" now={60} label={`60%`} />
+                <ProgressBar striped variant="success" label={"90%"} now={90} />
 
                 <Card.Text>
                   Some quick example text to build on the card title and make up
