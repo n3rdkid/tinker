@@ -13,7 +13,6 @@ class CountDownTimer extends React.Component {
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
   }
-
   secondsToTime(secs) {
     let hours = Math.floor(secs / (60 * 60));
 
@@ -65,10 +64,12 @@ class CountDownTimer extends React.Component {
       time: this.secondsToTime(seconds),
       seconds: seconds
     });
-    if (seconds <= 10) {
-      document.getElementById("quizTimer").classList.add("text-danger");
-    } else {
-      document.getElementById("quizTimer").classList.remove("text-danger");
+    if (this.props.stopCount <= 5) {
+      if (seconds <= 5) {
+        document.getElementById("quizTimer").classList.add("text-danger");
+      } else {
+        document.getElementById("quizTimer").classList.remove("text-danger");
+      }
     }
     // Check if we're at zero.
     if (seconds === 0) {
