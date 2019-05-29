@@ -2,6 +2,7 @@ import React from "react";
 import "./QuizQuestion.css";
 import axios from "axios";
 import Countdown from "../Countdown/CountDownTimer";
+import QuizResult from "../QuizResult/QuizResult";
 class QuizQuestion extends React.Component {
   constructor(props) {
     super(props);
@@ -11,21 +12,26 @@ class QuizQuestion extends React.Component {
       correctAnswer: 0,
       score: 0,
       nextQuestion: 0,
-      timeLimit: 0
+      timeLimit: 0,
+      count: 1,
+      approxQuestion: 5
     };
   }
-
   setTimeLimit = () => {
-    console.log(this.state.questions);
     this.setState({
       timeLimit: this.state.questions[this.state.nextQuestion].timeLimit
     });
-    console.log(this.state.timeLimit);
   };
   clickHandler = async e => {
+<<<<<<< HEAD
     console.log("Clicked QUiz Item")
     console.log(this.state)
+=======
+    this.setState({ count: this.state.count + 1 });
+    this.setState({ approxQuestion: this.state.approxQuestion - 1 });
+>>>>>>> bb80335ddfe456f914e86408ccecebc06e9cdb7f
     this.refs.child.resetTime();
+    console.log(this.state.count);
     let score = this.state.score;
     let nextQuestion = this.state.nextQuestion;
     if (e.target.id == this.state.correctAnswer) {
@@ -88,8 +94,10 @@ class QuizQuestion extends React.Component {
         );
       }
     }
-    let display = <p>Add a spinner</p>;
-    if (this.props.questions !== null) {
+
+    let display;
+    let quizResult = <p />;
+    if (this.props.questions !== null && this.state.count <= 5) {
       display = (
         <div className="row my-5">
           <div className="col-sm-9">
@@ -98,7 +106,8 @@ class QuizQuestion extends React.Component {
                 <h5 className="card-title">
                   Skill Assessment : JavaScript{" "}
                   <small className="ml-5">
-                    Approximately 10 Questions Remaining
+                    Approximately {this.state.approxQuestion} Questions
+                    Remaining
                   </small>
                 </h5>
               </div>
@@ -116,6 +125,7 @@ class QuizQuestion extends React.Component {
           <div className="col-sm-3">
             <h2 id="quizTimer" className="text-center py-3 text-success">
               <Countdown
+                stopCount="this.state.count"
                 ref="child"
                 timeLimit={
                   this.state.questions[this.state.nextQuestion].timeLimit
@@ -126,9 +136,17 @@ class QuizQuestion extends React.Component {
           </div>
         </div>
       );
+    } else {
+      this.state.timeLimit = 50000;
+      quizResult = <QuizResult />;
     }
 
-    return <>{display}</>;
+    return (
+      <div>
+        {display}
+        {quizResult}
+      </div>
+    );
   }
 }
 export default QuizQuestion;

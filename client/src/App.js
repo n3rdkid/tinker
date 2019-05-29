@@ -3,10 +3,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import "./App.css";
-import Home from "./container/Home";
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
-import Quiz from "./container/QuizModule/QuizContainer/Quiz";
+import QuizStarter from "./container/QuizStarter/QuizStarter";
 import Navigation from "./container/Navigation/Navigation";
 import AddChallenge from "./container/ChallengeModule/ChallengeList/AddChallenge";
 import ChallengeItem from "./components/ChallengeModule/ChallengeItem/ChallengeItem";
@@ -18,7 +17,10 @@ import AddAssignment from "./container/AssignmentModule/AddAssignment";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
-import DashBoard from "./dashboard/Dashboard";
+import DashBoard from "./container/dashboard/Dashboard";
+import Landing from "./container/Landing/Landing";
+import QuizQuestion from "./components/QuizModule/QuizQuestion/QuizQuestion";
+import Quiz from "./container/QuizModule/QuizContainer/Quiz";
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -41,10 +43,11 @@ class App extends React.Component {
             <Navigation />
             <div>
               <Switch>
-                <Route path="/" component={DashBoard} exact />
+                <Route path="/" component={Landing} exact />
                 <Route path="/Signin" component={SignIn} />
                 <Route path="/Signup" component={SignUp} />
-                <Route path="/Quiz" component={Quiz} />
+                <Route path="/Quiz" component={QuizStarter}exact />
+                <Route path="/Quiz/start" component={Quiz} />
                 <Route path="/Challenges" component={ChallengeItem} exact />
                 <Route path="/AddChallenge" component={AddChallenge} />
                 <Route path="/challenges/:id" component={ChallengeView} />

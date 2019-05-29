@@ -26,11 +26,13 @@ router.get("/test", (req, res) => res.json({ hi: "hello" }));
 //@desc  Register users
 //@access Public
 router.post("/register", (req, res) => {
+  console.log(req.body);
   const { errors, isValid } = validateRegisterInput(req.body);
   //Check Validation
   if (!isValid) {
     return res.status(400).json({ errors });
   }
+  console.log("REgistring user after valid");
   let { username, user_password, email, user_type } = req.body;
   //Generate salt and hash it
   let salt = bcrypt.genSaltSync(10);
@@ -40,6 +42,7 @@ router.post("/register", (req, res) => {
     statement,
     [username, user_password, email],
     (err, rows, fields) => {
+      console.log("query");
       if (!err) {
         console.log("here I am");
         res.send(rows);
@@ -53,6 +56,7 @@ router.post("/signin", (req, res) => {
   if (!isValid) {
     return res.status(400).json({ errors });
   }
+
   let statement = "SELECT * FROM users WHERE username=?";
   let { username, password } = req.body;
   mysqlConnection.query(statement, username, (err, rows) => {
