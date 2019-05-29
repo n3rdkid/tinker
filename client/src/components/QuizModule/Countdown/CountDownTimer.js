@@ -59,18 +59,20 @@ class CountDownTimer extends React.Component {
 
   countDown() {
     // Remove one second, set state so a re-render happens.
+
     let seconds = this.state.seconds - 1;
     this.setState({
       time: this.secondsToTime(seconds),
       seconds: seconds
     });
-    if (this.props.stopCount <= 5) {
-      if (seconds <= 5) {
-        document.getElementById("quizTimer").classList.add("text-danger");
-      } else {
-        document.getElementById("quizTimer").classList.remove("text-danger");
-      }
-    }
+
+    // if (seconds <= 5 && this.state.stopCount <= 5) {
+    //   console.log("CCalled");
+    //   document.getElementById("quizTimer").classList.add("text-danger");
+    // } else if (this.state.stopCount <= 5) {
+    //   document.getElementById("quizTimer").classList.add("text-success");
+    // }
+
     // Check if we're at zero.
     if (seconds === 0) {
       this.resetTimeAndChangeQuestion();
@@ -79,6 +81,7 @@ class CountDownTimer extends React.Component {
 
   render() {
     this.startTimer();
+
     //  console.log(this.state.seconds);
     return (
       <div>
