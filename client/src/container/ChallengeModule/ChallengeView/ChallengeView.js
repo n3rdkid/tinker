@@ -3,7 +3,8 @@ import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { UnControlled as CodeMirror } from "react-codemirror2";
 import spinner from "../../../UI/Spinner/Spinner";
-import { isObject } from "util";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 let currentValue = "";
 class ChallengeView extends React.Component {
   constructor(props) {
@@ -67,7 +68,8 @@ class ChallengeView extends React.Component {
         } Outcome : ${temp}  Execution time ${(t2 - t1).toFixed(2)} ms"</p>`;
         if (this.state.submitEnabled) this.setState({ submitEnabled: false });
       }
-      if (testCasesPassed === this.state.testCases.length)
+      console.log(this.props.auth.isAuthenticated);
+      if ((testCasesPassed&&this.props.auth.isAuthenticated) === this.state.testCases.length)
         this.setState({ submitEnabled: true });
     }
     iframe_doc.open();
@@ -78,7 +80,7 @@ class ChallengeView extends React.Component {
     let submission = {
       submission: currentValue,
       timeTaken: "" + 5000,
-      username: "test",
+      username: this.props.username,
       challenge_id: this.state.questionId
     };
 
@@ -186,4 +188,13 @@ class ChallengeView extends React.Component {
     );
   }
 }
-export default ChallengeView;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(withRouter(ChallengeView));
+;

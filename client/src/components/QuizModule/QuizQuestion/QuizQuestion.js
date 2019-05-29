@@ -57,6 +57,7 @@ class QuizQuestion extends React.Component {
       .catch(error => console.log(error));
   }
   loadData=()=> {
+    console.log('Le')
     if(this.state.questions.length<=this.state.nextQuestion)
     {
     this.setState({completed:true})
