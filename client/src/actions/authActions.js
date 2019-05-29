@@ -11,7 +11,7 @@ export const registerUser = (userData, history) => dispatch => {
         type: GET_ERRORS,
         payload: err.response.data
       })
-    );
+    );   
 };
 
 //Login Get user token

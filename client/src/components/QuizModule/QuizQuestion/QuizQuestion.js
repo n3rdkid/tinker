@@ -23,6 +23,8 @@ class QuizQuestion extends React.Component {
     console.log(this.state.timeLimit);
   };
   clickHandler = async e => {
+    console.log("Clicked QUiz Item")
+    console.log(this.state)
     this.refs.child.resetTime();
     let score = this.state.score;
     let nextQuestion = this.state.nextQuestion;
@@ -76,7 +78,7 @@ class QuizQuestion extends React.Component {
       for (let i = 0; i < answers.length; i++) {
         answerList.push(
           <li
-            id={i + 1}
+            id={answers[i].id}
             key={answers[i].id}
             onClick={this.clickHandler}
             className="list-group-item my-1 p-3"
