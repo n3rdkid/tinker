@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ Suspense } from "react";
 import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { UnControlled as CodeMirror } from "react-codemirror2";
@@ -6,7 +6,19 @@ import spinner from "../../../UI/Spinner/Spinner";
 import { isObject } from "util";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import NavLink from "react-bootstrap/NavLink";
+
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
+import ChallengeResult from "../ChallengeResult/ChallengeResult";
+import Container from "react-bootstrap/Container";
+const ChallengeInstructions = React.lazy(() =>
+  import("../ChallengeInstructions/ChallengeInstructions")
+);
+const ChallengeResources = React.lazy(() =>
+  import("../ChallengeResources/ChallengeResources")
+);
 let currentValue = "";
 class ChallengeView extends React.Component {
   constructor(props) {
@@ -86,15 +98,15 @@ class ChallengeView extends React.Component {
     let timeTaken = timeEnded - this.state.timeStarted;
     let submission = {
       submission: currentValue,
-      timeTaken: ""+timeTaken,
+      timeTaken: "" + timeTaken,
       username: this.props.auth.user.username,
       challenge_id: this.state.questionId
     };
-    let questionId=this.state.questionId;
+    let questionId = this.state.questionId;
     axios
       .post("http://localhost:5000/api/challenges", submission)
       .then(response => {
-        this.props.history.push(`/results`, {timeTaken,questionId});
+        this.props.history.push(`/results`, { timeTaken, questionId });
       })
       .catch(error => console.log(error));
   }
@@ -104,7 +116,7 @@ class ChallengeView extends React.Component {
     if (this.state.question !== null) {
       codeMirror = (
         <CodeMirror
-          className="col-md-7"
+          className="col-md-7 my-5"
           value={this.state.question.starter}
           options={{
             theme: "neo",
@@ -152,33 +164,38 @@ class ChallengeView extends React.Component {
         </button>
       );
     return (
-      <>
-        <div>
-          <div class="tab-content bg-success">
-            <div id="instructions" class="tab-pane fade in active  bg-danger">
-              <h3>Instructions</h3>
-            </div>
-            <div id="code" class="tab-pane fade  bg-light">
-              <h3>Code</h3>
-            </div>
-            <div id="resources" class="tab-pane fade  bg-dark">
-              <h3>Resources</h3>
-            </div>
-          </div>
-          <div className="row">
-            {codeMirror}
-            <iframe title="myFrame" id="myFrame" className="col-md-5" />
-          </div>
-          <button
-            onClick={this.scriptEvaluator}
-            class="btn btn-outline-success"
-          >
-            Run
-          </button>
-          {testCases}
-          {submitButton}
-        </div>
-      </>
+      <Container>
+        <Row>
+          <Col md="8">
+            <Tabs defaultActiveKey="instructions" id="uncontrolled-tab-example">
+              <Tab
+                eventKey="instructions"
+                title="Instructions"
+              >
+                <Suspense fallback={<Spinner />}>
+                  <ChallengeInstructions questionId={this.state.questionId} />
+                </Suspense>
+              </Tab>
+              <Tab eventKey="code" title="Code" >
+                {codeMirror}
+              </Tab>
+              <Tab eventKey="resources" title="Resources">
+                <Suspense fallback={<Spinner />}>
+                  <ChallengeResources questionId={this.state.questionId} />
+                </Suspense>
+              </Tab>
+            </Tabs>
+          </Col>
+          <Col md="4">
+            <iframe title="myFrame" id="myFrame" />
+          </Col>
+        </Row>
+        <button onClick={this.scriptEvaluator} class="btn btn-outline-success">
+          Run
+        </button>
+        {testCases}
+        {submitButton}
+      </Container>
     );
   }
 }

@@ -39,6 +39,7 @@ router.get("/:id", (req, res) => {
       let challengeResponse = {
         challenge: {
           id: results[0][0].id,
+          title: results[0][0].title,
           instruction: results[0][0].instruction,
           starter: results[0][0].starter,
           label: results[0][0].label
