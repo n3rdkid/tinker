@@ -23,13 +23,8 @@ class QuizQuestion extends React.Component {
     });
   };
   clickHandler = async e => {
-<<<<<<< HEAD
-    console.log("Clicked QUiz Item")
-    console.log(this.state)
-=======
     this.setState({ count: this.state.count + 1 });
     this.setState({ approxQuestion: this.state.approxQuestion - 1 });
->>>>>>> bb80335ddfe456f914e86408ccecebc06e9cdb7f
     this.refs.child.resetTime();
     console.log(this.state.count);
     let score = this.state.score;

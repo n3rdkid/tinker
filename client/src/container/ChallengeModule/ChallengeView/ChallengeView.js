@@ -4,6 +4,8 @@ import Spinner from "../../../UI/Spinner/Spinner";
 import { UnControlled as CodeMirror } from "react-codemirror2";
 import spinner from "../../../UI/Spinner/Spinner";
 import { isObject } from "util";
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 let currentValue = "";
 class ChallengeView extends React.Component {
   constructor(props) {
@@ -43,11 +45,9 @@ class ChallengeView extends React.Component {
     let result = [];
     let testCaseNo = 1;
     for (let testcase of this.state.testCases) {
-      console.log(testcase.test);
       let t1 = performance.now();
       temp = eval(currentValue.concat(testcase.test));
       let t2 = performance.now();
-      console.log("This is your output" + temp);
       if (typeof temp === "boolean") temp = temp.toString();
       let testButton = document.querySelector(`#test${testCaseNo}`);
       if (temp === testcase.result) {
@@ -78,10 +78,9 @@ class ChallengeView extends React.Component {
     let submission = {
       submission: currentValue,
       timeTaken: "" + 5000,
-      username: "test",
+      username: this.props.auth.user.username,
       challenge_id: this.state.questionId
     };
-
     axios
       .post("http://localhost:5000/api/challenges", submission)
       .then(response => {
@@ -91,6 +90,7 @@ class ChallengeView extends React.Component {
       .catch(error => console.log(error));
   }
   render() {
+ 
     let codeMirror = <Spinner />;
     let testCases = [];
     if (this.state.question !== null) {
@@ -122,7 +122,7 @@ class ChallengeView extends React.Component {
       }
     }
     let submitButton;
-    if (this.state.submitEnabled)
+    if (this.state.submitEnabled&&this.props.auth.isAuthenticated)
       submitButton = (
         <button onClick={this.submitSolution} class="btn btn-outline-success">
           Submit
@@ -186,4 +186,13 @@ class ChallengeView extends React.Component {
     );
   }
 }
-export default ChallengeView;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(withRouter(ChallengeView));
+
