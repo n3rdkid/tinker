@@ -14,7 +14,8 @@ class ChallengeView extends React.Component {
       questionId: this.props.match.params.id,
       question: null,
       testCases: null,
-      submitEnabled: false
+      submitEnabled: false,
+      timeStarted:new Date()
     };
     this.scriptEvaluator = this.scriptEvaluator.bind(this);
     this.submitSolution = this.submitSolution.bind(this);
@@ -38,6 +39,7 @@ class ChallengeView extends React.Component {
   }
 
   scriptEvaluator() {
+    console.log(`Enabled ${this.state.submitEnabled} Authenticated ${this.props.auth.isAuthenticated}` )
     let testCasesPassed = 0;
     const iframe = document.querySelector("#myFrame");
     let iframe_doc = iframe.contentDocument;
@@ -67,8 +69,7 @@ class ChallengeView extends React.Component {
         } Outcome : ${temp}  Execution time ${(t2 - t1).toFixed(2)} ms"</p>`;
         if (this.state.submitEnabled) this.setState({ submitEnabled: false });
       }
-      console.log(this.props.auth.isAuthenticated);
-      if ((testCasesPassed&&this.props.auth.isAuthenticated) === this.state.testCases.length)
+      if ((testCasesPassed === this.state.testCases.length))
         this.setState({ submitEnabled: true });
     }
     iframe_doc.open();
@@ -76,6 +77,8 @@ class ChallengeView extends React.Component {
     iframe_doc.close();
   }
   submitSolution() {
+    let timeEnded=new Date();
+    console.log("You took "+(timeEnded-this.state.timeStarted))
     let submission = {
       submission: currentValue,
       timeTaken: "" + 5000,
@@ -123,6 +126,7 @@ class ChallengeView extends React.Component {
       }
     }
     let submitButton;
+    console.log(`Enabled ${this.state.submitEnabled} Authenticated ${this.props.auth.isAuthenticated}` )
     if (this.state.submitEnabled&&this.props.auth.isAuthenticated)
       submitButton = (
         <button onClick={this.submitSolution} class="btn btn-outline-success">
