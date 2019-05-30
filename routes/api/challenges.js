@@ -99,6 +99,23 @@ router.get("/resources/:id", (req, res) => {
     }
   });
 });
+
+//@route GET api/challenges/leaderboard/:id
+//@access Public
+router.get("/leaderboard/:id", (req, res) => {
+  let id = req.params.id;
+  let statement = "SELECT * FROM submissions WHERE challenge_id= ?  ORDER BY timeTaken LIMIT 10;";
+  mysqlConnection.query(statement, id, (err, results, fields) => {
+    if (!err) {
+      res.json(results);
+    } else {
+      return res.status(400).json({ error: "No such resources" });
+    }
+  });
+});
+
+
+
 //@route Post api/challenges/resources/:id
 //@access Public
 router.post("/resources", (req, res) => {
