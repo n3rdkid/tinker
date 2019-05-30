@@ -4,8 +4,9 @@ import Spinner from "../../../UI/Spinner/Spinner";
 import { UnControlled as CodeMirror } from "react-codemirror2";
 import spinner from "../../../UI/Spinner/Spinner";
 import { isObject } from "util";
-import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import NavLink from "react-bootstrap/NavLink";
 let currentValue = "";
 class ChallengeView extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class ChallengeView extends React.Component {
       question: null,
       testCases: null,
       submitEnabled: false,
-      timeStarted:new Date()
+      timeStarted: new Date()
     };
     this.scriptEvaluator = this.scriptEvaluator.bind(this);
     this.submitSolution = this.submitSolution.bind(this);
@@ -39,7 +40,11 @@ class ChallengeView extends React.Component {
   }
 
   scriptEvaluator() {
-    console.log(`Enabled ${this.state.submitEnabled} Authenticated ${this.props.auth.isAuthenticated}` )
+    console.log(
+      `Enabled ${this.state.submitEnabled} Authenticated ${
+        this.props.auth.isAuthenticated
+      }`
+    );
     let testCasesPassed = 0;
     const iframe = document.querySelector("#myFrame");
     let iframe_doc = iframe.contentDocument;
@@ -69,7 +74,7 @@ class ChallengeView extends React.Component {
         } Outcome : ${temp}  Execution time ${(t2 - t1).toFixed(2)} ms"</p>`;
         if (this.state.submitEnabled) this.setState({ submitEnabled: false });
       }
-      if ((testCasesPassed === this.state.testCases.length))
+      if (testCasesPassed === this.state.testCases.length)
         this.setState({ submitEnabled: true });
     }
     iframe_doc.open();
@@ -77,24 +82,23 @@ class ChallengeView extends React.Component {
     iframe_doc.close();
   }
   submitSolution() {
-    let timeEnded=new Date();
-    console.log("You took "+(timeEnded-this.state.timeStarted))
+    let timeEnded = new Date();
+    let timeTaken = timeEnded - this.state.timeStarted;
     let submission = {
       submission: currentValue,
-      timeTaken: "" + 5000,
+      timeTaken: ""+timeTaken,
       username: this.props.auth.user.username,
       challenge_id: this.state.questionId
     };
+    let questionId=this.state.questionId;
     axios
       .post("http://localhost:5000/api/challenges", submission)
       .then(response => {
-        console.log("Submitted");
-        console.log(submission);
+        this.props.history.push(`/results`, {timeTaken,questionId});
       })
       .catch(error => console.log(error));
   }
   render() {
- 
     let codeMirror = <Spinner />;
     let testCases = [];
     if (this.state.question !== null) {
@@ -126,8 +130,12 @@ class ChallengeView extends React.Component {
       }
     }
     let submitButton;
-    console.log(`Enabled ${this.state.submitEnabled} Authenticated ${this.props.auth.isAuthenticated}` )
-    if (this.state.submitEnabled&&this.props.auth.isAuthenticated)
+    console.log(
+      `Enabled ${this.state.submitEnabled} Authenticated ${
+        this.props.auth.isAuthenticated
+      }`
+    );
+    if (this.state.submitEnabled && this.props.auth.isAuthenticated)
       submitButton = (
         <button onClick={this.submitSolution} class="btn btn-outline-success">
           Submit
@@ -146,23 +154,6 @@ class ChallengeView extends React.Component {
     return (
       <>
         <div>
-          {/* <ul className="nav nav-tabs">
-            <li className="nav-item">
-              <a data-toggle="tab" href="#instructions" className="nav-link">
-                Instructions
-              </a>
-            </li>
-            <li className="nav-item">
-              <a data-toggle="tab" href="#code" className="nav-link">
-                Code
-              </a>
-            </li>
-            <li className="nav-item">
-              <a data-toggle="tab" href="#resources" className="nav-link">
-                Resources
-              </a>
-            </li>
-          </ul>*/}
           <div class="tab-content bg-success">
             <div id="instructions" class="tab-pane fade in active  bg-danger">
               <h3>Instructions</h3>
