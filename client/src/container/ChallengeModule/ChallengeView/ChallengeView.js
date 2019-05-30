@@ -3,8 +3,9 @@ import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { UnControlled as CodeMirror } from "react-codemirror2";
 import spinner from "../../../UI/Spinner/Spinner";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import { isObject } from "util";
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 let currentValue = "";
 class ChallengeView extends React.Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class ChallengeView extends React.Component {
       questionId: this.props.match.params.id,
       question: null,
       testCases: null,
-      submitEnabled: false
+      submitEnabled: false,
+      timeStarted:new Date()
     };
     this.scriptEvaluator = this.scriptEvaluator.bind(this);
     this.submitSolution = this.submitSolution.bind(this);
@@ -37,6 +39,7 @@ class ChallengeView extends React.Component {
   }
 
   scriptEvaluator() {
+    console.log(`Enabled ${this.state.submitEnabled} Authenticated ${this.props.auth.isAuthenticated}` )
     let testCasesPassed = 0;
     const iframe = document.querySelector("#myFrame");
     let iframe_doc = iframe.contentDocument;
@@ -44,11 +47,9 @@ class ChallengeView extends React.Component {
     let result = [];
     let testCaseNo = 1;
     for (let testcase of this.state.testCases) {
-      console.log(testcase.test);
       let t1 = performance.now();
       temp = eval(currentValue.concat(testcase.test));
       let t2 = performance.now();
-      console.log("This is your output" + temp);
       if (typeof temp === "boolean") temp = temp.toString();
       let testButton = document.querySelector(`#test${testCaseNo}`);
       if (temp === testcase.result) {
@@ -68,8 +69,7 @@ class ChallengeView extends React.Component {
         } Outcome : ${temp}  Execution time ${(t2 - t1).toFixed(2)} ms"</p>`;
         if (this.state.submitEnabled) this.setState({ submitEnabled: false });
       }
-      console.log(this.props.auth.isAuthenticated);
-      if ((testCasesPassed&&this.props.auth.isAuthenticated) === this.state.testCases.length)
+      if ((testCasesPassed === this.state.testCases.length))
         this.setState({ submitEnabled: true });
     }
     iframe_doc.open();
@@ -77,13 +77,14 @@ class ChallengeView extends React.Component {
     iframe_doc.close();
   }
   submitSolution() {
+    let timeEnded=new Date();
+    console.log("You took "+(timeEnded-this.state.timeStarted))
     let submission = {
       submission: currentValue,
       timeTaken: "" + 5000,
-      username: this.props.username,
+      username: this.props.auth.user.username,
       challenge_id: this.state.questionId
     };
-
     axios
       .post("http://localhost:5000/api/challenges", submission)
       .then(response => {
@@ -93,6 +94,7 @@ class ChallengeView extends React.Component {
       .catch(error => console.log(error));
   }
   render() {
+ 
     let codeMirror = <Spinner />;
     let testCases = [];
     if (this.state.question !== null) {
@@ -124,7 +126,8 @@ class ChallengeView extends React.Component {
       }
     }
     let submitButton;
-    if (this.state.submitEnabled)
+    console.log(`Enabled ${this.state.submitEnabled} Authenticated ${this.props.auth.isAuthenticated}` )
+    if (this.state.submitEnabled&&this.props.auth.isAuthenticated)
       submitButton = (
         <button onClick={this.submitSolution} class="btn btn-outline-success">
           Submit
@@ -197,4 +200,3 @@ export default connect(
   mapStateToProps,
   null
 )(withRouter(ChallengeView));
-;
