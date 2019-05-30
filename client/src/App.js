@@ -21,7 +21,6 @@ import DashBoard from "./container/dashboard/Dashboard";
 import Landing from "./container/Landing/Landing";
 import QuizQuestion from "./components/QuizModule/QuizQuestion/QuizQuestion";
 import Quiz from "./container/QuizModule/QuizContainer/Quiz";
-import ChallengeResult from "./container/ChallengeModule/ChallengeResult/ChallengeResult";
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -54,7 +53,6 @@ class App extends React.Component {
                 <Route path="/challenges/:id" component={ChallengeView} />
                 <Route path="/AddResources" component={AddResources} />
                 <Route path="/Assignment" component={Assignment} />
-                <Route path="/results" component={ChallengeResult} />
               </Switch>
             </div>
           </div>

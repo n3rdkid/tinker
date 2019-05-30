@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
-class ChallengeResult extends React.Component {
+class ChallengeResources extends React.Component {
     state={
         questionId :this.props.questionId,
         resources:null
@@ -47,4 +47,4 @@ class ChallengeResult extends React.Component {
   }
 }
 
-export default ChallengeResult;
+export default ChallengeResources;

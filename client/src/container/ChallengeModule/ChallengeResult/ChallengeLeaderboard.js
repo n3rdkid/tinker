@@ -6,15 +6,15 @@ import { withRouter } from "react-router-dom";
 let currentValue = "";
 class ChallengeLeaderboard extends React.Component {
   state = {
-    timeTaken: this.props.location.state.timeTaken,
-    questionId: this.props.location.state.questionId,
+    questionId: this.props.questionId,
     leaderboard: null
   };
 
   async componentDidMount() {
     await axios
       .get(
-        `http://localhost:5000/api/challenges/leaderboard/${this.state.questionId
+        `http://localhost:5000/api/challenges/leaderboard/${
+          this.state.questionId
         }`
       )
       .then(response => this.setState({ leaderboard: response.data }))
@@ -27,12 +27,11 @@ class ChallengeLeaderboard extends React.Component {
     if (this.state.leaderboard) {
       this.state.leaderboard.forEach((submission, index) => {
         let time = submission.submisison_date.split("T");
-        console.log(time)
         let item = (
-          <tr>
+          <tr className="">
             <td>{index + 1}</td>
             <td>{submission.username}</td>
-            <td>{submission.timeTaken} }</td>
+            <td>{submission.timeTaken}</td>
             <td>{time[0]}</td>
           </tr>
         );
@@ -43,16 +42,16 @@ class ChallengeLeaderboard extends React.Component {
     }
     return (
       <>
-       <table>
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Username</th>
-            <th>Time Taken</th>
-            <th>Submission Date</th>
-          </tr>
-        </thead>
-        {leaderboardList}
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Rank</th>
+              <th scope="col">Username</th>
+              <th scope="col">Time Taken</th>
+              <th scope="col">Submission Date</th>
+            </tr>
+          </thead>
+          <tbody className="table-striped">{leaderboardList}</tbody>
         </table>
       </>
     );

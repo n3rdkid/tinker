@@ -36,8 +36,8 @@ class ChallengeView extends React.Component {
     this.submitSolution = this.submitSolution.bind(this);
   }
 
-  componentDidMount() {
-    axios
+  async loadData() {
+    await axios
       .get(`http://localhost:5000/api/challenges/${this.state.questionId}`)
       .then(response => {
         this.setState(
@@ -54,11 +54,6 @@ class ChallengeView extends React.Component {
   }
 
   scriptEvaluator() {
-    console.log(
-      `Enabled ${this.state.submitEnabled} Authenticated ${
-        this.props.auth.isAuthenticated
-      }`
-    );
     let testCasesPassed = 0;
     const iframe = document.querySelector("#myFrame");
     let iframe_doc = iframe.contentDocument;
@@ -113,6 +108,9 @@ class ChallengeView extends React.Component {
       .catch(error => console.log(error));
   }
   render() {
+    if (!this.state.question) {
+      this.loadData();
+    }
     let codeMirror = <Spinner />;
     let testCases = [];
     if (this.state.question !== null) {
@@ -144,7 +142,7 @@ class ChallengeView extends React.Component {
       }
     }
     let submitButton;
-   
+
     if (this.state.submitEnabled && this.props.auth.isAuthenticated)
       submitButton = (
         <button onClick={this.submitSolution} class="btn btn-outline-success">
@@ -203,9 +201,7 @@ class ChallengeView extends React.Component {
             }}
             title="myFrame"
             id="myFrame"
-          >
-          
-            </iframe>
+          />
         </Row>
       </Container>
     );
