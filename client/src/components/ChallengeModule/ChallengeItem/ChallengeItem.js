@@ -59,6 +59,7 @@ class ChallengeItem extends React.Component {
     return (
       <div>
         <Container>
+          {/*Need to add Heatmap ->*/}
           <Row>
             <Col xs={3}>
               <Card border="danger" style={{ width: "18rem" }}>
