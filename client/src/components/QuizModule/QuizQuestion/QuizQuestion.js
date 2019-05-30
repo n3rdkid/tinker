@@ -15,7 +15,7 @@ class QuizQuestion extends React.Component {
       timeLimit: 0,
       count: 1,
       approxQuestion: 5,
-      completed:false
+      completed: false
     };
   }
   setTimeLimit = () => {
@@ -26,7 +26,10 @@ class QuizQuestion extends React.Component {
   clickHandler = async e => {
     this.setState({ count: this.state.count + 1 });
     this.setState({ approxQuestion: this.state.approxQuestion - 1 });
-    this.refs.child.resetTime();
+    if (this.state.approxQuestion != 1) {
+      this.refs.child.resetTime();
+    }
+
     console.log(this.state.count);
     let score = this.state.score;
     let nextQuestion = this.state.nextQuestion;
@@ -36,7 +39,7 @@ class QuizQuestion extends React.Component {
     }
 
     nextQuestion++;
- 
+
     await this.setState({ score: score, nextQuestion: nextQuestion });
     this.loadData();
     this.setTimeLimit();
@@ -56,12 +59,10 @@ class QuizQuestion extends React.Component {
       })
       .catch(error => console.log(error));
   }
-  loadData=()=> {
-    console.log('Le')
-    if(this.state.questions.length<=this.state.nextQuestion)
-    {
-    this.setState({completed:true})
-    return;
+  loadData = () => {
+    if (this.state.questions.length <= this.state.nextQuestion) {
+      this.setState({ completed: true });
+      return;
     }
     axios
       .post(
@@ -76,14 +77,13 @@ class QuizQuestion extends React.Component {
         });
       })
       .catch(error => console.log(error));
-  }
+  };
 
   render() {
-
-    let timeLimits = this.state.questions[this.state.nextQuestion].timeLimit;
     let answers = this.state.answers;
     let question = this.state.questions[this.state.nextQuestion].question;
     let answerList = [];
+    console.log(this.state.answers);
 
     if (answers !== null) {
       for (let i = 0; i < answers.length; i++) {
@@ -130,7 +130,7 @@ class QuizQuestion extends React.Component {
           <div className="col-sm-3">
             <h2 id="quizTimer" className="text-center py-3 text-success">
               <Countdown
-                stopCount="this.state.count"
+                stopCount={this.state.count}
                 ref="child"
                 timeLimit={
                   this.state.questions[this.state.nextQuestion].timeLimit

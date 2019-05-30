@@ -66,21 +66,24 @@ class CountDownTimer extends React.Component {
       seconds: seconds
     });
 
-    // if (seconds <= 5 && this.state.stopCount <= 5) {
-    //   console.log("CCalled");
-    //   document.getElementById("quizTimer").classList.add("text-danger");
-    // } else if (this.state.stopCount <= 5) {
-    //   document.getElementById("quizTimer").classList.add("text-success");
-    // }
+    if (seconds <= 5 && this.props.stopCount != 5) {
+      document.getElementById("quizTimer").classList.add("text-danger");
+    } else if (seconds >= 5 && this.props.stopCount != 5) {
+      document.getElementById("quizTimer").classList.remove("text-danger");
+    }
 
     // Check if we're at zero.
     if (seconds === 0) {
       this.resetTimeAndChangeQuestion();
     }
+    //else if (seconds === 0 && this.props.stopCount <= 5) {
+    //}
   }
 
   render() {
-    this.startTimer();
+    if (this.props.stopCount != 5) {
+      this.startTimer();
+    }
 
     //  console.log(this.state.seconds);
     return (
