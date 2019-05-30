@@ -1,4 +1,4 @@
-import React,{ Suspense } from "react";
+import React, { Suspense } from "react";
 import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { UnControlled as CodeMirror } from "react-codemirror2";
@@ -11,13 +11,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
-import ChallengeResult from "../ChallengeResult/ChallengeResult";
 import Container from "react-bootstrap/Container";
 const ChallengeInstructions = React.lazy(() =>
   import("../ChallengeInstructions/ChallengeInstructions")
 );
 const ChallengeResources = React.lazy(() =>
   import("../ChallengeResources/ChallengeResources")
+);
+const ChallengeLeaderboard = React.lazy(() =>
+  import("../ChallengeResult/ChallengeLeaderboard")
 );
 let currentValue = "";
 class ChallengeView extends React.Component {
@@ -142,11 +144,7 @@ class ChallengeView extends React.Component {
       }
     }
     let submitButton;
-    console.log(
-      `Enabled ${this.state.submitEnabled} Authenticated ${
-        this.props.auth.isAuthenticated
-      }`
-    );
+   
     if (this.state.submitEnabled && this.props.auth.isAuthenticated)
       submitButton = (
         <button onClick={this.submitSolution} class="btn btn-outline-success">
@@ -168,33 +166,47 @@ class ChallengeView extends React.Component {
         <Row>
           <Col md="8">
             <Tabs defaultActiveKey="instructions" id="uncontrolled-tab-example">
-              <Tab
-                eventKey="instructions"
-                title="Instructions"
-              >
+              <Tab eventKey="instructions" title="Instructions">
                 <Suspense fallback={<Spinner />}>
                   <ChallengeInstructions questionId={this.state.questionId} />
                 </Suspense>
               </Tab>
-              <Tab eventKey="code" title="Code" >
+              <Tab eventKey="code" title="Code">
                 {codeMirror}
+                <button
+                  onClick={this.scriptEvaluator}
+                  class="btn btn-outline-success"
+                >
+                  Run
+                </button>
+                {testCases}
+                {submitButton}
               </Tab>
               <Tab eventKey="resources" title="Resources">
                 <Suspense fallback={<Spinner />}>
                   <ChallengeResources questionId={this.state.questionId} />
                 </Suspense>
               </Tab>
+              <Tab eventKey="leaderboard" title="Leaderboard">
+                <Suspense fallback={<Spinner />}>
+                  <ChallengeLeaderboard questionId={this.state.questionId} />
+                </Suspense>
+              </Tab>
             </Tabs>
           </Col>
-          <Col md="4">
-            <iframe title="myFrame" id="myFrame" />
-          </Col>
+
+          <iframe
+            className="col-md-4"
+            style={{
+              minHeight: "70vh",
+              marginTop: "50px"
+            }}
+            title="myFrame"
+            id="myFrame"
+          >
+          
+            </iframe>
         </Row>
-        <button onClick={this.scriptEvaluator} class="btn btn-outline-success">
-          Run
-        </button>
-        {testCases}
-        {submitButton}
       </Container>
     );
   }

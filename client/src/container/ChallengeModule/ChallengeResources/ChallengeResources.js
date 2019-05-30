@@ -20,7 +20,7 @@ class ChallengeResult extends React.Component {
 
   render() {
     let resourcesList = [];
-
+  
     if (this.state.resources) {
       this.state.resources.forEach(resource => {
         let resourceItem = (
@@ -32,8 +32,12 @@ class ChallengeResult extends React.Component {
          );
          resourcesList.push(resourceItem);
       });
-    } else {
+    } else
+    {
         resourcesList = <Spinner />;
+    }
+    if(resourcesList.length==0) {
+        resourcesList=<p>Oops No resources!</p>
     }
     return (
       <>

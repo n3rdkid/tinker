@@ -4,7 +4,7 @@ import Spinner from "../../../UI/Spinner/Spinner";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 let currentValue = "";
-class ChallengeResult extends React.Component {
+class ChallengeLeaderboard extends React.Component {
   state = {
     timeTaken: this.props.location.state.timeTaken,
     questionId: this.props.location.state.questionId,
@@ -29,10 +29,12 @@ class ChallengeResult extends React.Component {
         let time = submission.submisison_date.split("T");
         console.log(time)
         let item = (
-          <li>
-            ID ::{index + 1} Time Taken:: {submission.timeTaken} Date::{time[0]}
-            {/* {formattedDate} */}
-          </li>
+          <tr>
+            <td>{index + 1}</td>
+            <td>{submission.username}</td>
+            <td>{submission.timeTaken} }</td>
+            <td>{time[0]}</td>
+          </tr>
         );
         leaderboardList.push(item);
       });
@@ -41,8 +43,17 @@ class ChallengeResult extends React.Component {
     }
     return (
       <>
-        <div>You completed in {this.state.timeTaken} ms</div>
+       <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Time Taken</th>
+            <th>Submission Date</th>
+          </tr>
+        </thead>
         {leaderboardList}
+        </table>
       </>
     );
   }
@@ -55,4 +66,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   null
-)(withRouter(ChallengeResult));
+)(withRouter(ChallengeLeaderboard));
