@@ -67,7 +67,8 @@ class ChallengeView extends React.Component {
         } Outcome : ${temp}  Execution time ${(t2 - t1).toFixed(2)} ms"</p>`;
         if (this.state.submitEnabled) this.setState({ submitEnabled: false });
       }
-      if (testCasesPassed === this.state.testCases.length)
+      console.log(this.props.auth.isAuthenticated);
+      if ((testCasesPassed&&this.props.auth.isAuthenticated) === this.state.testCases.length)
         this.setState({ submitEnabled: true });
     }
     iframe_doc.open();
@@ -195,4 +196,3 @@ export default connect(
   mapStateToProps,
   null
 )(withRouter(ChallengeView));
-

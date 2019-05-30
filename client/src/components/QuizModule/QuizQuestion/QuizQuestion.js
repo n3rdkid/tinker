@@ -14,7 +14,8 @@ class QuizQuestion extends React.Component {
       nextQuestion: 0,
       timeLimit: 0,
       count: 1,
-      approxQuestion: 5
+      approxQuestion: 5,
+      completed:false
     };
   }
   setTimeLimit = () => {
@@ -29,11 +30,13 @@ class QuizQuestion extends React.Component {
     console.log(this.state.count);
     let score = this.state.score;
     let nextQuestion = this.state.nextQuestion;
+
     if (e.target.id == this.state.correctAnswer) {
       score += 5;
     }
 
     nextQuestion++;
+ 
     await this.setState({ score: score, nextQuestion: nextQuestion });
     this.loadData();
     this.setTimeLimit();
@@ -53,7 +56,13 @@ class QuizQuestion extends React.Component {
       })
       .catch(error => console.log(error));
   }
-  loadData() {
+  loadData=()=> {
+    console.log('Le')
+    if(this.state.questions.length<=this.state.nextQuestion)
+    {
+    this.setState({completed:true})
+    return;
+    }
     axios
       .post(
         `http://localhost:5000/api/quiz/${
@@ -70,6 +79,7 @@ class QuizQuestion extends React.Component {
   }
 
   render() {
+
     let timeLimits = this.state.questions[this.state.nextQuestion].timeLimit;
     let answers = this.state.answers;
     let question = this.state.questions[this.state.nextQuestion].question;
