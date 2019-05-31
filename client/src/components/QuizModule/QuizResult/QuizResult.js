@@ -1,10 +1,6 @@
 import React from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
-import ListGroup from "react-bootstrap/ListGroup";
-import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 class QuizResult extends React.Component {
   render() {
     let counts = 0;
@@ -45,8 +41,10 @@ class QuizResult extends React.Component {
             key={2}
           />
         </ProgressBar>
-        <div>
-          <h2 align="center">You got {counts} answer correct out of 5.</h2>
+        <div align="center">
+          <h2>You got {counts} answer correct out of 5.</h2>
+          <h2>Time taken: 12 second</h2>
+          <Button>View Result</Button>
         </div>
       </div>
     );
