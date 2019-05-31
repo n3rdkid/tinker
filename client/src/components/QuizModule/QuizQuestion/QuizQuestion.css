@@ -1,3 +1,6 @@
 .border-3 {
   border: 3px solid !important ;
 }
+.list-group:hover {
+  cursor: pointer;
+}

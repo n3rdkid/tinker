@@ -3,7 +3,7 @@ import React from "react";
 class CountDownTimer extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+
     this.state = {
       time: {},
       seconds: 0,
@@ -69,7 +69,7 @@ class CountDownTimer extends React.Component {
     if (seconds <= 5 && this.props.stopCount != 5) {
       document.getElementById("quizTimer").classList.add("text-danger");
     } else if (seconds >= 5 && this.props.stopCount != 5) {
-      document.getElementById("quizTimer").classList.remove("text-danger");
+      document.getElementById("quizTimer").classList.remove("text-success");
     }
 
     // Check if we're at zero.

@@ -7,41 +7,50 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
 class QuizResult extends React.Component {
   render() {
-    return (
+    let counts = 0;
+    let correctPercentage = 0;
+    let wrongPercentage = 0;
+    let selectedAnswerArray = this.props.selectedAnswerIdArray;
+    let correctAnswerArray = this.props.correctAnswerIdArray;
+    for (let i = 0; i < selectedAnswerArray.length; i++) {
+      if (selectedAnswerArray[i] == correctAnswerArray[i]) {
+        counts++;
+        console.log("correct" + selectedAnswerArray[i]);
+      }
+    }
+    correctPercentage = Math.floor((counts / 5) * 100);
+    wrongPercentage = 100 - correctPercentage;
+    let correctPercentageLabel = correctPercentage + "%";
+    let wrongPercentageLabel = wrongPercentage + "%";
+    // this.setState({ count: counts });
+    console.log("You've got " + counts + " answer correct");
+    let correctAnswer = (
       <div>
-        <h1 align="center">Congratulations</h1>
-
+        <h1 align="center">Congratulations You got {counts} answer correct</h1>
         <ProgressBar>
           <ProgressBar
             animated
             striped
             variant="success"
-            label="CORRECT: 40%"
-            now={40}
+            label={correctPercentageLabel}
+            now={correctPercentage}
             key={1}
           />
           <ProgressBar
             animated
             striped
             variant="danger"
-            label="WRONG: 60%"
-            now={60}
+            label={wrongPercentageLabel}
+            now={wrongPercentage}
             key={2}
           />
         </ProgressBar>
-        <br />
-        <ListGroup>
-          <ListGroup.Item variant="dark">Questions</ListGroup.Item>
-          <br />
-          <ListGroup.Item variant="success">Question Random</ListGroup.Item>
-          <ListGroup.Item variant="danger">Question Random</ListGroup.Item>
-          <ListGroup.Item variant="success">Question Random</ListGroup.Item>
-          <ListGroup.Item variant="danger">Question Random</ListGroup.Item>
-          <ListGroup.Item variant="danger">Question Random</ListGroup.Item>
-          <ListGroup.Item variant="danger">Question Random</ListGroup.Item>
-        </ListGroup>
+        <div>
+          <h2 align="center">You got {counts} answer correct out of 5.</h2>
+        </div>
       </div>
     );
+    return <div>{correctAnswer}</div>;
   }
 }
 export default QuizResult;

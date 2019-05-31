@@ -15,7 +15,9 @@ class QuizQuestion extends React.Component {
       timeLimit: 0,
       count: 1,
       approxQuestion: 5,
-      completed: false
+      completed: false,
+      selectedAnswerIdArray: [],
+      correctAnswerIdArray: []
     };
   }
   setTimeLimit = () => {
@@ -23,14 +25,24 @@ class QuizQuestion extends React.Component {
       timeLimit: this.state.questions[this.state.nextQuestion].timeLimit
     });
   };
+
   clickHandler = async e => {
     console.log(
       `Correct Answer ${this.state.correctAnswer} You clicked ${e.target.id}`
     );
 
+    this.setState({
+      selectedAnswerIdArray: [...this.state.selectedAnswerIdArray, e.target.id]
+    });
+    this.setState({
+      correctAnswerIdArray: [
+        ...this.state.correctAnswerIdArray,
+        this.state.correctAnswer
+      ]
+    });
+    console.log(this.state.selectedAnswerIdArray);
     this.setState({ count: this.state.count + 1 });
     this.setState({ approxQuestion: this.state.approxQuestion - 1 });
-    console.log(this.state.approxQuestion);
     if (this.state.approxQuestion > 1) {
       this.refs.child.resetTime();
     }
@@ -88,7 +100,6 @@ class QuizQuestion extends React.Component {
     let answers = this.state.answers;
     let question = this.state.questions[this.state.nextQuestion].question;
     let answerList = [];
-    console.log(this.state.answers);
 
     if (answers !== null) {
       for (let i = 0; i < answers.length; i++) {
@@ -148,7 +159,12 @@ class QuizQuestion extends React.Component {
       );
     } else {
       this.state.timeLimit = 50000;
-      quizResult = <QuizResult />;
+      quizResult = (
+        <QuizResult
+          selectedAnswerIdArray={this.state.selectedAnswerIdArray}
+          correctAnswerIdArray={this.state.correctAnswerIdArray}
+        />
+      );
     }
 
     return (
