@@ -7,7 +7,7 @@ import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-
+import { NavLink } from "react-router-dom";
 class Navigation extends React.Component {
   onLogoutClicked = e => {
     e.preventDefault();
@@ -40,9 +40,15 @@ class Navigation extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/Quiz">Quiz</Nav.Link>
-              <Nav.Link href="/Challenges">Challenges</Nav.Link>
+              <NavLink className="nav-link" to="/">
+                Home
+              </NavLink>
+              <NavLink className="nav-link" to="/Quiz">
+                Quiz
+              </NavLink>
+              <NavLink className="nav-link" to="/Challenges">
+                Challenges
+              </NavLink>
               {/* <NavDropdown title="Add" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/AddChallenge">
                   Add Challenge

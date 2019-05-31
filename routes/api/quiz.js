@@ -12,9 +12,11 @@ mysqlConnection.connect();
 //@route GET api/quiz/test
 //@desc  Test quiz route
 //@access Public
-router.get("/test", (req, res) => res.json({
-  hi: "You are live at Quiz!"
-}));
+router.get("/test", (req, res) =>
+  res.json({
+    hi: "You are live at Quiz!"
+  })
+);
 
 //@route GET api/quiz/
 //@desc  Fetch Quiz Questions
@@ -33,7 +35,8 @@ router.get(
         });
       }
     });
-  });
+  }
+);
 
 //@route post api/quiz/
 //@desc  Fetch Quiz Answers
@@ -44,24 +47,24 @@ router.post(
   (req, res) => {
     let questionId = req.params.id;
     //For fetching question
-    let statement = "SELECT * FROM answers WHERE quiz_id = ?;SELECT * FROM correctAnswer WHERE quiz_id=?";
-    mysqlConnection.query(statement, [questionId, questionId], (err, results, fields) => {
-      if (!err) {
-        let data = {
-          answers: [...results[0]],
-          correctAnswer: results[1][0].ans_id
-        }
+    let statement =
+      "SELECT * FROM answers WHERE quiz_id = ?;SELECT * FROM correctAnswer WHERE quiz_id=?";
 
+    mysqlConnection.query(
+      statement,
+      [questionId, questionId],
+      (err, results, fields) => {
+        if (!err) {
+          let data = {
+            answers: [...results[0]],
+            correctAnswer: results[1][0].ans_id
+          };
 
-        res.json(data);
-      } else
-        res.json(err)
-    });
-  });
-
-
-
-
-
+          res.json(data);
+        } else res.json(err);
+      }
+    );
+  }
+);
 
 module.exports = router;

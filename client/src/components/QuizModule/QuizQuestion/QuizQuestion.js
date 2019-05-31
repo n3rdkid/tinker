@@ -24,13 +24,17 @@ class QuizQuestion extends React.Component {
     });
   };
   clickHandler = async e => {
+    console.log(
+      `Correct Answer ${this.state.correctAnswer} You clicked ${e.target.id}`
+    );
+
     this.setState({ count: this.state.count + 1 });
     this.setState({ approxQuestion: this.state.approxQuestion - 1 });
-    if (this.state.approxQuestion != 1) {
+    console.log(this.state.approxQuestion);
+    if (this.state.approxQuestion > 1) {
       this.refs.child.resetTime();
     }
 
-    console.log(this.state.count);
     let score = this.state.score;
     let nextQuestion = this.state.nextQuestion;
 
@@ -40,9 +44,10 @@ class QuizQuestion extends React.Component {
 
     nextQuestion++;
 
-    await this.setState({ score: score, nextQuestion: nextQuestion });
-    this.loadData();
-    this.setTimeLimit();
+    await this.setState({ score: score, nextQuestion: nextQuestion }, () => {
+      this.loadData();
+      this.setTimeLimit();
+    });
   };
   componentDidMount() {
     axios
