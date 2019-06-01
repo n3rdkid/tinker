@@ -7,16 +7,12 @@ class ChallengeInstructions extends React.Component {
     instructions: null
   };
   componentDidMount() {
-    console.log("Inside component");
     axios
       .get(`http://localhost:5000/api/challenges/${this.state.questionId}`)
       .then(response => {
-        this.setState({ instructions: response.data.challenge }, () => {
-          console.log(this.state.instructions);
-        });
+        this.setState({ instructions: response.data.challenge });
       })
       .catch(error => console.log(error));
-    console.log("loading resources");
   }
 
   render() {

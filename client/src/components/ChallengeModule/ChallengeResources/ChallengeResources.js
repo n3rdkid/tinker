@@ -14,8 +14,6 @@ class ChallengeResources extends React.Component {
       )
       .then(response => this.setState({ resources: response.data }))
       .catch(error => console.log(error));
-      console.log("You have loaded the resources")
-      console.log(this.state.resources);
   }
 
   render() {

@@ -3,7 +3,6 @@ import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-let currentValue = "";
 class ChallengeLeaderboard extends React.Component {
   state = {
     questionId: this.props.questionId,
@@ -27,11 +26,16 @@ class ChallengeLeaderboard extends React.Component {
     if (this.state.leaderboard) {
       this.state.leaderboard.forEach((submission, index) => {
         let time = submission.submisison_date.split("T");
+        let seconds=submission.timeTaken/1000;
+        let hours = parseInt( seconds / 3600 ); 
+        seconds = seconds % 3600;
+        let minutes=parseInt( seconds / 60 );
+        seconds=(seconds%60).toFixed(0);
         let item = (
           <tr className="">
             <td>{index + 1}</td>
             <td>{submission.username}</td>
-            <td>{submission.timeTaken}</td>
+            <td>{hours?hours:'00'}<b> : </b>{minutes?minutes:'00'}<b> : </b>{seconds}</td>
             <td>{time[0]}</td>
           </tr>
         );
