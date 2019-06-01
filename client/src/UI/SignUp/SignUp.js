@@ -44,6 +44,7 @@ class SignUp extends React.Component {
     const { errors } = this.state;
     const { user } = this.props.auth;
     return (
+      <div  className="card col-md-6 mx-auto my-auto">
       <Form>
         <Form.Group
           as={Row}
@@ -51,18 +52,18 @@ class SignUp extends React.Component {
           value={this.state.email}
           onChange={e => this.changeHandler(e)}
         >
-          <Form.Label column sm={2}>
+          <Form.Label column sm={3}>
             Email
           </Form.Label>
-          <Col sm={10}>
+          <Col sm={9}>
             <Form.Control type="email" placeholder="Email" />
           </Col>
         </Form.Group>
         <Form.Group as={Row} controlId="formHorizontalEmail">
-          <Form.Label column sm={2}>
+          <Form.Label column sm={3}>
             Username
           </Form.Label>
-          <Col sm={10}>
+          <Col sm={9}>
             <Form.Control
               type="text"
               placeholder="UserName"
@@ -75,43 +76,17 @@ class SignUp extends React.Component {
         <Form.Group as={Row} controlId="formHorizontalPassword">
           <Form.Label
             column
-            sm={2}
+            sm={3}
             value={this.state.user_password}
             onChange={e => this.changeHandler(e)}
           >
             Password
           </Form.Label>
-          <Col sm={10}>
+          <Col sm={9}>
             <Form.Control type="password" placeholder="Password" />
           </Col>
         </Form.Group>
-        <fieldset>
-          <Form.Group as={Row}>
-            <Form.Label as="legend" column sm={2}>
-              Radios
-            </Form.Label>
-            <Col sm={10}>
-              <Form.Check
-                type="radio"
-                label="Teacher"
-                name="formHorizontalRadios"
-                id="formHorizontalRadios1"
-              />
-              <Form.Check
-                type="radio"
-                label="Student"
-                name="formHorizontalRadios"
-                id="formHorizontalRadios2"
-              />
-              <Form.Check
-                type="radio"
-                label="Admin"
-                name="formHorizontalRadios"
-                id="formHorizontalRadios3"
-              />
-            </Col>
-          </Form.Group>
-        </fieldset>
+
         <Form.Group as={Row} controlId="formHorizontalCheck">
           <Col sm={{ span: 10, offset: 2 }}>
             <Form.Check label="Remember me" />
@@ -126,6 +101,7 @@ class SignUp extends React.Component {
           </Col>
         </Form.Group>
       </Form>
+      </div>
     );
   }
 }
