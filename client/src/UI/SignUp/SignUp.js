@@ -1,9 +1,7 @@
 import React from "react";
-import axios from "axios";
 import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 // import propTypes from "propTypes";
@@ -46,33 +44,88 @@ class SignUp extends React.Component {
     const { errors } = this.state;
     const { user } = this.props.auth;
     return (
-      <form>
-        {errors}
-        <input
-          name="username"
-          placeholder="Username"
-          value={this.state.username}
-          onChange={e => this.changeHandler(e)}
-        />
-        <br />
-        <br />
-        <input
-          name="email"
-          placeholder="Email"
+      <Form>
+        <Form.Group
+          as={Row}
+          controlId="formHorizontalEmail"
           value={this.state.email}
           onChange={e => this.changeHandler(e)}
-        />
-        <br />
-        <input
-          name="user_password"
-          placeholder="Password"
-          type="password"
-          value={this.state.user_password}
-          onChange={e => this.changeHandler(e)}
-        />
-        <br />
-        <button onClick={e => this.onSubmit(e)}>Submit</button>
-      </form>
+        >
+          <Form.Label column sm={2}>
+            Email
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control type="email" placeholder="Email" />
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} controlId="formHorizontalEmail">
+          <Form.Label column sm={2}>
+            Username
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control
+              type="text"
+              placeholder="UserName"
+              onChange={e => this.changeHandler(e)}
+              placeholder="Must be 6 characters"
+            />
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} controlId="formHorizontalPassword">
+          <Form.Label
+            column
+            sm={2}
+            value={this.state.user_password}
+            onChange={e => this.changeHandler(e)}
+          >
+            Password
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control type="password" placeholder="Password" />
+          </Col>
+        </Form.Group>
+        <fieldset>
+          <Form.Group as={Row}>
+            <Form.Label as="legend" column sm={2}>
+              Radios
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Check
+                type="radio"
+                label="Teacher"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios1"
+              />
+              <Form.Check
+                type="radio"
+                label="Student"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios2"
+              />
+              <Form.Check
+                type="radio"
+                label="Admin"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios3"
+              />
+            </Col>
+          </Form.Group>
+        </fieldset>
+        <Form.Group as={Row} controlId="formHorizontalCheck">
+          <Col sm={{ span: 10, offset: 2 }}>
+            <Form.Check label="Remember me" />
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row}>
+          <Col sm={{ span: 10, offset: 2 }}>
+            <Button type="submit" onClick={e => this.onSubmit(e)}>
+              Register
+            </Button>
+          </Col>
+        </Form.Group>
+      </Form>
     );
   }
 }
