@@ -2,25 +2,21 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
-import "./App.css";
-import SignIn from "./components/SignIn/SignIn";
-import SignUp from "./components/SignUp/SignUp";
-import QuizStarter from "./container/QuizStarter/QuizStarter";
-import Navigation from "./container/Navigation/Navigation";
-import AddChallenge from "./container/ChallengeModule/ChallengeList/AddChallenge";
+import SignIn from "./UI/SignIn/SignIn";
+import SignUp from "./UI/SignUp/SignUp";
+import QuizStarter from "./container/QuizModule/QuizStarter/QuizStarter";
+import Navigation from "./UI/Navigation/Navigation";
 import ChallengeItem from "./components/ChallengeModule/ChallengeItem/ChallengeItem";
 import ChallengeView from "./container/ChallengeModule/ChallengeView/ChallengeView";
 import AddResources from "./container/ChallengeModule/AddResources";
 //import AddAssignment from "./container/AssignmentModule/AddAssignment";
-import Assignment from "./components/Assignment/Assignment";
-import AddAssignment from "./container/AssignmentModule/AddAssignment";
+import AssignmentView from "./container/AssignmentModule/AssignmentContainer/AssignmentContainer";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
-import DashBoard from "./container/dashboard/Dashboard";
-import Landing from "./container/Landing/Landing";
-import QuizQuestion from "./components/QuizModule/QuizQuestion/QuizQuestion";
+import Landing from "./UI/Landing/Landing";
 import Quiz from "./container/QuizModule/QuizContainer/Quiz";
+import AssigntmentItem from "./components/Assignment/AssignmentItem/AssignmentItem";
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -49,10 +45,9 @@ class App extends React.Component {
                 <Route path="/Quiz" component={QuizStarter}exact />
                 <Route path="/Quiz/start" component={Quiz} />
                 <Route path="/Challenges" component={ChallengeItem} exact />
-                <Route path="/AddChallenge" component={AddChallenge} />
                 <Route path="/challenges/:id" component={ChallengeView} />
-                <Route path="/AddResources" component={AddResources} />
-                <Route path="/Assignment" component={Assignment} />
+                <Route path="/assignments" component={AssigntmentItem} exact />
+                <Route path="/assignments/:id" component={AssignmentView} />
               </Switch>
             </div>
           </div>

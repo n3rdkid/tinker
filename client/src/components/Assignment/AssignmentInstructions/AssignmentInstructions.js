@@ -1,5 +1,5 @@
-import React from "./node_modules/react";
-import axios from "./node_modules/axios";
+import React from "react";
+import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
 class AssignmentInstructions extends React.Component {
   state = {

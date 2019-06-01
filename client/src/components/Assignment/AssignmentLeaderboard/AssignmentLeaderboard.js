@@ -1,8 +1,8 @@
-import React from "./node_modules/react";
-import axios from "./node_modules/axios";
+import React from "react";
+import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
-import { connect } from "./node_modules/react-redux";
-import { withRouter } from "./node_modules/react-router-dom";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 class AssignmentLeaderboard extends React.Component {
   state = {
     questionId: this.props.questionId,

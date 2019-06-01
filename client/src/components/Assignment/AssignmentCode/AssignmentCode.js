@@ -1,7 +1,7 @@
-import React from "./node_modules/react";
-import axios from "./node_modules/axios";
+import React from "react";
+import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
-import { UnControlled as CodeMirror } from "./node_modules/react-codemirror2";
+import { UnControlled as CodeMirror } from "react-codemirror2";
 
 let currentValue = "";
 class AssignmentCode extends React.Component {

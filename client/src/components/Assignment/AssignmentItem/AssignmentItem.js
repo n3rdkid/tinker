@@ -1,20 +1,20 @@
-import React from "./node_modules/react";
-import axios from "./node_modules/axios";
-import Row from "./node_modules/react-bootstrap/Row";
-import Container from "./node_modules/react-bootstrap/Container";
-import Card from "./node_modules/react-bootstrap/Card";
-import ListGroup from "./node_modules/react-bootstrap/ListGroup";
-
-import Col from "./node_modules/react-bootstrap/Col";
+import React from "react";
+import axios from "axios";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
+import "./AssignmentItem.css"
+import Col from "react-bootstrap/Col";
 import Spinner from "../../../UI/Spinner/Spinner";
-import { Redirect } from "./node_modules/react-router";
-class AssigntmentItem extends React.Component {
+import { Redirect } from "react-router";
+class AssignmentItem extends React.Component {
   state = {
     data: ""
   };
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/challenges")
+      .get("http://localhost:5000/api/assignments")
       .then(response => {
         this.setState({
           data: response.data
@@ -24,36 +24,27 @@ class AssigntmentItem extends React.Component {
   }
   clickHandler = e => {
     let id = e.target.id || e.target.parentElement.id;
-    console.log("Click handler " + id);
-    this.props.history.push(`/challenges/${id}`);
+    this.props.history.push(`/assignments/${id}`);
   };
 
   render() {
     let container;
     if (this.state.data === "") container = <Spinner />;
     else {
-      let challengeData = this.state.data;
-      let challengeList = [];
-      for (let challenge of challengeData) {
-        challengeList.push(
+      let assignmentData = this.state.data;
+      let assignmentList = [];
+      for (let assignment of assignmentData) {
+        assignmentList.push(
           <div
-            className="container challengeItem"
-            id={challenge.id}
+            className="container assignmentItem"
+            id={assignment.id}
             onClick={this.clickHandler}
           >
-            <h4> {challenge.title} </h4>
-            <small className="lead">
-              {challenge.instruction.substring(0, 300) + "..."}
-            </small>
-            <br />
-
-            <label className="badge badge-pill badge-primary">
-              {challenge.label}
-            </label>
+            <h5>Assignment No : {assignment.id} </h5>
           </div>
         );
       }
-      container = challengeList;
+      container = assignmentList;
     }
     return (
       <div>
@@ -93,4 +84,4 @@ class AssigntmentItem extends React.Component {
   }
 }
 
-export default AssigntmentItem;
+export default AssignmentItem;
