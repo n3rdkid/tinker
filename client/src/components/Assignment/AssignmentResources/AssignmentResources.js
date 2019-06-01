@@ -9,7 +9,7 @@ class AssignmentResources extends React.Component {
   async componentDidMount() {
     await axios
       .get(
-        `http://localhost:5000/api/challenges/resources/${this.state.questionId
+        `http://localhost:5000/api/assignments/resources/${this.state.questionId
         }`
       )
       .then(response => this.setState({ resources: response.data }))

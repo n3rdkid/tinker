@@ -73,8 +73,21 @@ mysqlConnection.query(statement, [id, id], (err, results, fields) => {
   }
 });
 });
+//@route GET api/assignment/resources/:id
+//@access Public
+router.get("/resources/:id", (req, res) => {
+  let id = req.params.id;
+  let statement = "SELECT * FROM resources_assignments WHERE question_id=?;";
+  mysqlConnection.query(statement, id, (err, results, fields) => {
+    if (!err) {
+      res.json(results);
+    } else {
+      return res.status(400).json({ error: "No such resources" });
+    }
+  });
+});
 // @route POST api/challenges/
-// @desc  Request a particular challenge
+// @desc  Post a particular assignemnt question
 // @access Public
 router.post("/", (req, res) => {
   const { errors, isValid } = validateSubmissionInput(req.body);

@@ -45,11 +45,11 @@ class AssignmentContainer extends React.Component {
                   <AssignmentCode auth={this.props.auth} questionId={this.state.questionId} />
                 </Suspense>
               </Tab>
-              {/* <Tab eventKey="resources" title="Resources">
+              <Tab eventKey="resources" title="Resources">
                 <Suspense fallback={<Spinner />}>
                   <AssignmentResources questionId={this.state.questionId} />
                 </Suspense>
-              </Tab> */}
+              </Tab>
               {/* <Tab eventKey="leaderboard" title="Leaderboard">
                 <Suspense fallback={<Spinner />}>
                   <AssignmentLeaderboard questionId={this.state.questionId} />
