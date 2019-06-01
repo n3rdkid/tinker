@@ -8,19 +8,19 @@ import Col from "react-bootstrap/Col";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Container from "react-bootstrap/Container";
-const ChallengeInstructions = React.lazy(() =>
-  import("../../../components/ChallengeModule/ChallengeInstructions/ChallengeInstructions")
+const AssignmentInstrcutions = React.lazy(() =>
+  import("../../../components/Assignment/AssignmentInstructions/AssignmentInstructions")
 );
-const ChallengeCode = React.lazy(() =>
-  import("../../../components/ChallengeModule/ChallengeCode/ChallengeCode")
+const AssignmentCode = React.lazy(() =>
+  import("../../../components/Assignment/AssignmentCode/AssignmentCode")
 );
-const ChallengeResources = React.lazy(() =>
-  import("../../../components/ChallengeModule/ChallengeResources/ChallengeResources")
+const AssignmentResources = React.lazy(() =>
+  import("../../../components/Assignment/AssignmentResources/AssignmentResources")
 );
-const ChallengeLeaderboard = React.lazy(() =>
-  import("../../../components/ChallengeModule/ChallengeResult/ChallengeLeaderboard")
+const AssignmentLeaderboard = React.lazy(() =>
+  import("../../../components/Assignment/AssignmentLeaderboard/AssignmentLeaderboard")
 );
-class ChallengeView extends React.Component {
+class AssignmentContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,22 +35,22 @@ class ChallengeView extends React.Component {
             <Tabs defaultActiveKey="instructions" id="uncontrolled-tab-example">
               <Tab eventKey="instructions" title="Instructions">
                 <Suspense fallback={<Spinner />}>
-                  <ChallengeInstructions questionId={this.state.questionId} />
+                  <AssignmentInstrcutions questionId={this.state.questionId} />
                 </Suspense>
               </Tab>
               <Tab eventKey="code" title="Code">
                 <Suspense fallback={<Spinner />}>
-                  <ChallengeCode auth={this.props.auth} questionId={this.state.questionId} />
+                  <AssignmentCode auth={this.props.auth} questionId={this.state.questionId} />
                 </Suspense>
               </Tab>
               <Tab eventKey="resources" title="Resources">
                 <Suspense fallback={<Spinner />}>
-                  <ChallengeResources questionId={this.state.questionId} />
+                  <AssignmentResources questionId={this.state.questionId} />
                 </Suspense>
               </Tab>
               <Tab eventKey="leaderboard" title="Leaderboard">
                 <Suspense fallback={<Spinner />}>
-                  <ChallengeLeaderboard questionId={this.state.questionId} />
+                  <AssignmentLeaderboard questionId={this.state.questionId} />
                 </Suspense>
               </Tab>
             </Tabs>
@@ -78,4 +78,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   null
-)(withRouter(ChallengeView));
+)(withRouter(AssignmentContainer));

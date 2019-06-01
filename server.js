@@ -5,6 +5,7 @@ const app = express();
 const bodyParser=require("body-parser");
 const users=require('./routes/api/users');
 const challenges=require('./routes/api/challenges');
+const assignments=require('./routes/api/assignments');
 const quiz=require('./routes/api/quiz');
 const passport =require('passport');
 
@@ -21,6 +22,7 @@ require('./config/passport')(passport);
 //Routes
 app.use("/api/users",users);
 app.use("/api/challenges",challenges);
+app.use("/api/assignments",assignments);
 app.use("/api/quiz",quiz);
 
 

@@ -33,12 +33,13 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   let id = req.params.id;
   let statement =
-    "SELECT * FROM challenges WHERE id=?;SELECT * FROM tests WHERE challenge_id=?";
+    "SELECT * FROM challenges WHERE id=?;SELECT * FROM tests_challenge WHERE challenge_id=?";
   mysqlConnection.query(statement, [id, id], (err, results, fields) => {
     if (!err) {
       let challengeResponse = {
         challenge: {
           id: results[0][0].id,
+          title: results[0][0].title,
           instruction: results[0][0].instruction,
           starter: results[0][0].starter,
           label: results[0][0].label
@@ -90,7 +91,7 @@ router.post("/", (req, res) => {
 //@access Public
 router.get("/resources/:id", (req, res) => {
   let id = req.params.id;
-  let statement = "SELECT * FROM resources WHERE challenge_id=?;";
+  let statement = "SELECT * FROM resources_challenge WHERE challenge_id=?;";
   mysqlConnection.query(statement, id, (err, results, fields) => {
     if (!err) {
       res.json(results);
@@ -127,7 +128,7 @@ router.post("/resources", (req, res) => {
   }
   let { title, link, description, challenge_id } = req.body;
   let statement =
-    "INSERT INTO resources (title,link,description,challenge_id) VALUES (?,?,?,?)";
+    "INSERT INTO resources_challenge (title,link,description,challenge_id) VALUES (?,?,?,?)";
   mysqlConnection.query(
     statement,
     [title, link, description, challenge_id],

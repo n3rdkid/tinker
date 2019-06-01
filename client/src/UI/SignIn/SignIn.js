@@ -1,12 +1,12 @@
 import React from "react";
 import axios from "axios";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 class SignIn extends React.Component {
   state = {
@@ -15,7 +15,6 @@ class SignIn extends React.Component {
   };
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
     this.props.loginUser(this.state);
   };
   componentDidMount() {
