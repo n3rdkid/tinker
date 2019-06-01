@@ -3,6 +3,7 @@ import "./QuizQuestion.css";
 import axios from "axios";
 import Countdown from "../Countdown/CountDownTimer";
 import QuizResult from "../QuizResult/QuizResult";
+import StopWatch from "../Countdown/StopWatch";
 class QuizQuestion extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,8 @@ class QuizQuestion extends React.Component {
       approxQuestion: 5,
       completed: false,
       selectedAnswerIdArray: [],
-      correctAnswerIdArray: []
+      correctAnswerIdArray: [],
+      start: 0
     };
   }
   setTimeLimit = () => {
@@ -153,12 +155,14 @@ class QuizQuestion extends React.Component {
                 }
                 nextQuestion={this.clickHandler}
               />
+              <StopWatch start={this.state.start} />
             </h2>
           </div>
         </div>
       );
     } else {
       this.state.timeLimit = 50000;
+      this.state.start = 1;
       quizResult = (
         <QuizResult
           selectedAnswerIdArray={this.state.selectedAnswerIdArray}

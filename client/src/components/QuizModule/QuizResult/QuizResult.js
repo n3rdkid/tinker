@@ -1,6 +1,7 @@
 import React from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Button from "react-bootstrap/Button";
+import StopWatch from "../Countdown/StopWatch";
 class QuizResult extends React.Component {
   render() {
     let counts = 0;
@@ -19,7 +20,6 @@ class QuizResult extends React.Component {
     let correctPercentageLabel = correctPercentage + "%";
     let wrongPercentageLabel = wrongPercentage + "%";
     // this.setState({ count: counts });
-    console.log("You've got " + counts + " answer correct");
     let correctAnswer = (
       <div>
         <h1 align="center">Congratulations You got {counts} answer correct</h1>
