@@ -4,7 +4,6 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import "./AssignmentItem.css"
 import Col from "react-bootstrap/Col";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { Redirect } from "react-router";
@@ -12,39 +11,43 @@ class AssignmentQuestion extends React.Component {
   state = {
     data: ""
   };
-  componentDidMount() {
-    axios
-      .get(`http://localhost:5000/api/assignments/${this.params.id}`)
+  async componentDidMount() {
+
+   await axios
+      .get(`http://localhost:5000/api/assignments/${this.props.match.params.id}`)
       .then(response => {
         this.setState({
           data: response.data
         });
       })
       .catch(error => console.log(error));
+      console.log("indisde assigmentquestion")
+      console.log(this.state.data)
   }
   clickHandler = e => {
     let id = e.target.id || e.target.parentElement.id;
-    this.props.history.push(`/assignments/${id}`);
+    this.props.history.push(`/assignments/question/${id}`,{assignmentId:this.props.match.params.id,questionId:id});
   };
 
   render() {
     let container;
     if (this.state.data === "") container = <Spinner />;
     else {
-      let assignmentData = this.state.data;
-      let assignmentList = [];
-      for (let assignment of assignmentData) {
-        assignmentList.push(
+      let questionData = this.state.data;
+      let questionList = [];
+      let i=1;
+      for (let question of questionData) {
+        questionList.push(
           <div
             className="container assignmentItem"
-            id={assignment.id}
+            id={question.id}
             onClick={this.clickHandler}
           >
-            <h5>Assignment No : {assignment.id} </h5>
+           No : {i++}  <span> {question.title}</span >
           </div>
         );
       }
-      container = assignmentList;
+      container = questionList;
     }
     return (
       <div>

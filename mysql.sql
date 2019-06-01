@@ -355,28 +355,105 @@ CREATE TABLE IF NOT EXISTS assignment_question (
 	instruction TEXT,
 	starter TEXT,
 	label VARCHAR(20),
-	assignment_no INT,
-		
-	FOREIGN KEY (assignment_no) REFERENCES ASSIGNMENTS(id)
+	assignment_no INT,	
+	FOREIGN KEY (assignment_no) REFERENCES ASSIGNMENTS(id),
 	FOREIGN KEY (label) REFERENCES labels(label)
 );
-DROP TABLE
-INSERT INTO assignment_question VALUES(1,"Assignment Question 1","Instruction For Assignment 1",'function demo(){
+
+INSERT INTO assignment_question VALUES(1,"Assignment 1 Question 1","Instruction For Assignment 1",'function hello(){
 return "Hello World!"
-}','condition');
-INSERT INTO assignment_question VALUES(2,"Assignment 2","Instruction For Assignment 2",'function demo(){
+}','condition',1);
+INSERT INTO assignment_question VALUES(8,"Assignment 1 Question 2","Instruction For Assignment 1 Q 2 ",'function demo(){
 return "Hello World!"
-}','condition');
-INSERT INTO assignment_question VALUES(3,"Assignment 3","Instruction For Assignment 3",'function demo(){
+}','condition',1);
+INSERT INTO assignment_question VALUES(6,"Assignment 1 Question 3","Instruction For Assignment 1 Q 3 ",'function demo(){
 return "Hello World!"
-}','condition');
-INSERT INTO assignment_question VALUES(4,"Assignment 4","Instruction For Assignment 4",'function demo(){
+}','condition',1);
+INSERT INTO assignment_question VALUES(7,"Assignment 1 Question 4","Instruction For Assignment 1 Q 4",'function demo(){
 return "Hello World!"
-}','condition');
-INSERT INTO assignment_question VALUES(5,"Assignment 5","Instruction For Assignment 5",'function demo(){
+}','condition',1);
+INSERT INTO assignment_question VALUES(2,"Assignment 2  Question 1","Instruction For Assignment 2",'function demo(){
 return "Hello World!"
-}','condition');
+}','condition',2);
+INSERT INTO assignment_question VALUES(3,"Assignment 3 Question 1","Instruction For Assignment 3",'function demo(){
+return "Hello World!"
+}','condition',3);
+INSERT INTO assignment_question VALUES(4,"Assignment 4 Question 1","Instruction For Assignment 4",'function demo(){
+return "Hello World!"
+}','condition',4);
+INSERT INTO assignment_question VALUES(5,"Assignment 5 Question 1","Instruction For Assignment 5",'function demo(){
+return "Hello World!"
+}','condition',5);
 SELECT *FROM assignment_question;
+
+
+
+/*----------------------------
+Create Test table
+------------------------------*/
+CREATE TABLE IF NOT EXISTS tests_assignments (
+	id INT PRIMARY KEY AUTO_INCREMENT ,
+	test VARCHAR(100),
+	result VARCHAR(100),
+	question_id INT,
+	FOREIGN KEY (question_id) REFERENCES assignment_question(id)
+);
+
+/*----------------------------
+Dumping Data on Test table
+------------------------------*/
+INSERT INTO tests_assignments VALUES(1,'hello()','hello tinker',1);
+INSERT INTO tests_assignments VALUES(2,'odd(1)','true',2);
+INSERT INTO tests_assignments VALUES(3,'odd(2)','false',2);
+INSERT INTO tests_assignments VALUES(4,'odd(3)','true',2);
+INSERT INTO tests_assignments VALUES(5,'odd(4)','false',2);
+SELECT * FROM tests_assignments;
+
+/*----------------------------
+Create Resources table
+------------------------------*/
+CREATE TABLE IF NOT EXISTS resources_assignments (
+	id INT PRIMARY KEY AUTO_INCREMENT ,
+	title VARCHAR(100),
+	link VARCHAR(300),
+	description VARCHAR(100),
+	question_id INT,
+	FOREIGN KEY (question_id) REFERENCES assignment_question(id)
+);
+
+/*----------------------------
+Dumping Data on Test table
+------------------------------*/
+INSERT INTO resources_assignments VALUES(1,'JavaScript Functions Tutorial','javascript.info','Functions are the main “building blocks” of the program. They allow the code to be called many times without repetition.',1);
+INSERT INTO resources_assignments VALUES(2,'Title 2 Functions Tutorial','2.info',' The',1);
+INSERT INTO resources_assignments VALUES(3,'Title 3 Functions Tutorial','3.info','repetition.',1);
+INSERT INTO resources_assignments VALUES(4,'4 Functions Tutorial','4.info','kills',1);
+INSERT INTO resources_assignments VALUES(5,'5 Functions Tutorial','5.info','Functions ',1);
+
+SELECT * FROM resources_assignments;
+
+
+/*----------------------------
+Create Submissions table
+------------------------------*/
+CREATE TABLE IF NOT EXISTS submissions_assignments (
+	id INT PRIMARY KEY AUTO_INCREMENT ,
+	submission TEXT,
+	timeTaken INT,
+	username VARCHAR(100),
+	question_id INT,
+	submisison_date DATETIME,
+	FOREIGN KEY (username) REFERENCES users(username),
+	FOREIGN KEY (question_id) REFERENCES assignment_question(id)
+);
+/*----------------------------
+Dumping Data on Submissions table
+------------------------------*/
+INSERT INTO submissions_assignments (submission,timeTaken,username,question_id,submisison_date) VALUES("
+function hello() {
+	return \"hello tinker\";
+}",10,'test',1,NOW());
+SELECT * FROM submissions_assignments;
 
 
 

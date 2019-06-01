@@ -10,6 +10,7 @@ class AssignmentLeaderboard extends React.Component {
   };
 
   async componentDidMount() {
+    console.log("Inside Assignment leaderboard",this.state.data)
     await axios
       .get(
         `http://localhost:5000/api/challenges/leaderboard/${

@@ -4,10 +4,11 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import "./AssignmentItem.css"
+
 import Col from "react-bootstrap/Col";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { Redirect } from "react-router";
+import "./AssignmentItem.css"
 class AssignmentItem extends React.Component {
   state = {
     data: ""
@@ -21,6 +22,7 @@ class AssignmentItem extends React.Component {
         });
       })
       .catch(error => console.log(error));
+      console.log("Inside Assignment Item",this.state.data)
   }
   clickHandler = e => {
     let id = e.target.id || e.target.parentElement.id;

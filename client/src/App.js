@@ -17,6 +17,8 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import Landing from "./UI/Landing/Landing";
 import Quiz from "./container/QuizModule/QuizContainer/Quiz";
 import AssigntmentItem from "./components/Assignment/AssignmentItem/AssignmentItem";
+import AssignmentQuestion from "./components/Assignment/AssignmentQuestion/AssignmentQuestion";
+import AssignmentContainer from "./container/AssignmentModule/AssignmentContainer/AssignmentContainer";
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -47,7 +49,8 @@ class App extends React.Component {
                 <Route path="/Challenges" component={ChallengeItem} exact />
                 <Route path="/challenges/:id" component={ChallengeView} />
                 <Route path="/assignments" component={AssigntmentItem} exact />
-                <Route path="/assignments/:id" component={AssignmentView} />
+                <Route path="/assignments/:id" component={AssignmentQuestion} exact />
+                <Route path="/assignments/question/:id" component={AssignmentContainer} />
               </Switch>
             </div>
           </div>

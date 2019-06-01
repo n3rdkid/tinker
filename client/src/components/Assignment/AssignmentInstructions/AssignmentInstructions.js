@@ -4,15 +4,18 @@ import Spinner from "../../../UI/Spinner/Spinner";
 class AssignmentInstructions extends React.Component {
   state = {
     questionId: this.props.questionId,
+    assignmentId:this.props.assignmentId,
     instructions: null
   };
-  componentDidMount() {
-    axios
-      .get(`http://localhost:5000/api/challenges/${this.state.questionId}`)
+ async componentDidMount() {
+  await  axios
+      .get(`http://localhost:5000/api/assignments/question/${this.state.questionId}`)
       .then(response => {
-        this.setState({ instructions: response.data.challenge });
+        this.setState({ instructions: response.data.question });
       })
       .catch(error => console.log(error));
+
+      console.log("Inside Assignment Instructions",this.state.data)
   }
 
   render() {

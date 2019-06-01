@@ -14,6 +14,7 @@ class AssignmentResources extends React.Component {
       )
       .then(response => this.setState({ resources: response.data }))
       .catch(error => console.log(error));
+      console.log("Inside Assignment resources",this.state.resources)
   }
 
   render() {

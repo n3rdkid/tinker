@@ -18,12 +18,13 @@ class AssignmentCode extends React.Component {
     this.submitSolution = this.submitSolution.bind(this);
   }
   async componentDidMount() {
+    console.log("Inside Assignment Code")
     await axios
-      .get(`http://localhost:5000/api/challenges/${this.state.questionId}`)
+      .get(`http://localhost:5000/api/assignments/question/${this.state.questionId}`)
       .then(response => {
         this.setState(
           {
-            question: response.data.challenge,
+            question: response.data.question,
             testCases: response.data.tests
           },
           () => {
@@ -78,11 +79,11 @@ class AssignmentCode extends React.Component {
       submission: currentValue,
       timeTaken: "" + timeTaken,
       username: this.props.auth.user.username,
-      challenge_id: this.state.questionId
+      question_id: this.state.questionId
     };
     let questionId = this.state.questionId;
     axios
-      .post("http://localhost:5000/api/challenges", submission)
+      .post("http://localhost:5000/api/assignments", submission)
       .then(response => {
         this.props.history.push(`/results`, { timeTaken, questionId });
       })
