@@ -6,14 +6,13 @@ import { withRouter } from "react-router-dom";
 class AssignmentLeaderboard extends React.Component {
   state = {
     questionId: this.props.questionId,
-    leaderboard: null
+    leaderboard: []
   };
 
   async componentDidMount() {
-    console.log("Inside Assignment leaderboard",this.state.data)
     await axios
       .get(
-        `http://localhost:5000/api/challenges/leaderboard/${
+        `http://localhost:5000/api/assignments/leaderboard/${
           this.state.questionId
         }`
       )
@@ -31,7 +30,7 @@ class AssignmentLeaderboard extends React.Component {
         let hours = parseInt( seconds / 3600 ); 
         seconds = seconds % 3600;
         let minutes=parseInt( seconds / 60 );
-        seconds=(seconds%60).toFixed(0);
+        seconds=(seconds%60).toFixed(2);
         let item = (
           <tr className="">
             <td>{index + 1}</td>
@@ -45,19 +44,24 @@ class AssignmentLeaderboard extends React.Component {
     } else {
       leaderboardList = <Spinner />;
     }
+    let display;
+    if(this.state.leaderboard&&this.state.leaderboard.length===0)
+    display=<p>Seems like you will be the first one to solve this!</p>
+    else
+    display=( <table className="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Rank</th>
+        <th scope="col">Username</th>
+        <th scope="col">Time Taken</th>
+        <th scope="col">Submission Date</th>
+      </tr>
+    </thead>
+    <tbody className="table-striped">{leaderboardList}</tbody>
+  </table>)
     return (
       <>
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Rank</th>
-              <th scope="col">Username</th>
-              <th scope="col">Time Taken</th>
-              <th scope="col">Submission Date</th>
-            </tr>
-          </thead>
-          <tbody className="table-striped">{leaderboardList}</tbody>
-        </table>
+       {display}
       </>
     );
   }

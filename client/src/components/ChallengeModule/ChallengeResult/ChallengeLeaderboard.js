@@ -30,7 +30,7 @@ class ChallengeLeaderboard extends React.Component {
         let hours = parseInt( seconds / 3600 ); 
         seconds = seconds % 3600;
         let minutes=parseInt( seconds / 60 );
-        seconds=(seconds%60).toFixed(0);
+        seconds=(seconds%60).toFixed(2);
         let item = (
           <tr className="">
             <td>{index + 1}</td>
