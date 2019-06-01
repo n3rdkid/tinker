@@ -37,12 +37,14 @@ class AssignmentItem extends React.Component {
       let assignmentList = [];
       for (let assignment of assignmentData) {
         assignmentList.push(
-          <div
-            className="container assignmentItem"
+          <div 
+            className="d-flex container assignmentItem"
             id={assignment.id}
             onClick={this.clickHandler}
           >
-            <h5>Assignment No : {assignment.id} </h5>
+            <span>Assignment No : {assignment.id} </span>
+            <span className="mx-auto">Due : {assignment.dueDate.split("T")[0]} </span>
+            <button className="ml-auto btn btn-success">View</button>
           </div>
         );
       }
