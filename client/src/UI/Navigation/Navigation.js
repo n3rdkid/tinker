@@ -49,6 +49,9 @@ class Navigation extends React.Component {
               <NavLink className="nav-link" to="/Challenges">
                 Challenges
               </NavLink>
+              <NavLink className="nav-link" to="/assignments">
+                Assignments
+              </NavLink>
               {/* <NavDropdown title="Add" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/AddChallenge">
                   Add Challenge
