@@ -9,16 +9,22 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Container from "react-bootstrap/Container";
 const ChallengeInstructions = React.lazy(() =>
-  import("../../../components/ChallengeModule/ChallengeInstructions/ChallengeInstructions")
+  import(
+    "../../../components/ChallengeModule/ChallengeInstructions/ChallengeInstructions"
+  )
 );
 const ChallengeCode = React.lazy(() =>
   import("../../../components/ChallengeModule/ChallengeCode/ChallengeCode")
 );
 const ChallengeResources = React.lazy(() =>
-  import("../../../components/ChallengeModule/ChallengeResources/ChallengeResources")
+  import(
+    "../../../components/ChallengeModule/ChallengeResources/ChallengeResources"
+  )
 );
 const ChallengeLeaderboard = React.lazy(() =>
-  import("../../../components/ChallengeModule/ChallengeResult/ChallengeLeaderboard")
+  import(
+    "../../../components/ChallengeModule/ChallengeResult/ChallengeLeaderboard"
+  )
 );
 class ChallengeView extends React.Component {
   constructor(props) {
@@ -40,7 +46,10 @@ class ChallengeView extends React.Component {
               </Tab>
               <Tab eventKey="code" title="Code">
                 <Suspense fallback={<Spinner />}>
-                  <ChallengeCode auth={this.props.auth} questionId={this.state.questionId} />
+                  <ChallengeCode
+                    auth={this.props.auth}
+                    questionId={this.state.questionId}
+                  />
                 </Suspense>
               </Tab>
               <Tab eventKey="resources" title="Resources">

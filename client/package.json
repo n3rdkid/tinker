@@ -11,6 +11,7 @@
     "react-bootstrap": "^1.0.0-beta.8",
     "react-codemirror2": "^6.0.0",
     "react-dom": "^16.8.6",
+    "react-heatmap-grid": "^0.8.1",
     "react-redux": "^7.0.3",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",

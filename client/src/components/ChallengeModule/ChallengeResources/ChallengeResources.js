@@ -39,6 +39,9 @@ class ChallengeResources extends React.Component {
     }
     return (
       <>
+      <div className="d-flex">
+      <button className="btn btn-primary my-2 ml-auto">Add resource</button>
+      </div>
         {resourcesList}
       </>
     );
