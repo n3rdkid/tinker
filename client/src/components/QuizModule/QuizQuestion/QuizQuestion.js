@@ -4,6 +4,7 @@ import axios from "axios";
 import Countdown from "../Countdown/CountDownTimer";
 import QuizResult from "../QuizResult/QuizResult";
 import StopWatch from "../Countdown/StopWatch";
+let arrayResults = [];
 class QuizQuestion extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +20,8 @@ class QuizQuestion extends React.Component {
       completed: false,
       selectedAnswerIdArray: [],
       correctAnswerIdArray: [],
-      start: 0
+      start: 0,
+      loadedQuestions: []
     };
   }
   setTimeLimit = () => {
@@ -29,9 +31,7 @@ class QuizQuestion extends React.Component {
   };
 
   clickHandler = async e => {
-    console.log(
-      `Correct Answer ${this.state.correctAnswer} You clicked ${e.target.id}`
-    );
+    //console.log(`Loaded question is ${this.state.questions}`);
 
     this.setState({
       selectedAnswerIdArray: [...this.state.selectedAnswerIdArray, e.target.id]
@@ -42,7 +42,6 @@ class QuizQuestion extends React.Component {
         this.state.correctAnswer
       ]
     });
-    console.log(this.state.selectedAnswerIdArray);
     this.setState({ count: this.state.count + 1 });
     this.setState({ approxQuestion: this.state.approxQuestion - 1 });
     if (this.state.approxQuestion > 1) {
@@ -96,11 +95,21 @@ class QuizQuestion extends React.Component {
         });
       })
       .catch(error => console.log(error));
+    arrayResults.push({ question: this.state.answers });
+    console.log(arrayResults);
+    this.setState({
+      loadedQuestions: [
+        ...this.state.loadedQuestions,
+        this.state.questions[this.state.nextQuestion].question
+      ]
+    });
+    // console.log(this.state.loadedQuestions);
   };
 
   render() {
     let answers = this.state.answers;
     let question = this.state.questions[this.state.nextQuestion].question;
+
     let answerList = [];
 
     if (answers !== null) {
@@ -165,6 +174,8 @@ class QuizQuestion extends React.Component {
       this.state.start = 1;
       quizResult = (
         <QuizResult
+          answersArray={arrayResults}
+          loadedQuestions={this.state.loadedQuestions}
           selectedAnswerIdArray={this.state.selectedAnswerIdArray}
           correctAnswerIdArray={this.state.correctAnswerIdArray}
         />

@@ -105,7 +105,8 @@ router.get("/resources/:id", (req, res) => {
 //@access Public
 router.get("/leaderboard/:id", (req, res) => {
   let id = req.params.id;
-  let statement = "SELECT * FROM submissions WHERE challenge_id= ?  ORDER BY timeTaken LIMIT 10;";
+  let statement =
+    "SELECT * FROM submissions WHERE challenge_id= ?  ORDER BY timeTaken LIMIT 10;";
   mysqlConnection.query(statement, id, (err, results, fields) => {
     if (!err) {
       res.json(results);
@@ -114,8 +115,6 @@ router.get("/leaderboard/:id", (req, res) => {
     }
   });
 });
-
-
 
 //@route Post api/challenges/resources/:id
 //@access Public

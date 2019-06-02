@@ -8,7 +8,11 @@ import QuizStarter from "./container/QuizModule/QuizStarter/QuizStarter";
 import Navigation from "./UI/Navigation/Navigation";
 import ChallengeItem from "./components/ChallengeModule/ChallengeItem/ChallengeItem";
 import ChallengeView from "./container/ChallengeModule/ChallengeView/ChallengeView";
-import AddAssignment from "./container/AssignmentModule/AddAssignment";
+import AddResources from "./container/ChallengeModule/AddResources";
+import AddChallenge from "./admin/AddChallenge";
+import AddAssignment from "./admin/AddAssignment";
+//import AddAssignment from "./container/AssignmentModule/AddAssignment";
+import AssignmentView from "./container/AssignmentModule/AssignmentContainer/AssignmentContainer";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
@@ -42,16 +46,22 @@ class App extends React.Component {
                 <Route path="/" component={Landing} exact />
                 <Route path="/Signin" component={SignIn} />
                 <Route path="/Signup" component={SignUp} />
-                <Route path="/Quiz" component={QuizStarter}exact />
+                <Route path="/Quiz" component={QuizStarter} exact />
                 <Route path="/Quiz/start" component={Quiz} />
                 <Route path="/Challenges" component={ChallengeItem} exact />
-                <Route path="/challenges/:id" component={ChallengeView} exact/>
+                <Route path="/challenges/:id" component={ChallengeView} />
+                <Route path="/AddChallenge" component={AddChallenge} />
+                <Route path="/AddAssignment" component={AddAssignment} />
                 <Route path="/assignments" component={AssigntmentItem} exact />
-                <Route path="/addassignment" component={AddAssignment} exact />
-                <Route path="/assignments/:id" component={AssignmentQuestion} exact />
-              
-                <Route path="/assignments/question/:id" component={AssignmentContainer} exact />
-           
+                <Route
+                  path="/assignments/:id"
+                  component={AssignmentQuestion}
+                  exact
+                />
+                <Route
+                  path="/assignments/question/:id"
+                  component={AssignmentContainer}
+                />
               </Switch>
             </div>
           </div>
