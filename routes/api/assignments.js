@@ -166,7 +166,7 @@ router.post("/question", (req, res) => {
     [title, instruction, starter, label,assignment_no],
     (err, results, fields) => {
       if (!err) {
-        res.send(results);
+        res.send(resu);
       } else {
         return res.status(400).json({ error: "Failed to insert resources" });
       }
@@ -195,6 +195,18 @@ router.post("/testcases", (req, res) => {
    }
  );
 });
+router.get("/testcases/:id", (req, res) => {
+  let id = req.params.id;
+  let statement = "SELECT * FROM tests_assignments WHERE question_id= ?";
+  mysqlConnection.query(statement, id, (err, results, fields) => {
+    if (!err) {
+      res.json(results);
+    } else {
+      return res.status(400).json({ error: "No such Testcases" });
+    }
+  });
+});
+
 
 
 module.exports = router;
