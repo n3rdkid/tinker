@@ -1,21 +1,24 @@
 import React from "react";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 class AddAssignment extends React.Component {
   state = {
     assignment_no: "",
     title: "",
     instruction: "",
     starter: "",
-    label: ""
+    label: "",
+    questionId:""
   };
-  onSubmit = e => {
+  onSubmit = async e => {
     e.preventDefault();
     console.log(this.state);
-    axios
+  await  axios
       .post(`http://localhost:5000/api/assignments/question`, this.state)
-      .then(() => console.log("Resource added sucessfully"))
+      .then((response) =>this.setState({questionId:response.data.insertId}))
       .catch(err => console.log(err.response.data));
-  };
+      this.props.history.push("/testCases",{questionId:this.state.questionId});
+    };
   changeState = e => {
     console.log(e.target.name +"+" +e.target.value )
     this.setState({ [e.target.name]: e.target.value });
@@ -75,4 +78,4 @@ class AddAssignment extends React.Component {
     );
   }
 }
-export default AddAssignment;
+export default withRouter(AddAssignment);
