@@ -31,6 +31,7 @@ class SignUp extends React.Component {
   };
 
   onSubmit = e => {
+    console.log(this.state);
     e.preventDefault();
     console.log("SUBMIT");
     this.props.registerUser(this.state, this.props.history);
@@ -44,63 +45,66 @@ class SignUp extends React.Component {
     const { errors } = this.state;
     const { user } = this.props.auth;
     return (
-      <div  className="card col-md-6 mx-auto my-auto">
-      <Form>
-        <Form.Group
-          as={Row}
-          controlId="formHorizontalEmail"
-          value={this.state.email}
-          onChange={e => this.changeHandler(e)}
-        >
-          <Form.Label column sm={3}>
-            Email
-          </Form.Label>
-          <Col sm={9}>
-            <Form.Control type="email" placeholder="Email" />
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row} controlId="formHorizontalEmail">
-          <Form.Label column sm={3}>
-            Username
-          </Form.Label>
-          <Col sm={9}>
-            <Form.Control
-              type="text"
-              placeholder="UserName"
-              onChange={e => this.changeHandler(e)}
-              placeholder="Must be 6 characters"
-            />
-          </Col>
-        </Form.Group>
+      <div className="card col-md-6 mx-auto my-auto">
+        <Form>
+          <Form.Group as={Row}>
+            <Form.Label column sm={3}>
+              Email
+            </Form.Label>
+            <Col sm={9}>
+              <Form.Control
+                name="email"
+                onChange={e => this.changeHandler(e)}
+                value={this.state.email}
+                type="email"
+                placeholder="Email"
+              />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} controlId="formHorizontalEmail">
+            <Form.Label column sm={3}>
+              Username
+            </Form.Label>
+            <Col sm={9}>
+              <Form.Control
+                name="username"
+                type="text"
+                placeholder="UserName"
+                onChange={e => this.changeHandler(e)}
+                value={this.state.username}
+              />
+            </Col>
+          </Form.Group>
 
-        <Form.Group as={Row} controlId="formHorizontalPassword">
-          <Form.Label
-            column
-            sm={3}
-            value={this.state.user_password}
-            onChange={e => this.changeHandler(e)}
-          >
-            Password
-          </Form.Label>
-          <Col sm={9}>
-            <Form.Control type="password" placeholder="Password" />
-          </Col>
-        </Form.Group>
+          <Form.Group as={Row} controlId="formHorizontalPassword">
+            <Form.Label column sm={3}>
+              Password
+            </Form.Label>
+            <Col sm={9}>
+              <Form.Control
+                name="user_password"
+                type="password"
+                placeholder="Password"
+                onChange={e => this.changeHandler(e)}
+                value={this.state.user_password}
+              />
+            </Col>
+          </Form.Group>
 
-        <Form.Group as={Row} controlId="formHorizontalCheck">
-          <Col sm={{ span: 10, offset: 2 }}>
-            <Form.Check label="Remember me" />
-          </Col>
-        </Form.Group>
+          <Form.Group as={Row} controlId="formHorizontalCheck">
+            <Col sm={{ span: 10, offset: 2 }}>
+              <Form.Check label="Remember me" />
+            </Col>
+          </Form.Group>
 
-        <Form.Group as={Row}>
-          <Col sm={{ span: 10, offset: 2 }}>
-            <Button type="submit" onClick={e => this.onSubmit(e)}>
-              Register
-            </Button>
-          </Col>
-        </Form.Group>
-      </Form>
+          <Form.Group as={Row}>
+            <Col sm={{ span: 10, offset: 2 }}>
+              <Button type="submit" onClick={e => this.onSubmit(e)}>
+                Register
+              </Button>
+            </Col>
+          </Form.Group>
+        </Form>
       </div>
     );
   }
