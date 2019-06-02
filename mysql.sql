@@ -1,4 +1,4 @@
-
+﻿
 CREATE DATABASE IF NOT EXISTS tinker;
 USE tinker;
 
@@ -331,7 +331,7 @@ CREATE TABLE IF NOT EXISTS assignments (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	dueDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-SELECT *FROM assignments; 
+SELECT * FROM assignments; 
 /*----------------------------
 Dumping Data on Assignemnt table
 -----------------------------*/
