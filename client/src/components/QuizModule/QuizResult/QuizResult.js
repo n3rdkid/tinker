@@ -70,27 +70,6 @@ class QuizResult extends React.Component {
   }
 
   render() {
-    let questions = (
-      <div className="row my-5">
-        <div className="col-sm-9">
-          <div className="card text-muted py-2">
-            <div className="card-header bg-light">
-              <h5 className="card-title">Correct answer of given question</h5>
-            </div>
-            <div className="card-body">
-              <h2 className="text-dark" />
-              <p className="bg-light py-2">this.props</p>
-              <div className="answers">
-                <ul className="list-group">
-                  {/* {this.props.answersArray.question.map(answer => (console.log(answer))} */}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-
     let correctAnswer = (
       <div>
         <h1 align="center">
@@ -129,7 +108,7 @@ class QuizResult extends React.Component {
     return (
       <div>
         {correctAnswer}
-        {questions}
+
         <QuizAnswerList
           quizIdArray={this.state.quizIdArray}
           answers={this.state.answers}
