@@ -6,10 +6,14 @@ import axios from "axios";
 class QuizResult extends React.Component {
   state = {
     questions: this.props.loadedQuestions,
-    answers: []
+    answers: [],
+    numOfCorrectAnswer: 0,
+    correctPercentage: 0
   };
 
   componentDidMount() {
+    this.loadAnswers();
+    this.calculatePercentage();
     /*for (let i = 0; i < 10; i++) {
       axios
         .post(`http://localhost:5000/api/quiz/${i}`)
@@ -23,11 +27,21 @@ class QuizResult extends React.Component {
         .catch(error => console.log(error));
     }*/
   }
-
-  render() {
+  loadAnswers() {
+    let newAnswersArray = {};
+    this.props.answersArray.forEach(ans => {
+      ans.question.forEach(que => {
+        if (!newAnswersArray[que.quiz_id]) {
+          newAnswersArray[que.quiz_id] = [que.answer];
+        } else {
+          newAnswersArray[que.quiz_id].push(que.answer);
+        }
+      });
+      console.log(newAnswersArray);
+    });
+  }
+  calculatePercentage() {
     let counts = 0;
-    let correctPercentage = 0;
-    let wrongPercentage = 0;
     let selectedAnswerArray = this.props.selectedAnswerIdArray;
     let correctAnswerArray = this.props.correctAnswerIdArray;
     for (let i = 0; i < selectedAnswerArray.length; i++) {
@@ -35,17 +49,12 @@ class QuizResult extends React.Component {
         counts++;
       }
     }
-    console.log(this.props.answersArray[1]);
-    this.props.answersArray.map(question => {
-      console.log(question[0].answer);
-    });
-    //  console.log(this.state.answers);
+    this.setState({ numOfCorrectAnswer: counts });
+    let calcCorrectPercentage = Math.floor((counts / 5) * 100);
+    this.setState({ correctPercentage: calcCorrectPercentage });
+  }
 
-    correctPercentage = Math.floor((counts / 5) * 100);
-    wrongPercentage = 100 - correctPercentage;
-    let correctPercentageLabel = correctPercentage + "%";
-    let wrongPercentageLabel = wrongPercentage + "%";
-    // this.setState({ count: counts });
+  render() {
     let questions = (
       <div className="row my-5">
         <div className="col-sm-9">
@@ -69,27 +78,31 @@ class QuizResult extends React.Component {
 
     let correctAnswer = (
       <div>
-        <h1 align="center">Congratulations You got {counts} answer correct</h1>
+        <h1 align="center">
+          Congratulations You got {this.state.numOfCorrectAnswer} answer correct
+        </h1>
         <ProgressBar>
           <ProgressBar
             animated
             striped
             variant="success"
-            label={correctPercentageLabel}
-            now={correctPercentage}
+            label={`${this.state.correctPercentage}%`}
+            now={this.state.correctPercentage}
             key={1}
           />
           <ProgressBar
             animated
             striped
             variant="danger"
-            label={wrongPercentageLabel}
-            now={wrongPercentage}
+            label={`${100 - this.state.correctPercentage}%`}
+            now={`${100 - this.state.correctPercentage}`}
             key={2}
           />
         </ProgressBar>
         <div align="center">
-          <h2>You got {counts} answer correct out of 5.</h2>
+          <h2>
+            You got {this.state.numOfCorrectAnswer} answer correct out of 5.
+          </h2>
           <h2>Time taken: 12 second</h2>
 
           <Button variant="success" size="lg" block>
