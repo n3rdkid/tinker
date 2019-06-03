@@ -30,6 +30,7 @@ class StopWatch extends React.Component {
         "min and second" +
         this.getSeconds()
     );
+    this.props.displayStopWatchTimer(this.getMinutes(), this.getSeconds());
   };
   componentWillUnmount() {
     this.handleStopClick();
