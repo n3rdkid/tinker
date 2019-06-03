@@ -21,6 +21,7 @@ import Quiz from "./container/QuizModule/QuizContainer/Quiz";
 import AssigntmentItem from "./components/Assignment/AssignmentItem/AssignmentItem";
 import AssignmentQuestion from "./components/Assignment/AssignmentQuestion/AssignmentQuestion";
 import AssignmentContainer from "./container/AssignmentModule/AssignmentContainer/AssignmentContainer";
+import AddTestCases from "./container/AssignmentModule/AddTestCases";
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -53,14 +54,17 @@ class App extends React.Component {
                 <Route path="/AddChallenge" component={AddChallenge} />
                 <Route path="/AddAssignment" component={AddAssignment} />
                 <Route path="/assignments" component={AssigntmentItem} exact />
+                <Route path="/addassignment" component={AddAssignment} exact />
                 <Route
                   path="/assignments/:id"
                   component={AssignmentQuestion}
                   exact
                 />
+                <Route path="/testcases" component={AddTestCases} exact />
                 <Route
                   path="/assignments/question/:id"
                   component={AssignmentContainer}
+                  exact
                 />
               </Switch>
             </div>

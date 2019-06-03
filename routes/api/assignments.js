@@ -3,6 +3,8 @@ const router = express.Router();
 const mysql = require("mysql");
 const validateSubmissionInput = require("../../validation/AssignmentModule/Submission");
 const validateResourcesInput = require("../../validation/AssignmentModule/Resources");
+const validateQuestion = require("../../validation/AssignmentModule/validateQuestion");
+const validateTestCases = require("../../validation/AssignmentModule/validateTestCases");
 //For Database
 const databaseOptions = require("../../config/database");
 const mysqlConnection = mysql.createConnection(databaseOptions);
@@ -126,29 +128,85 @@ router.get("/leaderboard/:id", (req, res) => {
 
 
 
-// //@route Post api/challenges/resources/:id
-// //@access Public
-// router.post("/resources", (req, res) => {
-//   console.log("Dtaa");
-//   console.dir(req.body);
-//   const { errors, isValid } = validateResourcesInput(req.body);
-//   if (!isValid) {
-//     return res.status(400).json({ errors });
-//   }
-//   let { title, link, description, challenge_id } = req.body;
-//   let statement =
-//     "INSERT INTO resources_challenge (title,link,description,challenge_id) VALUES (?,?,?,?)";
-//   mysqlConnection.query(
-//     statement,
-//     [title, link, description, challenge_id],
-//     (err, results, fields) => {
-//       if (!err) {
-//         res.send("Inserted Successfully!");
-//       } else {
-//         return res.status(400).json({ error: "Failed to insert resources" });
-//       }
-//     }
-//   );
-// });
+//@route Post api/assignments/resources/:id
+//@access Public
+router.post("/resources", (req, res) => {
+  console.dir(req.body);
+  const { errors, isValid } = validateResourcesInput(req.body);
+  if (!isValid) {
+    return res.status(400).json({ errors });
+  }
+  let { title, link, description, question_id } = req.body;
+  let statement =
+    "INSERT INTO resources_assignments (title,link,description,question_id) VALUES (?,?,?,?)";
+  mysqlConnection.query(
+    statement,
+    [title, link, description, question_id],
+    (err, results, fields) => {
+      if (!err) {
+        res.send("Inserted Successfully!");
+      } else {
+        return res.status(400).json({ error: "Failed to insert resources" });
+      }
+    }
+  );
+});
+//@route Post api/assignments/resources/:id
+//@access Public
+router.post("/question", (req, res) => {
+   const { errors, isValid } = validateQuestion(req.body);
+  if (!isValid) {
+    return res.status(400).json({ errors });
+  }
+  let { title, instruction, starter, label,assignment_no } = req.body;
+  let statement =
+    "INSERT INTO assignment_question (title,instruction,starter,label,assignment_no) VALUES (?,?,?,?,?)";
+  mysqlConnection.query(
+    statement,
+    [title, instruction, starter, label,assignment_no],
+    (err, results, fields) => {
+      if (!err) {
+        res.send(resu);
+      } else {
+        return res.status(400).json({ error: "Failed to insert resources" });
+      }
+    }
+  );
+});
+//@route Post api/assignments/resources/:id
+//@access Public
+router.post("/testcases", (req, res) => {
+  const { errors, isValid } = validateTestCases(req.body);
+ if (!isValid) {
+   return res.status(400).json({ errors });
+ }
+ let { test, result, question_id } = req.body;
+ let statement =
+   "INSERT INTO tests_assignments (test,result,question_id) VALUES (?,?,?)";
+ mysqlConnection.query(
+   statement,
+   [test, result, question_id],
+   (err, results, fields) => {
+     if (!err) {
+       res.send("Inserted Successfully into test table for question!");
+     } else {
+       return res.status(400).json({ error: "Failed to insert resources" });
+     }
+   }
+ );
+});
+router.get("/testcases/:id", (req, res) => {
+  let id = req.params.id;
+  let statement = "SELECT * FROM tests_assignments WHERE question_id= ?";
+  mysqlConnection.query(statement, id, (err, results, fields) => {
+    if (!err) {
+      res.json(results);
+    } else {
+      return res.status(400).json({ error: "No such Testcases" });
+    }
+  });
+});
+
+
 
 module.exports = router;
