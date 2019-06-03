@@ -63,6 +63,7 @@ class QuizQuestion extends React.Component {
     });
   };
   componentDidMount() {
+    arrayResults = [];
     axios
       .post(
         `http://localhost:5000/api/quiz/${
@@ -174,7 +175,7 @@ class QuizQuestion extends React.Component {
       quizResult = (
         <QuizResult
           answersArray={arrayResults}
-          loadedQuestions={this.state.loadedQuestions}
+          loadedQuestions={this.state.questions}
           selectedAnswerIdArray={this.state.selectedAnswerIdArray}
           correctAnswerIdArray={this.state.correctAnswerIdArray}
         />

@@ -28,7 +28,7 @@ class QuizResult extends React.Component {
         .catch(error => console.log(error));
     }*/
   }
-  onClearArray = () => {};
+
   loadAnswers() {
     let newAnswersArray = {};
     let quiz_id = [];
@@ -46,13 +46,6 @@ class QuizResult extends React.Component {
     let reducedQuiz_id = [...new Set(quiz_id)];
     this.setState({ quizIdArray: reducedQuiz_id });
     this.setState({ answers: newAnswersArray });
-    // reducedQuiz_id.forEach(reducedQuiz_id => {
-    //   // console.log("**********Answers are****************");
-    //   newAnswersArray[reducedQuiz_id].forEach(answer => {
-    //     // console.log(answer);
-    //   });
-    // });
-    console.log(this.state.answers);
   }
 
   calculatePercentage() {
@@ -112,6 +105,7 @@ class QuizResult extends React.Component {
         <QuizAnswerList
           quizIdArray={this.state.quizIdArray}
           answers={this.state.answers}
+          questions={this.state.questions}
         />
       </div>
     );

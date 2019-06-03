@@ -1,25 +1,36 @@
 import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
+var answers = [];
+var quizIds = [];
+var questions = [];
+var questionListWithID = [];
 class QuizAnswerList extends React.Component {
+  loadingQuestions() {
+    var test = questions.map(question => {
+      quizIds.map(function(qID) {
+        if (question.id == qID) {
+          questionListWithID[question.id] = question.question;
+        }
+      });
+    });
+  }
   render() {
-    var answers = this.props.answers;
-    var quizIds = this.props.quizIdArray;
+    answers = this.props.answers;
+    quizIds = this.props.quizIdArray;
+    questions = this.props.questions;
+    this.loadingQuestions();
+
     var answersList = quizIds.map(function(quizId) {
-      var question = (
+      var questionList = (
         <ListGroup.Item as="li" variant="warning">
-          Question no.
+          {questionListWithID[quizId]}
         </ListGroup.Item>
       );
       var answerOfSingleQuestion = answers[quizId].map(function(answer) {
         return <ListGroup.Item as="li"> {answer} </ListGroup.Item>;
       });
-      return [question, answerOfSingleQuestion];
+      return [questionList, answerOfSingleQuestion];
     });
-
-    // var names = ["Jake", "Jon", "Thruster"];
-    // var namesList = names.map(function(name) {
-    //   return <li>{name}</li>;
-    // });
 
     return <ListGroup as="ul">{answersList}</ListGroup>;
   }
