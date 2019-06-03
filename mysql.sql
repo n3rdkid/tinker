@@ -429,11 +429,11 @@ INSERT INTO resources_assignments VALUES(2,'Title 2 Functions Tutorial','2.info'
 INSERT INTO resources_assignments VALUES(3,'Title 3 Functions Tutorial','3.info','repetition.',1);
 INSERT INTO resources_assignments VALUES(4,'4 Functions Tutorial','4.info','kills',1);
 INSERT INTO resources_assignments VALUES(5,'5 Functions Tutorial','5.info','Functions ',1);
-INSERT INTO resources_assignments VALUES(6,'6 Functions Tutorial','5.info','Functions ',1);
-INSERT INTO resources_assignments VALUES(7,'7 Functions Tutorial','5.info','Functions ',1);
-INSERT INTO resources_assignments VALUES(8,'8 Functions Tutorial','5.info','Functions ',1);
-INSERT INTO resources_assignments VALUES(9,'9 Functions Tutorial','5.info','Functions ',1);
-INSERT INTO resources_assignments VALUES(10,'0 Assignment Tutorial','5.info','Functions ',1);
+INSERT INTO resources_assignments VALUES(6,'6 Assignment 1','5.info','Functions ',1);
+INSERT INTO resources_assignments VALUES(7,'7 Assignment 1','5.info','Functions ',1);
+INSERT INTO resources_assignments VALUES(8,'8 Assignment 1','5.info','Functions ',1);
+INSERT INTO resources_assignments VALUES(9,'9 Assignment 1','5.info','Functions ',1);
+INSERT INTO resources_assignments VALUES(10,'0 Assignment 1','5.info','Functions ',1);
 SELECT * FROM resources_assignments;
 
 
@@ -458,6 +458,13 @@ function hello() {
 	return \"hello tinker\";
 }",10,'test',1,NOW());
 SELECT * FROM submissions_assignments;
+CREATE TABLE IF NOT EXISTS quiz_result(
+id INT PRIMARY KEY AUTO_INCREMENT ,
+	username VARCHAR(100) ,
+	score INT ,
+	submisison_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (username) REFERENCES users(username));
+SELECT * FROM quiz_result;
 
 
 
