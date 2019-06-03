@@ -1,14 +1,15 @@
 import React from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
+import QuizAnswerList from "./QuizAnswerList";
 
 class QuizResult extends React.Component {
   state = {
     questions: this.props.loadedQuestions,
     answers: [],
     numOfCorrectAnswer: 0,
-    correctPercentage: 0
+    correctPercentage: 0,
+    quizIdArray: []
   };
 
   componentDidMount() {
@@ -27,19 +28,33 @@ class QuizResult extends React.Component {
         .catch(error => console.log(error));
     }*/
   }
+  onClearArray = () => {};
   loadAnswers() {
     let newAnswersArray = {};
+    let quiz_id = [];
     this.props.answersArray.forEach(ans => {
       ans.question.forEach(que => {
         if (!newAnswersArray[que.quiz_id]) {
           newAnswersArray[que.quiz_id] = [que.answer];
+          quiz_id.push(que.quiz_id);
         } else {
           newAnswersArray[que.quiz_id].push(que.answer);
+          quiz_id.push(que.quiz_id);
         }
       });
-      console.log(newAnswersArray);
     });
+    let reducedQuiz_id = [...new Set(quiz_id)];
+    this.setState({ quizIdArray: reducedQuiz_id });
+    this.setState({ answers: newAnswersArray });
+    // reducedQuiz_id.forEach(reducedQuiz_id => {
+    //   // console.log("**********Answers are****************");
+    //   newAnswersArray[reducedQuiz_id].forEach(answer => {
+    //     // console.log(answer);
+    //   });
+    // });
+    console.log(this.state.answers);
   }
+
   calculatePercentage() {
     let counts = 0;
     let selectedAnswerArray = this.props.selectedAnswerIdArray;
@@ -115,6 +130,10 @@ class QuizResult extends React.Component {
       <div>
         {correctAnswer}
         {questions}
+        <QuizAnswerList
+          quizIdArray={this.state.quizIdArray}
+          answers={this.state.answers}
+        />
       </div>
     );
   }

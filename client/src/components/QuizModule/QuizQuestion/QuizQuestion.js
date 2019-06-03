@@ -96,7 +96,6 @@ class QuizQuestion extends React.Component {
       })
       .catch(error => console.log(error));
     arrayResults.push({ question: this.state.answers });
-    console.log(arrayResults);
     this.setState({
       loadedQuestions: [
         ...this.state.loadedQuestions,
