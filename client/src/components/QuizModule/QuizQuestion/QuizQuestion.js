@@ -5,6 +5,7 @@ import Countdown from "../Countdown/CountDownTimer";
 import QuizResult from "../QuizResult/QuizResult";
 import StopWatch from "../Countdown/StopWatch";
 let arrayResults = [];
+let stoppedMinute, stoppedSecond;
 class QuizQuestion extends React.Component {
   constructor(props) {
     super(props);
@@ -105,7 +106,13 @@ class QuizQuestion extends React.Component {
     });
     // console.log(this.state.loadedQuestions);
   };
+  displayStopWatchTimer = (stoppedMinute, stoppedSecond) => {
+    console.log(stoppedMinute + ":" + stoppedSecond);
 
+    this.stoppedMinute = stoppedMinute;
+    this.stoppedSecond = stoppedSecond;
+    console.log("Stopped at:" + this.stoppedMinute + ":" + this.stoppedSecond);
+  };
   render() {
     let answers = this.state.answers;
     let question = this.state.questions[this.state.nextQuestion].question;
@@ -164,9 +171,12 @@ class QuizQuestion extends React.Component {
                 }
                 nextQuestion={this.clickHandler}
               />
-              <StopWatch start={this.state.start} />
             </h2>
           </div>
+          <StopWatch
+            start={this.state.start}
+            displayStopWatchTimer={this.displayStopWatchTimer}
+          />
         </div>
       );
     } else {
@@ -178,6 +188,8 @@ class QuizQuestion extends React.Component {
           loadedQuestions={this.state.questions}
           selectedAnswerIdArray={this.state.selectedAnswerIdArray}
           correctAnswerIdArray={this.state.correctAnswerIdArray}
+          stoppedMinute={this.stoppedMinute}
+          stoppedSecond={this.stoppedSecond}
         />
       );
     }

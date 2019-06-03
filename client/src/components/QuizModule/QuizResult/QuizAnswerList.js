@@ -22,9 +22,12 @@ class QuizAnswerList extends React.Component {
 
     var answersList = quizIds.map(function(quizId) {
       var questionList = (
-        <ListGroup.Item as="li" variant="warning">
-          {questionListWithID[quizId]}
-        </ListGroup.Item>
+        <div>
+          <ListGroup.Item as="li" />
+          <ListGroup.Item as="li" variant="warning">
+            {questionListWithID[quizId]}
+          </ListGroup.Item>
+        </div>
       );
       var answerOfSingleQuestion = answers[quizId].map(function(answer) {
         return <ListGroup.Item as="li"> {answer} </ListGroup.Item>;

@@ -15,18 +15,6 @@ class QuizResult extends React.Component {
   componentDidMount() {
     this.loadAnswers();
     this.calculatePercentage();
-    /*for (let i = 0; i < 10; i++) {
-      axios
-        .post(`http://localhost:5000/api/quiz/${i}`)
-        .then(response => {
-          console.log(response.data);
-          // this.setState({
-          //   answers: response.data.answers,
-          //   correctAnswer: response.data.correctAnswer
-          // });
-        })
-        .catch(error => console.log(error));
-    }*/
   }
 
   loadAnswers() {
@@ -90,7 +78,9 @@ class QuizResult extends React.Component {
           <h2>
             You got {this.state.numOfCorrectAnswer} answer correct out of 5.
           </h2>
-          <h2>Time taken: 12 second</h2>
+          <h2>
+            Time taken: {this.props.stoppedMinute}:{this.props.stoppedSecond}
+          </h2>
 
           <Button variant="success" size="lg" block>
             Check Answers
