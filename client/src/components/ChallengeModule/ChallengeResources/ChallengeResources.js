@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
+import {withRouter} from "react-router"
 class ChallengeResources extends React.Component {
     state={
         questionId :this.props.questionId,
@@ -14,6 +15,9 @@ class ChallengeResources extends React.Component {
       )
       .then(response => this.setState({ resources: response.data }))
       .catch(error => console.log(error));
+  }
+  clickHandler=()=>{
+    this.props.history.push("/challenges/resource")
   }
 
   render() {
@@ -40,7 +44,7 @@ class ChallengeResources extends React.Component {
     return (
       <>
       <div className="d-flex">
-      <button className="btn btn-primary my-2 ml-auto">Add resource</button>
+      <button className="btn btn-primary my-2 ml-auto" onClick={this.clickHandler}>Add resource</button>
       </div>
         {resourcesList}
       </>
@@ -48,4 +52,4 @@ class ChallengeResources extends React.Component {
   }
 }
 
-export default ChallengeResources;
+export default withRouter(ChallengeResources);

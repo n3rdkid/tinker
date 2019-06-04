@@ -8,8 +8,9 @@ import QuizStarter from "./container/QuizModule/QuizStarter/QuizStarter";
 import Navigation from "./UI/Navigation/Navigation";
 import ChallengeItem from "./components/ChallengeModule/ChallengeItem/ChallengeItem";
 import ChallengeView from "./container/ChallengeModule/ChallengeView/ChallengeView";
-import AddResources from "./container/ChallengeModule/AddResources";
+import AddResources from "./components/ChallengeModule/AddResources/AddResources";
 import AddChallenge from "./admin/AddChallenge";
+import AddResourcesAssignment from "./components/Assignment/AddResources/AddResources"
 import AddAssignment from "./admin/AddAssignment";
 //import AddAssignment from "./container/AssignmentModule/AddAssignment";
 import AssignmentView from "./container/AssignmentModule/AssignmentContainer/AssignmentContainer";
@@ -50,9 +51,12 @@ class App extends React.Component {
                 <Route path="/Quiz" component={QuizStarter} exact />
                 <Route path="/Quiz/start" component={Quiz} />
                 <Route path="/Challenges" component={ChallengeItem} exact />
-                <Route path="/challenges/:id" component={ChallengeView} />
+                <Route path="/challenges/resource" component={AddResources} exact />
+                <Route path="/challenges/:id" component={ChallengeView} exact/>
+               
                 <Route path="/AddChallenge" component={AddChallenge} />
                 <Route path="/AddAssignment" component={AddAssignment} />
+                <Route path="/assignments/resource" component={AddResourcesAssignment} exact />
                 <Route path="/assignments" component={AssigntmentItem} exact />
                 <Route path="/addassignment" component={AddAssignment} exact />
                 <Route

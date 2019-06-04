@@ -1,10 +1,14 @@
 import React from "react";
 import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
+import {withRouter} from "react-router";
 class AssignmentResources extends React.Component {
     state={
         questionId :this.props.questionId,
         resources:null
+    }
+    clickHandler=()=>{
+      this.props.history.push("/assignments/resource")
     }
   async componentDidMount() {
     await axios
@@ -40,7 +44,7 @@ class AssignmentResources extends React.Component {
     }
     return (
       <> <div className="d-flex">
-      <button className="btn btn-primary my-2 ml-auto">Add resource</button>
+      <button className="btn btn-primary my-2 ml-auto" onClick={this.clickHandler}>Add resource</button>
       </div>
         {resourcesList}
       </>
@@ -48,4 +52,4 @@ class AssignmentResources extends React.Component {
   }
 }
 
-export default AssignmentResources;
+export default withRouter(AssignmentResources);

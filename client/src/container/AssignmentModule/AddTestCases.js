@@ -2,12 +2,16 @@ import React from "react";
 import axios from "axios";
 import spinner from "../../UI/Spinner/Spinner";
 class AddTestCases extends React.Component {
-  state = {
-    question_id: this.props.location.state.questionId,
-    test: "",
-    result: "",
-    testCases: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      question_id: this.props.location.state.questionId,
+      test: "",
+      result: "",
+      testCases: null
+    };
+    this.actionHandler=this.actionHandler.bind(this)
+  }
   async componentDidMount() {
     await axios
       .get(
@@ -17,7 +21,7 @@ class AddTestCases extends React.Component {
       )
       .then(response => this.setState({ testCases: response.data }))
       .catch(err => console.log("Error Loading Test cases"));
-      console.log("Testcases",this.state.testCases)
+    console.log("Testcases", this.state.testCases);
   }
   loadTestCases = async () => {
     await axios
@@ -58,7 +62,8 @@ class AddTestCases extends React.Component {
             <td>{test.id}</td>
             <td>{test.test}</td>
             <td>{test.result}</td>
-          </tr>);
+          </tr>
+        );
       });
       table = (
         <table>
