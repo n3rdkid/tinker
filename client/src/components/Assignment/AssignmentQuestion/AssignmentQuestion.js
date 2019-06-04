@@ -12,21 +12,25 @@ class AssignmentQuestion extends React.Component {
     data: ""
   };
   async componentDidMount() {
-
-   await axios
-      .get(`http://localhost:5000/api/assignments/${this.props.match.params.id}`)
+    await axios
+      .get(
+        `http://localhost:5000/api/assignments/${this.props.match.params.id}`
+      )
       .then(response => {
         this.setState({
           data: response.data
         });
       })
       .catch(error => console.log(error));
-      console.log("indisde assigmentquestion")
-      console.log(this.state.data)
+    console.log("indisde assigmentquestion");
+    console.log(this.state.data);
   }
   clickHandler = e => {
     let id = e.target.id || e.target.parentElement.id;
-    this.props.history.push(`/assignments/question/${id}`,{assignmentId:this.props.match.params.id,questionId:id});
+    this.props.history.push(`/assignments/question/${id}`, {
+      assignmentId: this.props.match.params.id,
+      questionId: id
+    });
   };
 
   render() {
@@ -35,19 +39,23 @@ class AssignmentQuestion extends React.Component {
     else {
       let questionData = this.state.data;
       let questionList = [];
-      let i=1;
-      for (let question of questionData) {
-        questionList.push(
-          <div
-            className="container assignmentItem"
-            id={question.id}
-            onClick={this.clickHandler}
-          >
-           No : {i++}  <span> {question.title}</span >
-          </div>
-        );
+      let i = 1;
+      if (questionData.error) {
+        container = <p>Due date has passed!</p>;
+      } else {
+        for (let question of questionData) {
+          questionList.push(
+            <div
+              className="container assignmentItem"
+              id={question.id}
+              onClick={this.clickHandler}
+            >
+              No : {i++} <span> {question.title}</span>
+            </div>
+          );
+        }
+        container = questionList;
       }
-      container = questionList;
     }
     return (
       <div>

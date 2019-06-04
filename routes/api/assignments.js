@@ -20,7 +20,7 @@ router.get("/test", (req, res) => res.json({ hi: "You are live!" }));
 //@desc  Request all assignments
 //@access Public
 router.get("/", (req, res) => {
-  let statement = "SELECT * FROM assignments";
+  let statement = "SELECT * FROM assignments WHERE dueDate>CURRENT_TIMESTAMP";
   mysqlConnection.query(statement, (err, results) => {
     if (!err) {
       res.send(results);
@@ -35,10 +35,25 @@ router.get("/", (req, res) => {
 //@access Public
 router.get("/:id", (req, res) => {
   let id = req.params.id;
-  let statement ="SELECT * FROM assignment_question WHERE assignment_no=?"
+  let statement ="SELECT * FROM assignment_question WHERE assignment_no=?;SELECT * FROM assignments WHERE dueDate>CURRENT_TIMESTAMP;"
   mysqlConnection.query(statement, id, (err, results, fields) => {
     if (!err) {
-        res.json(results);
+      console.log("Results 0",results[0])
+      let flag=false;
+      for(let assignment of results[1])
+      {
+        console.log("id",id,"assignment",assignment.id)
+        if(id==assignment.id)
+        {flag=true;
+        break;}
+      }
+        if(flag)
+        {
+          res.json(results[0]);
+        }
+        else{
+          res.json({error:"Due date has passed"})
+        }
     }
     else{
         res.json(err);

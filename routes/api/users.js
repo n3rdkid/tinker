@@ -64,7 +64,8 @@ router.post("/signin", (req, res) => {
       if (bcrypt.compareSync(password, rows[0].user_password)) {
         //"Authorized"
         const payload = {
-          username: rows[0].username
+          username: rows[0].username,
+          role:rows[0].user_type
         };
         jwt.sign(
           payload,
