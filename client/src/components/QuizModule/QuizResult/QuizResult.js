@@ -6,6 +6,7 @@ let correctAnswerArray = [];
 let selectedAnswerArray = [];
 let answerssArray = [];
 let answersID = {};
+let score = 0;
 class QuizResult extends React.Component {
   state = {
     questions: this.props.loadedQuestions,
@@ -19,6 +20,7 @@ class QuizResult extends React.Component {
   componentDidMount() {
     this.loadAnswers();
     this.calculatePercentage();
+    this.calculateScore();
   }
   handleClick() {
     this.setState({
@@ -69,6 +71,13 @@ class QuizResult extends React.Component {
     let calcCorrectPercentage = Math.floor((counts / 5) * 100);
     this.setState({ correctPercentage: calcCorrectPercentage });
   }
+  calculateScore() {
+    for (let i = 0; i < selectedAnswerArray.length; i++) {
+      if (selectedAnswerArray[i] == correctAnswerArray[i]) {
+        score += 5;
+      }
+    }
+  }
 
   render() {
     let correctAnswer = (
@@ -101,7 +110,7 @@ class QuizResult extends React.Component {
           <h2>
             Time taken: {this.props.stoppedMinute}:{this.props.stoppedSecond}
           </h2>
-
+          <h2>Total Score: {score}</h2>
           <Button
             variant="success"
             size="lg"
