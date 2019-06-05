@@ -66,5 +66,14 @@ router.post(
     );
   }
 );
+router.post("/result", (req, res) => {
+  let { user, score } = req.body;
+  let statement = "INSERT INTO quiz_result (user,score) VALUES (?,?)";
+  mysqlConnection.query(statement, [user, score], (err, results, fields) => {
+    if (!err) {
+      res.json(results);
+    } else res.json(err);
+  });
+});
 
 module.exports = router;

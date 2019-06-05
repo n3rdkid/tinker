@@ -2,35 +2,56 @@ import React from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Button from "react-bootstrap/Button";
 import QuizAnswerList from "./QuizAnswerList";
-
+let correctAnswerArray = [];
+let selectedAnswerArray = [];
+let answerssArray = [];
+let answersID = {};
+let score = 0;
 class QuizResult extends React.Component {
   state = {
     questions: this.props.loadedQuestions,
     answers: [],
     numOfCorrectAnswer: 0,
     correctPercentage: 0,
-    quizIdArray: []
+    quizIdArray: [],
+    clicked: false
   };
 
   componentDidMount() {
     this.loadAnswers();
     this.calculatePercentage();
+    this.calculateScore();
+  }
+  handleClick() {
+    this.setState({
+      clicked: true
+    });
   }
 
   loadAnswers() {
+    // console.log([this.state.questions]);
+    answerssArray = this.props.answersArray;
     let newAnswersArray = {};
+
     let quiz_id = [];
-    this.props.answersArray.forEach(ans => {
-      ans.question.forEach(que => {
+
+    console.log([answerssArray]);
+    answerssArray.map(ans => {
+      ans.question.map(que => {
         if (!newAnswersArray[que.quiz_id]) {
           newAnswersArray[que.quiz_id] = [que.answer];
+          answersID[que.quiz_id] = [que.id];
           quiz_id.push(que.quiz_id);
         } else {
           newAnswersArray[que.quiz_id].push(que.answer);
+          answersID[que.quiz_id].push(que.id);
           quiz_id.push(que.quiz_id);
         }
       });
     });
+
+    //  console.log([newAnswersArray]);
+
     let reducedQuiz_id = [...new Set(quiz_id)];
     this.setState({ quizIdArray: reducedQuiz_id });
     this.setState({ answers: newAnswersArray });
@@ -38,8 +59,9 @@ class QuizResult extends React.Component {
 
   calculatePercentage() {
     let counts = 0;
-    let selectedAnswerArray = this.props.selectedAnswerIdArray;
-    let correctAnswerArray = this.props.correctAnswerIdArray;
+    selectedAnswerArray = this.props.selectedAnswerIdArray;
+    correctAnswerArray = this.props.correctAnswerIdArray;
+
     for (let i = 0; i < selectedAnswerArray.length; i++) {
       if (selectedAnswerArray[i] == correctAnswerArray[i]) {
         counts++;
@@ -48,6 +70,13 @@ class QuizResult extends React.Component {
     this.setState({ numOfCorrectAnswer: counts });
     let calcCorrectPercentage = Math.floor((counts / 5) * 100);
     this.setState({ correctPercentage: calcCorrectPercentage });
+  }
+  calculateScore() {
+    for (let i = 0; i < selectedAnswerArray.length; i++) {
+      if (selectedAnswerArray[i] == correctAnswerArray[i]) {
+        score += 5;
+      }
+    }
   }
 
   render() {
@@ -81,24 +110,29 @@ class QuizResult extends React.Component {
           <h2>
             Time taken: {this.props.stoppedMinute}:{this.props.stoppedSecond}
           </h2>
-
-          <Button variant="success" size="lg" block>
+          <h2>Total Score: {score}</h2>
+          <Button
+            variant="success"
+            size="lg"
+            block
+            onClick={this.handleClick.bind(this)}
+          >
             Check Answers
           </Button>
+          {this.state.clicked ? (
+            <QuizAnswerList
+              selectedAnswerArray={this.props.selectedAnswerIdArray}
+              correctAnswerArray={this.props.correctAnswerIdArray}
+              quizIdArray={this.state.quizIdArray}
+              answers={this.state.answers}
+              questions={this.state.questions}
+              answersID={answersID}
+            />
+          ) : null}
         </div>
       </div>
     );
-    return (
-      <div>
-        {correctAnswer}
-
-        <QuizAnswerList
-          quizIdArray={this.state.quizIdArray}
-          answers={this.state.answers}
-          questions={this.state.questions}
-        />
-      </div>
-    );
+    return <div>{correctAnswer}</div>;
   }
 }
 export default QuizResult;

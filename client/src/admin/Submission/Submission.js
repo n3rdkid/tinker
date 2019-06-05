@@ -10,6 +10,7 @@ class Submission extends React.Component {
     super(props);
     this.state = {
       submissionId: this.props.match.params.id,
+      user:null,
       submissionInfo: null,
       testCases: null
     };
@@ -26,6 +27,7 @@ class Submission extends React.Component {
           {
             submissionInfo: response.data.submission,
             testCases: response.data.testCases
+            ,user:response.data.username
           },
           () => {
               console.log("State is",this.state)
@@ -104,6 +106,7 @@ class Submission extends React.Component {
     return (
       <>
         <Container>
+            Submitted by :{this.state.user}
           <Row>
             <Col md="8">{codeMirror}</Col>
 

@@ -52,9 +52,9 @@ class QuizQuestion extends React.Component {
     let score = this.state.score;
     let nextQuestion = this.state.nextQuestion;
 
-    if (e.target.id == this.state.correctAnswer) {
-      score += 5;
-    }
+    // if (e.target.id == this.state.correctAnswer) {
+    //   score += 5;
+    // }
 
     nextQuestion++;
 

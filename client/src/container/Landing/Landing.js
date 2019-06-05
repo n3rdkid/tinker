@@ -10,11 +10,11 @@ class Landing extends React.Component {
     script.className = "external-script";
     script.type = "text/js";
     document.body.appendChild(script);
-    const script1 = document.createElement("script");
-    script1.src = "../../UI/Particles/main.js";
-    script1.type = "text/js";
-    script.className = "external-script";
-    document.querySelector(".particles").appendChild(script1);
+    const script2 = document.createElement("script");
+    script2.src = "../../UI/Particles/main.js";
+    script2.className = "external-script";
+    script2.type = "text/js";
+    document.body.appendChild(script2);
   }
   render() {
     return (
@@ -22,7 +22,8 @@ class Landing extends React.Component {
         <div className="info" id="infoId" />
         <canvas id="myCanvas" />
         <footer id="footer" />
-
+      </div>
+{/* 
         <Jumbotron md="6">
           <Row>
             <Col md="6">
@@ -35,8 +36,8 @@ class Landing extends React.Component {
               </p>
             </Col>
           </Row>
-        </Jumbotron>
-      </div>
+        </Jumbotron> */}
+    
     );
   }
 }
