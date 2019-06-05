@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import QuizAnswerList from "./QuizAnswerList";
 let correctAnswerArray = [];
 let selectedAnswerArray = [];
+let answerssArray = [];
+let answersID = {};
 class QuizResult extends React.Component {
   state = {
     questions: this.props.loadedQuestions,
@@ -19,21 +21,29 @@ class QuizResult extends React.Component {
   }
 
   loadAnswers() {
+    // console.log([this.state.questions]);
+    answerssArray = this.props.answersArray;
     let newAnswersArray = {};
+
     let quiz_id = [];
-    console.log({ answersArray: this.props.answersArray });
-    this.props.answersArray.forEach(ans => {
-      ans.question.forEach(que => {
+
+    console.log([answerssArray]);
+    answerssArray.map(ans => {
+      ans.question.map(que => {
         if (!newAnswersArray[que.quiz_id]) {
           newAnswersArray[que.quiz_id] = [que.answer];
+          answersID[que.quiz_id] = [que.id];
           quiz_id.push(que.quiz_id);
         } else {
           newAnswersArray[que.quiz_id].push(que.answer);
+          answersID[que.quiz_id].push(que.id);
           quiz_id.push(que.quiz_id);
         }
       });
     });
-    console.log(newAnswersArray);
+
+    //  console.log([newAnswersArray]);
+
     let reducedQuiz_id = [...new Set(quiz_id)];
     this.setState({ quizIdArray: reducedQuiz_id });
     this.setState({ answers: newAnswersArray });
@@ -98,10 +108,11 @@ class QuizResult extends React.Component {
 
         <QuizAnswerList
           selectedAnswerArray={this.props.selectedAnswerIdArray}
-          correctAnswerArray={this.props.correctAnswerArray}
+          correctAnswerArray={this.props.correctAnswerIdArray}
           quizIdArray={this.state.quizIdArray}
           answers={this.state.answers}
           questions={this.state.questions}
+          answersID={answersID}
         />
       </div>
     );
