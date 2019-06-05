@@ -10,10 +10,9 @@ import ChallengeItem from "./components/ChallengeModule/ChallengeItem/ChallengeI
 import ChallengeView from "./container/ChallengeModule/ChallengeView/ChallengeView";
 import AddResources from "./components/ChallengeModule/AddResources/AddResources";
 import AddChallenge from "./admin/AddChallenge";
-import AddResourcesAssignment from "./components/Assignment/AddResources/AddResources"
+import AddResourcesAssignment from "./components/Assignment/AddResources/AddResources";
 import AddAssignment from "./admin/AddAssignment";
 //import AddAssignment from "./container/AssignmentModule/AddAssignment";
-import AssignmentView from "./container/AssignmentModule/AssignmentContainer/AssignmentContainer";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
@@ -23,7 +22,13 @@ import AssigntmentItem from "./components/Assignment/AssignmentItem/AssignmentIt
 import AssignmentQuestion from "./components/Assignment/AssignmentQuestion/AssignmentQuestion";
 import AssignmentContainer from "./container/AssignmentModule/AssignmentContainer/AssignmentContainer";
 import AddTestCases from "./container/AssignmentModule/AddTestCases";
+import Dashboard from "./UI/dashboard/Dashboard";
 
+//Admin imports
+import AdminAssignmentList from "./admin/AssignmentList/AdminAssignmentList";
+import QuestionList from "./admin/QuestionList/QuestionList";
+import AdminSubmissions from "./admin/SubmissionList/AdminSubmissions";
+import Submission from "./admin/Submission/Submission";
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -46,17 +51,25 @@ class App extends React.Component {
             <div>
               <Switch>
                 <Route path="/" component={Landing} exact />
-                <Route path="/Signin" component={SignIn} />
-                <Route path="/Signup" component={SignUp} />
+                <Route path="/dashboard" component={Dashboard} exact />
+                <Route path="/Signin" component={SignIn} exact />
+                <Route path="/Signup" component={SignUp} exact />
                 <Route path="/Quiz" component={QuizStarter} exact />
                 <Route path="/Quiz/start" component={Quiz} />
                 <Route path="/Challenges" component={ChallengeItem} exact />
-                <Route path="/challenges/resource" component={AddResources} exact />
-                <Route path="/challenges/:id" component={ChallengeView} exact/>
-               
+                <Route
+                  path="/challenges/resource"
+                  component={AddResources}
+                  exact
+                />
+                <Route path="/challenges/:id" component={ChallengeView} exact />
                 <Route path="/AddChallenge" component={AddChallenge} />
                 <Route path="/AddAssignment" component={AddAssignment} />
-                <Route path="/assignments/resource" component={AddResourcesAssignment} exact />
+                <Route
+                  path="/assignments/resource"
+                  component={AddResourcesAssignment}
+                  exact
+                />
                 <Route path="/assignments" component={AssigntmentItem} exact />
                 <Route path="/addassignment" component={AddAssignment} exact />
                 <Route
@@ -68,6 +81,27 @@ class App extends React.Component {
                 <Route
                   path="/assignments/question/:id"
                   component={AssignmentContainer}
+                  exact
+                />
+
+                <Route
+                  path="/admin/assignments"
+                  component={AdminAssignmentList}
+                  exact
+                />
+                  <Route
+                  path="/admin/assignments/:id"
+                  component={QuestionList}
+                  exact
+                />
+                 <Route
+                  path="/admin/question/:id"
+                  component={AdminSubmissions}
+                  exact
+                />
+                       <Route
+                  path="/admin/solution/:id"
+                  component={Submission}
                   exact
                 />
               </Switch>

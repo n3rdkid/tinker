@@ -32,7 +32,13 @@ class Navigation extends React.Component {
         </Button>
       </Form>
     );
-
+    let assignmentsLink = <p />;
+    if ((this.props.auth.user.role = "teacher"))
+      assignmentsLink = (
+        <NavLink className="nav-link" to="/admin/assignments">
+          Assignments
+        </NavLink>
+      );
     return (
       <Container fluid>
         <Navbar bg="light" expand="lg">
@@ -49,20 +55,7 @@ class Navigation extends React.Component {
               <NavLink className="nav-link" to="/Challenges">
                 Challenges
               </NavLink>
-              <NavLink className="nav-link" to="/assignments">
-                Assignments
-              </NavLink>
-              {/* <NavDropdown title="Add" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/AddChallenge">
-                  Add Challenge
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/AddResources">
-                  Add Resources
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/Assignment">
-                  Add Assignment
-                </NavDropdown.Item>
-              </NavDropdown> */}
+              {assignmentsLink}
             </Nav>
             {isAuthenticated ? authLinks : guestLinks}
           </Navbar.Collapse>
