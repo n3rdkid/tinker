@@ -15,6 +15,8 @@ class QuizAnswerList extends React.Component {
     });
   }
   render() {
+    console.log("Correct ANswer Array: ", this.props.correctAnswerIdArray);
+    console.log("Selected AnswerArray: ", this.props.selectedAnswerIdArray);
     answers = this.props.answers;
     quizIds = this.props.quizIdArray;
     questions = this.props.questions;

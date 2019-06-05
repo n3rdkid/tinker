@@ -2,7 +2,8 @@ import React from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Button from "react-bootstrap/Button";
 import QuizAnswerList from "./QuizAnswerList";
-
+let correctAnswerArray = [];
+let selectedAnswerArray = [];
 class QuizResult extends React.Component {
   state = {
     questions: this.props.loadedQuestions,
@@ -20,6 +21,7 @@ class QuizResult extends React.Component {
   loadAnswers() {
     let newAnswersArray = {};
     let quiz_id = [];
+    console.log({ answersArray: this.props.answersArray });
     this.props.answersArray.forEach(ans => {
       ans.question.forEach(que => {
         if (!newAnswersArray[que.quiz_id]) {
@@ -31,6 +33,7 @@ class QuizResult extends React.Component {
         }
       });
     });
+    console.log(newAnswersArray);
     let reducedQuiz_id = [...new Set(quiz_id)];
     this.setState({ quizIdArray: reducedQuiz_id });
     this.setState({ answers: newAnswersArray });
@@ -38,8 +41,9 @@ class QuizResult extends React.Component {
 
   calculatePercentage() {
     let counts = 0;
-    let selectedAnswerArray = this.props.selectedAnswerIdArray;
-    let correctAnswerArray = this.props.correctAnswerIdArray;
+    selectedAnswerArray = this.props.selectedAnswerIdArray;
+    correctAnswerArray = this.props.correctAnswerIdArray;
+
     for (let i = 0; i < selectedAnswerArray.length; i++) {
       if (selectedAnswerArray[i] == correctAnswerArray[i]) {
         counts++;
@@ -93,6 +97,8 @@ class QuizResult extends React.Component {
         {correctAnswer}
 
         <QuizAnswerList
+          selectedAnswerArray={this.props.selectedAnswerIdArray}
+          correctAnswerArray={this.props.correctAnswerArray}
           quizIdArray={this.state.quizIdArray}
           answers={this.state.answers}
           questions={this.state.questions}
