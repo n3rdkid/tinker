@@ -105,7 +105,6 @@ class QuizResult extends React.Component {
     return (
       <div>
         {correctAnswer}
-
         <QuizAnswerList
           selectedAnswerArray={this.props.selectedAnswerIdArray}
           correctAnswerArray={this.props.correctAnswerIdArray}

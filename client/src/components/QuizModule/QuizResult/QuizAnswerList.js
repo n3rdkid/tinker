@@ -1,5 +1,6 @@
 import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
+import "./QuestionAnswerList.css";
 var answers = [];
 var quizIds = [];
 var questions = [];
@@ -35,8 +36,10 @@ class QuizAnswerList extends React.Component {
       var questionList = (
         <div>
           <ListGroup.Item as="li" />
-          <ListGroup.Item as="li" variant="warning">
-            {questionListWithID[quizId]}
+          <ListGroup.Item as="li" />
+          <ListGroup.Item as="li" variant="dark" />
+          <ListGroup.Item class="question" as="li" variant="dark">
+            {index + 1}. {questionListWithID[quizId]}
           </ListGroup.Item>
         </div>
       );
