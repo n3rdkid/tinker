@@ -89,6 +89,7 @@ class App extends React.Component {
                   component={AdminAssignmentList}
                   exact
                 />
+              
                   <Route
                   path="/admin/assignments/:id"
                   component={QuestionList}
@@ -102,6 +103,12 @@ class App extends React.Component {
                        <Route
                   path="/admin/solution/:id"
                   component={Submission}
+                  exact
+                />
+                {/* POST  */}
+                <Route
+                  path="/admin/add/assignments"
+                  component={AddAssignment}
                   exact
                 />
               </Switch>

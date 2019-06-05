@@ -29,6 +29,18 @@ router.get("/", (req, res) => {
     }
   });
 });
+router.post("/", (req, res) => {
+ 
+  let dueDate=req.date; console.log(dueDate)
+  let statement = "INSERT INTO ASSIGNMENTS(dueDate)VALUES ?";
+  mysqlConnection.query(statement,dueDate, (err, results) => {
+    if (!err) {
+      res.send(results);
+    } else {
+      return res.status(400).json({ error: "No such challenge" });
+    }
+  });
+});
 //@route GET api/assignments/:id
 //@access Public
 //@route GET api/assignments/:id
