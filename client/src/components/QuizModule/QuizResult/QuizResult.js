@@ -12,12 +12,18 @@ class QuizResult extends React.Component {
     answers: [],
     numOfCorrectAnswer: 0,
     correctPercentage: 0,
-    quizIdArray: []
+    quizIdArray: [],
+    clicked: false
   };
 
   componentDidMount() {
     this.loadAnswers();
     this.calculatePercentage();
+  }
+  handleClick() {
+    this.setState({
+      clicked: true
+    });
   }
 
   loadAnswers() {
@@ -96,25 +102,28 @@ class QuizResult extends React.Component {
             Time taken: {this.props.stoppedMinute}:{this.props.stoppedSecond}
           </h2>
 
-          <Button variant="success" size="lg" block>
+          <Button
+            variant="success"
+            size="lg"
+            block
+            onClick={this.handleClick.bind(this)}
+          >
             Check Answers
           </Button>
+          {this.state.clicked ? (
+            <QuizAnswerList
+              selectedAnswerArray={this.props.selectedAnswerIdArray}
+              correctAnswerArray={this.props.correctAnswerIdArray}
+              quizIdArray={this.state.quizIdArray}
+              answers={this.state.answers}
+              questions={this.state.questions}
+              answersID={answersID}
+            />
+          ) : null}
         </div>
       </div>
     );
-    return (
-      <div>
-        {correctAnswer}
-        <QuizAnswerList
-          selectedAnswerArray={this.props.selectedAnswerIdArray}
-          correctAnswerArray={this.props.correctAnswerIdArray}
-          quizIdArray={this.state.quizIdArray}
-          answers={this.state.answers}
-          questions={this.state.questions}
-          answersID={answersID}
-        />
-      </div>
-    );
+    return <div>{correctAnswer}</div>;
   }
 }
 export default QuizResult;

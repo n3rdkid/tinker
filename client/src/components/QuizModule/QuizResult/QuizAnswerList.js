@@ -38,7 +38,7 @@ class QuizAnswerList extends React.Component {
           <ListGroup.Item as="li" />
           <ListGroup.Item as="li" />
           <ListGroup.Item as="li" variant="dark" />
-          <ListGroup.Item class="question" as="li" variant="dark">
+          <ListGroup.Item className="question" as="li" variant="dark">
             {index + 1}. {questionListWithID[quizId]}
           </ListGroup.Item>
         </div>
