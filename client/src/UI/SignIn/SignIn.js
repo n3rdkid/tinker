@@ -18,25 +18,23 @@ class SignIn extends React.Component {
     this.props.loginUser(this.state);
   };
   componentDidMount() {
-    console.log("Role", this.props.auth.user.role);
-    if (
-      this.props.auth.isAuthenticated &&
-      this.props.auth.user.role === "teacher"
-    ) {
-      console.log("Redirecting to Dashboard")
+    console.log("Role",this.props.auth.user.role)
+    if (this.props.auth.isAuthenticated&&this.props.auth.user.role==="teacher") {
       this.props.history.push("/dashboard");
+    }
+    else if(this.props.auth.isAuthenticated){
+      this.props.history.push("/challenges")
     }
   }
   changeState = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
   componentWillReceiveProps(nextProps) {
-    console.log("Next props",this.nextProps);
-     if (this.props.auth.isAuthenticated&&this.props.auth.user.role==="teacher") {
+     if (this.nextProps.auth.isAuthenticated&&this.nextProps.auth.user.role==="teacher") {
       this.props.history.push("/dashboard");
     }
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/challenges");
+    else if(this.nextProps.auth.isAuthenticated){
+      this.props.history.push("/challenges")
     }
     if (nextProps.errors) this.setState({ errors: nextProps.errors });
   }
