@@ -1,14 +1,16 @@
 import React from "react";
 import axios from "axios";
+import { Container, Row, Col } from "react-bootstrap";
 class AddAssignment extends React.Component {
   state = {
-    dueDate:null    
+    dueDate: ''
   };
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    console.log("Sengding")
+   let date=new Date(this.state.dueDate).toISOString().slice(0, 19).replace('T', ' ')
     axios
-      .post(`http://localhost:5000/api/admin/assignments`, this.state)
+      .post(`http://localhost:5000/api/assignments`,{dueDate:date})
       .then(() => console.log("Assignment added sucessfully"))
       .catch(err => console.log(err.response.data));
   };
@@ -18,21 +20,27 @@ class AddAssignment extends React.Component {
   };
   render() {
     return (
-      <div class="card">
-        <form>
-          <input
-            className="form-control"
-            name="dueDate"
-            placeholder="Due Date"
-            min={new Date().getDate}
-            type="date"
-            onChange={e => this.changeState(e)}
-            value={this.state.dueDate}
-          />
-       <br/>
-          <button onClick={e => this.onSubmit(e)}>Submit</button>
-        </form>
-      </div>
+      <Container>
+        <Row>
+          <Col md='6'>
+            <div className="card mx-auto">
+              <form>
+                <input
+                  className="form-control"
+                  name="dueDate"
+                  placeholder="Due Date"
+                  min={new Date().getDate()}
+                  type="date"
+                  onChange={e => this.changeState(e)}
+                  value={this.state.dueDate}
+                />
+                <br />
+                <button onClick={e => this.onSubmit(e)}>Submit</button>
+              </form>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

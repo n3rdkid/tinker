@@ -32,13 +32,17 @@ class Navigation extends React.Component {
         </Button>
       </Form>
     );
-    let assignmentsLink = <p />;
+    let assignmentsLink =     <NavLink className="nav-link" to="/assignments">
+    Assignments
+  </NavLink>;
     if ((this.props.auth.user.role === "teacher"))
       assignmentsLink = (
         <NavLink className="nav-link" to="/admin/assignments">
           Assignments
         </NavLink>
       );
+  
+
     return (
       <Container fluid>
         <Navbar bg="light" expand="lg">

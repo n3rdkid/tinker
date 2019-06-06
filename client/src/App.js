@@ -11,7 +11,7 @@ import ChallengeView from "./container/ChallengeModule/ChallengeView/ChallengeVi
 import AddResources from "./components/ChallengeModule/AddResources/AddResources";
 import AddChallenge from "./admin/AddChallenge";
 import AddResourcesAssignment from "./components/Assignment/AddResources/AddResources";
-import AddAssignment from "./admin/AddAssignment";
+import AddAssignment from "./admin/AddAssignments/AddAssignments";
 //import AddAssignment from "./container/AssignmentModule/AddAssignment";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -64,7 +64,7 @@ class App extends React.Component {
                 />
                 <Route path="/challenges/:id" component={ChallengeView} exact />
                 <Route path="/AddChallenge" component={AddChallenge} />
-                <Route path="/AddAssignment" component={AddAssignment} />
+               
                 <Route
                   path="/assignments/resource"
                   component={AddResourcesAssignment}
@@ -89,7 +89,11 @@ class App extends React.Component {
                   component={AdminAssignmentList}
                   exact
                 />
-              
+                        <Route
+                  path="/admin/add"
+                  component={AddAssignment}
+                  exact
+                />
                   <Route
                   path="/admin/assignments/:id"
                   component={QuestionList}
@@ -106,11 +110,7 @@ class App extends React.Component {
                   exact
                 />
                 {/* POST  */}
-                <Route
-                  path="/admin/add/assignments"
-                  component={AddAssignment}
-                  exact
-                />
+      
               </Switch>
             </div>
           </div>

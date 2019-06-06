@@ -31,18 +31,19 @@ router.get("/", (req, res) => {
 });
 router.post("/", (req, res) => {
  
-  let dueDate=req.date; console.log(dueDate)
-  let statement = "INSERT INTO ASSIGNMENTS(dueDate)VALUES ?";
+  console.dir(req.body);
+ 
+  let dueDate=req.body.dueDate; console.log(req.body.dueDate)
+  let statement = "INSERT INTO assignments (dueDate) VALUES (?);";
   mysqlConnection.query(statement,dueDate, (err, results) => {
     if (!err) {
       res.send(results);
     } else {
-      return res.status(400).json({ error: "No such challenge" });
+      return res.status(400).json({ error: err });
     }
   });
 });
-//@route GET api/assignments/:id
-//@access Public
+
 //@route GET api/assignments/:id
 //@access Public
 router.get("/:id", (req, res) => {

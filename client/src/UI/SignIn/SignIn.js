@@ -30,11 +30,8 @@ class SignIn extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   componentWillReceiveProps(nextProps) {
-     if (this.nextProps.auth.isAuthenticated&&this.nextProps.auth.user.role==="teacher") {
-      this.props.history.push("/dashboard");
-    }
-    else if(this.nextProps.auth.isAuthenticated){
-      this.props.history.push("/challenges")
+       if(this.nextProps.auth.isAuthenticated){
+      this.props.history.push("/")
     }
     if (nextProps.errors) this.setState({ errors: nextProps.errors });
   }

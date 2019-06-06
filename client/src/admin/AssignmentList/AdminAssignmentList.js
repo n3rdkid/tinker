@@ -30,7 +30,7 @@ class AdminAssignmentList extends React.Component {
   };
   addHandler=()=>
   {
-    this.props.history.push("admin/add/assignments");
+    this.props.history.push("/admin/add");
   }
 
   render() {
