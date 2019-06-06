@@ -6,7 +6,7 @@ class AddResources extends React.Component {
     title: "",
     link: "",
     description: "",
-    challenge_id: ""
+    challenge_id: this.props.location.state.questionId
   };
   onSubmit = e => {
     e.preventDefault();
@@ -20,6 +20,7 @@ class AddResources extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   render() {
+    console.log("Props",this.props)
     return (
       <Container>
         <Row>

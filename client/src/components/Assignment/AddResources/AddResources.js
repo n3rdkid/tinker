@@ -5,7 +5,7 @@ class AddResources extends React.Component {
     title: "",
     link: "",
     description: "",
-    question_id: ""
+    question_id: this.props.location.state.questionId
   };
   onSubmit = e => {
     e.preventDefault();

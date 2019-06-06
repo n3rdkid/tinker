@@ -8,7 +8,7 @@ class AssignmentResources extends React.Component {
         resources:null
     }
     clickHandler=()=>{
-      this.props.history.push("/assignments/resource")
+      this.props.history.push("/assignments/resource",{questionId:this.state.questionId})
     }
   async componentDidMount() {
     await axios

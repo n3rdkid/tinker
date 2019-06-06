@@ -17,7 +17,7 @@ class ChallengeResources extends React.Component {
       .catch(error => console.log(error));
   }
   clickHandler=()=>{
-    this.props.history.push("/challenges/resource")
+    this.props.history.push("/challenges/resource",{questionId:this.state.questionId})
   }
 
   render() {
