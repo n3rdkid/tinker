@@ -38,7 +38,7 @@ class Navigation extends React.Component {
     if ((this.props.auth.user.role === "teacher"))
       assignmentsLink = (
         <NavLink className="nav-link" to="/admin/assignments">
-          Assignments
+        Manage Assignments
         </NavLink>
       );
   

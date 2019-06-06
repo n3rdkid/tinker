@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Container, Row, Col } from "react-bootstrap";
 class AddResources extends React.Component {
   state = {
     title: "",
@@ -20,42 +21,51 @@ class AddResources extends React.Component {
   };
   render() {
     return (
-      <div>
-        <input
-          name="challenge_id"
-          placeholder="Challenge_id"
-          size="150"
-          type="text"
-          onChange={e => this.changeState(e)}
-          value={this.state.challenge_id}
-        />
-        <input
-          name="title"
-          placeholder="Title.."
-          size="150"
-          type="text"
-          onChange={e => this.changeState(e)}
-          value={this.state.title}
-        />
-        <input
-          name="link"
-          placeholder="Link.."
-          size="150"
-          type="text"
-          onChange={e => this.changeState(e)}
-          value={this.state.link}
-        />
-        <input
-          name="description"
-          placeholder="Description.."
-          size="100"
-          type="text"
-          onChange={e => this.changeState(e)}
-          value={this.state.description}
-        />
-        <br />
-        <button onClick={e => this.onSubmit(e)}>Submit</button>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <div className="card col-md-6 mx-auto">
+              <label>Challenge Id</label>
+              <input
+                name="challenge_id"
+                placeholder="Challenge_id"
+                size="150"
+                type="text"
+                onChange={e => this.changeState(e)}
+                value={this.state.challenge_id}
+              />
+              <label>Title</label>
+              <input
+                name="title"
+                placeholder="Title.."
+                size="150"
+                type="text"
+                onChange={e => this.changeState(e)}
+                value={this.state.title}
+              />
+              <label>Link</label>
+              <input
+                name="link"
+                placeholder="Link.."
+                size="150"
+                type="text"
+                onChange={e => this.changeState(e)}
+                value={this.state.link}
+              />
+              <label>Description</label>
+              <input
+                name="description"
+                placeholder="Description.."
+                size="100"
+                type="text"
+                onChange={e => this.changeState(e)}
+                value={this.state.description}
+              />
+              <button onClick={e => this.onSubmit(e)}>Submit</button>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

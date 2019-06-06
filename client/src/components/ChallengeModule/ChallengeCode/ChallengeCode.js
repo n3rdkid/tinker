@@ -84,7 +84,8 @@ class ChallengeCode extends React.Component {
     axios
       .post("http://localhost:5000/api/challenges", submission)
       .then(response => {
-        this.props.history.push(`/results`, { timeTaken, questionId });
+        console.log(response)
+        // this.props.history.push(`/results`, { timeTaken, questionId });
       })
       .catch(error => console.log(error));
   }

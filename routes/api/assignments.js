@@ -195,7 +195,7 @@ router.post("/question", (req, res) => {
     [title, instruction, starter, label,assignment_no],
     (err, results, fields) => {
       if (!err) {
-        res.send(resu);
+        res.send(results);
       } else {
         return res.status(400).json({ error: "Failed to insert resources" });
       }
