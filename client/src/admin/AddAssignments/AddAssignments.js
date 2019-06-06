@@ -11,14 +11,17 @@ class AddAssignment extends React.Component {
    let date=new Date(this.state.dueDate).toISOString().slice(0, 19).replace('T', ' ')
     axios
       .post(`http://localhost:5000/api/assignments`,{dueDate:date})
-      .then(() => console.log("Assignment added sucessfully"))
-      .catch(err => console.log(err.response.data));
+      .then((resp) => console.log("Assignment added sucessfully",resp.data.insertId))
+      .catch(err => console.log(err.response));
   };
   changeState = e => {
     console.log(e.target.name + "+" + e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   };
   render() {
+    let utc = new Date().toJSON().slice(0,10);
+    let minDate=new Date().getDate();
+    console.log("Min date",utc)
     return (
       <Container>
         <Row>
@@ -29,7 +32,7 @@ class AddAssignment extends React.Component {
                   className="form-control"
                   name="dueDate"
                   placeholder="Due Date"
-                  min={new Date().getDate()}
+                  min={utc}
                   type="date"
                   onChange={e => this.changeState(e)}
                   value={this.state.dueDate}

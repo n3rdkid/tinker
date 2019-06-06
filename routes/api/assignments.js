@@ -37,9 +37,10 @@ router.post("/", (req, res) => {
   let statement = "INSERT INTO assignments (dueDate) VALUES (?);";
   mysqlConnection.query(statement,dueDate, (err, results) => {
     if (!err) {
-      res.send(results);
+  
+      res.json(results);
     } else {
-      return res.status(400).json({ error: err });
+      res.json({ error: err });
     }
   });
 });
