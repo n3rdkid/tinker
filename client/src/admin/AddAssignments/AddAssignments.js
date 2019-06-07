@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
+import AddTestCases from "../AddTestCases/AddTestCases";
 class AddAssignment extends React.Component {
   state = {
     dueDate: new Date(),
@@ -8,7 +9,9 @@ class AddAssignment extends React.Component {
     title: "",
     instruction: "",
     starter: "",
-    label: ""
+    label: "",
+    question_no:"",
+    displayTestCases:false
   };
   onSubmit = e => {
     e.preventDefault();
@@ -29,19 +32,25 @@ class AddAssignment extends React.Component {
       })
       .catch(err => console.log(err.response));
   };
-  onAddQuestion = e => {
+  onAddQuestion = async e => {
     e.preventDefault();
     console.log(this.state);
-    axios
+  await  axios
       .post(`http://localhost:5000/api/assignments/question`, this.state)
-      .then(() => console.log("Resource added sucessfully"))
-      .catch(err => console.log(err.response.data));
+      .then(res => {
+       let question_no=res.data.insertId
+        this.setState({...this.state,question_no:""+question_no,displayTestCases:true});
+      })
+      .catch(err => console.log(err.response));
   };
   changeState = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
+    let displayTestCases="";
+    if(this.state.displayTestCases)
+    displayTestCases=<AddTestCases question_no={this.state.question_no}/>
     let display = (
       <div class="card">
         Assignment No :
@@ -149,6 +158,9 @@ class AddAssignment extends React.Component {
         </Row>
         <Row>
           <Col>{display}</Col>
+        </Row>
+        <Row>
+          <Col>{displayTestCases}</Col>
         </Row>
       </Container>
     );
