@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2019 at 11:12 AM
+-- Generation Time: Jun 07, 2019 at 06:06 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.1.12
 
@@ -96,15 +96,10 @@ CREATE TABLE `assignments` (
 --
 
 INSERT INTO `assignments` (`id`, `dueDate`) VALUES
-(1, '2019-06-02 11:54:09'),
-(2, '2019-06-03 11:54:09'),
-(3, '2019-06-04 11:54:09'),
-(4, '2019-06-05 11:54:10'),
-(5, '2019-06-06 11:54:10'),
-(6, '2019-06-07 11:54:10'),
-(7, '2019-06-08 11:54:10'),
-(8, '2019-06-09 11:54:10'),
-(9, '2019-06-10 11:54:10');
+(1, '2019-06-06 21:08:50'),
+(2, '2019-06-13 18:15:00'),
+(3, '2019-06-17 21:50:05'),
+(4, '2019-06-27 18:15:00');
 
 -- --------------------------------------------------------
 
@@ -126,14 +121,15 @@ CREATE TABLE `assignment_question` (
 --
 
 INSERT INTO `assignment_question` (`id`, `title`, `instruction`, `starter`, `label`, `assignment_no`) VALUES
-(1, 'Assignment 1 Question 1', 'Instruction For Assignment 1', 'function hello(){\nreturn \"Hello World!\"\n}', 'condition', 1),
-(2, 'Assignment 2  Question 1', 'Instruction For Assignment 2', 'function demo(){\nreturn \"Hello World!\"\n}', 'condition', 2),
-(3, 'Assignment 3 Question 1', 'Instruction For Assignment 3', 'function demo(){\nreturn \"Hello World!\"\n}', 'condition', 3),
-(4, 'Assignment 4 Question 1', 'Instruction For Assignment 4', 'function demo(){\nreturn \"Hello World!\"\n}', 'condition', 4),
-(5, 'Assignment 5 Question 1', 'Instruction For Assignment 5', 'function demo(){\nreturn \"Hello World!\"\n}', 'condition', 5),
-(6, 'Assignment 1 Question 3', 'Instruction For Assignment 1 Q 3 ', 'function demo(){\nreturn \"Hello World!\"\n}', 'condition', 1),
-(7, 'Assignment 1 Question 4', 'Instruction For Assignment 1 Q 4', 'function demo(){\nreturn \"Hello World!\"\n}', 'condition', 1),
-(8, 'Assignment 1 Question 2', 'Instruction For Assignment 1 Q 2 ', 'function demo(){\nreturn \"Hello World!\"\n}', 'condition', 1);
+(1, 'Positive Test', 'Return true for positive and false for negative', 'function positive(n)\n{\n	return true;\n}\n', 'condition', 1),
+(2, 'Divisible By Five', 'Return true for positive and false for negative', 'function divisibleByFive(n)\n{\n	return true;\n}\n', 'condition', 1),
+(3, 'Remainder Reminder', 'Return the remainder that results when a is divided by b.', 'function remainder(a,b)\n{\n    let remainder; \n    return remainder ;\n}', 'function', 2),
+(4, 'Palindrome Malindrome', 'Return true if a number is palindrome false otherwise', ' function isPalindrome(n)\n{\n	return true;\n}\n', 'condition', 2),
+(5, 'Traverse Reverse', 'Return true if a number is reverse false otherwise', 'function isReverse(a,b)\n{\n	return true;\n}', 'function', 3),
+(6, 'Smallest Common Multiple', 'Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.\n\nThe range will be an array of two numbers that will not necessarily be in numerical order.\n\nFor example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is also evenly divisible by all numbers between 1 and 3. The answer here would be 6.', 'function smallestCommons(arr) {\n  return arr;\n}', 'function', 4),
+(7, 'Sum All Primes', 'Sum all the prime numbers up to and including the provided number.\n\nA prime number is defined as a number greater than one and having only two divisors, one and itself. For example, 2 is a prime number because it\'s only divisible by one and two.\n\nThe provided number may not be a prime.', 'function sumPrimes(num) {\n  return num;\n}', 'function', 4),
+(8, 'Sum All Odd Fibonacci Numbers', 'Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.\n\nThe first two numbers in the Fibonacci sequence are 1 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.\n\nFor example, sumFibs(10) should return 10 because all odd Fibonacci numbers less than or equal to 10 are 1, 1, 3, and 5.', 'function sumFibs(num) {\n  return num;\n}', 'function', 4),
+(9, 'Missing letters', 'Find the missing letter in the passed letter range and return it.\n\nIf all letters are present in the range, return false.', 'function fearNotLetter(str) {\n  return str;\n}', 'function', 4);
 
 -- --------------------------------------------------------
 
@@ -250,13 +246,6 @@ CREATE TABLE `quiz_result` (
   `submisison_date` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `quiz_result`
---
-
-INSERT INTO `quiz_result` (`id`, `username`, `score`, `submisison_date`) VALUES
-(1, 'test123', 22, '2019-06-03 13:50:12');
-
 -- --------------------------------------------------------
 
 --
@@ -276,16 +265,7 @@ CREATE TABLE `resources_assignments` (
 --
 
 INSERT INTO `resources_assignments` (`id`, `title`, `link`, `description`, `question_id`) VALUES
-(1, 'JavaScript Functions Tutorial', 'javascript.info', 'Functions are the main “building blocks” of the program. They allow the code to be called many times', 1),
-(2, 'Title 2 Functions Tutorial', '2.info', ' The', 1),
-(3, 'Title 3 Functions Tutorial', '3.info', 'repetition.', 1),
-(4, '4 Functions Tutorial', '4.info', 'kills', 1),
-(5, '5 Functions Tutorial', '5.info', 'Functions ', 1),
-(6, '6 Assignment 1', '5.info', 'Functions ', 1),
-(7, '7 Assignment 1', '5.info', 'Functions ', 1),
-(8, '8 Assignment 1', '5.info', 'Functions ', 1),
-(9, '9 Assignment 1', '5.info', 'Functions ', 1),
-(10, '0 Assignment 1', '5.info', 'Functions ', 1);
+(1, 'Conditional Codes', 'https://www.javatpoint.com/javascript-if', 'Check out all tyou can at JavatPoint', 3);
 
 -- --------------------------------------------------------
 
@@ -306,11 +286,7 @@ CREATE TABLE `resources_challenge` (
 --
 
 INSERT INTO `resources_challenge` (`id`, `title`, `link`, `description`, `challenge_id`) VALUES
-(1, 'JavaScript Functions Tutorial', 'javascript.info', 'Functions are the main “building blocks” of the program. They allow the code to be called many times', 1),
-(2, 'Title 2 Functions Tutorial', '2.info', ' The', 1),
-(3, 'Title 3 Functions Tutorial', '3.info', 'repetition.', 1),
-(4, '4 Functions Tutorial', '4.info', 'kills', 1),
-(5, '5 Functions Tutorial', '5.info', 'Functions ', 1);
+(1, 'JavaScript Functions Tutorial', 'javascript.info', 'Functions are the main “building blocks” of the program. They allow the code to be called many times', 1);
 
 -- --------------------------------------------------------
 
@@ -332,7 +308,16 @@ CREATE TABLE `submissions` (
 --
 
 INSERT INTO `submissions` (`id`, `submission`, `timeTaken`, `username`, `challenge_id`, `submisison_date`) VALUES
-(1, '\nfunction hello() {\n	return \"hello tinker\";\n}', 10, 'test', 1, '2019-06-01 17:38:55');
+(1, '\nfunction hello() {\n	return \"hello tinker\";\n}', 10, 'test', 1, '2019-06-01 17:38:55'),
+(2, 'function odd(n){\nreturn n%2!==0;\n}', 9351, 'student', 2, '2019-06-06 23:52:30'),
+(3, 'function odd(n){\nreturn n%2!==0;\n}', 29521, 'student', 2, '2019-06-06 23:52:50'),
+(4, 'function odd(n){\nreturn n%2!==0;\n}', 13485, 'student', 2, '2019-06-06 23:53:53'),
+(5, 'function odd(n){\nreturn n%2!==0;\n}', 12745, 'student', 2, '2019-06-06 23:58:54'),
+(6, 'function odd(n){\nreturn n%2!==0;\n}', 3617, 'student', 2, '2019-06-07 08:06:19'),
+(7, 'function odd(n){\nreturn n%2!==0;\n}', 11416, 'student', 2, '2019-06-07 08:06:27'),
+(8, 'function odd(n){\nreturn n%2!==0;\n}', 12029, 'student', 2, '2019-06-07 08:06:27'),
+(9, 'function odd(n){\nreturn n%2!==0;\n}', 12183, 'student', 2, '2019-06-07 08:06:28'),
+(10, 'function odd(n){\nreturn n%2!==0;\n}', 21156, 'student', 2, '2019-06-07 08:06:55');
 
 -- --------------------------------------------------------
 
@@ -354,9 +339,12 @@ CREATE TABLE `submissions_assignments` (
 --
 
 INSERT INTO `submissions_assignments` (`id`, `submission`, `timeTaken`, `username`, `question_id`, `submisison_date`) VALUES
-(1, '\nfunction hello() {\n	return \"hello tinker\";\n}', 10, 'test', 1, '2019-06-01 17:39:23'),
-(3, 'function hello(){\nreturn \"hello tinker\"\n}', 38110, 'test123', 1, '2019-06-01 17:44:36'),
-(4, 'function hello(){\nreturn \"hello tinker\"\n}', 3651, 'test123', 1, '2019-06-01 18:19:04');
+(1, 'function remainder(a,b)\n{\n    let remainder; \n    return a%b ;\n}', 58574, 'student', 3, '2019-06-07 09:03:41'),
+(2, 'function remainder(a,b)\n{\n    let remainder; \n    return a%b ;\n}', 6503, 'student', 3, '2019-06-07 09:07:31'),
+(3, 'function remainder(a,b)\n{\n    let remainder; \n    return a%b ;\n}', 6509, 'student', 3, '2019-06-07 09:07:55'),
+(4, 'function remainder(a,b)\n{\n    let remainder; \n    return a%b ;\n}', 5267, 'student', 3, '2019-06-07 09:10:29'),
+(5, 'function remainder(a,b)\n{\n    let remainder; \n    return a%b ;\n}', 9394, 'student', 3, '2019-06-07 09:10:33'),
+(6, 'function remainder(a,b)\n{\n    let remainder; \n    return a%b ;\n}', 15698, 'student', 3, '2019-06-07 09:12:40');
 
 -- --------------------------------------------------------
 
@@ -376,11 +364,37 @@ CREATE TABLE `tests_assignments` (
 --
 
 INSERT INTO `tests_assignments` (`id`, `test`, `result`, `question_id`) VALUES
-(1, 'hello()', 'hello tinker', 1),
-(2, 'odd(1)', 'true', 2),
-(3, 'odd(2)', 'false', 2),
-(4, 'odd(3)', 'true', 2),
-(5, 'odd(4)', 'false', 2);
+(1, 'positive(1)', 'true', 1),
+(2, 'positive(-10)', 'false', 1),
+(3, 'positive(25)', 'true', 1),
+(4, 'positive(-999995)', 'false', 1),
+(5, ' divisibleByFive(500)', 'true', 2),
+(6, ' divisibleByFive(35)', 'true', 2),
+(7, ' divisibleByFive(7)', 'false', 2),
+(8, ' divisibleByFive(2)', 'false', 2),
+(9, 'remainder(1,3)', '1', 3),
+(10, 'remainder(5,3)', '2', 3),
+(11, 'remainder(15,7)', '1', 3),
+(12, 'isPalindrome(343)', 'true', 4),
+(13, 'isPalindrome(344)', 'false', 4),
+(14, 'isPalindrome(222)', 'true', 4),
+(15, 'isReverse(12345,54321)', 'true', 5),
+(16, 'isReverse(1357,7531)', 'true', 5),
+(17, 'isReverse(157,175)', 'false', 5),
+(18, 'isReverse(1527,1275)', 'false', 5),
+(19, 'smallestCommons([1, 5])', '60', 6),
+(20, 'smallestCommons([2, 10])', '2520', 6),
+(21, 'smallestCommons([5, 1])', '60', 6),
+(22, 'smallestCommons([23, 18])', '6056820', 6),
+(23, 'sumPrimes(10)', '17', 7),
+(24, 'sumPrimes(977)', '73156', 7),
+(25, 'sumFibs(1000)', '1785', 8),
+(26, 'sumFibs(4)', '5', 8),
+(27, 'sumFibs(75025)', '135721', 8),
+(28, 'fearNotLetter(\"abce\")', 'd', 9),
+(29, 'fearNotLetter(\"abcdefghjklmno\")', 'i', 9),
+(30, 'fearNotLetter(\"stvwx\")', 'u', 9),
+(31, 'fearNotLetter(\"abcdefghijklmnopqrstuvwxyz\")', 'false', 9);
 
 -- --------------------------------------------------------
 
@@ -567,13 +581,13 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `assignments`
 --
 ALTER TABLE `assignments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `assignment_question`
 --
 ALTER TABLE `assignment_question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `challenges`
@@ -603,37 +617,37 @@ ALTER TABLE `quiz`
 -- AUTO_INCREMENT for table `quiz_result`
 --
 ALTER TABLE `quiz_result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `resources_assignments`
 --
 ALTER TABLE `resources_assignments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `resources_challenge`
 --
 ALTER TABLE `resources_challenge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `submissions`
 --
 ALTER TABLE `submissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `submissions_assignments`
 --
 ALTER TABLE `submissions_assignments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tests_assignments`
 --
 ALTER TABLE `tests_assignments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tests_challenge`
