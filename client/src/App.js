@@ -50,6 +50,11 @@ class App extends React.Component {
             <Navigation />
             <div>
               <Switch>
+              <Route
+                  path="/challenges/add"
+                  component={AddChallenge}
+                  exact
+                />
                 <Route path="/" component={Landing} exact />
                 <Route path="/dashboard" component={Dashboard} exact />
                 <Route path="/Signin" component={SignIn} exact />
