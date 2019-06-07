@@ -14,6 +14,8 @@ class AssignmentItem extends React.Component {
     data: ""
   };
   componentDidMount() {
+    if(this.props.auth.role!=="student")
+    this.props.history.push("/restricted")
     axios
       .get("http://localhost:5000/api/admin")
       .then(response => {

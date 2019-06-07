@@ -7,11 +7,16 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Col from "react-bootstrap/Col";
 import Spinner from "../../UI/Spinner/Spinner";
 import { Redirect } from "react-router";
+import { connect } from "react-redux";
 class AssignmentQuestion extends React.Component {
   state = {
     data: ""
   };
   async componentDidMount() {
+    
+    if(this.props.auth.role!=="teacher")
+    this.props.history.push("/restricted")
+
     await axios
       .get(
         `http://localhost:5000/api/admin/assignments/${this.props.match.params.id}`
@@ -62,28 +67,8 @@ class AssignmentQuestion extends React.Component {
           {/*Need to add Heatmap ->*/}
           <Row>
             <Col xs={3}>
-              <Card border="danger" style={{ width: "18rem" }}>
-                <Card.Header style={{ backgroundColor: "#78B0CD" }}>
-                  Challenges
-                </Card.Header>
-                <ListGroup variant="outline-success">
-                  <ListGroup.Item action variant="success">
-                    Odd Test
-                  </ListGroup.Item>
-                  <ListGroup.Item action variant="success">
-                    Prime Test
-                  </ListGroup.Item>
-                  <ListGroup.Item action variant="success">
-                    Tower of honai problem
-                  </ListGroup.Item>
-                  <ListGroup.Item action variant="success">
-                    Chicken Leg problem
-                  </ListGroup.Item>
-                  <ListGroup.Item action variant="success">
-                    Budget calculation
-                  </ListGroup.Item>
-                </ListGroup>
-              </Card>
+             
+  
             </Col>
             <Col xs={1}> </Col>
             <Col xs={8}> {container}</Col>
@@ -94,4 +79,12 @@ class AssignmentQuestion extends React.Component {
   }
 }
 
-export default AssignmentQuestion;
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+export default connect(
+  mapStateToProps,
+  null
+)(AssignmentQuestion);

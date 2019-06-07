@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-
+import { connect } from "react-redux";
 import Col from "react-bootstrap/Col";
 import Spinner from "../../UI/Spinner/Spinner";
 import "./AssignmentItem.css"
@@ -13,6 +13,8 @@ class AdminAssignmentList extends React.Component {
     data: ""
   };
   componentDidMount() {
+    if(this.props.auth.role!=="teacher")
+    this.props.history.push("/restricted")
     console.log("Inside AssignmentItem")
     axios
       .get("http://localhost:5000/api/admin/assignments")
@@ -72,5 +74,11 @@ class AdminAssignmentList extends React.Component {
     );
   }
 }
-
-export default AdminAssignmentList;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+export default connect(
+  mapStateToProps,
+  null
+)(AdminAssignmentList);

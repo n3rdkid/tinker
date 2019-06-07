@@ -32,15 +32,17 @@ class Navigation extends React.Component {
         </Button>
       </Form>
     );
-    let assignmentsLink =     <NavLink className="nav-link" to="/assignments">
-    Assignments
-  </NavLink>;
+    let assignmentsLink =   "" 
     if ((this.props.auth.user.role === "teacher"))
       assignmentsLink = (
         <NavLink className="nav-link" to="/admin/assignments">
         Manage Assignments
         </NavLink>
       );
+      else if((this.props.auth.user.role === "student"))
+      assignmentsLink= <NavLink className="nav-link" to="/assignments">
+      Assignments
+    </NavLink>;
   
 
     return (
@@ -50,10 +52,7 @@ class Navigation extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <NavLink className="nav-link" to="/">
-                Home
-              </NavLink>
-              <NavLink className="nav-link" to="/Quiz">
+             <NavLink className="nav-link" to="/Quiz">
                 Quiz
               </NavLink>
               <NavLink className="nav-link" to="/Challenges">

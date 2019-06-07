@@ -29,6 +29,7 @@ import AdminAssignmentList from "./admin/AssignmentList/AdminAssignmentList";
 import QuestionList from "./admin/QuestionList/QuestionList";
 import AdminSubmissions from "./admin/SubmissionList/AdminSubmissions";
 import Submission from "./admin/Submission/Submission";
+import restricted from "./UI/Restricted";
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -113,6 +114,11 @@ class App extends React.Component {
                   path="/admin/solution/:id"
                   component={Submission}
                   exact
+                />
+                <Route 
+                path="/restricted"
+                component={restricted}
+                exact
                 />
                 {/* POST  */}
       

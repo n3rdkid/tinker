@@ -3,7 +3,7 @@ import axios from "axios";
 import Spinner from "../../UI/Spinner/Spinner";
 import { UnControlled as CodeMirror } from "react-codemirror2";
 import { Container,Row,Col } from "react-bootstrap";
-
+import { connect } from "react-redux";
 let currentValue = "";
 class Submission extends React.Component {
   constructor(props) {
@@ -17,6 +17,9 @@ class Submission extends React.Component {
     this.scriptEvaluator = this.scriptEvaluator.bind(this);
   }
   async componentDidMount() {
+    if(this.props.auth.role!=="teacher")
+    this.props.history.push("/restricted")
+
     console.log("Inside Assignment submission");
     await axios
       .get(
@@ -133,4 +136,11 @@ class Submission extends React.Component {
     );
   }
 }
-export default Submission;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+export default connect(
+  mapStateToProps,
+  null
+)(Submission);

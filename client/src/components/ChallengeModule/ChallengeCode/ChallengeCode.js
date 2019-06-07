@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { UnControlled as CodeMirror } from "react-codemirror2";
-
 let currentValue = "";
 class ChallengeCode extends React.Component {
   constructor(props) {

@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import AddTestCases from "../AddTestCases/AddTestCases";
+import {connect} from "react-redux"
 class AddAssignment extends React.Component {
   state = {
     dueDate: new Date(),
@@ -13,6 +14,11 @@ class AddAssignment extends React.Component {
     question_no:"",
     displayTestCases:false
   };
+  componentDidMount()
+  {
+    if(this.props.auth.role!=="teacher")
+    this.props.history.push("/restricted")
+  }
   onSubmit = e => {
     e.preventDefault();
 
@@ -160,10 +166,19 @@ class AddAssignment extends React.Component {
           <Col>{display}</Col>
         </Row>
         <Row>
+          
           <Col>{displayTestCases}</Col>
         </Row>
       </Container>
     );
   }
 }
-export default AddAssignment;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(AddAssignment);
