@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 class AssignmentLeaderboard extends React.Component {
   state = {
-    questionId: this.props.questionId,
+    questionId:this.props.questionId,
     leaderboard: []
   };
 
@@ -18,11 +18,11 @@ class AssignmentLeaderboard extends React.Component {
       )
       .then(response => this.setState({ leaderboard: response.data }))
       .catch(error => console.log(error));
+
   }
 
   render() {
     let leaderboardList = [];
-
     if (this.state.leaderboard) {
       this.state.leaderboard.forEach((submission, index) => {
         let time = submission.submisison_date.split("T");

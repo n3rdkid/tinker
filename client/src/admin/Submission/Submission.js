@@ -51,7 +51,7 @@ class Submission extends React.Component {
       let t2 = performance.now();
       if (typeof temp === "boolean") temp = temp.toString();
       let testButton = document.querySelector(`#test${testCaseNo}`);
-      if (temp === testcase.result) {
+      if (temp == testcase.result) {
         if (testButton.classList.contains("bg-danger"))
           testButton.classList.remove("bg-danger", "text-white");
         testButton.classList.add("bg-success", "text-white");
