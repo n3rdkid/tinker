@@ -19,7 +19,16 @@ class ChallengeLeaderboard extends React.Component {
       .then(response => this.setState({ leaderboard: response.data }))
       .catch(error => console.log(error));
   }
-
+  reloadHandler =async()=>{
+    await axios
+    .get(
+      `http://localhost:5000/api/challenges/leaderboard/${
+        this.state.questionId
+      }`
+    )
+    .then(response => this.setState({ leaderboard: response.data }))
+    .catch(error => console.log(error));
+  }
   render() {
     let leaderboardList = [];
 
@@ -61,6 +70,7 @@ class ChallengeLeaderboard extends React.Component {
   </table>)
     return (
       <>
+      <button class="btn btn-light" onClick={this.reloadHandler}>Reload</button>
        {display}
       </>
     );

@@ -29,6 +29,12 @@ class AssignmentContainer extends React.Component {
       assignmentId: this.props.location.state.assignmentId
     };
   }
+  componentDidMount(){
+    this.state = {
+      questionId: this.props.location.state.questionId,
+      assignmentId: this.props.location.state.assignmentId
+    };
+  }
   render() {
     return (
       <Container>
