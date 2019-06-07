@@ -4,22 +4,24 @@ class AddTestCases extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      question_id: this.props.question_no,
+      question_id: "",
       test: "",
       result: "",
       testCases: null
     };
-    this.onSubmit=this.onSubmit.bind(this)
+    this.onSubmit = this.onSubmit.bind(this);
   }
   async componentDidMount() {
-    await axios
-      .get(
-        `http://localhost:5000/api/assignments/testcases/${
-          this.state.question_id
-        }`
-      )
-      .then(response => this.setState({ testCases: response.data }))
-      .catch(err => console.log("Error Loading Test cases"));
+    this.setState({ question_id: this.props.question_id }, () => {
+      return  axios
+        .get(
+          `http://localhost:5000/api/assignments/testcases/${
+            this.state.question_id
+          }`
+        )
+        .then(response => this.setState({ testCases: response.data }))
+        .catch(err => console.log("Error Loading Test cases"));
+    });
     console.log("Testcases", this.state.testCases);
   }
   loadTestCases = async () => {

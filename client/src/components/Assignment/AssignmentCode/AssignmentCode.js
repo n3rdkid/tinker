@@ -47,7 +47,7 @@ class AssignmentCode extends React.Component {
       let t2 = performance.now();
       if (typeof temp === "boolean") temp = temp.toString();
       let testButton = document.querySelector(`#test${testCaseNo}`);
-      if (temp === testcase.result) {
+      if (temp == testcase.result) {
         testCasesPassed++;
         if (testButton.classList.contains("bg-danger"))
           testButton.classList.remove("bg-danger", "text-white");
@@ -83,9 +83,10 @@ class AssignmentCode extends React.Component {
     };
     let questionId = this.state.questionId;
     axios
-      .post("http://localhost:5000/api/assignments", submission)
+      .post("http://localhost:5000/api/assignments/submissions", submission)
       .then(response => {
-        this.props.history.push(`/results`, { timeTaken, questionId });
+        console.log(response)
+        // this.props.history.push(`/results`, { timeTaken, questionId });
       })
       .catch(error => console.log(error));
   }

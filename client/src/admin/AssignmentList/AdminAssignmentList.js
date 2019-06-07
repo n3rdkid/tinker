@@ -34,7 +34,7 @@ class AdminAssignmentList extends React.Component {
   }
 
   render() {
-    let container;
+    let container=<p>No assignments yet</p>;
     if (this.state.data === "") container = <Spinner />;
     else {
       let assignmentData = this.state.data;

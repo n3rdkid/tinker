@@ -120,7 +120,7 @@ router.get("/resources/:id", (req, res) => {
 // @route POST api/challenges/
 // @desc  Post a particular assignemnt question
 // @access Public
-router.post("/", (req, res) => {
+router.post("/submissions", (req, res) => {
   const { errors, isValid } = validateSubmissionInput(req.body);
   // Check Validation
   if (!isValid) {
