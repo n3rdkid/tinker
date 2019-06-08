@@ -18,7 +18,7 @@ class Submission extends React.Component {
   }
   componentDidMount=async()=>{
     console.log("Inside Submission ",this.props)
-    if(this.props.auth.role!=="teacher")
+    if(this.props.auth.user.role!=="teacher")
     this.props.history.push("/restricted")
 
     console.log("Inside Assignment submission");
