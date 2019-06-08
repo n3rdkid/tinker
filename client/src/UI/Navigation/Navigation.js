@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import { Icon } from "semantic-ui-react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
@@ -16,11 +16,17 @@ class Navigation extends React.Component {
   render() {
     const { isAuthenticated } = this.props.auth;
     const authLinks = (
-      <Form inline>
-        <Button onClick={this.onLogoutClicked} variant="outline-success">
-          Logout
-        </Button>
-      </Form>
+      <div>
+        <Form inline>
+          <Icon.Group size="huge">
+            <Icon loading size="small" name="circle notch" />
+            <Icon name="user" />
+          </Icon.Group>
+          <Button onClick={this.onLogoutClicked} variant="outline-success">
+            Logout
+          </Button>
+        </Form>
+      </div>
     );
     const guestLinks = (
       <Form inline>
@@ -32,18 +38,22 @@ class Navigation extends React.Component {
         </Button>
       </Form>
     );
-    let assignmentsLink =   "" 
-    if ((this.props.auth.user.role === "teacher"))
+
+    let assignmentsLink = "";
+    if (this.props.auth.user.role === "student") {
       assignmentsLink = (
-        <NavLink className="nav-link" to="/admin/assignments">
-        Manage Assignments
+        <NavLink className="nav-link" to="/assignments">
+          Assignments
         </NavLink>
       );
-      else if((this.props.auth.user.role === "student"))
-      assignmentsLink= <NavLink className="nav-link" to="/assignments">
-      Assignments
-    </NavLink>;
-  
+    }
+    if (this.props.auth.user.role === "teacher") {
+      assignmentsLink = (
+        <NavLink className="nav-link" to="/admin/assignments">
+          Manage Assignments
+        </NavLink>
+      );
+    }
 
     return (
       <Container fluid>
@@ -52,7 +62,7 @@ class Navigation extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-             <NavLink className="nav-link" to="/Quiz">
+              <NavLink className="nav-link" to="/Quiz">
                 Quiz
               </NavLink>
               <NavLink className="nav-link" to="/Challenges">
