@@ -14,9 +14,10 @@ class AddAssignment extends React.Component {
     question_no:"",
     displayTestCases:false
   };
-  componentDidMount()
+  componentDidMount=()=>
   {
-    if(this.props.auth.role!=="teacher")
+    console.log("Inside Add Assignments ",this.props)
+    if(this.props.auth.user.role!=="teacher")
     this.props.history.push("/restricted")
   }
   onSubmit = e => {

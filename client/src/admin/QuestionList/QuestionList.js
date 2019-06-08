@@ -12,9 +12,9 @@ class AssignmentQuestion extends React.Component {
   state = {
     data: ""
   };
-  async componentDidMount() {
-    
-    if(this.props.auth.role!=="teacher")
+  componentDidMount=async()=>{
+    console.log("Inside QuestionList ",this.props)
+    if(this.props.auth.user.role!=="teacher")
     this.props.history.push("/restricted")
 
     await axios

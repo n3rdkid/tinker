@@ -16,7 +16,8 @@ class Submission extends React.Component {
     };
     this.scriptEvaluator = this.scriptEvaluator.bind(this);
   }
-  async componentDidMount() {
+  componentDidMount=async()=>{
+    console.log("Inside Submission ",this.props)
     if(this.props.auth.role!=="teacher")
     this.props.history.push("/restricted")
 
