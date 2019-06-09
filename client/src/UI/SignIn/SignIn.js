@@ -7,36 +7,42 @@ import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-
+import classnames from "classnames";
 class SignIn extends React.Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    errors: {}
   };
-  onSubmit = e => {
+  onSubmit = async e => {
     e.preventDefault();
-    this.props.loginUser(this.state);
+    await this.props.loginUser(this.state);
+    console.log("State  After onSubmit Signin ", this.state);
   };
   componentDidMount() {
-    console.log("Role",this.props.auth.user.role)
-    if (this.props.auth.isAuthenticated&&this.props.auth.user.role==="teacher") {
+    console.log("Role", this.props.auth.user.role);
+    if (
+      this.props.auth.isAuthenticated &&
+      this.props.auth.user.role === "teacher"
+    ) {
       this.props.history.push("/");
-    }
-    else if(this.props.auth.isAuthenticated){
-      this.props.history.push("/challenges")
+    } else if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/challenges");
     }
   }
   changeState = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
   componentWillReceiveProps(nextProps) {
-       if(this.props.auth.isAuthenticated){
-      this.props.history.push("/")
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/");
     }
     if (nextProps.errors) this.setState({ errors: nextProps.errors });
   }
 
   render() {
+    let { errors } = this.state;
+    console.log("Errors", errors);
     return (
       <Container>
         <Row className="vh-100 justify-content-center align-items-center">
@@ -47,26 +53,31 @@ class SignIn extends React.Component {
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>UserName</Form.Label>
                   <Form.Control
+                    className={classnames({ "is-invalid": errors.username })}
                     name="username"
                     placeholder="Username"
                     type="text"
                     onChange={e => this.changeState(e)}
                     value={this.state.username}
                   />
-                  <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                  </Form.Text>
+                  <Form.Control.Feedback type="invalid">
+                    {errors.username}
+                  </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
                     name="password"
+                    className={classnames({ "is-invalid": errors.password })}
                     placeholder="Password"
                     type="Password"
                     onChange={e => this.changeState(e)}
                     value={this.state.password}
                   />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.password}
+                  </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group controlId="formBasicChecbox">
                   <Form.Check type="checkbox" label="Check me out" />
@@ -79,7 +90,7 @@ class SignIn extends React.Component {
                   Submit
                 </Button>
               </Form>
-            </Col>{" "}
+            </Col>
           </div>
         </Row>
       </Container>
@@ -88,7 +99,7 @@ class SignIn extends React.Component {
 }
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors["errors"]
 });
 
 export default connect(
