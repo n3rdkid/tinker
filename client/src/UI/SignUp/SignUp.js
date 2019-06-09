@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
+import classnames from "classnames";
 // import propTypes from "propTypes";
 import { registerUser } from "../../actions/authActions";
 import { withRouter } from "react-router-dom";
@@ -12,7 +13,8 @@ class SignUp extends React.Component {
     username: "",
     email: "",
     user_password: "",
-    user_type: "student"
+    user_type: "student",
+    errors: {}
   };
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
@@ -31,13 +33,7 @@ class SignUp extends React.Component {
   };
 
   onSubmit = e => {
-    console.log(this.state);
     e.preventDefault();
-    console.log("SUBMIT");
-    this.props.registerUser(this.state, this.props.history);
-
-    console.log("Regiserting");
-    console.log(this.state);
     this.props.registerUser(this.state, this.props.history);
   };
 
@@ -53,12 +49,16 @@ class SignUp extends React.Component {
             </Form.Label>
             <Col sm={9}>
               <Form.Control
+                className={classnames({ "is-invalid": errors.email })}
                 name="email"
                 onChange={e => this.changeHandler(e)}
                 value={this.state.email}
                 type="email"
                 placeholder="Email"
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.email}
+              </Form.Control.Feedback>
             </Col>
           </Form.Group>
           <Form.Group as={Row} controlId="formHorizontalEmail">
@@ -68,11 +68,15 @@ class SignUp extends React.Component {
             <Col sm={9}>
               <Form.Control
                 name="username"
+                className={classnames({ "is-invalid": errors.username })}
                 type="text"
                 placeholder="UserName"
                 onChange={e => this.changeHandler(e)}
                 value={this.state.username}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.username}
+              </Form.Control.Feedback>
             </Col>
           </Form.Group>
 
@@ -82,12 +86,16 @@ class SignUp extends React.Component {
             </Form.Label>
             <Col sm={9}>
               <Form.Control
+                className={classnames({ "is-invalid": errors.password })}
                 name="user_password"
                 type="password"
                 placeholder="Password"
                 onChange={e => this.changeHandler(e)}
                 value={this.state.user_password}
               />
+               <Form.Control.Feedback type="invalid">
+                {errors.password}
+              </Form.Control.Feedback>
             </Col>
           </Form.Group>
 
@@ -111,7 +119,7 @@ class SignUp extends React.Component {
 }
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors["errors"]
 });
 
 export default connect(
