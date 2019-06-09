@@ -41,7 +41,6 @@ class AddAssignment extends React.Component {
   };
   onAddQuestion = async e => {
     e.preventDefault();
-    console.log(this.state);
   await  axios
       .post(`http://localhost:5000/api/assignments/question`, this.state)
       .then(res => {
