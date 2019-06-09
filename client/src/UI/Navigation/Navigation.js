@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import { Icon } from "semantic-ui-react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { NavLink } from "react-router-dom";
@@ -56,24 +56,24 @@ class Navigation extends React.Component {
     }
 
     return (
-      <Container fluid>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="/">Tinker</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <NavLink className="nav-link" to="/Quiz">
-                Quiz
-              </NavLink>
-              <NavLink className="nav-link" to="/Challenges">
-                Challenges
-              </NavLink>
-              {assignmentsLink}
-            </Nav>
-            {isAuthenticated ? authLinks : guestLinks}
-          </Navbar.Collapse>
-        </Navbar>
-      </Container>
+      <>
+          <Navbar sticky="top" bg="light" expand="lg">
+            <Navbar.Brand href="/">Tinker</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                <NavLink className="nav-link" to="/Quiz">
+                  Quiz
+                </NavLink>
+                <NavLink className="nav-link" to="/Challenges">
+                  Challenges
+                </NavLink>
+                {assignmentsLink}
+              </Nav>
+              {isAuthenticated ? authLinks : guestLinks}
+            </Navbar.Collapse>
+          </Navbar>
+    </>
     );
   }
 }

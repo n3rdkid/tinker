@@ -30,6 +30,7 @@ import QuestionList from "./admin/QuestionList/QuestionList";
 import AdminSubmissions from "./admin/SubmissionList/AdminSubmissions";
 import Submission from "./admin/Submission/Submission";
 import restricted from "./UI/Restricted";
+import { Container } from "react-bootstrap";
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -47,84 +48,60 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <div>
-            <Navigation />
-            <div>
-              <Switch>
-              <Route
-                  path="/challenges/add"
-                  component={AddChallenge}
-                  exact
-                />
-                <Route path="/" component={Landing} exact />
-                <Route path="/dashboard" component={Dashboard} exact />
-                <Route path="/Signin" component={SignIn} exact />
-                <Route path="/Signup" component={SignUp} exact />
-                <Route path="/Quiz" component={QuizStarter} exact />
-                <Route path="/Quiz/start" component={Quiz} />
-                <Route path="/Challenges" component={ChallengeItem} exact />
-                <Route
-                  path="/challenges/resource"
-                  component={AddResources}
-                  exact
-                />
-                <Route path="/challenges/:id" component={ChallengeView} exact />
-                <Route path="/AddChallenge" component={AddChallenge} />
-               
-                <Route
-                  path="/assignments/resource"
-                  component={AddResourcesAssignment}
-                  exact
-                />
-                <Route path="/assignments" component={AssigntmentItem} exact />
-                <Route path="/addassignment" component={AddAssignment} exact />
-                <Route
-                  path="/assignments/:id"
-                  component={AssignmentQuestion}
-                  exact
-                />
-                <Route path="/testcases" component={AddTestCases} exact />
-                <Route
-                  path="/assignments/question/:id"
-                  component={AssignmentContainer}
-                  exact
-                />
+          <Navigation />
 
-                <Route
-                  path="/admin/assignments"
-                  component={AdminAssignmentList}
-                  exact
-                />
-                        <Route
-                  path="/admin/add"
-                  component={AddAssignment}
-                  exact
-                />
-                  <Route
-                  path="/admin/assignments/:id"
-                  component={QuestionList}
-                  exact
-                />
-                 <Route
-                  path="/admin/question/:id"
-                  component={AdminSubmissions}
-                  exact
-                />
-                       <Route
-                  path="/admin/solution/:id"
-                  component={Submission}
-                  exact
-                />
-                <Route 
-                path="/restricted"
-                component={restricted}
-                exact
-                />
-                {/* POST  */}
-      
-              </Switch>
-            </div>
-          </div>
+          <Switch>
+            <Route path="/challenges/add" component={AddChallenge} exact />
+            <Route path="/" component={Landing} exact />
+            <Route path="/dashboard" component={Dashboard} exact />
+            <Route path="/Signin" component={SignIn} exact />
+            <Route path="/Signup" component={SignUp} exact />
+            <Route path="/Quiz" component={QuizStarter} exact />
+            <Route path="/Quiz/start" component={Quiz} />
+            <Route path="/Challenges" component={ChallengeItem} exact />
+            <Route path="/challenges/resource" component={AddResources} exact />
+            <Route path="/challenges/:id" component={ChallengeView} exact />
+            <Route path="/AddChallenge" component={AddChallenge} />
+
+            <Route
+              path="/assignments/resource"
+              component={AddResourcesAssignment}
+              exact
+            />
+            <Route path="/assignments" component={AssigntmentItem} exact />
+            <Route path="/addassignment" component={AddAssignment} exact />
+            <Route
+              path="/assignments/:id"
+              component={AssignmentQuestion}
+              exact
+            />
+            <Route path="/testcases" component={AddTestCases} exact />
+            <Route
+              path="/assignments/question/:id"
+              component={AssignmentContainer}
+              exact
+            />
+
+            <Route
+              path="/admin/assignments"
+              component={AdminAssignmentList}
+              exact
+            />
+            <Route path="/admin/add" component={AddAssignment} exact />
+            <Route
+              path="/admin/assignments/:id"
+              component={QuestionList}
+              exact
+            />
+            <Route
+              path="/admin/question/:id"
+              component={AdminSubmissions}
+              exact
+            />
+            <Route path="/admin/solution/:id" component={Submission} exact />
+            <Route path="/restricted" component={restricted} exact />
+            {/* POST  */}
+          </Switch>
         </BrowserRouter>
       </Provider>
     );

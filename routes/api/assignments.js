@@ -28,7 +28,7 @@ const transporter = nodemailer.createTransport({
 
 const mailOptions = {
   from: "thisisjustdummysaurav@gmail.com", // sender address
-  to: "sauravads123@gmail.com", // list of receivers
+  to: "sauravads123@gmail.com,beevekmgr@gmail.com", // list of receivers
   subject: "New Assignment Notification", // Subject line
   html:
     "<p>If you are seeing this, there is something wrong with the system. Please check for new assignments.</p>" // plain text body
@@ -65,7 +65,7 @@ router.post("/", (req, res) => {
           mailOptions.html = `<div>Hello User!<br><br> A new assignment has been added to the system.
           <p> Assignment No: ${
             results.insertId
-          } Due date <b style="color:red">${dueDate}.</p> <br><br>.
+          } Due date <b style="color:red">${dueDate}.</p>.
           <br>Please click on the link below to view it.<br><br><div style="display:flex;justify-content:center;"><a href="http://localhost:3000/assignments/${results.insertId}" style=" border: 2px solid black;
           background-color: white;
           color: black;
