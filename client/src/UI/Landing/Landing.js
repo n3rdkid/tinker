@@ -8,7 +8,7 @@ import brackets from "../../../src/assets/404.jpg";
 class Landing extends React.Component {
   render() {
     return (
-      <Jumbotron style={{ minHeight: "100vh" }}>
+      <Jumbotron style={{ minHeight: "85vh" }}>
         <Row>
           <Col md="6">
             <h1 className="display-4">Learn to code, interactively!</h1>

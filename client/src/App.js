@@ -42,15 +42,17 @@ if (localStorage.jwtToken) {
     window.location.href = "/signin";
   }
 }
+var usernames = "";
 
 class App extends React.Component {
+  getUsername(userName) {
+    usernames = userName;
+  }
   render() {
-    console.log("loading qiz");
     return (
       <Provider store={store}>
         <BrowserRouter>
           <Navigation />
-
           <Switch>
             <Route path="/challenges/add" component={AddChallenge} exact />
             <Route path="/" component={Landing} exact />
@@ -103,8 +105,8 @@ class App extends React.Component {
             <Route path="/restricted" component={restricted} exact />
             {/* POST  */}
           </Switch>
-          <Footer />
         </BrowserRouter>
+        <Footer />
       </Provider>
     );
   }

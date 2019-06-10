@@ -1,13 +1,12 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import { Icon } from "semantic-ui-react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Container, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { NavLink } from "react-router-dom";
+import { Icon } from "semantic-ui-react";
 
 class Navigation extends React.Component {
   onLogoutClicked = e => {
@@ -19,6 +18,10 @@ class Navigation extends React.Component {
     const authLinks = (
       <div>
         <Form inline>
+          <Button variant="outline-info" disabled>
+            <Icon name="user" color="green" size="large" />
+            beevekmgrz
+          </Button>
           <Button onClick={this.onLogoutClicked} variant="outline-success">
             Logout
           </Button>

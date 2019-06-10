@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import Container from "react-bootstrap/Container";
@@ -14,6 +13,7 @@ class SignIn extends React.Component {
     password: "",
     errors: {}
   };
+
   onSubmit = async e => {
     e.preventDefault();
     await this.props.loginUser(this.state);

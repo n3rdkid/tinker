@@ -7,5 +7,6 @@ import "../node_modules/codemirror/lib/codemirror.css";
 import "../node_modules/codemirror/theme/neo.css";
 import "../node_modules/codemirror/mode/javascript/javascript";
 import "./assets/css/admin.min.css";
+import "../node_modules/semantic-ui-css/semantic.min.css";
 
 ReactDOM.render(<App />, document.getElementById("root"));
