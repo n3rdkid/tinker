@@ -62,12 +62,12 @@ class Navigation extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <NavLink className="nav-link" to="/Quiz">
+            {this.props.auth.user.role!=="teacher"?<><NavLink className="nav-link" to="/Quiz">
                 Quiz
               </NavLink>
               <NavLink className="nav-link" to="/Challenges">
                 Challenges
-              </NavLink>
+              </NavLink></>:""}
               {assignmentsLink}
             </Nav>
             {isAuthenticated ? authLinks : guestLinks}

@@ -8,7 +8,7 @@ import classnames from "classnames";
 // import propTypes from "propTypes";
 import { registerUser } from "../../actions/authActions";
 import { withRouter } from "react-router-dom";
-import { Card } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 class SignUp extends React.Component {
   state = {
     username: "",
@@ -42,7 +42,7 @@ class SignUp extends React.Component {
     const { errors } = this.state;
     const { user } = this.props.auth;
     return (
-      <Card.Body>
+      <Container>
         <Row className="justify-content-center align-items-center">
           <Col md="6">
             <Card>
@@ -121,7 +121,7 @@ class SignUp extends React.Component {
             </Card>
           </Col>
         </Row>
-      </Card.Body>
+      </Container>
     );
   }
 }
