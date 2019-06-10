@@ -12,6 +12,7 @@ import AddResources from "./components/ChallengeModule/AddResources/AddResources
 import AddChallenge from "./admin/AddChallenge";
 import AddResourcesAssignment from "./components/Assignment/AddResources/AddResources";
 import AddAssignment from "./admin/AddAssignments/AddAssignments";
+import Footer from "./UI/Navigation/FooterPage";
 //import AddAssignment from "./container/AssignmentModule/AddAssignment";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -41,15 +42,17 @@ if (localStorage.jwtToken) {
     window.location.href = "/signin";
   }
 }
+var usernames = "";
 
 class App extends React.Component {
+  getUsername(userName) {
+    usernames = userName;
+  }
   render() {
-    console.log("loading qiz");
     return (
       <Provider store={store}>
         <BrowserRouter>
           <Navigation />
-
           <Switch>
             <Route path="/challenges/add" component={AddChallenge} exact />
             <Route path="/" component={Landing} exact />
@@ -103,6 +106,7 @@ class App extends React.Component {
             {/* POST  */}
           </Switch>
         </BrowserRouter>
+        <Footer />
       </Provider>
     );
   }

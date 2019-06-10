@@ -1,0 +1,1361 @@
+commit 70aa1ea929cf8249f15a805eb652f4679ce1ec0b
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun Jun 9 16:09:48 2019 +0545
+
+    Feat : add mailing feature UNCOMMENT TO SEND TO ALL USER
+
+commit 27083eab5f5b54d57ca604191e55fec62fc9c5bf
+Merge: c8833ab 617d89f
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun Jun 9 14:56:29 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit c8833ab940e70dfa9f45087f81d3fd5bbfee2280
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun Jun 9 14:48:17 2019 +0545
+
+    Improv : Add Pagination to add assignment list
+
+commit 617d89f69791f282916a1dbeb7067f1fabeabe0a
+Merge: 0ac3ea3 ff66ba8
+Author: Saurav Adhikari <32503224+n3rdkid@users.noreply.github.com>
+Date:   Sun Jun 9 13:37:58 2019 +0545
+
+    Merge pull request #1 from n3rdkid/form-validation
+    
+    Form validation
+
+commit ff66ba8997eca87cead33551e707c88aef9cb6eb
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun Jun 9 13:35:28 2019 +0545
+
+    Improv : add visual feedback to signup form
+
+commit 0d20cb8f83093914b2c7829f8b37c750c5438a06
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun Jun 9 13:28:02 2019 +0545
+
+    Improv : add visual feedback in signin
+
+commit 0ac3ea3d3b8caf9d4197402f1c5160905e1c23fa
+Merge: d9c49f5 3a43d67
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 8 19:21:51 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit d9c49f5ebe4aaeb7306f7c79fcee022789e81aa1
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 8 19:20:58 2019 +0545
+
+    fix : Missing .user in submission
+
+commit abb21316db1d7b168225cf4d40505455d6a48a8b
+Merge: a2619d2 66598bd
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 8 19:08:58 2019 +0545
+
+    MERGE branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 3a43d678ef95d1b7cb9be3f790453699a0861f2a
+Merge: a2619d2 66598bd
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 8 19:08:58 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit a2619d24e4165499eaee4f3cea65d68be68b4f2e
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 8 19:08:38 2019 +0545
+
+    fix : admin being restricted due to .user missing in redux check
+
+commit 66598bd9283024684bcbe901f24b8dacd88b61dc
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sat Jun 8 08:59:40 2019 +0545
+
+    Bug fixed at assignmentCode
+
+commit 75921785cdd3bc08dea812a23fcf1e0d2fdc434f
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri Jun 7 14:23:16 2019 +0545
+
+    Improv : Add a manual reload to leader boards
+
+commit 361171493fcb2881239ec6b15e196dc233d1faed
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri Jun 7 12:52:08 2019 +0545
+
+    Improv : Block api/admin routes for non admin users
+
+commit 5161adbeaa52a2c14111abd124eb41d6a9ae58d6
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri Jun 7 09:52:15 2019 +0545
+
+    Add PC.sql Production database
+
+commit 4d053e293708a2b0a5353d3677f3b6a10e610cac
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri Jun 7 09:50:03 2019 +0545
+
+    Add Add Challenge Path
+
+commit 75af867d2caf8215e6bdf1bd999c96d6f967376e
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri Jun 7 09:45:35 2019 +0545
+
+    Add assignments
+
+commit c37468607e2b6502f6c95a073fd86144592d9984
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri Jun 7 09:04:23 2019 +0545
+
+    fix : submit not working in assignment code wrong post route
+
+commit 885fffc159e6348b3f54e7004630141c5ddb5f62
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri Jun 7 07:54:20 2019 +0545
+
+    Improv : add test cases by teacher
+
+commit 9931b7231e65f645437b5a9361c9bc7ba1f41254
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri Jun 7 00:08:08 2019 +0545
+
+    Fix : Add resources bug
+
+commit 50776ab57823877476b106da710b35ea06e1ec02
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri Jun 7 00:00:09 2019 +0545
+
+    Fix : challenge module bugs
+
+commit 61de3ef1b0cfa32d610b110c293fb466d08a2cb4
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu Jun 6 22:39:21 2019 +0545
+
+    imporv ; min date
+
+commit ecc9e70b22b29748586283d574fa07921ba6ef47
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu Jun 6 22:25:36 2019 +0545
+
+    Fix : Due Date now works
+
+commit 2e967ce23762cdabcaf357451a44a184857531ea
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu Jun 6 21:36:33 2019 +0545
+
+    fix : error in errorReducers not returnig default state
+
+commit 5e7676e5760d98e914951a7512e1d13f6e171a1c
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu Jun 6 21:33:43 2019 +0545
+
+    fix : = missing in Navigation.js
+
+commit e0c8880260ba4bb0b880bcd9ffd08aed1278c13d
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed Jun 5 14:58:16 2019 +0545
+
+    chore :export database
+
+commit 07cc8c9411a4b5cb9946fbc7a9129c58a8363d3d
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed Jun 5 14:56:19 2019 +0545
+
+    Bug in Add Assignmet
+
+commit 8585a0e949b850601178ba32cc79dd9fa5151e67
+Merge: 2c56ee1 1b7e718
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed Jun 5 14:25:40 2019 +0545
+
+    Merge Fix
+
+commit 1b7e7189bc54c7a7ea7abbed260a0fe8833ee097
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Wed Jun 5 19:49:00 2019 +0545
+
+    Score added
+
+commit 686b27b1f9bfc9698663d321e8995ed76280ed2f
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Wed Jun 5 19:29:36 2019 +0545
+
+    Onclick to check answers functionality added
+
+commit c36e9918fc92bcb7e90eda1a132a94cb0f56979a
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Wed Jun 5 19:13:13 2019 +0545
+
+    Result UI changed"
+
+commit 664d871fab5877c76f240b396462e1c0d36a2c10
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Wed Jun 5 18:54:01 2019 +0545
+
+    Result done
+
+commit c0a45c8094ef244a4b867f022a16fe540378a463
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Wed Jun 5 15:03:56 2019 +0545
+
+    Removed particled.js
+
+commit 2c56ee1bed1151c63cd367156619bb5c19bcb9db
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed Jun 5 14:15:59 2019 +0545
+
+    Feat : Add admin assignment list ,admist question list ,admin question list and admin solution lists
+
+commit dfae4c4a82093650055c224323ce36421c4514c6
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Tue Jun 4 22:06:41 2019 +0545
+
+    Test
+
+commit 204ca539820fb6cd2dc5c79d0d550933969f0780
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Tue Jun 4 21:47:56 2019 +0545
+
+    Feat : Restrict access to past asignments
+
+commit d23a4badb3a72cf52a1a9367c97de25d9da6abe0
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Tue Jun 4 20:02:32 2019 +0545
+
+    Improv : add resources completed
+
+commit 38594f5dfe9679e63d557b8646d24fe981515e9f
+Merge: 50cc216 1208ed8
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon Jun 3 13:57:41 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 1208ed8ae5f674b7ab54555f8ad847d06f598d33
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon Jun 3 20:36:11 2019 +0545
+
+    Quiz Result TImer DONE
+
+commit 5d32b9279c3e4ac36e4598e601f503c45e20c898
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon Jun 3 19:49:21 2019 +0545
+
+    Question WIth answer is loaded
+
+commit 68505e30f4c42afa32027d7c54aa6bc2554446cb
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon Jun 3 18:20:27 2019 +0545
+
+    Updated on quizResult
+
+commit e5e7a22e45f136080052e5d4a1f16e35de93ba63
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon Jun 3 18:00:19 2019 +0545
+
+    QuizAnswerList displayed
+
+commit 84a34962b146704135137a795b8dd3caca131b82
+Merge: cff9092 41c862c
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon Jun 3 15:23:51 2019 +0545
+
+    QuizResult code refactor
+
+commit cff90928700d5a190ac7199879f8bcfcf421da79
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon Jun 3 15:20:52 2019 +0545
+
+    Refactor the code
+
+commit 50cc216fa8d4d0941c6ac936f3297f8362b3218c
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon Jun 3 13:51:20 2019 +0545
+
+    Improv : add quiz-result table
+
+commit 41c862c8d4de5599639a80659a91dff57100d4af
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun Jun 2 22:41:17 2019 +0545
+
+    Fix : Test cases now showing when submit is clicked
+
+commit c8e9f49c41e2da43c4ce06ff6cba616d23798b6a
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun Jun 2 22:10:01 2019 +0545
+
+    Feat : Add test cases
+
+commit bb71f237447ef0ff5bffe3998d949afe2df2ca41
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun Jun 2 21:30:58 2019 +0545
+
+    Quiz result update
+
+commit a6b0988bb1e18911083d00fcca8d19bd0b46c459
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun Jun 2 21:28:25 2019 +0545
+
+    Impro : Add api POST testcases
+
+commit d1e67ba5dc6065cfef1bfb3e518baaf8e54a4098
+Merge: 65cbdb6 417bcc3
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun Jun 2 20:16:44 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 65cbdb6aa2cb9b2ced5a07a977cdc108aa5d9eb7
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun Jun 2 20:16:20 2019 +0545
+
+    Implement Add Assignment
+
+commit 417bcc34d06c7ff8d1eb181cbb16cbceb3a8a1de
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun Jun 2 20:13:59 2019 +0545
+
+    minor fix
+
+commit 3792f0df0d2b7334e8e6b14e4ef9b56f1ae391eb
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun Jun 2 17:25:14 2019 +0545
+
+    AddChallenge file created
+
+commit 41148009d1268206fe5ff19e3e1b4a565dbb3b41
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun Jun 2 17:16:19 2019 +0545
+
+    Bug fixed
+
+commit b687522a6e21972a747065f3318cd19c2ad3fd35
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 1 21:21:11 2019 +0545
+
+    STYLE : Style SignUp
+
+commit 875b86c28385e5feaf1a052b669b143c57e58f25
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 1 21:08:25 2019 +0545
+
+    Style : Center align due date
+
+commit 1a890fe2a5bdeb0434894b48d0c68de84e87d172
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 1 18:29:55 2019 +0545
+
+    Implement Leaderboard for Assignment
+
+commit 2c9bd261efb132c1470b0a46c4b652eccb9baf3e
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 1 18:00:17 2019 +0545
+
+    Bug Fix Leaderboard display only if there is submission
+
+commit 68ef2a2dbab04cf46ebe98dd8d093bf1ff2ef3ab
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 1 17:56:54 2019 +0545
+
+    Implement Assignment Resources
+
+commit 341c2fca66ddb9c98abd15ad224d973a5f0be196
+Merge: 01d0474 e3515a8
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 1 17:46:08 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 01d04745595cae91f41f12e2c19884ef9da643a7
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 1 17:45:31 2019 +0545
+
+    Implement Assignment Code  Client
+
+commit e3515a82aee9ca265f4601155a546ec25b10bfab
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sat Jun 1 15:27:43 2019 +0545
+
+    SignUp UI changed
+
+commit 947da9262570028f88e31a920284903cf62457ac
+Merge: d256e87 65c5019
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sat Jun 1 14:08:01 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit d256e879ee5251823371f71699a28be5d9bd2c12
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sat Jun 1 14:07:11 2019 +0545
+
+    Tinker Particles added(but;
+
+commit 65c5019bd6d4d505d9ec288432de60f7e50e1624
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 1 12:44:55 2019 +0545
+
+    Bug in assignment Client"
+
+commit 51b3231b7fc06069e432988a776cea54e1874830
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 1 10:57:29 2019 +0545
+
+    Refactor File Structure
+
+commit 6ecb1c9d5bfa9a8c64521411ddb4c1a188a83838
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat Jun 1 10:45:36 2019 +0545
+
+    Refactor Challenge Module and add new time format for Leaderboard
+
+commit 2ff02663daf1f89ced014afa369cbc3e7fdb36e8
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Fri May 31 21:04:53 2019 +0545
+
+    Miner bug fixed:
+
+commit f2e1f24fc5d63bae678e4ff5719b8fd4d3d36587
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Fri May 31 21:01:05 2019 +0545
+
+    Modified on QuizResult
+
+commit 28c1c7bc92cc8ed8089436801d3f0c64b751dab7
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Fri May 31 18:15:44 2019 +0545
+
+    No reload nav bug
+
+commit ea77572d64b75e7c126fba65cccfa856693d788e
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 31 04:41:53 2019 +0545
+
+    Bug 20-30 sec delay in displaying code
+
+commit 7508c295b5c7f1526e7d59535d0610baa5d7696c
+Merge: f3f20b9 2ff0266
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 31 04:05:39 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit f3f20b97329fa3a5d013a9a89dd304648d453977
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 31 04:02:22 2019 +0545
+
+    Implement Leaderboard
+
+commit 97d1d099eed543d10e97071e5e2c2ed9944b94ee
+Merge: 0809bef 28c1c7b
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 31 02:56:33 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 0809beffe9459d2c9b5ec30485ca5f2dc32ed244
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 31 02:55:59 2019 +0545
+
+    Implement resorces and instructions
+
+commit ca2df616665eb6a0cbf40f989576e1ce30f040ea
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 30 22:52:57 2019 +0545
+
+    Implemented time in leaderboard
+
+commit 386dcaaf45af0303660e7815f20ed9b9b3a2a09f
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 30 22:27:43 2019 +0545
+
+    Implement Leaderboard
+
+commit a3faa2442027976235071caba6e15f6944dd1ab3
+Merge: 3ba5011 bde41a6
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 30 21:40:00 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 3ba50119f72352ec5b9b7e3be0e0c9f9204b912f
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 30 21:34:07 2019 +0545
+
+    Setup Client\ Challenge Result
+
+commit bde41a6f2e99ab85295681d5841a146b02a37a70
+Merge: 9fae1ac 94e0115
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Thu May 30 21:13:04 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 9fae1ac3bf0f265d70bf6a34f83a62152ff914c9
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Thu May 30 21:12:29 2019 +0545
+
+    Minor bug fix on QUiz
+
+commit 94e011507788afee13a821f5b07a05b3af3935c1
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 30 20:50:21 2019 +0545
+
+    Fix bug in submit not being enabled & errorReducer code not being reached
+
+commit cb483db9dc3cfc8aeb7389e37ca4f618ff2b8f10
+Merge: f9d02ee 447bd84
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 30 20:30:26 2019 +0545
+
+    Enable submit button for challenges only for valid users
+
+commit f9d02eebff461308b36375a91b04c5033c27a7a9
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 30 20:01:22 2019 +0545
+
+    Enable submit button for challenges only for valid users
+
+commit 447bd840035e0adb472acf7dc3df5608025e46ff
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 29 22:47:04 2019 +0545
+
+    Bug in Challenge Submission after implementing Redux
+
+commit 61baa73d2cbbb92429974dfb082c9ef1d49e3a2f
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 29 22:00:12 2019 +0545
+
+    Implement guard in quiz,  only authenticated users access quiz!
+
+commit 1c6257a78e07baaf5dd7da5dc09aa8644cee225e
+Merge: 5652f63 bb80335
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 29 19:16:37 2019 +0545
+
+    MERGE
+
+commit 5652f6311a3d24d2ef36895851680793cbc7b257
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 29 19:15:39 2019 +0545
+
+    Fix bug in User registration Wrong Query
+
+commit bb80335ddfe456f914e86408ccecebc06e9cdb7f
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Wed May 29 17:12:59 2019 +0545
+
+    QuizResult bug fixed
+
+commit 3f76f72363cee28cece6f03d31f084264dae3285
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Wed May 29 16:46:23 2019 +0545
+
+    QuizResult UI added
+
+commit 3baf6c04393684350e538900a6bec9ae7827ef83
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Wed May 29 15:44:53 2019 +0545
+
+    QuizResult added(UI need to modified
+
+commit 601c0b8c0983c93ea6c86ac58075ba2ed234d9aa
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Tue May 28 23:34:57 2019 +0545
+
+    Test Saurav
+
+commit 5c49fccaa70288719c89b3acac51a09ed9840e99
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Tue May 28 19:07:03 2019 +0545
+
+    Countdown timer UX update
+
+commit 17e3d5f84911f4236a6028403803e53d7204976d
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Tue May 28 19:05:17 2019 +0545
+
+    Countdown timer color change for UX
+
+commit 89ac0bd9fd317509f8c885e39216fbedbc01f96e
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Tue May 28 18:39:53 2019 +0545
+
+    Updates on UI on Dashboard.js
+
+commit 2c9053fc5f5efc95f710f560beed3337ca46c2c7
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Tue May 28 18:33:30 2019 +0545
+
+    Update UI on ChallengeItem.js
+
+commit df32ed4dc8da2fbba03577fda131076496714648
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Tue May 28 18:08:48 2019 +0545
+
+    Challenge page modified
+
+commit edb7a6197f39f5254fb520348a97d5bb10b25f98
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Tue May 28 16:36:37 2019 +0545
+
+    User Dashboard added
+
+commit cbfece10ead2f7649763a69518413b476baee81a
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Tue May 28 16:26:40 2019 +0545
+
+    User Dashboard added
+
+commit 7f3b393d35e5f5012bbc35ee5cbe45e723fa7d9e
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Tue May 28 01:23:54 2019 +0545
+
+    Implement Signup
+
+commit 9256be7401c8cb644b5dfb1795252b767e863259
+Merge: b0b7754 534f2f5
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Tue May 28 01:12:53 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 534f2f56755e911d88f517c5bfd9010daf9df6cc
+Author: Saurav Adhikari <32503224+n3rdkid@users.noreply.github.com>
+Date:   Tue May 28 21:38:19 2019 +0545
+
+    Rename CountDownTImer.js to CountDownTimer.js
+
+commit b0b7754380e3574f4e062e40401cfab3825674a8
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Tue May 28 01:12:04 2019 +0545
+
+    Implement Workflow
+
+commit be3cee86c8b664c7b3d9bbde3e5b79cecb2f1f8b
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon May 27 22:11:13 2019 +0545
+
+    Implement Redirection for authenticated users
+
+commit bb0cb061fe1969fed7c38ba216bf89b80ff113be
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon May 27 22:05:36 2019 +0545
+
+    Setup Conditional Navlink
+
+commit 31a4948ad240896969fb06943908581382fa03dd
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon May 27 21:47:51 2019 +0545
+
+    Fix bug in Users router rows[0] undefined for unauthorizedusers
+
+commit 64790460848a0c3a6a520cbeb91b6bbc48b8c3d7
+Merge: 353dc7d 7f9c48f
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon May 27 21:18:20 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 353dc7da7234bc7aaec4ee1dde97232461a24c37
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon May 27 21:17:56 2019 +0545
+
+    Bug fixed
+
+commit 7f9c48fc6c271fb71b1569fb212aea8b116926b1
+Merge: df9511b 9fb40f7
+Author: Purnima <purneema05@gmail.com>
+Date:   Mon May 27 21:11:33 2019 +0545
+
+    BackEnd Resource starter
+
+commit 9fb40f7321efb1cbee7a9955f52cd508f4933814
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon May 27 20:26:48 2019 +0545
+
+    Countdown timer bug fixed after zero only
+
+commit d4ef5ae7f27438c0298cf54161343dc0a4fe4eed
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon May 27 11:46:10 2019 +0545
+
+    Fix bug Saurav
+
+commit 8bffb234b2c37d8b72a56bc5bbd280c5866cb871
+Merge: d4677d4 119b62a
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon May 27 17:41:36 2019 +0545
+
+    Added AddAssignment table(Not worked at database)
+
+commit d4677d4815beb14d54d88746d5855f432265cb47
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon May 27 13:24:47 2019 +0545
+
+    Assignment UI added
+
+commit a48dbfdf71ad1890637dd71824d55b5c45d763d6
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon May 27 13:23:45 2019 +0545
+
+    Sign in UI changed
+
+commit 119b62ae26d7522c406151263fb17f799f685b0c
+Merge: 64b55eb 6c5c729
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon May 27 10:29:04 2019 +0545
+
+    Fix merge conflict
+
+commit 64b55eb2058b335b01a9df50c75fe011a44dc79e
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon May 27 10:27:09 2019 +0545
+
+    Remove token from localStorage after logout
+
+commit 6c5c7294d63cd52e52161ebd2255edb367897a04
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Mon May 27 08:48:10 2019 +0545
+
+    Bug fixed of chalenge code editor
+
+commit df9511b22613dd1e835df960d86343a3f7c8c2fa
+Author: Purnima <purneema05@gmail.com>
+Date:   Sun May 26 22:31:05 2019 +0545
+
+    BackEnd Resource Starter
+
+commit c919abf531ff0a8a9b81fe9461f3d3ec12d3073f
+Merge: 9fa3e59 6b1f52f
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun May 26 22:03:12 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 9fa3e5906059ffe6b9e55e828b5dc4f7a4efd877
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun May 26 22:02:52 2019 +0545
+
+    Updated quiz datbase
+
+commit 581f9e21ec2327c73bc976b59e92719bfbbe0841
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun May 26 21:56:49 2019 +0545
+
+    Bug fixed AddResource.js
+
+commit 727c993754ce389d590d9b5d7919329b338dc311
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 26 15:46:28 2019 +0545
+
+    Implement Error reducers Redux
+
+commit 46547ead152db13f8cccb85fadcae56366f1cfef
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun May 26 15:08:41 2019 +0545
+
+    Navigation bar redesign(Bootstrap nav added)
+
+commit 77ee6ab977614b0efdca409241d666edf58fe783
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun May 26 14:41:16 2019 +0545
+
+    Added dropdown of signin & register
+
+commit 31f5c673990d442d53d1355a9261667dfbd3e075
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 26 14:40:45 2019 +0545
+
+    Fix bug in sql
+
+commit 70f1a42266e167f918179e56c54530c9ea8d4edd
+Merge: 896e2e7 c919abf
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 26 14:25:10 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 896e2e75cc77ac0045b061a616f0ad91a68ca569
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 26 14:23:34 2019 +0545
+
+    Setup MapToProps for Registration
+
+commit e4c43aefc1e2b030edc80ffd6242cf1d4fbdb08c
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun May 26 14:06:39 2019 +0545
+
+    Added AddAssignment.js (not worked at database);
+
+commit bf685e26506e20044c6fc3b2e11b44d0aacf9bde
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun May 26 13:47:06 2019 +0545
+
+    Added AddResources.js(bug)
+
+commit a563c50c5dc023338336d26d5445ce99e291fa15
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 26 13:45:52 2019 +0545
+
+    Setup AuthActions for redux
+
+commit ef426b6bb6873009e975b4d931292c600592e891
+Merge: 2a0b785 67ab9c5
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun May 26 13:42:42 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 2a0b785639321069017f813bc817dba0e0c9a17a
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Sun May 26 13:41:53 2019 +0545
+
+    Add Resources (Bug)
+
+commit 6b1f52f692809e4139cfb1664bb8a9cabf117be3
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 26 13:37:48 2019 +0545
+
+    Setup redux for chrome
+
+commit 937d6e75648db340edf090363ed1d52e99e176e6
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 26 13:07:07 2019 +0545
+
+    Setup initial redux
+
+commit 06b100cf44e0e50b958c018d5dfd5bce49e1b0ef
+Merge: 8b91332 46547ea
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 26 12:53:30 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 8b91332071786eee97951f19b265da5673e709f2
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 26 12:53:19 2019 +0545
+
+    Add redux dependency
+
+commit 67ab9c570b3595c45f0f5179cc003bc385d329f2
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 26 11:48:18 2019 +0545
+
+    Implement Submit feature
+
+commit 4d8f55dbf14a81ed9338c6ec3d2bbd1c715e7d65
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat May 25 19:04:16 2019 +0545
+
+    Make Test case button reflect test cases result Green: Pass Red :Fail
+
+commit b2efa99182343975c0ea7219e30be9151b4aa094
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat May 25 18:29:14 2019 +0545
+
+    Fix bug in evaluation toString() added
+
+commit 3323ce114e763ec1de512e8b830e9db0b2c8162e
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat May 25 17:32:52 2019 +0545
+
+    Fix bug : Returning just single record while feteching test cases
+
+commit 4e9db51786c354ba20169f3f8c16fd4a94667f94
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat May 25 17:26:50 2019 +0545
+
+    Fix bug data not loading for challenges list items
+
+commit 7774e4a99204e72af77d360e84ab17677c52ee4b
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat May 25 16:29:46 2019 +0545
+
+    Display test cases
+
+commit 22b8813e710aa4aa4744a9bd101e86dc44d9f0a6
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat May 25 15:43:36 2019 +0545
+
+    Implement Code Mirror
+
+commit e249c5059f60c7845270ee7c63df235a3b6093b2
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat May 25 15:05:45 2019 +0545
+
+    Implement GET /api/challenges/resources:/id
+
+commit 749d71e9fc615609528a9d9fbed0c1f10659a097
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat May 25 14:32:32 2019 +0545
+
+    Implement Routing for challenge/:id & install jquery and popper.js
+
+commit f8a8084581ebd75f035b4d3c1eb69e9008f585e6
+Merge: f0a8b36 6214b67
+Author: Purnima <purneema05@gmail.com>
+Date:   Fri May 24 23:29:39 2019 +0545
+
+    BackEnd instruction starter
+
+commit f0a8b36b9b59ca055025a85e53cff2a029f5ee6a
+Author: Purnima <purneema05@gmail.com>
+Date:   Fri May 24 23:24:16 2019 +0545
+
+    BackEnd tinker.html
+
+commit 6214b6722d6d51ce3de57b169df796a0f99da7eb
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 24 13:28:15 2019 +0545
+
+    Add Spinner
+
+commit 1ee6d8c7e6010277201dff4ccc181c10d4d133fc
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Fri May 24 18:16:47 2019 +0545
+
+    Added addchallenge
+
+commit d48065f1cdedd6c6b8e3b5783dd5a6996c3d5e67
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 24 17:57:56 2019 +0545
+
+    Setup Countdown - Bug on countdown
+
+commit ff4e3105c67054a369f921abd56a9b7668ad92d8
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 24 17:26:43 2019 +0545
+
+    Fix Quiz Bug
+
+commit 3c539a2cbbb00f03b5907b949d97db02435be7ec
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 24 17:08:43 2019 +0545
+
+    Fix Bug in Quiz
+
+commit 9638c108c736553889827a0c6c9e312f1b57d10f
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 24 15:08:56 2019 +0545
+
+    Update Package.json file in Client"
+
+commit 2b82ab432725d30e4f7c9699ef9637b10c5cdeac
+Merge: 438858e 551771f
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 24 15:05:55 2019 +0545
+
+    Fix merge conflict
+
+commit 438858ed7faa6a4801c92b02e01d591846b3a053
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 24 15:04:38 2019 +0545
+
+    Bug in Quiz Answer Not changing ,Add redux and react-redux
+
+commit 551771f09513e072f825951c780713c29fc1b468
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Fri May 24 15:04:22 2019 +0545
+
+    Router in App.js
+
+commit fa5050d14769abd46ec60722f81d40cd1f483d13
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 24 14:02:56 2019 +0545
+
+    Fix Merge Conflict
+
+commit e45cf49267287243bcc000f505ac603e19ec106b
+Merge: 32f029f b643e44
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 24 13:59:38 2019 +0545
+
+    Fix merge conflict
+
+commit 32f029f661525b26195e2797abbccb26799f28dd
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 24 13:56:27 2019 +0545
+
+    Setup QuizQuestion to display answers
+
+commit b643e446898d1b88f7132faa9542d65129ce3c68
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Fri May 24 13:24:36 2019 +0545
+
+    QuizQuestion bug
+
+commit f05b83641de88552a65c5387f8b82d86f573c07e
+Merge: a14e46e 585a2d5
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Fri May 24 13:22:47 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit a14e46e24fbc0b80bcb94959a93f47eaf96f11e6
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Fri May 24 13:22:06 2019 +0545
+
+    QuizQuestion bug
+
+commit 585a2d5223da386eb46cc3b81dc75947ba59651c
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Fri May 24 12:33:29 2019 +0545
+
+    Refactor Folder Structure for Client/
+
+commit 912b572fe9cf35db4444917aea5426168ea94deb
+Author: basnetsus <sushmita1basnet@gmail.com>
+Date:   Fri May 24 11:36:18 2019 +0545
+
+    Add frontend Dashboard
+
+commit faaa946392357f4ad24d301196faa882a7027ff9
+Merge: 0cf70a5 8dda06e
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Thu May 23 22:44:29 2019 +0545
+
+    Bug at QuizQuestion
+
+commit 0cf70a52f1f628bdc1d69c0c7c7ac9c85a841c8c
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Thu May 23 21:12:49 2019 +0545
+
+    Bug at QuizQuestion.js
+
+commit 02b0e2625dbf783b1287b44b04f0ab8b0e835ac9
+Author: Purnima <purneema05@gmail.com>
+Date:   Thu May 23 19:44:08 2019 +0545
+
+    Backend Dashboard starter
+
+commit 8dda06ee29e744b38f55b93a36d73e45daf6a16e
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 23 19:19:03 2019 +0545
+
+    Minor Fix Bug on Purnima/Backend/Dashboard
+
+commit c189aa017e18623a042976f7385090b1b31e4439
+Author: Purnima <purneema05@gmail.com>
+Date:   Thu May 23 19:02:55 2019 +0545
+
+    Bug  Backend/Purnima Dashboad
+
+commit 659f208da0018583ac36c062c7baec492613b77f
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 23 18:39:59 2019 +0545
+
+    Implement design for ChallegeItem Component
+
+commit 0c4abdebc093f6ec486e472ca504d25c85825474
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 23 18:21:41 2019 +0545
+
+    Remove Duplicate App.js from components folder
+
+commit aca2289e2ac6ff67a4e671497000ddc9b9bdb6d0
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 23 18:06:44 2019 +0545
+
+    Update Challenge Table Add title field
+
+commit 91534ac5802f4a664f6f263410cac4368fb82ad8
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 23 17:42:17 2019 +0545
+
+    Implement State for Client/ Challenge Module
+
+commit 4a25079ea5706dbe7f1dd723d929c90fd74b9a41
+Merge: e668195 099df1b
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Thu May 23 17:30:55 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit e6681959bb1039f266d47735bed9d2053100b7a8
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Thu May 23 17:30:30 2019 +0545
+
+    Add test for client challenges api
+
+commit 099df1b33309622be070dec6e047aa06d7a02b82
+Merge: 0fc1685 4511b85
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 23 17:20:30 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 0fc16853a46f91f225f70bbe187ab0e07200a28d
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 23 17:15:30 2019 +0545
+
+    Setup /quiz and /quiz/:id for Quiz Module
+
+commit 4511b8518417a1087bb6d8ad04374cf077598472
+Merge: 991751a 0696a4f
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Thu May 23 15:58:51 2019 +0545
+
+    Merge branch 'master' of https://github.com/n3rdkid/tinker
+
+commit 991751ab116a16be2b54b471169a2aab875d1e58
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Thu May 23 15:53:49 2019 +0545
+
+    Challenge module added
+
+commit a70661434a9d3925fcab063f10616489cff601e0
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 23 14:28:39 2019 +0545
+
+    Design Database for Quiz Module
+
+commit 0696a4fc3a53a9f434fd0da22a3931ec2ddbed72
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 23 14:10:07 2019 +0545
+
+    Setup ChallengeList
+
+commit cef6284b83c8806b141591de3d9a97922f67fdb8
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 23 14:04:48 2019 +0545
+
+    Add files for Bibek
+
+commit 81a09a1a8fab3f536bebdd44e626f80852d34e61
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 23 13:58:40 2019 +0545
+
+    Fix Import problems in Client App
+
+commit 4223ea016f9abad789747598f0168cbae4966924
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 23 13:46:21 2019 +0545
+
+    Setup basic folder structure for Client App
+
+commit 73792f19d51cddb36aaaee56e169a38d9c4e3f54
+Author: Purnima <purneema05@gmail.com>
+Date:   Wed May 22 19:21:27 2019 +0545
+
+    Create Backend Dashboard starter
+
+commit 2a9329c8906e3758d2ea5b7e431da8e937be502f
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 22 19:13:10 2019 +0545
+
+    Setup Starter for Purnima
+
+commit e3c6b16f458f3b4283c7fb4002e2892e5cd30118
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 22 19:07:55 2019 +0545
+
+    Setup Folder for Purnima
+
+commit 751d4ce8c58f59e23ebf5d62e77de5eb6d7a1bb5
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 22 18:24:24 2019 +0545
+
+    Setup /challenges route to return all challenges
+
+commit b21ad17cf77642bd48fb80662e27e1ed8c0aedfb
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 22 17:44:59 2019 +0545
+
+    Setup /test route for Quiz Module
+
+commit bbc1e294a9d41a0fdf248b07825484377a1b1b42
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Wed May 22 17:32:42 2019 +0545
+
+    Fix CSS not loading in quiz module
+
+commit 74d75bdee9af6672b4f53a13ed4963e99506b0a1
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Wed May 22 16:42:19 2019 +0545
+
+    Countdown timer added
+
+commit 520021d02454dd24c6d2814fcefa4be1aed7fee5
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Wed May 22 16:24:57 2019 +0545
+
+    Added Quiz Container but css not working
+
+commit 33345d44bb3bf1689600f5804485871b48e36a80
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 22 14:04:13 2019 +0545
+
+    Implement Post/ for challenge submission
+
+commit 807f66a8c683cd1902c45d4c3332ab688a7050a1
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 22 13:02:41 2019 +0545
+
+    Add support for multiple statements and refactor /:id
+
+commit 419235abf400f42b80400838386018ac210e3029
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 22 12:48:02 2019 +0545
+
+    Setup /:id route for challenges
+
+commit 0de460420bd6451e3dcf3dfa086a94148f306f62
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 22 12:30:53 2019 +0545
+
+    Add Labels table in challenge module
+
+commit 890f5da31b92a313a7bd5d72b8fa44e377bd735e
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 22 12:10:47 2019 +0545
+
+    Setup intital Database design for Challenge Module
+
+commit 4a5849f3d9a7f157f57716491f28bf3ecc7b7236
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Wed May 22 11:20:38 2019 +0545
+
+    Refactor App.js ::Removed state
+
+commit 7a179a03a84ee218ffd95e0294cd4bfab3790d79
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Tue May 21 21:39:50 2019 +0545
+
+    Setup cors to handle axios requests
+
+commit 22eb7b9b84da5c329357cc6392d70f8b7716984c
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Tue May 21 19:03:56 2019 +0545
+
+    Add axios dependecies for client
+
+commit 3f959d891f5972038e71d2865785c1d7851b3180
+Author: beevekmgr <beevekmgr@gmail.com>
+Date:   Tue May 21 18:25:22 2019 +0545
+
+    Add Client/ Login
+
+commit e102f17d007e90cd716a0fe393afff86ea676cea
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon May 20 20:57:55 2019 +0545
+
+    Implement validation for login
+
+commit 9c11af0d63de2a95e12b9c3f5a2c05edc5da7ece
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon May 20 19:59:54 2019 +0545
+
+    Add Server Side validation for Register
+
+commit bd14d0753553daa4d09ce1f21ddb1a26f9346968
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon May 20 15:54:10 2019 +0545
+
+    Implement Passport for users
+
+commit b85d0ddce13cf6ff38c9436a5b4ea310a36d1c95
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon May 20 15:37:18 2019 +0545
+
+    Fix BUG : Typo on SPACE after Bearer
+
+commit 62d3196be9e1824ba07a765460d4a042c23b173a
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Mon May 20 13:32:06 2019 +0545
+
+    Implement Passport
+
+commit 8302eedaf3294ad2af32aa4ef57cc121f0de3495
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 19 18:38:47 2019 +0545
+
+    Implement User registratin and authentication
+
+commit 7fab0d259c8a37dbd403c2575ec146539070446b
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 19 15:24:43 2019 +0545
+
+    Add SQL File -> Implement Users table
+
+commit 15ce2f830fbbd7938d05e8f3bc8bf1ac21083dad
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 19 12:47:50 2019 +0545
+
+    Fix bug on client-install copying the enitre project folder rather than installing node_modules
+
+commit c41f9d86da9923693c63a12d0652301fdabb68a9
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 19 12:03:50 2019 +0545
+
+    Add concurrently as dev dependency
+
+commit f72bcdff7693893592c05d847d74280f90386573
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sun May 19 11:48:29 2019 +0545
+
+    Correct client install in README.md
+
+commit 269077866ad1d7e6869f9375679a06fbb19a0afc
+Author: Saurav Adhikari <32503224+n3rdkid@users.noreply.github.com>
+Date:   Sat May 18 19:52:04 2019 +0545
+
+    Update README.md
+
+commit 60538c0e7013cf4f73a275229833bff57498e7fe
+Author: Saurav Adhikari <32503224+n3rdkid@users.noreply.github.com>
+Date:   Sat May 18 19:50:49 2019 +0545
+
+    Update README.md
+
+commit 232c82104da2450ac5ad47eac58782c62744d10e
+Author: Saurav Adhikari <32503224+n3rdkid@users.noreply.github.com>
+Date:   Sat May 18 19:11:23 2019 +0545
+
+    Update README.md
+
+commit 4d75e92796b38127d3f8f4e0da874c2213984868
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Sat May 18 11:16:14 2019 +0545
+
+    Setup React and Setup dev script
+
+commit b550e23a2bd571fd3e9f882fe9a403e07b089520
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 16 09:28:05 2019 +0545
+
+    Setup Router for User
+
+commit 1df5d2a3c2f7e1de39918accec6560c3f9b4fb1d
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 16 09:15:27 2019 +0545
+
+    Setup MySQL Connection
+
+commit c856e2f765e350161efa62fe2626e0eaaff68ec7
+Author: Saurav Adhikari <sauravads123@gmail.com>
+Date:   Thu May 16 09:02:13 2019 +0545
+
+    Add Dependencies and Setup Server
+
+commit f27c19971c1b9c57bbfcf679fc0dd8e0c1674843
+Author: Saurav Adhikari <32503224+n3rdkid@users.noreply.github.com>
+Date:   Fri May 17 21:36:19 2019 +0545
+
+    Update README.md
+
+commit f6ea414b8217d62012a009d52383eb8fc1ac5a74
+Author: Saurav Adhikari <32503224+n3rdkid@users.noreply.github.com>
+Date:   Fri May 17 21:36:06 2019 +0545
+
+    Update README.md
+
+commit aa702d1bdeccfa0d5a259161a9bcaebda38730d8
+Author: Saurav Adhikari <32503224+n3rdkid@users.noreply.github.com>
+Date:   Fri May 17 21:33:25 2019 +0545
+
+    Initial commit

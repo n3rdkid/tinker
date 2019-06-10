@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import { Icon } from "semantic-ui-react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Container, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { NavLink } from "react-router-dom";
+import { Icon } from "semantic-ui-react";
+
 class Navigation extends React.Component {
   onLogoutClicked = e => {
     e.preventDefault();
@@ -18,10 +18,10 @@ class Navigation extends React.Component {
     const authLinks = (
       <div>
         <Form inline>
-          <Icon.Group size="huge">
-            <Icon loading size="small" name="circle notch" />
-            <Icon name="user" />
-          </Icon.Group>
+          <Button variant="outline-info" disabled>
+            <Icon name="user" color="black" size="large" />
+            {this.props.auth.user.username}
+          </Button>
           <Button onClick={this.onLogoutClicked} variant="outline-success">
             Logout
           </Button>
@@ -57,23 +57,23 @@ class Navigation extends React.Component {
 
     return (
       <>
-          <Navbar sticky="top" bg="light" expand="lg">
-            <Navbar.Brand href="/">Tinker</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="mr-auto">
-                <NavLink className="nav-link" to="/Quiz">
-                  Quiz
-                </NavLink>
-                <NavLink className="nav-link" to="/Challenges">
-                  Challenges
-                </NavLink>
-                {assignmentsLink}
-              </Nav>
-              {isAuthenticated ? authLinks : guestLinks}
-            </Navbar.Collapse>
-          </Navbar>
-    </>
+        <Navbar sticky="top" bg="light" expand="lg">
+          <Navbar.Brand href="/">Tinker</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <NavLink className="nav-link" to="/Quiz">
+                Quiz
+              </NavLink>
+              <NavLink className="nav-link" to="/Challenges">
+                Challenges
+              </NavLink>
+              {assignmentsLink}
+            </Nav>
+            {isAuthenticated ? authLinks : guestLinks}
+          </Navbar.Collapse>
+        </Navbar>
+      </>
     );
   }
 }
