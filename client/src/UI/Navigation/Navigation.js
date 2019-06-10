@@ -19,7 +19,7 @@ class Navigation extends React.Component {
       <div>
         <Form inline>
           <Button variant="outline-info" disabled>
-            <Icon name="user" color="green" size="large" />
+            <Icon name="user" color="black" size="large" />
             beevekmgrz
           </Button>
           <Button onClick={this.onLogoutClicked} variant="outline-success">

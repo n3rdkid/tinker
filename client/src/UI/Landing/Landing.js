@@ -10,7 +10,7 @@ class Landing extends React.Component {
   render() {
     return (
       <div>
-        <Jumbotron style={{ minHeight: "20vh" }}>
+        <Jumbotron style={{ maxHeight: "60vh" }}>
           <Row>
             <Col md="6">
               <h1 className="display-4">Learn to code, interactively!</h1>
