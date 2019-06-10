@@ -116,4 +116,21 @@ router.get(
   }
 );
 
+router.get(
+  "/landing",
+   (req, res) => {
+   let statement = "SELECT COUNT(*) as count FROM users;SELECT COUNT(*) as count FROM challenges;SELECT COUNT(*) as count FROM Users WHERE user_type='student'";
+    mysqlConnection.query(statement, (err, results, fields) => {
+      if (!err) {
+        res.json({
+          users:results[0][0].count,
+          challenges:results[1][0].count,
+          students:results[2][0].count
+        })
+      } else {
+        res.json({ error: "Error has occurred" });
+      }
+    });
+  }
+);
 module.exports = router;

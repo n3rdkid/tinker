@@ -29,14 +29,14 @@ class Navigation extends React.Component {
       </div>
     );
     const guestLinks = (
-      <Form inline>
+      <>
         <Button variant="outline-success" href="/Signin">
           Signin
         </Button>
         <Button variant="outline-success" href="/Signup">
           Signup
         </Button>
-      </Form>
+      </>
     );
 
     let assignmentsLink = "";
@@ -57,7 +57,7 @@ class Navigation extends React.Component {
 
     return (
       <>
-        <Navbar sticky="top" bg="light" expand="lg">
+        <Navbar sticky="top" bg="white" expand="lg" color="white">
           <Navbar.Brand href="/">Tinker</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

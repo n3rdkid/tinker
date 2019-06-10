@@ -7,6 +7,9 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import classnames from "classnames";
+import { Card } from "react-bootstrap";
+import NavLink from "react-bootstrap/NavLink";
+
 class SignIn extends React.Component {
   state = {
     username: "",
@@ -45,53 +48,61 @@ class SignIn extends React.Component {
     console.log("Errors", errors);
     return (
       <Container>
-        <Row className="vh-100 justify-content-center align-items-center">
-          <div className="bg-light col-md-6">
-            <Col>
-              <h1> Sign-in </h1>
-              <Form>
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Label>UserName</Form.Label>
-                  <Form.Control
-                    className={classnames({ "is-invalid": errors.username })}
-                    name="username"
-                    placeholder="Username"
-                    type="text"
-                    onChange={e => this.changeState(e)}
-                    value={this.state.username}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors.username}
-                  </Form.Control.Feedback>
-                </Form.Group>
-
-                <Form.Group controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    name="password"
-                    className={classnames({ "is-invalid": errors.password })}
-                    placeholder="Password"
-                    type="Password"
-                    onChange={e => this.changeState(e)}
-                    value={this.state.password}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors.password}
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group controlId="formBasicChecbox">
-                  <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <Button
-                  onClick={e => this.onSubmit(e)}
-                  variant="primary"
-                  type="submit"
-                >
-                  Submit
-                </Button>
-              </Form>
-            </Col>
-          </div>
+        <Row className="justify-content-center align-items-center">
+          <Col md="6">
+            <Card>
+              <Card.Header> Sign in </Card.Header>
+              <Card.Body>
+                <Form>
+                  <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control
+                      className={classnames({ "is-invalid": errors.username })}
+                      name="username"
+                      placeholder="Username"
+                      type="text"
+                      onChange={e => this.changeState(e)}
+                      value={this.state.username}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {errors.username}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                  <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      name="password"
+                      className={classnames({ "is-invalid": errors.password })}
+                      placeholder="Password"
+                      type="Password"
+                      onChange={e => this.changeState(e)}
+                      value={this.state.password}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {errors.password}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                  <Form.Row>
+                    <Col sm="3">
+                      <Button
+                        onClick={e => this.onSubmit(e)}
+                        variant="primary"
+                        type="submit"
+                      >
+                        Submit
+                      </Button>
+                    </Col>
+                    <Col>
+                      <Button style={{border:"none",outline:"none",background:"transparent",color:"#000"}}>
+                        Dont have an account
+                        <a href="/signup"> Sign up</a>
+                      </Button>
+                    </Col>
+                  </Form.Row>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
         </Row>
       </Container>
     );
