@@ -1,8 +1,9 @@
 import React from "react";
 import { Flag, Grid, Segment } from "semantic-ui-react";
+import "./FooterPage.css";
 const FooterPage = () => {
   return (
-    <div>
+    <div class="footer">
       <Segment
         color="violet"
         attached="bottom"
