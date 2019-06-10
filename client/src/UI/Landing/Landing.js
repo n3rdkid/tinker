@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import "./Landing.css"
 import { NavLink } from "react-router-dom";
-import brackets from "../../../src/assets/brackets.jpg"
+// import brackets from "../../../src/assets/brackets.jpg"
 class Landing extends React.Component {
   render() {
     return (
@@ -19,7 +19,7 @@ class Landing extends React.Component {
             </p>
           </Col>
         <Col sm="none" md="6">
-          <img width="500" height="400" src={brackets}/>
+          {/* <img width="500" height="400" src={brackets}/> */}
         </Col>
         </Row>
       </Jumbotron>
