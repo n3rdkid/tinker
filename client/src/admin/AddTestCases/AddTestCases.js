@@ -34,6 +34,7 @@ class AddTestCases extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   async componentDidMount() {
+    this.nameInput.focus();
     await axios
       .get(
         `http://localhost:5000/api/assignments/testcases/${
@@ -115,6 +116,9 @@ class AddTestCases extends React.Component {
             />
             <label style={{ fontSize: "20px" }}>Test </label>
             <input
+              ref={input => {
+                this.nameInput = input;
+              }}
               className="form-control"
               name="test"
               placeholder="test.."

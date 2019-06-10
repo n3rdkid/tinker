@@ -36,6 +36,7 @@ class AddAssignment extends React.Component {
         console.log("Assignment added sucessfully");
       })
       .catch(err => console.log(err.response));
+      document.querySelector("#assignment_card").focus();
   };
   onAddQuestion = async e => {
     e.preventDefault();
@@ -58,9 +59,9 @@ class AddAssignment extends React.Component {
   render() {
     let displayTestCases = "";
     if (this.state.displayTestCases)
-      displayTestCases = <AddTestCases question_no={this.state.question_no} />;
+      displayTestCases = <AddTestCases id="testcase" question_no={this.state.question_no} />;
     let display = (
-      <div className="card">
+      <div className="card" id="assignment_card">
         <div className="card-header">
           Assignment No : {this.state.assignment_no}
         </div>
@@ -83,6 +84,7 @@ class AddAssignment extends React.Component {
             <div class="form-group">
               <label style={{ fontSize: "20px" }}>Title</label>
               <input
+              
                 className="form-control"
                 name="title"
                 placeholder="Title.."
@@ -135,6 +137,7 @@ class AddAssignment extends React.Component {
 
     let utc = new Date().toJSON().slice(0, 10);
     let minDate = new Date().getDate();
+    console.log(minDate)
     console.log("Min date", utc);
     return (
       <Container>
@@ -151,7 +154,7 @@ class AddAssignment extends React.Component {
                     min={utc}
                     type="date"
                     onChange={e => this.changeState(e)}
-                    value={this.state.dueDate}
+                    value={minDate}
                   />
                   <button
                     className="btn btn-primary"

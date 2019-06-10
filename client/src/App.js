@@ -32,6 +32,7 @@ import AdminSubmissions from "./admin/SubmissionList/AdminSubmissions";
 import Submission from "./admin/Submission/Submission";
 import restricted from "./UI/Restricted";
 import { Container } from "react-bootstrap";
+import DefaultAside from "./UI/Admin/Aside";
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -103,6 +104,7 @@ class App extends React.Component {
             />
             <Route path="/admin/solution/:id" component={Submission} exact />
             <Route path="/restricted" component={restricted} exact />
+            <Route path="/aside" component={DefaultAside} exact />
             {/* POST  */}
           </Switch>
         </BrowserRouter>
