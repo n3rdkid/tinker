@@ -12,6 +12,7 @@ import AddResources from "./components/ChallengeModule/AddResources/AddResources
 import AddChallenge from "./admin/AddChallenge";
 import AddResourcesAssignment from "./components/Assignment/AddResources/AddResources";
 import AddAssignment from "./admin/AddAssignments/AddAssignments";
+import Footer from "./UI/Navigation/FooterPage";
 //import AddAssignment from "./container/AssignmentModule/AddAssignment";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -102,6 +103,7 @@ class App extends React.Component {
             <Route path="/restricted" component={restricted} exact />
             {/* POST  */}
           </Switch>
+          <Footer />
         </BrowserRouter>
       </Provider>
     );

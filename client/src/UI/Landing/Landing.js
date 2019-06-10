@@ -1,13 +1,14 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Jumbotron from "react-bootstrap/Jumbotron";
-import "./Landing.css"
+import "./Landing.css";
 import { NavLink } from "react-router-dom";
-import brackets from "../../../src/assets/brackets.jpg"
+import brackets from "../../../src/assets/404.jpg";
+
 class Landing extends React.Component {
   render() {
     return (
-      <Jumbotron style={{minHeight:"100vh"}}>
+      <Jumbotron style={{ minHeight: "100vh" }}>
         <Row>
           <Col md="6">
             <h1 className="display-4">Learn to code, interactively!</h1>
@@ -18,9 +19,9 @@ class Landing extends React.Component {
               </NavLink>
             </p>
           </Col>
-        <Col sm="none" md="6">
-          <img width="500" height="400" src={brackets}/>
-        </Col>
+          <Col sm="none" md="6">
+            <img width="500" height="400" src={brackets} />
+          </Col>
         </Row>
       </Jumbotron>
     );
