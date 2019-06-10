@@ -2,6 +2,10 @@ import React from "react";
 import "./QuizQuestion.css";
 import axios from "axios";
 import Countdown from "../Countdown/CountDownTimer";
+import QuizResult from "../QuizResult/QuizResult";
+import StopWatch from "../Countdown/StopWatch";
+let arrayResults = [];
+let stoppedMinute, stoppedSecond;
 class QuizQuestion extends React.Component {
   constructor(props) {
     super(props);
@@ -11,30 +15,56 @@ class QuizQuestion extends React.Component {
       correctAnswer: 0,
       score: 0,
       nextQuestion: 0,
-      timeLimit: 20
+      timeLimit: 0,
+      count: 1,
+      approxQuestion: 5,
+      completed: false,
+      selectedAnswerIdArray: [],
+      correctAnswerIdArray: [],
+      start: 0,
+      loadedQuestions: []
     };
   }
   setTimeLimit = () => {
-    console.log(this.state.questions);
     this.setState({
       timeLimit: this.state.questions[this.state.nextQuestion].timeLimit
     });
-    console.log(this.state.timeLimit);
   };
+
   clickHandler = async e => {
-    console.log(e);
-    let score = this.state.score;
-    let nextQuestion = this.state.nextQuestion;
-    if (e.target.id == this.state.correctAnswer) {
-      score += 5;
+    //console.log(`Loaded question is ${this.state.questions}`);
+
+    this.setState({
+      selectedAnswerIdArray: [...this.state.selectedAnswerIdArray, e.target.id]
+    });
+    this.setState({
+      correctAnswerIdArray: [
+        ...this.state.correctAnswerIdArray,
+        this.state.correctAnswer
+      ]
+    });
+    this.setState({ count: this.state.count + 1 });
+    this.setState({ approxQuestion: this.state.approxQuestion - 1 });
+    if (this.state.approxQuestion > 1) {
+      this.refs.child.resetTime();
     }
 
+    let score = this.state.score;
+    let nextQuestion = this.state.nextQuestion;
+
+    // if (e.target.id == this.state.correctAnswer) {
+    //   score += 5;
+    // }
+
     nextQuestion++;
-    await this.setState({ score: score, nextQuestion: nextQuestion });
-    this.loadData();
-    this.setTimeLimit();
+
+    await this.setState({ score: score, nextQuestion: nextQuestion }, () => {
+      this.loadData();
+      this.setTimeLimit();
+    });
   };
   componentDidMount() {
+    arrayResults = [];
     axios
       .post(
         `http://localhost:5000/api/quiz/${
@@ -49,7 +79,11 @@ class QuizQuestion extends React.Component {
       })
       .catch(error => console.log(error));
   }
-  loadData() {
+  loadData = () => {
+    if (this.state.questions.length <= this.state.nextQuestion) {
+      this.setState({ completed: true });
+      return;
+    }
     axios
       .post(
         `http://localhost:5000/api/quiz/${
@@ -63,19 +97,33 @@ class QuizQuestion extends React.Component {
         });
       })
       .catch(error => console.log(error));
-  }
+    arrayResults.push({ question: this.state.answers });
+    this.setState({
+      loadedQuestions: [
+        ...this.state.loadedQuestions,
+        this.state.questions[this.state.nextQuestion].question
+      ]
+    });
+    // console.log(this.state.loadedQuestions);
+  };
+  displayStopWatchTimer = (stoppedMinute, stoppedSecond) => {
+    console.log(stoppedMinute + ":" + stoppedSecond);
 
+    this.stoppedMinute = stoppedMinute;
+    this.stoppedSecond = stoppedSecond;
+    console.log("Stopped at:" + this.stoppedMinute + ":" + this.stoppedSecond);
+  };
   render() {
-    let timeLimits = this.state.questions[this.state.nextQuestion].timeLimit;
     let answers = this.state.answers;
     let question = this.state.questions[this.state.nextQuestion].question;
+
     let answerList = [];
 
     if (answers !== null) {
       for (let i = 0; i < answers.length; i++) {
         answerList.push(
           <li
-            id={i + 1}
+            id={answers[i].id}
             key={answers[i].id}
             onClick={this.clickHandler}
             className="list-group-item my-1 p-3"
@@ -85,8 +133,10 @@ class QuizQuestion extends React.Component {
         );
       }
     }
-    let display = <p>Add a spinner</p>;
-    if (this.props.questions !== null) {
+
+    let display;
+    let quizResult = <p />;
+    if (this.props.questions !== null && this.state.count <= 5) {
       display = (
         <div className="row my-5">
           <div className="col-sm-9">
@@ -95,7 +145,8 @@ class QuizQuestion extends React.Component {
                 <h5 className="card-title">
                   Skill Assessment : JavaScript{" "}
                   <small className="ml-5">
-                    Approximately 10 Questions Remaining
+                    Approximately {this.state.approxQuestion} Questions
+                    Remaining
                   </small>
                 </h5>
               </div>
@@ -111,13 +162,10 @@ class QuizQuestion extends React.Component {
           </div>
 
           <div className="col-sm-3">
-            <h2 className="text-center py-3 text-danger">
-              {console.log(
-                `Your next qeuestion is ${
-                  this.state.nextQuestion
-                } Time limit :${this.state.timeLimit}`
-              )}
+            <h2 id="quizTimer" className="text-center py-3 text-success">
               <Countdown
+                stopCount={this.state.count}
+                ref="child"
                 timeLimit={
                   this.state.questions[this.state.nextQuestion].timeLimit
                 }
@@ -125,11 +173,33 @@ class QuizQuestion extends React.Component {
               />
             </h2>
           </div>
+          <StopWatch
+            start={this.state.start}
+            displayStopWatchTimer={this.displayStopWatchTimer}
+          />
         </div>
+      );
+    } else {
+      this.state.timeLimit = 50000;
+      this.state.start = 1;
+      quizResult = (
+        <QuizResult
+          answersArray={arrayResults}
+          loadedQuestions={this.state.questions}
+          selectedAnswerIdArray={this.state.selectedAnswerIdArray}
+          correctAnswerIdArray={this.state.correctAnswerIdArray}
+          stoppedMinute={this.stoppedMinute}
+          stoppedSecond={this.stoppedSecond}
+        />
       );
     }
 
-    return <>{display}</>;
+    return (
+      <div>
+        {display}
+        {quizResult}
+      </div>
+    );
   }
 }
 export default QuizQuestion;

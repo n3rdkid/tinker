@@ -1,0 +1,10 @@
+body {
+  positon: relative;
+}
+.footer {
+  color: red;
+  text-decoration: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

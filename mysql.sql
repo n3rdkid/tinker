@@ -1,4 +1,4 @@
-
+﻿
 CREATE DATABASE IF NOT EXISTS tinker;
 USE tinker;
 
@@ -103,7 +103,7 @@ SELECT * FROM submissions;
 /*----------------------------
 Create Test table
 ------------------------------*/
-CREATE TABLE IF NOT EXISTS tests (
+CREATE TABLE IF NOT EXISTS tests_challenge (
 	id INT PRIMARY KEY AUTO_INCREMENT ,
 	test VARCHAR(100),
 	result VARCHAR(100),
@@ -114,17 +114,17 @@ CREATE TABLE IF NOT EXISTS tests (
 /*----------------------------
 Dumping Data on Test table
 ------------------------------*/
-INSERT INTO tests VALUES(1,'hello()','hello tinker',1);
-INSERT INTO tests VALUES(2,'odd(1)','true',2);
-INSERT INTO tests VALUES(3,'odd(2)','false',2);
-INSERT INTO tests VALUES(4,'odd(3)','true',2);
-INSERT INTO tests VALUES(5,'odd(4)','false',2);
-SELECT * FROM tests;
+INSERT INTO tests_challenge VALUES(1,'hello()','hello tinker',1);
+INSERT INTO tests_challenge VALUES(2,'odd(1)','true',2);
+INSERT INTO tests_challenge VALUES(3,'odd(2)','false',2);
+INSERT INTO tests_challenge VALUES(4,'odd(3)','true',2);
+INSERT INTO tests_challenge VALUES(5,'odd(4)','false',2);
+SELECT * FROM tests_challenge;
 
 /*----------------------------
 Create Resources table
 ------------------------------*/
-CREATE TABLE IF NOT EXISTS resources (
+CREATE TABLE IF NOT EXISTS resources_challenge (
 	id INT PRIMARY KEY AUTO_INCREMENT ,
 	title VARCHAR(100),
 	link VARCHAR(300),
@@ -136,13 +136,13 @@ CREATE TABLE IF NOT EXISTS resources (
 /*----------------------------
 Dumping Data on Test table
 ------------------------------*/
-INSERT INTO resources VALUES(1,'JavaScript Functions Tutorial','javascript.info','Functions are the main “building blocks” of the program. They allow the code to be called many times without repetition.',1);
-INSERT INTO resources VALUES(2,'Title 2 Functions Tutorial','2.info',' The',1);
-INSERT INTO resources VALUES(3,'Title 3 Functions Tutorial','3.info','repetition.',1);
-INSERT INTO resources VALUES(4,'4 Functions Tutorial','4.info','kills',1);
-INSERT INTO resources VALUES(5,'5 Functions Tutorial','5.info','Functions ',1);
+INSERT INTO resources_challenge VALUES(1,'JavaScript Functions Tutorial','javascript.info','Functions are the main “building blocks” of the program. They allow the code to be called many times without repetition.',1);
+INSERT INTO resources_challenge VALUES(2,'Title 2 Functions Tutorial','2.info',' The',1);
+INSERT INTO resources_challenge VALUES(3,'Title 3 Functions Tutorial','3.info','repetition.',1);
+INSERT INTO resources_challenge VALUES(4,'4 Functions Tutorial','4.info','kills',1);
+INSERT INTO resources_challenge VALUES(5,'5 Functions Tutorial','5.info','Functions ',1);
 
-SELECT * FROM resources;
+SELECT * FROM resources_challenge;
 
 /*
 
@@ -264,3 +264,208 @@ INSERT INTO `correctanswer` (`id`, `quiz_id`, `ans_id`) VALUES
 (9, 9, 30),
 (10, 10, 35);
 SELECT * FROM correctAnswer;
+
+
+
+
+SELECT * FROM`users`;
+
+SELECT * FROM challenges;
+INSERT INTO Labels VALUES (4,"Test");
+INSERT INTO challenges (title, instruction, starter, label) 
+VALUES
+  (
+    "Sum All Numbers in a Range",
+    "Return the sum of those two numbers plus the sum of all the numbers between them.
+The lowest number will not always come first.","function sumAll(arr) {
+  return 1;
+}
+
+sumAll([1, 4]);",
+    "Test"
+  );
+INSERT INTO challenges (title, instruction, starter, label) 
+VALUES ("Pig Latin","Pig Latin takes the first consonant (or consonant cluster) of an English word, moves it to the end of the word and suffixes an \"ay\".
+
+If a word begins with a vowel you just add \"way\" to the end.
+
+Input strings are guaranteed to be English words in all lowercase.","function translatePigLatin(str) {
+  return str;
+}
+
+translatePigLatin(\"consonant\");","Test");
+
+INSERT INTO challenges (title, instruction, starter, label) 
+VALUES  ("Missing letters","Find the missing letter in the passed letter range and return it.
+
+If all letters are present in the range, return 0(zero).","function fearNotLetter(str) {
+  return str;
+}
+","Test");
+
+  SELECT * FROM tests_challenge;
+  INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("sumAll([1, 4])",10,3);
+  INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("sumAll([4, 1])",10,3);
+  INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("sumAll([5, 10])",45,3);
+  INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("sumAll([10, 5])",45,3);
+  
+  
+  
+INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("translatePigLatin(\"california\")","aliforniacay",4);
+  INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("translatePigLatin(\"paragraphs\")","aragraphspay",4);
+ INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("translatePigLatin(\"glove\")","oveglay",4);
+  INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("translatePigLatin(\"algorithm\")","algorithmway",4);
+    INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("translatePigLatin(\"eight\")","eightway",4);
+    
+
+INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("fearNotLetter(\"abce\")","d",5);    
+INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("fearNotLetter(\"abcdefghjklmno\")","i",5);  
+INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("fearNotLetter(\"stvwx\")","u",5);  
+INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("fearNotLetter(\"bcdf\")","e",5);  
+INSERT INTO tests_challenge (test,result,challenge_id) VALUES ("fearNotLetter(\"abcdefghijklmnopqrstuvwxyz\")","0",5);  
+
+/*----------------------------
+Create Assignemnt table
+-----------------------------*/
+CREATE TABLE IF NOT EXISTS assignments (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	dueDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+SELECT * FROM assignments; 
+/*----------------------------
+Dumping Data on Assignemnt table
+-----------------------------*/
+
+INSERT INTO ASSIGNMENTS VALUES(1,DATE_ADD(NOW(),INTERVAL 1 DAY)) ;
+INSERT INTO ASSIGNMENTS VALUES(2,DATE_ADD(NOW(),INTERVAL 2 DAY)) ;
+INSERT INTO ASSIGNMENTS VALUES(3,DATE_ADD(NOW(),INTERVAL 3 DAY)) ;
+INSERT INTO ASSIGNMENTS VALUES(4,DATE_ADD(NOW(),INTERVAL 4 DAY));
+INSERT INTO ASSIGNMENTS VALUES(5,DATE_ADD(NOW(),INTERVAL 5 DAY)) ;
+INSERT INTO ASSIGNMENTS VALUES(6,DATE_ADD(NOW(),INTERVAL 6  DAY)) ;
+INSERT INTO ASSIGNMENTS VALUES(7,DATE_ADD(NOW(),INTERVAL 7 DAY)) ;
+INSERT INTO ASSIGNMENTS VALUES(8,DATE_ADD(NOW(),INTERVAL 8 DAY)) ;
+INSERT INTO ASSIGNMENTS VALUES(9,DATE_ADD(NOW(),INTERVAL 9 DAY)) ;
+
+/*----------------------------
+Create Challenge table
+-----------------------------*/
+CREATE TABLE IF NOT EXISTS assignment_question (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(60),
+	instruction TEXT,
+	starter TEXT,
+	label VARCHAR(20),
+	assignment_no INT,	
+	FOREIGN KEY (assignment_no) REFERENCES ASSIGNMENTS(id),
+	FOREIGN KEY (label) REFERENCES labels(label)
+);
+
+INSERT INTO assignment_question VALUES(1,"Assignment 1 Question 1","Instruction For Assignment 1",'function hello(){
+return "Hello World!"
+}','condition',1);
+INSERT INTO assignment_question VALUES(8,"Assignment 1 Question 2","Instruction For Assignment 1 Q 2 ",'function demo(){
+return "Hello World!"
+}','condition',1);
+INSERT INTO assignment_question VALUES(6,"Assignment 1 Question 3","Instruction For Assignment 1 Q 3 ",'function demo(){
+return "Hello World!"
+}','condition',1);
+INSERT INTO assignment_question VALUES(7,"Assignment 1 Question 4","Instruction For Assignment 1 Q 4",'function demo(){
+return "Hello World!"
+}','condition',1);
+INSERT INTO assignment_question VALUES(2,"Assignment 2  Question 1","Instruction For Assignment 2",'function demo(){
+return "Hello World!"
+}','condition',2);
+INSERT INTO assignment_question VALUES(3,"Assignment 3 Question 1","Instruction For Assignment 3",'function demo(){
+return "Hello World!"
+}','condition',3);
+INSERT INTO assignment_question VALUES(4,"Assignment 4 Question 1","Instruction For Assignment 4",'function demo(){
+return "Hello World!"
+}','condition',4);
+INSERT INTO assignment_question VALUES(5,"Assignment 5 Question 1","Instruction For Assignment 5",'function demo(){
+return "Hello World!"
+}','condition',5);
+SELECT *FROM assignment_question;
+
+
+
+/*----------------------------
+Create Test table
+------------------------------*/
+CREATE TABLE IF NOT EXISTS tests_assignments (
+	id INT PRIMARY KEY AUTO_INCREMENT ,
+	test VARCHAR(100),
+	result VARCHAR(100),
+	question_id INT,
+	FOREIGN KEY (question_id) REFERENCES assignment_question(id)
+);
+
+/*----------------------------
+Dumping Data on Test table
+------------------------------*/
+INSERT INTO tests_assignments VALUES(1,'hello()','hello tinker',1);
+INSERT INTO tests_assignments VALUES(2,'odd(1)','true',2);
+INSERT INTO tests_assignments VALUES(3,'odd(2)','false',2);
+INSERT INTO tests_assignments VALUES(4,'odd(3)','true',2);
+INSERT INTO tests_assignments VALUES(5,'odd(4)','false',2);
+SELECT * FROM tests_assignments;
+
+/*----------------------------
+Create Resources table
+------------------------------*/
+CREATE TABLE IF NOT EXISTS resources_assignments (
+	id INT PRIMARY KEY AUTO_INCREMENT ,
+	title VARCHAR(100),
+	link VARCHAR(300),
+	description VARCHAR(100),
+	question_id INT,
+	FOREIGN KEY (question_id) REFERENCES assignment_question(id)
+);
+
+/*----------------------------
+Dumping Data on Test table
+------------------------------*/
+INSERT INTO resources_assignments VALUES(1,'JavaScript Functions Tutorial','javascript.info','Functions are the main “building blocks” of the program. They allow the code to be called many times without repetition.',1);
+INSERT INTO resources_assignments VALUES(2,'Title 2 Functions Tutorial','2.info',' The',1);
+INSERT INTO resources_assignments VALUES(3,'Title 3 Functions Tutorial','3.info','repetition.',1);
+INSERT INTO resources_assignments VALUES(4,'4 Functions Tutorial','4.info','kills',1);
+INSERT INTO resources_assignments VALUES(5,'5 Functions Tutorial','5.info','Functions ',1);
+INSERT INTO resources_assignments VALUES(6,'6 Assignment 1','5.info','Functions ',1);
+INSERT INTO resources_assignments VALUES(7,'7 Assignment 1','5.info','Functions ',1);
+INSERT INTO resources_assignments VALUES(8,'8 Assignment 1','5.info','Functions ',1);
+INSERT INTO resources_assignments VALUES(9,'9 Assignment 1','5.info','Functions ',1);
+INSERT INTO resources_assignments VALUES(10,'0 Assignment 1','5.info','Functions ',1);
+SELECT * FROM resources_assignments;
+
+
+/*----------------------------
+Create Submissions table
+------------------------------*/
+CREATE TABLE IF NOT EXISTS submissions_assignments (
+	id INT PRIMARY KEY AUTO_INCREMENT ,
+	submission TEXT,
+	timeTaken INT,
+	username VARCHAR(100),
+	question_id INT,
+	submisison_date DATETIME,
+	FOREIGN KEY (username) REFERENCES users(username),
+	FOREIGN KEY (question_id) REFERENCES assignment_question(id)
+);
+/*----------------------------
+Dumping Data on Submissions table
+------------------------------*/
+INSERT INTO submissions_assignments (submission,timeTaken,username,question_id,submisison_date) VALUES("
+function hello() {
+	return \"hello tinker\";
+}",10,'test',1,NOW());
+SELECT * FROM submissions_assignments;
+CREATE TABLE IF NOT EXISTS quiz_result(
+id INT PRIMARY KEY AUTO_INCREMENT ,
+	username VARCHAR(100) ,
+	score INT ,
+	submisison_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (username) REFERENCES users(username));
+SELECT * FROM quiz_result;
+
+
+
+        
