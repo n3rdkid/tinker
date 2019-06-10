@@ -20,7 +20,7 @@ class Navigation extends React.Component {
         <Form inline>
           <Button variant="outline-info" disabled>
             <Icon name="user" color="black" size="large" />
-            beevekmgrz
+            {this.props.auth.user.username}
           </Button>
           <Button onClick={this.onLogoutClicked} variant="outline-success">
             Logout
