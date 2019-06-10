@@ -29,40 +29,38 @@ class Landing extends React.Component {
         <Grid relaxed>
           <Grid.Row>
             <Grid.Column width={3} />
-            <Grid.Column width={9}>
-              <Statistic.Group>
-                <Statistic>
-                  <Statistic.Value>
-                    <Icon circular name="users" size="small" />
-                    80+
-                  </Statistic.Value>
-                  <Statistic.Label>Users</Statistic.Label>
-                </Statistic>
+            <Statistic.Group>
+              <Statistic>
+                <Statistic.Value>
+                  <Icon circular name="users" size="small" />
+                  80+
+                </Statistic.Value>
+                <Statistic.Label>Users</Statistic.Label>
+              </Statistic>
 
-                <Statistic>
-                  <Statistic.Value>
-                    <Icon circular name="question" size="small" />
-                    100+
-                  </Statistic.Value>
-                  <Statistic.Label>Challenges</Statistic.Label>
-                </Statistic>
+              <Statistic>
+                <Statistic.Value>
+                  <Icon circular name="question" size="small" />
+                  100+
+                </Statistic.Value>
+                <Statistic.Label>Challenges</Statistic.Label>
+              </Statistic>
 
-                <Statistic>
-                  <Statistic.Value>
-                    <Icon circular name="student" size="small" />
-                    60
-                  </Statistic.Value>
-                  <Statistic.Label>Students</Statistic.Label>
-                </Statistic>
+              <Statistic>
+                <Statistic.Value>
+                  <Icon circular name="student" size="small" />
+                  60
+                </Statistic.Value>
+                <Statistic.Label>Students</Statistic.Label>
+              </Statistic>
 
-                <Statistic>
-                  <Statistic.Value>
-                    <Icon circular name="js" size="small" />
-                  </Statistic.Value>
-                  <Statistic.Label>Language Support</Statistic.Label>
-                </Statistic>
-              </Statistic.Group>
-            </Grid.Column>
+              <Statistic>
+                <Statistic.Value>
+                  <Icon circular name="js" size="small" />
+                </Statistic.Value>
+                <Statistic.Label>Language Support</Statistic.Label>
+              </Statistic>
+            </Statistic.Group>
           </Grid.Row>
         </Grid>
       </div>
