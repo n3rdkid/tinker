@@ -1,3 +1,6 @@
 .question {
   border: 2px solid black;
 }
+.quiz-result-container {
+  position: relative;
+}

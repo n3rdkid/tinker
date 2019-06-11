@@ -2,11 +2,13 @@ import React from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Button from "react-bootstrap/Button";
 import QuizAnswerList from "./QuizAnswerList";
+import { Icon } from "semantic-ui-react";
 let correctAnswerArray = [];
 let selectedAnswerArray = [];
 let answerssArray = [];
 let answersID = {};
 let score = 0;
+
 class QuizResult extends React.Component {
   state = {
     questions: this.props.loadedQuestions,
@@ -83,7 +85,9 @@ class QuizResult extends React.Component {
     let correctAnswer = (
       <div>
         <h1 align="center">
-          Congratulations You got {this.state.numOfCorrectAnswer} answer correct
+          <Icon name="thumbs up" />
+          Congratulations!! You got {this.state.numOfCorrectAnswer} answer
+          correct
         </h1>
         <ProgressBar>
           <ProgressBar

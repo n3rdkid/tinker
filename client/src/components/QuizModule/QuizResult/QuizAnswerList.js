@@ -1,6 +1,7 @@
 import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import "./QuestionAnswerList.css";
+import { Divider, Icon, Header, Label } from "semantic-ui-react";
 var answers = [];
 var quizIds = [];
 var questions = [];
@@ -34,12 +35,18 @@ class QuizAnswerList extends React.Component {
     console.log(answers);
     var answersList = quizIds.map(function(quizId, index) {
       var questionList = (
-        <div>
-          <ListGroup.Item as="li" />
-          <ListGroup.Item as="li" />
-          <ListGroup.Item as="li" variant="dark" />
-          <ListGroup.Item className="question" as="li" variant="dark">
-            {index + 1}. {questionListWithID[quizId]}
+        <div class="quiz-result-container">
+          <Divider horizontal>
+            <Header as="h4" />
+            <Header as="h4" />
+            <Header as="h4" />
+            <Header as="h4" />
+          </Divider>
+          <ListGroup.Item className="question" as="li">
+            <Label size="big" color="blue">
+              <Icon name="help" />
+              {index + 1}. {questionListWithID[quizId]}
+            </Label>
           </ListGroup.Item>
         </div>
       );
@@ -71,12 +78,14 @@ class QuizAnswerList extends React.Component {
         if (indexAnswer == indexOfCorrectAnswer) {
           li = (
             <ListGroup.Item as="li" variant="success">
+              <Icon name="checkmark" />
               {answer}
             </ListGroup.Item>
           );
         } else if (indexAnswer == indexOfSelectedAnswer) {
           li = (
             <ListGroup.Item as="li" variant="danger">
+              <Icon name="cancel" />
               {answer}
             </ListGroup.Item>
           );
