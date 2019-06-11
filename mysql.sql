@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS users(
   username VARCHAR(100) PRIMARY KEY,
   user_password VARCHAR(100) DEFAULT NULL,
   email VARCHAR(100) DEFAULT NULL UNIQUE,
-  user_type ENUM('student','teacher') DEFAULT 'student'
+  user_type ENUM('user','student','teacher') DEFAULT 'user'
 
 );
 /*----------------------------

@@ -14,7 +14,7 @@ class SignUp extends React.Component {
     username: "",
     email: "",
     user_password: "",
-    user_type: "student",
+    user_type: "user",
     errors: {}
   };
   componentDidMount() {
