@@ -137,7 +137,6 @@ class AddAssignment extends React.Component {
 
     let utc = new Date().toJSON().slice(0, 10);
     let minDate = new Date().getDate();
-    console.log(minDate)
     console.log("Min date", utc);
     return (
       <Container>
@@ -154,7 +153,7 @@ class AddAssignment extends React.Component {
                     min={utc}
                     type="date"
                     onChange={e => this.changeState(e)}
-                    value={minDate}
+                    value={this.state.dueDate}
                   />
                   <button
                     className="btn btn-primary"
