@@ -3,6 +3,8 @@ import axios from "axios";
 import Spinner from "../../UI/Spinner/Spinner";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import Aside from "../../UI/Admin/Aside";
+import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 class AdminSubmissions extends React.Component {
   state = {
     questionId: this.props.match.params.id,
