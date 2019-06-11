@@ -6,7 +6,8 @@ import { NavLink } from "react-router-dom";
 import { Icon, Statistic } from "semantic-ui-react";
 import { Container, Grid } from "semantic-ui-react";
 import axios from "axios";
-import CountUp from 'react-countup';
+import CountUp from "react-countup";
+import "./Landing.css";
 class Landing extends React.Component {
   state = {
     users: "",
@@ -14,22 +15,25 @@ class Landing extends React.Component {
     challenges: ""
   };
   componentDidMount = async () => {
-    await axios.get("http://localhost:5000/api/admin/landing").then(res=>{
-      console.log("Hello")
-      this.setState({
-        // users:res.data.users,
-        // challenges:res.data.challenges,
-        // students:res.data.students,
-        users:680,
-        challenges:400,
-        students:360
+    await axios
+      .get("http://localhost:5000/api/admin/landing")
+      .then(res => {
+        console.log("Hello");
+        this.setState({
+          // users:res.data.users,
+          // challenges:res.data.challenges,
+          // students:res.data.students,
+          users: 680,
+          challenges: 400,
+          students: 360
+        });
       })
-    }).catch(err=>console.log(err))
+      .catch(err => console.log(err));
   };
   render() {
     return (
       <>
-        <Jumbotron style={{ minHeight: "80vh" }}>
+        <Jumbotron style={{ minHeight: "70vh" }}>
           <Row>
             <Col className="mt-5" md="6" lg="8">
               <h1 className="display-3">Learn to code, interactively!</h1>
@@ -51,16 +55,15 @@ class Landing extends React.Component {
               <Statistic>
                 <Statistic.Value>
                   <Icon circular name="users" size="small" />
-                  <CountUp start={0} end= {this.state.users} />
-                 
+                  <CountUp start={0} end={this.state.users} />
                 </Statistic.Value>
                 <Statistic.Label>Users</Statistic.Label>
               </Statistic>
 
-              <Statistic>
+              <Statistic class="statistic-data">
                 <Statistic.Value>
                   <Icon circular name="question" size="small" />
-                  <CountUp start={0} end= {this.state.users} /> 
+                  <CountUp start={0} end={this.state.users} />
                 </Statistic.Value>
                 <Statistic.Label>Challenges</Statistic.Label>
               </Statistic>
@@ -68,8 +71,8 @@ class Landing extends React.Component {
               <Statistic>
                 <Statistic.Value>
                   <Icon circular name="student" size="small" />
-                  <CountUp start={0} end= {this.state.students} /> 
-                     </Statistic.Value>
+                  <CountUp start={0} end={this.state.students} />
+                </Statistic.Value>
                 <Statistic.Label>Students</Statistic.Label>
               </Statistic>
 

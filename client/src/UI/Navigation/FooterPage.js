@@ -3,7 +3,6 @@ import { Flag, Grid, Segment } from "semantic-ui-react";
 import "./FooterPage.css";
 const FooterPage = () => {
   return (
-<<<<<<< Updated upstream
     // <div class="footer">
     //   <Segment
     //     color="violet"
@@ -21,15 +20,9 @@ const FooterPage = () => {
     //     </Grid>
     //   </Segment>
     // </div>
-    <></>
-=======
+
     <div class="footer">
-      <Segment
-        color="violet"
-        attached="bottom"
-        textAlign="center"
-        style={{ padding: "0.5em 0em" }}
-      >
+      <Segment color="violet" textAlign="center">
         <Grid>
           <Grid.Row>
             <Grid.Column width={6} />
@@ -40,7 +33,6 @@ const FooterPage = () => {
         </Grid>
       </Segment>
     </div>
->>>>>>> Stashed changes
   );
 };
 

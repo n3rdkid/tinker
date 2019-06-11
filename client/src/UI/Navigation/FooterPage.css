@@ -1,10 +1,10 @@
 body {
-  positon: relative;
+  position: relative;
 }
 .footer {
   color: red;
   text-decoration: none;
   position: absolute;
-  bottom: 0;
+  bottom: -1%;
   width: 100%;
 }
