@@ -6,10 +6,14 @@ import Form from "react-bootstrap/Form";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { NavLink } from "react-router-dom";
-import { Icon } from "semantic-ui-react";
+import { Icon, Confirm } from "semantic-ui-react";
 
 class Navigation extends React.Component {
+  state = { open: false };
+  open = () => this.setState({ open: true });
+  close = () => this.setState({ open: false });
   onLogoutClicked = e => {
+    this.setState({ open: false });
     e.preventDefault();
     this.props.logoutUser();
   };
@@ -22,10 +26,16 @@ class Navigation extends React.Component {
             <Icon name="user" color="black" size="large" />
             {this.props.auth.user.username}
           </Button>
-          <Button onClick={this.onLogoutClicked} variant="outline-success">
+          <Button onClick={this.open} variant="outline-success">
             Logout
           </Button>
         </Form>
+        <Confirm
+          header="Hey whats up"
+          open={this.state.open}
+          onCancel={this.close}
+          onConfirm={this.onLogoutClicked}
+        />
       </div>
     );
     const guestLinks = (
@@ -62,12 +72,18 @@ class Navigation extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-            {this.props.auth.user.role!=="teacher"?<><NavLink className="nav-link" to="/Quiz">
-                Quiz
-              </NavLink>
-              <NavLink className="nav-link" to="/Challenges">
-                Challenges
-              </NavLink></>:""}
+              {this.props.auth.user.role !== "teacher" ? (
+                <>
+                  <NavLink className="nav-link" to="/Quiz">
+                    Quiz
+                  </NavLink>
+                  <NavLink className="nav-link" to="/Challenges">
+                    Challenges
+                  </NavLink>
+                </>
+              ) : (
+                ""
+              )}
               {assignmentsLink}
             </Nav>
             {isAuthenticated ? authLinks : guestLinks}
