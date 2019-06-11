@@ -3,10 +3,8 @@ import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import AddTestCases from "../AddTestCases/AddTestCases";
 import { connect } from "react-redux";
-import Aside from "../../UI/Admin/Aside";
 class AddAssignment extends React.Component {
   state = {
-    dueDate: new Date(),
     assignment_no: "",
     title: "",
     instruction: "",
@@ -23,48 +21,16 @@ class AddAssignment extends React.Component {
   onSubmit = e => {
     e.preventDefault();
 
-    let date = new Date(this.state.dueDate)
-      .toISOString()
-      .slice(0, 19)
-      .replace("T", " ");
-    axios
-      .post(`http://localhost:5000/api/assignments`, { dueDate: date })
-      .then(resp => {
-        this.setState({
-          displayAddQuestion: true,
-          assignment_no: "" + resp.data.insertId
-        });
-        console.log("Assignment added sucessfully");
-      })
-      .catch(err => console.log(err.response));
-    document.querySelector("#assignment_card").focus();
   };
-  onAddQuestion = async e => {
-    e.preventDefault();
-    await axios
-      .post(`http://localhost:5000/api/assignments/question`, this.state)
-      .then(res => {
-        let question_no = res.data.insertId;
-        this.setState({
-          ...this.state,
-          question_no: "" + question_no,
-          displayTestCases: true
-        });
-      })
-      .catch(err => console.log(err.response));
+  
   };
   changeState = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
-    let displayTestCases = "";
-    if (this.state.displayTestCases)
-      displayTestCases = (
-        <AddTestCases id="testcase" question_no={this.state.question_no} />
-      );
     let display = (
-      <div className="card offset-xs-1" id="assignment_card">
+      <div className="card" id="assignment_card">
         <div className="card-header">
           Assignment No : {this.state.assignment_no}
         </div>
@@ -87,6 +53,7 @@ class AddAssignment extends React.Component {
             <div class="form-group">
               <label style={{ fontSize: "20px" }}>Title</label>
               <input
+              
                 className="form-control"
                 name="title"
                 placeholder="Title.."
@@ -112,7 +79,7 @@ class AddAssignment extends React.Component {
 {
   return true;
 }`}
-              rows="5"
+                            rows="5"
               size="100"
               type="text"
               onChange={e => this.changeState(e)}
@@ -131,12 +98,7 @@ class AddAssignment extends React.Component {
               <option value="Test">Test</option>
             </select>
             <br />
-            <button
-              class="btn btn-primary"
-              onClick={e => this.onAddQuestion(e)}
-            >
-              Submit
-            </button>
+            <button class="btn btn-primary" onClick={e => this.onAddQuestion(e)}>Submit</button>
           </form>
         </div>
       </div>
@@ -146,45 +108,38 @@ class AddAssignment extends React.Component {
     let minDate = new Date().getDate();
     console.log("Min date", utc);
     return (
-      <Container fluid style={{ padding: "0" }}>
+      <Container>
         <Row>
-          <Col xs="3">
-            <Aside addHandler={this.addHandler} />
+          <Col md="3">
+            <form>
+              <div class="col-auto">
+                <label> Add new assignment</label>
+                <div class="input-group mb-2">
+                  <input
+                    className="form-control"
+                    name="dueDate"
+                    placeholder="Due Date"
+                    min={utc}
+                    type="date"
+                    onChange={e => this.changeState(e)}
+                    value={this.state.dueDate}
+                  />
+                  <button
+                    className="btn btn-primary"
+                    onClick={e => this.onSubmit(e)}
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+            </form>
           </Col>
-          <Col xs={{ span: "9", offset: "3" }}>
-            <Row>
-              <Col>
-                <form>
-                  <div class="card">
-                    <div class="card-header"> Add new assignment</div>
-                    <div class="input-group mb-2">
-                      <input
-                        className="form-control"
-                        name="dueDate"
-                        placeholder="Due Date"
-                        min={utc}
-                        type="date"
-                        onChange={e => this.changeState(e)}
-                        value={this.state.dueDate}
-                      />
-                      <button
-                        className="btn btn-primary"
-                        onClick={e => this.onSubmit(e)}
-                      >
-                        Add
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </Col>
-            </Row>
-            <Row>
-              <Col>{display}</Col>
-            </Row>
-            <Row>
-              <Col>{displayTestCases}</Col>
-            </Row>
-          </Col>
+        </Row>
+        <Row>
+          <Col>{display}</Col>
+        </Row>
+        <Row>
+          <Col>{displayTestCases}</Col>
         </Row>
       </Container>
     );

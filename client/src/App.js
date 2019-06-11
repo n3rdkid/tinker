@@ -107,7 +107,7 @@ class App extends React.Component {
             {/* POST  */}
           </Switch>
         </BrowserRouter>
-        <Footer />
+        {/* <Footer /> */}
       </Provider>
     );
   }
