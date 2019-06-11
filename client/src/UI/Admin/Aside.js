@@ -13,7 +13,7 @@ class SideNavPage extends React.Component {
   render() {
     return (
       <SideNav 
-      style={{zIndex:"1000"}}
+      style={{zIndex:"1000",position:"fixed",left:"0",top:"60px"}}
       expanded={true}
         onSelect={selected => {
           // Add your code here

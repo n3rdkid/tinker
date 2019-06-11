@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import AddTestCases from "../AddTestCases/AddTestCases";
 import { connect } from "react-redux";
 import Aside from "../../UI/Admin/Aside";
+import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 class AddAssignment extends React.Component {
   state = {
     dueDate: new Date(),
