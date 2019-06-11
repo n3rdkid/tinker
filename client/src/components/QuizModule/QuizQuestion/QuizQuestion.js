@@ -148,6 +148,10 @@ class QuizQuestion extends React.Component {
                     Approximately {this.state.approxQuestion} Questions
                     Remaining
                   </small>
+                  <StopWatch
+                    start={this.state.start}
+                    displayStopWatchTimer={this.displayStopWatchTimer}
+                  />
                 </h5>
               </div>
               <div className="card-body">
@@ -173,10 +177,6 @@ class QuizQuestion extends React.Component {
               />
             </h2>
           </div>
-          <StopWatch
-            start={this.state.start}
-            displayStopWatchTimer={this.displayStopWatchTimer}
-          />
         </div>
       );
     } else {

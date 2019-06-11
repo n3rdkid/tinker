@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Icon } from "semantic-ui-react";
 class StopWatch extends React.Component {
   state = { secondsElapsed: 0 };
 
@@ -38,11 +38,12 @@ class StopWatch extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>
+      <span>
+        <h3>
+          <Icon name="clock" />
           {this.getMinutes()}:{this.getSeconds()}
-        </h1>
-      </div>
+        </h3>
+      </span>
     );
   }
 }
