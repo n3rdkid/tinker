@@ -8,7 +8,6 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import classnames from "classnames";
 import { Card } from "react-bootstrap";
-import NavLink from "react-bootstrap/NavLink";
 
 class SignIn extends React.Component {
   state = {
@@ -93,7 +92,14 @@ class SignIn extends React.Component {
                       </Button>
                     </Col>
                     <Col>
-                      <Button style={{border:"none",outline:"none",background:"transparent",color:"#000"}}>
+                      <Button
+                        style={{
+                          border: "none",
+                          outline: "none",
+                          background: "transparent",
+                          color: "#000"
+                        }}
+                      >
                         Dont have an account
                         <a href="/signup"> Sign up</a>
                       </Button>

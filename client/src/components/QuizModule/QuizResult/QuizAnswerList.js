@@ -12,16 +12,15 @@ var answersID = [];
 class QuizAnswerList extends React.Component {
   componentDidMount() {}
   loadingQuestions() {
-    var test = questions.map(question => {
+    questions.map(question => {
       quizIds.map(function(qID) {
-        if (question.id == qID) {
+        if (question.id === qID) {
           questionListWithID[question.id] = question.question;
         }
       });
     });
   }
   render() {
-    let li;
     selectedAnswerArray = this.props.selectedAnswerArray;
     correctAnswerArray = this.props.correctAnswerArray;
     answersID = this.props.answersID;
@@ -66,23 +65,23 @@ class QuizAnswerList extends React.Component {
         var indexOfCorrectAnswer = 0;
         var indexOfSelectedAnswer = 0;
         answersID[quizId].map(ans => {
-          if (ans == selectedAnswerArray[index]) {
+          if (ans === selectedAnswerArray[index]) {
             indexOfSelectedAnswer = answersID[quizId].indexOf(ans);
           }
         });
         answersID[quizId].map(ans => {
-          if (ans == correctAnswerArray[index]) {
+          if (ans === correctAnswerArray[index]) {
             indexOfCorrectAnswer = answersID[quizId].indexOf(ans);
           }
         });
-        if (indexAnswer == indexOfCorrectAnswer) {
+        if (indexAnswer === indexOfCorrectAnswer) {
           li = (
             <ListGroup.Item as="li" variant="success">
               <Icon name="checkmark" />
               {answer}
             </ListGroup.Item>
           );
-        } else if (indexAnswer == indexOfSelectedAnswer) {
+        } else if (indexAnswer === indexOfSelectedAnswer) {
           li = (
             <ListGroup.Item as="li" variant="danger">
               <Icon name="cancel" />

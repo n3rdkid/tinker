@@ -60,7 +60,7 @@ class Landing extends React.Component {
                 <Statistic.Label>Users</Statistic.Label>
               </Statistic>
 
-              <Statistic class="statistic-data">
+              <Statistic className="statistic-data">
                 <Statistic.Value>
                   <Icon circular name="question" size="small" />
                   <CountUp start={0} end={this.state.users} />

@@ -36,10 +36,10 @@ class CountDownTimer extends React.Component {
   }
 
   startTimer() {
-    if (this.state.seconds == 0) {
+    if (this.state.seconds === 0) {
       this.setState({ seconds: this.state.timeLimit });
     }
-    if (this.timer == 0 && this.state.seconds > 0) {
+    if (this.timer === 0 && this.state.seconds > 0) {
       this.timer = setInterval(this.countDown, 1000);
     }
   }
@@ -81,7 +81,7 @@ class CountDownTimer extends React.Component {
   }
 
   render() {
-    if (this.props.stopCount != 5) {
+    if (this.props.stopCount !== 5) {
       this.startTimer();
     }
 
