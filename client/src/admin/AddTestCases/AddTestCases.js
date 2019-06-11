@@ -82,9 +82,14 @@ class AddTestCases extends React.Component {
   onSubmit = e => {
     e.preventDefault();
     console.log(this.state);
+   let data = {
+      ...this.state,
+      result:this.state.result
+    };
+    console.log("Data being submitted is ",data)
     axios
       .post(`http://localhost:5000/api/assignments/testcases`, {
-        ...this.state,
+        ...data,
         question_id: "" + this.state.question_id
       })
       .then(() => this.setState({ loading: true }))

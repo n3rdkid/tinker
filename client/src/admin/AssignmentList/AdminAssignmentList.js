@@ -74,9 +74,7 @@ class AdminAssignmentList extends React.Component {
     let id = e.target.id || e.target.parentElement.id;
     this.props.history.push(`/admin/assignments/${id}`);
   };
-  addHandler = () => {
-    this.props.history.push("/admin/add");
-  };
+  
 
   render() {
     let container = <p>No assignments yet</p>;
@@ -94,7 +92,7 @@ class AdminAssignmentList extends React.Component {
          
           <Row>
             <Col>
-            <Aside addHandler={this.addHandler}/>
+            <Aside/>
          
           </Col>
             <Col xs={9}>{container}</Col>
