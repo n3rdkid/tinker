@@ -37,6 +37,7 @@ class QuizQuestion extends React.Component {
     this.setState({
       selectedAnswerIdArray: [...this.state.selectedAnswerIdArray, e.target.id]
     });
+
     this.setState({
       correctAnswerIdArray: [
         ...this.state.correctAnswerIdArray,
@@ -111,7 +112,6 @@ class QuizQuestion extends React.Component {
 
     this.stoppedMinute = stoppedMinute;
     this.stoppedSecond = stoppedSecond;
-    console.log("Stopped at:" + this.stoppedMinute + ":" + this.stoppedSecond);
   };
   render() {
     let answers = this.state.answers;

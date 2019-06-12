@@ -52,7 +52,7 @@ class QuizResult extends React.Component {
       });
     });
 
-    //  console.log([newAnswersArray]);
+    console.log([newAnswersArray]);
 
     let reducedQuiz_id = [...new Set(quiz_id)];
     this.setState({ quizIdArray: reducedQuiz_id });
