@@ -55,11 +55,7 @@ class EditQuestion extends React.Component {
     await axios
       .put(`http://localhost:5000/api/assignments/question`, this.state)
       .then(res => {
-        let question_no = res.data.insertId;
-        this.setState({
-          ...this.state,
-          question_no: "" + question_no
-        });
+       console.log({success:res})
       })
       .catch(err => console.log(err.response));
   };

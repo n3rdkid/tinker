@@ -32,8 +32,9 @@ import AdminSubmissions from "./admin/SubmissionList/AdminSubmissions";
 import Submission from "./admin/Submission/Submission";
 import restricted from "./UI/Restricted";
 import DefaultAside from "./UI/Admin/Aside";
-import EditAssignments from "./admin/Edit Assignments/Edit Assignments";
+import EditAssignments from "./admin/EditAssignments/EditAssignments";
 import EditQuestion from "./admin/EditQuestion/EditQuestion";
+import EditTestCases from "./admin/EditTestCases/EditTestCases";
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -94,6 +95,7 @@ class App extends React.Component {
             />
             <Route path="/admin/add" component={AddAssignment} exact />
             <Route path="/admin/edit" component={EditAssignments} exact />
+            <Route path="/admin/test" component={EditTestCases} exact />
             <Route path="/admin/edit/:id" component={EditQuestion} exact />
             <Route
               path="/admin/assignments/:id"
