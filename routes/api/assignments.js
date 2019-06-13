@@ -4,7 +4,10 @@ const mysql = require("mysql");
 const validateSubmissionInput = require("../../validation/AssignmentModule/Submission");
 const validateResourcesInput = require("../../validation/AssignmentModule/Resources");
 const validateQuestion = require("../../validation/AssignmentModule/validateQuestion");
+const validateUpdateQuestion = require("../../validation/AssignmentModule/validateUpdateQuestion");
 const validateTestCases = require("../../validation/AssignmentModule/validateTestCases");
+
+const validateUpdateTestCases = require("../../validation/AssignmentModule/validateUpdateTestCases");
 //For Database
 const databaseOptions = require("../../config/database");
 const mysqlConnection = mysql.createConnection(databaseOptions);
@@ -299,10 +302,10 @@ router.get("/testcases/:id", (req, res) => {
 //@route Post api/assignments/resources/:id
 //@access Public
 router.put("/question", (req, res) => {
-  // const { errors, isValid } = validateQuestion(req.body);
-  // if (!isValid) {
-  //   return res.status(400).json({ errors });
-  // }
+  const { errors, isValid } = validateUpdateQuestion(req.body);
+  if (!isValid) {
+    return res.status(400).json({ errors });
+  }
   let { title, instruction, starter, label, question_no } = req.body;
   let statement =
     "UPDATE assignment_question SET title=?,instruction=?,starter=?,label=? WHERE id =?";
@@ -318,5 +321,25 @@ router.put("/question", (req, res) => {
     }
   );
 });
+
+//@route GET api/challenges/leaderboard/:id
+//@access Public
+router.put("/test", (req, res) => {
+  const { errors, isValid } = validateUpdateTestCases(req.body);
+  if (!isValid) {
+    return res.status(400).json({ errors });
+  }
+  let {testId,test,result}=req.body;
+  let statement =
+    "UPDATE tests_assignments SET test=?,result=? WHERE id=?";
+  mysqlConnection.query(statement, [test,result,testId], (err, results, fields) => {
+    if (!err) {
+      res.json(results);
+    } else {
+      return res.status(400).json({ error: "No such resources" });
+    }
+  });
+});
+
 
 module.exports = router;

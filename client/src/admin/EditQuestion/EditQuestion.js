@@ -98,7 +98,7 @@ class EditQuestion extends React.Component {
             <label style={{ fontSize: "20px" }}>Starter</label>
             <textarea
               className="form-control"
-              name={this.state.instruction}
+              name="starter"
               placeholder={`function hello()
 {
   return true;
