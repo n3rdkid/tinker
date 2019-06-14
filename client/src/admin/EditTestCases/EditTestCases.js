@@ -53,7 +53,7 @@ class EditQuestion extends React.Component {
     let display = (
       <div className="card offset-xs-1" id="assignment_card">
         <div className="card-header">
-          Question No :{" "}
+          Test No :
           <input
             className="form-control"
             name="testId"

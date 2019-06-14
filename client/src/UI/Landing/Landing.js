@@ -8,6 +8,7 @@ import { Container, Grid } from "semantic-ui-react";
 import axios from "axios";
 import CountUp from "react-countup";
 import "./Landing.css";
+import hero from "../../assets/hero.jpg";
 class Landing extends React.Component {
   state = {
     users: "",
@@ -33,18 +34,57 @@ class Landing extends React.Component {
   render() {
     return (
       <>
-        <Jumbotron style={{ minHeight: "70vh" }}>
-          <Row>
-            <Col className="mt-5" md="6" lg="8">
-              <h1 className="display-3">Learn to code, interactively!</h1>
-              <p style={{ fontSize: "20px" }}>
-                It's the fastest, easiest, most addictive way to learn.
-              </p>
-              <p>
-                <NavLink className="btn btn-primary text-light" to="/signin">
-                  Get Started
+        <Jumbotron style={{padding:"0"}} fluid={true} class="hero">
+          <Row className="no-gutters" style={{minHeight:"500px",background: "#F7F7F7" }}>
+            <Col className="mt-5 ml-3 d-flex align-items-center" md="6">
+              <div>
+                <h1 style={{ fontSize: "4rem", color: "#211717" }}>
+                  Future-Proof Your Career
+                </h1>
+                <p style={{ fontSize: "1.34rem", color: "#454d66" }}>
+                  It's the fastest, easiest, most addictive way to learn.
+                </p>
+              </div>
+            </Col>
+            <Col className="d-flex align-items-center" sm={0} md={4}>
+              <img width="400px" src={hero} alt="hero" />
+            </Col>
+          </Row>
+          <Row className="no-gutters" style={{minHeight: "350px", background: "#525252" }}>
+            <Col
+              className="ml-3 d-flex align-items-center justify-content-center"
+              md={5}
+              style={{ paddingTop: "10px" }}
+            >
+              <div>
+                <h2
+                  style={{
+                    lineHeight: "3rem",
+                    fontSize: "2.5rem",
+                    color: "white"
+                  }}
+                >
+                  Continuously build your skills with <span style={{   color: "#f07b3f"}}>Tinker</span>
+                </h2>
+                <p style={{ fontSize: "1.34rem", color: "#dedede" }}>
+                  Whether you want to improve your problem solving skills,
+                  master a new skill, or build expertise in the mission-critical
+                  topics you need for career advancement, Tinker helps you
+                  future-proof your career.
+                </p>
+              </div>
+            </Col>
+            <Col md={6} className="d-flex justify-content-center align-items-center">
+                <NavLink
+                  style={{
+                    display: "inline-block",
+                    color: "#f6f6f6",
+                    fontSize: "1.5rem"        
+                  }}
+                  to="/signin"
+                >
+                  <span style={{ borderBottom:"2px solid #f07b3f",  paddingBottom:"5px"}}>Try Now <span style={{color:"#f07b3f"}}>></span></span>
                 </NavLink>
-              </p>
             </Col>
           </Row>
         </Jumbotron>

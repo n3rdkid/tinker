@@ -29,7 +29,8 @@ class AddTestCases extends React.Component {
       test: "",
       result: "",
       testCases: null,
-      loading: true
+      loading: false,
+      flag:0
     };
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -37,7 +38,7 @@ class AddTestCases extends React.Component {
     this.nameInput.focus();
     await axios
       .get(
-        `http://localhost:5000/api/assignments/testcases/${
+        `http://localhost:5000/api/admin/testcases/${
           this.state.question_id
         }`
       )
@@ -54,13 +55,13 @@ class AddTestCases extends React.Component {
       });
     }
     console.log("DATATABLE", dataTableData.rows);
-    this.setState({ loading: false });
+    this.setState({ loading: false ,flag:1});
   }
 
   loadTestCases = async () => {
     await axios
       .get(
-        `http://localhost:5000/api/assignments/testcases/${
+        `http://localhost:5000/api/admin/testcases/${
           this.state.question_id
         }`
       )
@@ -76,7 +77,7 @@ class AddTestCases extends React.Component {
       });
     }
     console.log("DATATABLE", dataTableData.rows);
-    this.setState({ loading: false });
+    this.setState({ loading: false,flag:3 });
   };
 
   onSubmit = e => {
@@ -92,7 +93,7 @@ class AddTestCases extends React.Component {
         ...data,
         question_id: "" + this.state.question_id
       })
-      .then(() => this.setState({ loading: true }))
+      .then(() => console.log("Submitted"))
       .catch(err => console.log(err.response.data));
     this.loadTestCases();
   };
@@ -143,7 +144,7 @@ class AddTestCases extends React.Component {
             <br />
             <button onClick={e => this.onSubmit(e)}>Submit</button>
           </form>
-          {table}
+          {/* {table} */}
         </div>
       </div>
     );

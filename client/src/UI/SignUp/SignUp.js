@@ -9,6 +9,7 @@ import classnames from "classnames";
 import { registerUser } from "../../actions/authActions";
 import { withRouter } from "react-router-dom";
 import { Card, Container } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 class SignUp extends React.Component {
   state = {
     username: "",
@@ -42,79 +43,119 @@ class SignUp extends React.Component {
     const { errors } = this.state;
     const { user } = this.props.auth;
     return (
-      <Container>
-        <Row className="justify-content-center align-items-center">
+      <Container fluid={true} style={{ background: "#4e4e4e" }}>
+        <Row
+          style={{ minHeight: "88vh" }}
+          className="justify-content-center align-items-center"
+        >
           <Col md="6">
             <Card>
-              <Card.Header> Sign up </Card.Header>
+              <Card.Header
+                style={{
+                  backgroundColor: "#313848",
+                  border: "0",
+                  textAlign: "center",
+                  fontSize: "2rem",
+                  color: "#e7eaf6"
+                }}
+              >
+                {" "}
+                Sign up{" "}
+              </Card.Header>
               <Card.Body>
                 <Form>
-                  <Form.Group as={Row}>
-                    <Form.Label column sm={3}>
+                  <Form.Group>
+                    <Form.Label
+                      style={{ fontSize: "1.5rem", color: "#414141" }}
+                    >
                       Email
                     </Form.Label>
-                    <Col sm={9}>
-                      <Form.Control
-                        className={classnames({ "is-invalid": errors.email })}
-                        name="email"
-                        onChange={e => this.changeHandler(e)}
-                        value={this.state.email}
-                        type="email"
-                        placeholder="Email"
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.email}
-                      </Form.Control.Feedback>
-                    </Col>
+                    <Form.Control
+                      className={classnames({ "is-invalid": errors.email })}
+                      name="email"
+                      onChange={e => this.changeHandler(e)}
+                      value={this.state.email}
+                      type="email"
+                      placeholder="Email"
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {errors.email}
+                    </Form.Control.Feedback>
                   </Form.Group>
-                  <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={3}>
+                  <Form.Group controlId="formHorizontalEmail">
+                    <Form.Label
+                      style={{ fontSize: "1.5rem", color: "#414141" }}
+                    >
                       Username
                     </Form.Label>
-                    <Col sm={9}>
-                      <Form.Control
-                        name="username"
-                        className={classnames({
-                          "is-invalid": errors.username
-                        })}
-                        type="text"
-                        placeholder="Username"
-                        onChange={e => this.changeHandler(e)}
-                        value={this.state.username}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.username}
-                      </Form.Control.Feedback>
-                    </Col>
+                    <Form.Control
+                      name="username"
+                      className={classnames({
+                        "is-invalid": errors.username
+                      })}
+                      type="text"
+                      placeholder="Username"
+                      onChange={e => this.changeHandler(e)}
+                      value={this.state.username}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {errors.username}
+                    </Form.Control.Feedback>
                   </Form.Group>
 
-                  <Form.Group as={Row} controlId="formHorizontalPassword">
-                    <Form.Label column sm={3}>
+                  <Form.Group controlId="formHorizontalPassword">
+                    <Form.Label
+                      style={{ fontSize: "1.5rem", color: "#414141" }}
+                    >
                       Password
                     </Form.Label>
-                    <Col sm={9}>
-                      <Form.Control
-                        className={classnames({
-                          "is-invalid": errors.password
-                        })}
-                        name="user_password"
-                        type="password"
-                        placeholder="Password"
-                        onChange={e => this.changeHandler(e)}
-                        value={this.state.user_password}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.password}
-                      </Form.Control.Feedback>
-                    </Col>
+                    <Form.Control
+                      className={classnames({
+                        "is-invalid": errors.password
+                      })}
+                      name="user_password"
+                      type="password"
+                      placeholder="Password"
+                      onChange={e => this.changeHandler(e)}
+                      value={this.state.user_password}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {errors.password}
+                    </Form.Control.Feedback>
                   </Form.Group>
 
-                  <Form.Group as={Row}>
-                    <Col>
-                      <Button type="submit" onClick={e => this.onSubmit(e)}>
-                        Register
-                      </Button>
-                    </Col>
+                  <Form.Group>
+                    <Row>
+                      <Col md={3}>
+                        <Button
+                          type="submit"
+                          style={{
+                            border: "0",
+                            background: "#FF502F",
+                            color: "white"
+                          }}
+                          onClick={e => this.onSubmit(e)}
+                        >
+                          Register
+                        </Button>
+                      </Col>
+                      <Col md={9} className="text-right">
+                        <Button
+                          style={{
+                            border: "none",
+                            outline: "none",
+                            background: "transparent",
+                            color: "#000"
+                          }}
+                        >
+                          Have an account
+                          <NavLink style={{ color: "#FF502F" }} to="/signin">
+                            {" "}
+                            Sign in
+                          </NavLink>
+                        </Button>
+                      </Col>
+                    </Row>
                   </Form.Group>
                 </Form>
               </Card.Body>

@@ -51,6 +51,31 @@ router.get(
     }
   }
 );
+
+//@route GET api/admin/assignments
+//@desc  Return current user
+//@access Private
+router.get(
+  "/testcases/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    console.log(req.role);
+    if (!req.role === "teacher")
+      res.json({ error: "You don't have access to this page!" });
+    else {
+      console.log("test Id is ",req.params.id)
+      let statement = "SELECT * FROM tests_assignments  WHERE question_id= ?";
+      mysqlConnection.query(statement, req.params.id, (err, results, fields) => {
+        if (!err) {
+          res.json(results);
+        } else {
+          return res.status(400).json({ error: "No such resources" });
+        }
+      });
+    }
+  }
+);
+
 router.get(
   "/assignments/:id",
   passport.authenticate("jwt", { session: false }),
@@ -98,7 +123,7 @@ router.get(
       if (!err) {
         let response = {};
         response.submission = results[0].submission;
-         let statement2 = "SELECT * FROM tests_assignments WHERE question_id=?";
+        let statement2 = "SELECT * FROM tests_assignments WHERE question_id=?";
         mysqlConnection.query(
           statement2,
           results[0].question_id,
@@ -116,21 +141,19 @@ router.get(
   }
 );
 
-router.get(
-  "/landing",
-   (req, res) => {
-   let statement = "SELECT COUNT(*) as count FROM users;SELECT COUNT(*) as count FROM challenges;SELECT COUNT(*) as count FROM Users WHERE user_type='student'";
-    mysqlConnection.query(statement, (err, results, fields) => {
-      if (!err) {
-        res.json({
-          users:results[0][0].count,
-          challenges:results[1][0].count,
-          students:results[2][0].count
-        })
-      } else {
-        res.json({ error: "Error has occurred" });
-      }
-    });
-  }
-);
+router.get("/landing", (req, res) => {
+  let statement =
+    "SELECT COUNT(*) as count FROM users;SELECT COUNT(*) as count FROM challenges;SELECT COUNT(*) as count FROM Users WHERE user_type='student'";
+  mysqlConnection.query(statement, (err, results, fields) => {
+    if (!err) {
+      res.json({
+        users: results[0][0].count,
+        challenges: results[1][0].count,
+        students: results[2][0].count
+      });
+    } else {
+      res.json({ error: "Error has occurred" });
+    }
+  });
+});
 module.exports = router;

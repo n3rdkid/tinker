@@ -24,26 +24,22 @@ class QuizAnswerList extends React.Component {
     selectedAnswerArray = this.props.selectedAnswerArray;
     correctAnswerArray = this.props.correctAnswerArray;
     answersID = this.props.answersID;
-    console.log("Correct ANswer Array:" + selectedAnswerArray);
-    console.log("Selected AnswerArray:" + correctAnswerArray);
     answers = this.props.answers;
     quizIds = this.props.quizIdArray;
     questions = this.props.questions;
     this.loadingQuestions();
-    console.log(this.props.answersID);
-    console.log(answers);
     var answersList = quizIds.map(function(quizId, index) {
       var questionList = (
         <div class="quiz-result-container">
-          <Divider horizontal>
+          {/* <Divider horizontal>
             <Header as="h4" />
             <Header as="h4" />
             <Header as="h4" />
             <Header as="h4" />
-          </Divider>
-          <ListGroup.Item className="question" as="li">
-            <Label size="big" color="blue">
-              <Icon name="help" />
+          </Divider> */}
+          <ListGroup.Item style={{marginTop:"16px",textAlign:"left",background:"#89a3b2"}} className="question" as="li">
+            <Label style={{borderRadius:"6px 6px 0 9 ",color:"white",background:"transparent",textAlign:"left"}} size="big">
+              {/* <Icon name="help" /> */}
               {index + 1}. {questionListWithID[quizId]}
             </Label>
           </ListGroup.Item>
@@ -76,19 +72,23 @@ class QuizAnswerList extends React.Component {
         });
         if (indexAnswer == indexOfCorrectAnswer) {
           li = (
-            <ListGroup.Item as="li" variant="success">
-              <Icon name="checkmark" />
+            <ListGroup.Item style={{textAlign:"left",paddingLeft:"20px"}} as="li" variant="success">
+              <div className="d-flex">
               {answer}
+              <Icon className="ml-auto" name="checkmark" />
+              </div>
             </ListGroup.Item>
           );
         } else if (indexAnswer == indexOfSelectedAnswer) {
           li = (
-            <ListGroup.Item as="li" variant="danger">
-              <Icon name="cancel" />
+            <ListGroup.Item style={{textAlign:"left",paddingLeft:"20px"}} as="li" variant="danger">
+            <div className="d-flex">
               {answer}
+              <Icon className="ml-auto"  name="cancel" />
+              </div>
             </ListGroup.Item>
           );
-        } else li = <ListGroup.Item as="li">{answer}</ListGroup.Item>;
+        } else li = <ListGroup.Item style={{textAlign:"left",paddingLeft:"20px"}} as="li">{answer}</ListGroup.Item>;
         return li;
       });
       return [questionList, answerOfSingleQuestion];

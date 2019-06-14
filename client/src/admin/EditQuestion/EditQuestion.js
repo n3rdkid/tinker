@@ -21,9 +21,9 @@ class EditQuestion extends React.Component {
     await axios
       .get(
         `http://localhost:5000/api/assignments/question/${
-          this.props.match.params.id
+          this.state.question_no
         }`
-      ) 
+      )
       .then(response => {
         console.log(response);
         this.setState({
@@ -34,28 +34,38 @@ class EditQuestion extends React.Component {
         });
       })
       .catch(error => console.log(error));
-      //Git test
+    //Git test
   };
-  onSubmit = e => {
-    e.preventDefault();
-    console.log("Update here");
-    // axios
-    //   .post(`http://localhost:5000/api/assignments`, { dueDate: date })
-    //   .then(resp => {
-    //     this.setState({
-    //       displayAddQuestion: true,
-    //       assignment_no: "" + resp.data.insertId
-    //     });
-    //     console.log("Assignment added sucessfully");
-    //   })
-    //   .catch(err => console.log(err.response));
+
+  loadQuestions = async () => {
+    console.log("Inside Ediq ", this.props);
+    if (this.props.auth.user.role !== "teacher")
+      this.props.history.push("/restricted");
+
+    await axios
+      .get(
+        `http://localhost:5000/api/assignments/question/${
+          this.state.question_no
+        }`
+      )
+      .then(response => {
+        console.log(response);
+        this.setState({
+          title: response.data.question.title,
+          instruction: response.data.question.instruction,
+          starter: response.data.question.starter,
+          label: response.data.question.label
+        });
+      })
+      .catch(error => console.log(error));
+    //Git test
   };
   onUpdateQuestion = async e => {
     e.preventDefault();
     await axios
       .put(`http://localhost:5000/api/assignments/question`, this.state)
       .then(res => {
-       console.log({success:res})
+        console.log({ success: res });
       })
       .catch(err => console.log(err.response));
   };
@@ -67,7 +77,18 @@ class EditQuestion extends React.Component {
     let display = (
       <div className="card offset-xs-1" id="assignment_card">
         <div className="card-header">
-          Question No : {this.state.question_no}
+          Question No :{" "}
+          <input
+            className="form-control"
+            name="question_no"
+            placeholder="{ 1 || 2 || 3||....||n}"
+            type="text"
+            onChange={e => this.changeState(e)}
+            value={this.state.question_no}
+          />
+          <button class="btn btn-primary" onClick={this.loadQuestions}>
+            Load
+          </button>
         </div>
         <br />
         <div className="card-body">

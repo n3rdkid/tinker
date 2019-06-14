@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import classnames from "classnames";
 import { Card } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 class SignIn extends React.Component {
   state = {
@@ -23,9 +24,7 @@ class SignIn extends React.Component {
   };
   componentDidMount() {
     console.log("Role", this.props.auth.user.role);
-    if (
-      this.props.auth.isAuthenticated 
-    ) {
+    if (this.props.auth.isAuthenticated) {
       this.props.history.push("/");
     } else if (this.props.auth.isAuthenticated) {
       this.props.history.push("/challenges");
@@ -35,10 +34,10 @@ class SignIn extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   componentWillReceiveProps(nextProps) {
-    console.log("Next r")
-    if (nextProps.auth.user.role="teacher") {
-      this.props.history.push("/admin/assignments");
-    }
+    console.log("Next r");
+    // if ((nextProps.auth.user.role = "teacher")) {
+    //   this.props.history.push("/admin/assignments");
+    // }
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/");
     }
@@ -50,15 +49,33 @@ class SignIn extends React.Component {
     let { errors } = this.state;
     console.log("Errors", errors);
     return (
-      <Container>
-        <Row className="justify-content-center align-items-center">
+      <Container fluid={true} style={{ background: "#5e6073" }}>
+        <Row
+          style={{ minHeight: "87vh" }}
+          className="d-flex justify-content-center align-items-center"
+        >
           <Col md="6">
             <Card>
-              <Card.Header> Sign in </Card.Header>
+              <Card.Header
+                style={{
+                  backgroundColor: "#313848",
+                  border: "0",
+                  textAlign: "center",
+                  fontSize: "2rem",
+                  color: "#e7eaf6"
+                }}
+              >
+                {" "}
+                Sign in to Tinker
+              </Card.Header>
               <Card.Body>
                 <Form>
                   <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label
+                      style={{ fontSize: "1.5rem", color: "#414141" }}
+                    >
+                      Username
+                    </Form.Label>
                     <Form.Control
                       className={classnames({ "is-invalid": errors.username })}
                       name="username"
@@ -72,7 +89,11 @@ class SignIn extends React.Component {
                     </Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label
+                      style={{ fontSize: "1.5rem", color: "#414141" }}
+                    >
+                      Password
+                    </Form.Label>
                     <Form.Control
                       name="password"
                       className={classnames({ "is-invalid": errors.password })}
@@ -89,13 +110,17 @@ class SignIn extends React.Component {
                     <Col sm="3">
                       <Button
                         onClick={e => this.onSubmit(e)}
-                        variant="primary"
                         type="submit"
+                        style={{
+                          border: "0",
+                          background: "#FF502F",
+                          color: "white"
+                        }}
                       >
                         Submit
                       </Button>
                     </Col>
-                    <Col>
+                    <Col className="text-right">
                       <Button
                         style={{
                           border: "none",
@@ -105,7 +130,10 @@ class SignIn extends React.Component {
                         }}
                       >
                         Dont have an account
-                        <a href="/signup"> Sign up</a>
+                        <NavLink style={{ color: "#FF502F" }} to="/signup">
+                          {" "}
+                          Sign up
+                        </NavLink>
                       </Button>
                     </Col>
                   </Form.Row>

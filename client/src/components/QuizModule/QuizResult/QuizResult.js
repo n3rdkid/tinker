@@ -70,7 +70,7 @@ class QuizResult extends React.Component {
       }
     }
     this.setState({ numOfCorrectAnswer: counts });
-    let calcCorrectPercentage = Math.floor((counts / 5) * 100);
+    let calcCorrectPercentage = Math.floor((counts / 10) * 100);
     this.setState({ correctPercentage: calcCorrectPercentage });
   }
   calculateScore() {
@@ -92,37 +92,33 @@ class QuizResult extends React.Component {
     let correctAnswer = (
       <div>
         <h1 align="center">
-          <Icon name="thumbs up" />
-          Congratulations!! You got {this.state.numOfCorrectAnswer} answer
-          correct
+          {/* <Icon name="thumbs up" /> */}
+         You took {this.props.stoppedMinute}:{this.props.stoppedSecond} to 
+        complete the quiz with {this.state.correctPercentage}% Accuracy.
+                <br/> 
+          Your Total Score: {score}
         </h1>
-        <ProgressBar>
+        {/* <ProgressBar>
           <ProgressBar
-            animated
-            striped
+
             variant="success"
             label={`${this.state.correctPercentage}%`}
             now={this.state.correctPercentage}
             key={1}
           />
           <ProgressBar
-            animated
-            striped
             variant="danger"
             label={`${100 - this.state.correctPercentage}%`}
             now={`${100 - this.state.correctPercentage}`}
             key={2}
           />
-        </ProgressBar>
+        </ProgressBar> */}
         <div align="center">
-          <h2>
+          {/* <h2>
             You got {this.state.numOfCorrectAnswer} answer correct out of{" "}
             {correctAnswerArray.length}.
           </h2>
-          <h2>
-            Time taken: {this.props.stoppedMinute}:{this.props.stoppedSecond}
-          </h2>
-          <h2>Total Score: {score}</h2>
+        */}
           <Button
             variant="success"
             size="lg"

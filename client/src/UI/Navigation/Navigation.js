@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { NavLink } from "react-router-dom";
 import { Icon, Confirm } from "semantic-ui-react";
-
+import "./Navigation.css";
 class Navigation extends React.Component {
   state = { open: false };
   open = () => this.setState({ open: true });
@@ -22,8 +22,9 @@ class Navigation extends React.Component {
     const authLinks = (
       <div>
         <Form inline>
-          <NavLink className="justify-content-end nav-link" to="/UserGuide">
-            <Icon name="help" fitted /> User Guide
+          <NavLink style={{ fontSize: "1.15rem", paddingTop: "10px"}} className="justify-content-end nav-link" to="/UserGuide">
+            {/* <Icon name="help" fitted /> */}
+            User Guide
           </NavLink>
           <Button variant="outline-info" disabled>
             <Icon name="user" color="black" size="large" />
@@ -43,29 +44,31 @@ class Navigation extends React.Component {
     );
     const guestLinks = (
       <>
-        <NavLink className="justify-content-end nav-link" to="/UserGuide">
-          <Icon name="help" fitted /> User Guide
+        <NavLink className="justify-content-end nav-link"     style={{ fontSize: "1.15rem", paddingTop: "10px"}} to="/UserGuide">
+          {/* <Icon name="help" fitted />  */}
+          User Guide
         </NavLink>
-        <Button variant="outline-success" href="/Signin">
-          Signin
-        </Button>
-        <Button variant="outline-success" href="/Signup">
-          Signup
-        </Button>
+        <NavLink className="nav-link" style={{fontSize:"1.1rem",border:"0",borderRadius:"0",color:"#444f5a",outline:"0"}} to="/Signin">
+          Sign in
+        </NavLink>
+        <NavLink className="nav-link" style={{fontSize:"1.1rem",border:"0",borderRadius:"0",background:"#525252",outline:"0"}} to="/Signup">
+          <span style={{color:"white"}}>Sign up</span>
+        </NavLink>
       </>
     );
 
     let assignmentsLink = "";
     if (this.props.auth.user.role === "student") {
       assignmentsLink = (
-        <NavLink className="nav-link" to="/assignments">
-          <Icon name="write" fitted /> Assignments
+        <NavLink className="nav-link" style={{ fontSize: "1.15rem", paddingTop: "10px"}} to="/assignments">
+          {/* <Icon name="write" fitted /> */}
+          Assignments
         </NavLink>
       );
     }
     if (this.props.auth.user.role === "teacher") {
       assignmentsLink = (
-        <NavLink className="nav-link" to="/admin/assignments">
+        <NavLink className="nav-link" style={{ fontSize: "1.15rem", paddingTop: "10px"}} to="/admin/assignments">
           Manage Assignments
         </NavLink>
       );
@@ -73,9 +76,15 @@ class Navigation extends React.Component {
 
     return (
       <>
-        <Navbar sticky="top" bg="white" expand="lg" color="white">
-          <Navbar.Brand href="/">
-            <Icon name="home" />
+        <Navbar
+          style={{ minHeight: "80px"}}
+          // sticky="top"
+          bg="white"
+          expand="md"
+          color="white"
+        >
+          <Navbar.Brand href="/" style={{color:"#ff502f", fontSize: "2.5rem",textTransform:"uppercase",fontWeight:"600" }}>
+            {/* <Icon name="home" /> */}
             Tinker
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -83,11 +92,19 @@ class Navigation extends React.Component {
             <Nav className="mr-auto">
               {this.props.auth.user.role !== "teacher" ? (
                 <>
-                  <NavLink className="nav-link" to="/Quiz">
-                    <Icon name="bolt" fitted /> Quiz
+                  <NavLink
+                    style={{ fontSize: "1.15rem", paddingTop: "10px"}}
+                    className="nav-link"
+                    to="/Quiz"
+                  >
+                    {/* <Icon name="bolt" fitted /> */}
+                    Quiz
                   </NavLink>
-                  <NavLink className="nav-link" to="/Challenges">
-                    <Icon name="chess knight" fitted /> Challenges
+                  <NavLink 
+                      style={{ fontSize: "1.15rem", paddingTop: "10px"}}
+                  className="nav-link" to="/Challenges">
+                    {/* <Icon name="chess knight" fitted /> */}
+                    Challenges
                   </NavLink>
                 </>
               ) : (
