@@ -11,17 +11,26 @@
     <title>Hello, world!</title>
   </head>
   <body>
-        <img class="aligncenter size-full wp-image-140824 lazyloaded" 
-        src="https://colorlib.com/wp/wp-content/uploads/sites/2/Login_v10.jpg" 
-        alt="" data-lazy-srcset="https://colorlib.com/wp/wp-content/uploads/sites/2/Login_v10.jpg 1280w,
-         https://colorlib.com/wp/wp-content/uploads/sites/2/Login_v10-300x220.jpg 300w, 
-         https://colorlib.com/wp/wp-content/uploads/sites/2/Login_v10-768x563.jpg 768w,
-          https://colorlib.com/wp/wp-content/uploads/sites/2/Login_v10-1024x751.jpg 1024w"
-           data-lazy-sizes="(max-width: 1280px) 100vw, 1280px" data-lazy-src="https://colorlib.com/wp/wp-content/uploads/sites/2/Login_v10.jpg" 
-           sizes="(max-width: 1280px) 100vw, 1280px" srcset="https://colorlib.com/wp/wp-content/uploads/sites/2/Login_v10.jpg 1280w, 
-           https://colorlib.com/wp/wp-content/uploads/sites/2/Login_v10-300x220.jpg 300w, https://colorlib.com/wp/wp-content/uploads/sites/2/Login_v10-768x563.jpg 768w, 
-           https://colorlib.com/wp/wp-content/uploads/sites/2/Login_v10-1024x751.jpg 1024w" data-was-processed="true" 
-           width="1280" height="939">
+       <form method="post" action="https://colorlib.com/wp/wp-login.php" class="bbp-login-form">
+        <fieldset>Log In<div class="bbp-username"> <label for="user_login">
+         Username: </label> <input type="text" name="log" value="" size="20" id="user_login" tabindex="101"></div>
+         <div class="bbp-password"> <label for="user_pass">Password: </label> <input type="password" name="pwd" value="" size="20" id="user_pass" tabindex="102"></div><div class="bbp-remember-me"> <input type="checkbox" name="rememberme" value="forever" id="rememberme" tabindex="103"> <label for="rememberme">Remember Me</label></div><div class="bbp-submit-wrapper"> <button type="submit" name="user-submit" id="user-submit" tabindex="104" class="button submit user-submit">Log In</button> <input type="hidden" name="user-cookie" value="1"><input type="hidden" id="bbp_redirect_to" name="redirect_to" value="https://colorlib.com/wp/"><input type="hidden" id="_wpnonce" name="_wpnonce" value="5fb44d9936"><input type="hidden" name="_wp_http_referer" value="/wp/"></div><div class="bbp-login-links"> <a href="https://colorlib.com/wp-signup.php" title="Register" class="bbp-register-link">Register</a> <a href="https://colorlib.com/wp-login.php?action=lostpassword" title="Lost Password" class="bbp-lostpass-link">Lost Password</a></div></fieldset></form>
+       <fieldset>Log In<div class="bbp-username"> <label for="user_login">Username: </label>
+         <input type="text" name="log" value="" size="20" id="user_login" tabindex="101"></div><div class="bbp-password"> 
+           <label for="user_pass">Password: </label> <input type="password" name="pwd" value="" size="20" id="user_pass" tabindex="102">
+          </div><div class="bbp-remember-me"> <input type="checkbox" name="rememberme" value="forever"npm run id="rememberme" tabindex="103"> 
+            <label for="rememberme">Remember Me</label></div><div class="bbp-submit-wrapper"></div>
+
+       
+  </div>
+       </fieldset>
+
+</form>
+
+
+
+
+
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
