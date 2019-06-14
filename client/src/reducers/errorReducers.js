@@ -3,11 +3,7 @@ const initialState = {};
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_ERRORS:
-<<<<<<< Updated upstream
-      return action.payload
-=======
-      return {...state,err:action.payload};
->>>>>>> Stashed changes
+      return { ...state, err: action.payload };
     default:
       return state;
   }

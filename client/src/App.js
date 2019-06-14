@@ -32,7 +32,7 @@ import AdminSubmissions from "./admin/SubmissionList/AdminSubmissions";
 import Submission from "./admin/Submission/Submission";
 import restricted from "./UI/Restricted";
 import DefaultAside from "./UI/Admin/Aside";
-import EditAssignments from "./admin/Edit Assignments/Edit Assignments";
+import EditAssignments from "./admin/EditAssignments/EditAssignments";
 import EditQuestion from "./admin/EditQuestion/EditQuestion";
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
