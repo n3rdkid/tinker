@@ -81,6 +81,13 @@ class QuizResult extends React.Component {
     }
   }
 
+  updateDB() {
+    console.log("Component will called");
+  }
+  componentWillMount() {
+    this.updateDB();
+  }
+
   render() {
     let correctAnswer = (
       <div>
@@ -109,7 +116,8 @@ class QuizResult extends React.Component {
         </ProgressBar>
         <div align="center">
           <h2>
-            You got {this.state.numOfCorrectAnswer} answer correct out of 5.
+            You got {this.state.numOfCorrectAnswer} answer correct out of{" "}
+            {correctAnswerArray.length}.
           </h2>
           <h2>
             Time taken: {this.props.stoppedMinute}:{this.props.stoppedSecond}

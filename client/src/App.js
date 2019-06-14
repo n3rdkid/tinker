@@ -12,6 +12,7 @@ import AddResources from "./components/ChallengeModule/AddResources/AddResources
 import AddChallenge from "./admin/AddChallenge";
 import AddResourcesAssignment from "./components/Assignment/AddResources/AddResources";
 import AddAssignment from "./admin/AddAssignments/AddAssignments";
+import UserGuide from "./userguide/UserGuide";
 import Footer from "./UI/Navigation/FooterPage";
 //import AddAssignment from "./container/AssignmentModule/AddAssignment";
 import jwt_decode from "jwt-decode";
@@ -68,6 +69,7 @@ class App extends React.Component {
             <Route path="/challenges/resource" component={AddResources} exact />
             <Route path="/challenges/:id" component={ChallengeView} exact />
             <Route path="/AddChallenge" component={AddChallenge} />
+            <Route path="/UserGuide" component={UserGuide} />
 
             <Route
               path="/assignments/resource"
