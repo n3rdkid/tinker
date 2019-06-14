@@ -22,6 +22,9 @@ class Navigation extends React.Component {
     const authLinks = (
       <div>
         <Form inline>
+          <NavLink className="justify-content-end nav-link" to="/UserGuide">
+            <Icon name="help" fitted /> User Guide
+          </NavLink>
           <Button variant="outline-info" disabled>
             <Icon name="user" color="black" size="large" />
             {this.props.auth.user.username}
@@ -40,6 +43,9 @@ class Navigation extends React.Component {
     );
     const guestLinks = (
       <>
+        <NavLink className="justify-content-end nav-link" to="/UserGuide">
+          User Guide
+        </NavLink>
         <Button variant="outline-success" href="/Signin">
           Signin
         </Button>
@@ -53,7 +59,7 @@ class Navigation extends React.Component {
     if (this.props.auth.user.role === "student") {
       assignmentsLink = (
         <NavLink className="nav-link" to="/assignments">
-          Assignments
+          <Icon name="write" fitted /> Assignments
         </NavLink>
       );
     }
@@ -68,17 +74,20 @@ class Navigation extends React.Component {
     return (
       <>
         <Navbar sticky="top" bg="white" expand="lg" color="white">
-          <Navbar.Brand href="/">Tinker</Navbar.Brand>
+          <Navbar.Brand href="/">
+            <Icon name="home" />
+            Tinker
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               {this.props.auth.user.role !== "teacher" ? (
                 <>
                   <NavLink className="nav-link" to="/Quiz">
-                    Quiz
+                    <Icon name="bolt" fitted /> Quiz
                   </NavLink>
                   <NavLink className="nav-link" to="/Challenges">
-                    Challenges
+                    <Icon name="chess knight" fitted /> Challenges
                   </NavLink>
                 </>
               ) : (
