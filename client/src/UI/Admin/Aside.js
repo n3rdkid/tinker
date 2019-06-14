@@ -19,23 +19,36 @@ class SideNavPage extends React.Component {
     console.log("edit");
     this.props.history.push("/admin/edit");
   };
+  editTestCases = () => {
+    console.log("edit test");
+    this.props.history.push("/admin/test");
+  };
+  manageHandler = () => {
+    this.props.history.push("/admin/assignments");
+  };
   render() {
     return (
       <SideNav
         style={{ zIndex: "1000", position: "fixed", left: "0", top: "60px" }}
         expanded={true}
-        onSelect={selected => {
-          // Add your code here
-        }}
+    
       >
         {/* <SideNav.Toggle /> */}
-        <SideNav.Nav defaultSelected="add">
+        <SideNav.Nav>
+        <NavItem eventKey="manage">
+            <NavIcon>
+              <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
+            </NavIcon>
+            <NavText>
+              <div onClick={this.manageHandler}> Manage Assignment</div>
+            </NavText>
+          </NavItem>
           <NavItem eventKey="add">
             <NavIcon>
               <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
             </NavIcon>
             <NavText>
-            <div onClick={this.addHandler}>  Add Assignment</div>
+              <div onClick={this.addHandler}> Add Assignment</div>
             </NavText>
           </NavItem>
           <NavItem eventKey="edit">
@@ -44,6 +57,14 @@ class SideNavPage extends React.Component {
             </NavIcon>
             <NavText>
               <div onClick={this.editHandler}>Edit Assignment</div>
+            </NavText>
+          </NavItem>
+          <NavItem eventKey="editTest">
+            <NavIcon>
+              <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
+            </NavIcon>
+            <NavText>
+              <div onClick={this.editTestCases}>Edit TestCases</div>
             </NavText>
           </NavItem>
           {/* <NavItem eventKey="edit">

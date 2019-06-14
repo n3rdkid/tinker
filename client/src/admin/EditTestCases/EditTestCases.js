@@ -7,59 +7,45 @@ import Aside from "../../UI/Admin/Aside";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 class EditQuestion extends React.Component {
   state = {
-    title: "",
-    instruction: "",
-    starter: "",
-    label: "",
-    question_no: this.props.match.params.id
+    test: "",
+    result: "",
+    testId:1
   };
-  componentDidMount = async () => {
-    console.log("Inside Ediq ", this.props);
+  componentDidMount() {
     if (this.props.auth.user.role !== "teacher")
       this.props.history.push("/restricted");
+  }
+  loadQuestions = async () => {
+    console.log("Inside Ediq ", this.props);
 
     await axios
       .get(
-        `http://localhost:5000/api/assignments/question/${
-          this.props.match.params.id
-        }`
-      ) 
+        `http://localhost:5000/api/assignments/testCases/${this.state.testId}`
+      )
       .then(response => {
         console.log(response);
-        this.setState({
-          title: response.data.question.title,
-          instruction: response.data.question.instruction,
-          starter: response.data.question.starter,
-          label: response.data.question.label
-        });
+            this.setState({
+              testId: response.data[0].id,
+              test: response.data[0].test,
+              result: response.data[0].result
+            });
+  
       })
       .catch(error => console.log(error));
-      //Git test
-  };
-  onSubmit = e => {
-    e.preventDefault();
-    console.log("Update here");
-    // axios
-    //   .post(`http://localhost:5000/api/assignments`, { dueDate: date })
-    //   .then(resp => {
-    //     this.setState({
-    //       displayAddQuestion: true,
-    //       assignment_no: "" + resp.data.insertId
-    //     });
-    //     console.log("Assignment added sucessfully");
-    //   })
-    //   .catch(err => console.log(err.response));
+    //Git test
   };
   onUpdateQuestion = async e => {
     e.preventDefault();
+    console.log("Update here", this.state);
     await axios
-      .put(`http://localhost:5000/api/assignments/question`, this.state)
+      .put(`http://localhost:5000/api/assignments/test`, this.state)
       .then(res => {
-       console.log({success:res})
+        console.log("Message",res)
       })
       .catch(err => console.log(err.response));
   };
   changeState = e => {
+    console.log([e.target.name],e.target.value)
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -67,60 +53,45 @@ class EditQuestion extends React.Component {
     let display = (
       <div className="card offset-xs-1" id="assignment_card">
         <div className="card-header">
-          Question No : {this.state.question_no}
+          Question No :{" "}
+          <input
+            className="form-control"
+            name="testId"
+            placeholder="{ 1 || 2 || 3||....||n}"
+            type="text"
+            onChange={this.changeState}
+            value={this.state.testId}
+          />
+          <button class="btn btn-primary" onClick={this.loadQuestions}>
+            Load
+          </button>
         </div>
         <br />
         <div className="card-body">
           <div className="text-center text-dark" style={{ fontSize: "26px" }}>
-            Edit Question
+            Edit Test Cases
           </div>
           <form>
             <div class="form-group">
               <label style={{ fontSize: "20px" }}>Title</label>
               <input
                 className="form-control"
-                name="title"
+                name="test"
                 placeholder={this.state.title}
                 type="text"
                 onChange={e => this.changeState(e)}
-                value={this.state.title}
+                value={this.state.test}
               />
             </div>
-            <label style={{ fontSize: "20px" }}>Instruction</label>
+            <label style={{ fontSize: "20px" }}>Result</label>
             <textarea
               className="form-control"
-              name="instruction"
+              name="result"
               placeholder={this.state.instruction}
               type="text"
               onChange={e => this.changeState(e)}
-              value={this.state.instruction}
+              value={this.state.result}
             />
-            <label style={{ fontSize: "20px" }}>Starter</label>
-            <textarea
-              className="form-control"
-              name="starter"
-              placeholder={`function hello()
-{
-  return true;
-}`}
-              rows="5"
-              size="100"
-              type="text"
-              onChange={e => this.changeState(e)}
-            />
-            <label style={{ fontSize: "20px" }}>Label</label>
-            <select
-              className="form-control"
-              name="label"
-              placeholder={this.state.label}
-              onChange={e => this.changeState(e)}
-              value={this.state.label}
-            >
-              <option value="array">array</option>
-              <option value="condition">condition</option>
-              <option value="function">function</option>
-              <option value="Test">Test</option>
-            </select>
             <br />
             <button
               class="btn btn-primary"
