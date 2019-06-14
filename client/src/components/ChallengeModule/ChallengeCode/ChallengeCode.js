@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { UnControlled as CodeMirror } from "react-codemirror2";
+import isEqual from "is-equal";
 let currentValue = "";
 class ChallengeCode extends React.Component {
   constructor(props) {
@@ -95,11 +96,13 @@ class ChallengeCode extends React.Component {
       codeMirror = (
         <CodeMirror
           className="col-md-7 my-5"
+          autoFocus={true}
+          autoRefresh={true}
           value={this.state.question.starter}
           options={{
-            theme: "neo",
+            theme: "eclipse",
             lineNumbers: true,
-            mode: "jsx",
+            mode: "javascript",
             tabSize: 2,
             autofocus: true,
             foldGutter: false,

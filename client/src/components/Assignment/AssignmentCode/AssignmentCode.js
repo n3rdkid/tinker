@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { UnControlled as CodeMirror } from "react-codemirror2";
-import { connect } from "react-redux";
 import isEqual from "is-equal";
 let currentValue = "";
 
@@ -36,6 +35,7 @@ class AssignmentCode extends React.Component {
           },
           () => {
             currentValue = this.state.question.starter;
+            
           }
         );
       })
@@ -51,10 +51,10 @@ class AssignmentCode extends React.Component {
       let t1 = performance.now();
       temp = eval(currentValue.concat(testcase.test));
       let t2 = performance.now();
-      temp=JSON.stringify(temp);
+      temp = JSON.stringify(temp);
 
       let testButton = document.querySelector(`#test${testCaseNo}`);
-      if (isEqual(temp,testcase.result)) {
+      if (isEqual(temp, testcase.result)) {
         if (testButton.classList.contains("bg-danger"))
           testButton.classList.remove("bg-danger", "text-white");
         testButton.classList.add("bg-success", "text-white");
@@ -99,13 +99,14 @@ class AssignmentCode extends React.Component {
     if (this.state.question !== null) {
       codeMirror = (
         <CodeMirror
-          className="col-md-7 my-5"
-          value={this.state.question.starter}
+        className="col-md-7 my-5"
           autoFocus={true}
+          autoRefresh={true}
+          value={this.state.question.starter}
           options={{
-            theme: "neo",
+            theme: "eclipse",
             lineNumbers: true,
-            mode: "jsx",
+            mode: "javascript",
             tabSize: 2,
             autofocus: true,
             foldGutter: false,
@@ -154,12 +155,6 @@ class AssignmentCode extends React.Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
-});
 
-export default connect(
-  mapStateToProps,
-  null
-)(AssignmentCode);
+
+export default AssignmentCode;
