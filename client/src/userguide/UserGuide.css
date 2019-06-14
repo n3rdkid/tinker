@@ -41,4 +41,5 @@
 .guide-image:hover {
   transform: scale(2);
   transform-origin: right;
+  cursor: zoom-in;
 }
