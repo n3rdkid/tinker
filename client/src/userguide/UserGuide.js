@@ -49,11 +49,19 @@ class UserGuide extends React.Component {
               <h1>Quiz Guide</h1>
 
               <div class="guide-description-quiz_steps">
-                <div class="guide-description-quiz_steps_image" />
-                <div class="guide-description-quiz_steps_description_card">
-                  It includes total timer consumed by user to complete the quiz
-                  and the language of that particular quiz.
-                </div>{" "}
+                <div class="guide-description-quiz_steps_container">
+                  <div class="guide-description-quiz_steps_image" />
+                  <div class="guide-description-quiz_steps_description_card">
+                    It includes total timer consumed by user to complete the
+                    quiz and the language of that particular quiz.
+                  </div>
+                </div>
+                <div class="guide-description-quiz_steps_container">
+                  <div class="guide-description-quiz_steps_image1" />
+                  <div class="guide-description-quiz_steps_description_card">
+                    It includes the number of remaining questions in the quiz.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
