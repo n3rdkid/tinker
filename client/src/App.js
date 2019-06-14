@@ -36,6 +36,7 @@ import DefaultAside from "./UI/Admin/Aside";
 import EditAssignments from "./admin/EditAssignments/EditAssignments";
 import EditQuestion from "./admin/EditQuestion/EditQuestion";
 import EditTestCases from "./admin/EditTestCases/EditTestCases";
+import ChallengeStarter from "./container/ChallengeModule/ChallengeView/ChallengeStarter";
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -65,6 +66,7 @@ class App extends React.Component {
             <Route path="/Signup" component={SignUp} exact />
             <Route path="/Quiz" component={QuizStarter} exact />
             <Route path="/Quiz/start" component={Quiz} />
+            <Route path="/explore" component={ChallengeStarter} exact />
             <Route path="/Challenges" component={ChallengeItem} exact />
             <Route path="/challenges/resource" component={AddResources} exact />
             <Route path="/challenges/:id" component={ChallengeView} exact />

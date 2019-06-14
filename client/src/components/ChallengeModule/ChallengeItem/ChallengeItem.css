@@ -1,3 +1,11 @@
 .challengeItem{
-    border-bottom: 2px solid rgb(92, 92, 92);
+    padding:6px;
+    background:"#f6f6f6";
+    margin-bottom: 4px;
+    background:rgb(243, 242, 242);
+    box-shadow: 0 0 2px 1px #dfdfdf;
+}
+.challengeItem:hover{
+    background:rgb(252, 252, 252);
+    box-shadow: 0 0 4px 2px #919090;
 }

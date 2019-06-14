@@ -7,15 +7,16 @@ import ListGroup from "react-bootstrap/ListGroup";
 import "./ChallengeItem.css";
 import Col from "react-bootstrap/Col";
 import Spinner from "../../../UI/Spinner/Spinner";
-import HeatMap from "react-heatmap-grid";
+import {NavLink} from "react-router-dom";
+// import HeatMap from "react-heatmap-grid";
 import { Redirect } from "react-router";
-const xLabels = new Array(7).fill(0).map((_, i) => `${i}`);
-const yLabels = ["Sun", "Mon", "Tue","Wed","Thurs","Fri","Sat"];
-const data = new Array(yLabels.length)
-  .fill(0)
-  .map(() =>
-    new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 10))
-  );
+// const xLabels = ["15"]
+// const yLabels = ["", "", "","June","","",""];
+// const data = new Array(yLabels.length)
+// .fill(0)
+// .map(() =>
+// new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 10))
+// );
 class ChallengeItem extends React.Component {
   state = {
     data: ""
@@ -45,17 +46,18 @@ class ChallengeItem extends React.Component {
       for (let challenge of challengeData) {
         challengeList.push(
           <div
-            className="container challengeItem"
+            className="challengeItem"
             id={challenge.id}
             onClick={this.clickHandler}
+            style={{marginBottom:"10px"}}
           >
-            <h4> {challenge.title} </h4>
-            <small className="lead">
+            <h4 style={{fontSize:"22px"}}> {challenge.title} </h4>
+            <small className="lead" style={{fontSize:"14px"}}>
               {challenge.instruction.substring(0, 300) + "..."}
             </small>
             <br />
 
-            <label className="badge badge-pill badge-primary">
+            <label className="mt-2 badge badge-pill badge-primary">
               {challenge.label}
             </label>
           </div>
@@ -65,13 +67,26 @@ class ChallengeItem extends React.Component {
     }
     return (
       <div>
-        <Container>
+        <Container fluid={true} style={{paddingTop:"16px",margin:"0"}}>
           {/*Need to add Heatmap ->*/}
           <Row>
-            <Col xs={3}>
-              <HeatMap xLabels={xLabels} yLabels={yLabels} data={data} />
+            <Col xs={4}>
+              <div>
+                <Card className="text-center">
+                <Card.Header className="text-center">
+                      Tip of the Day
+                    </Card.Header>
+                  <Card.Body>
+                  <Card.Title>
+                  Avoid polluting the global scope
+                  </Card.Title>
+                  <p>Declaring variables is a lot of fun. Sometimes, you may declare global variables even if you don't want to...</p>
+                  <NavLink class="btn" style={{borderRadius:"0",background:"transparent",color:"#FF502F"}}>Read More</NavLink>
+                  </Card.Body>
+                </Card>
+              </div>
+              {/* <HeatMap xLabels={xLabels} yLabels={yLabels} data={data} /> */}
             </Col>
-            <Col xs={1}> </Col>
             <Col xs={8}> {container}</Col>
           </Row>
         </Container>

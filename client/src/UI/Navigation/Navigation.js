@@ -77,7 +77,7 @@ class Navigation extends React.Component {
     return (
       <>
         <Navbar
-          style={{ minHeight: "80px"}}
+          style={{ minHeight: "80px",borderBottom:"2px solid #FF502F"}}
           // sticky="top"
           bg="white"
           expand="md"
@@ -95,14 +95,14 @@ class Navigation extends React.Component {
                   <NavLink
                     style={{ fontSize: "1.15rem", paddingTop: "10px"}}
                     className="nav-link"
-                    to="/Quiz"
-                  >
+                    to={this.props.auth.isAuthenticated?"/quiz/start":"/quiz"}>
+                  
                     {/* <Icon name="bolt" fitted /> */}
                     Quiz
                   </NavLink>
                   <NavLink 
                       style={{ fontSize: "1.15rem", paddingTop: "10px"}}
-                  className="nav-link" to="/Challenges">
+                  className="nav-link" to={this.props.auth.isAuthenticated?"/challenges":"/explore"}>
                     {/* <Icon name="chess knight" fitted /> */}
                     Challenges
                   </NavLink>
