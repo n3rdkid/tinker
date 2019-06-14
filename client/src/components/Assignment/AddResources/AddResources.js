@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+
 class AddResources extends React.Component {
   state = {
     title: "",
@@ -20,42 +22,75 @@ class AddResources extends React.Component {
   };
   render() {
     return (
-      <div>
-        <input
-          name="question_id"
-          placeholder="Question Id"
-          size="150"
-          type="text"
-          onChange={e => this.changeState(e)}
-          value={this.state.question_id}
-        />
-        <input
-          name="title"
-          placeholder="Title.."
-          size="150"
-          type="text"
-          onChange={e => this.changeState(e)}
-          value={this.state.title}
-        />
-        <input
-          name="link"
-          placeholder="Link.."
-          size="150"
-          type="text"
-          onChange={e => this.changeState(e)}
-          value={this.state.link}
-        />
-        <input
-          name="description"
-          placeholder="Description.."
-          size="100"
-          type="text"
-          onChange={e => this.changeState(e)}
-          value={this.state.description}
-        />
-        <br />
-        <button onClick={e => this.onSubmit(e)}>Submit</button>
-      </div>
+      <Container>
+        <Row className="justify-content-center align-items-center">
+          <Col md="6">
+            <Card>
+              <Card.Header> AddResources </Card.Header>
+              <Card.Body>
+                <Form>
+                  <Form.Group>
+                    <Form.Label>Question Id</Form.Label>
+                    <Form.Control
+                      name="question_id"
+                      size="150"
+                      type="text"
+                      onChange={e => this.changeState(e)}
+                      value={this.state.question_id}
+                      disabled
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control
+                      name="title"
+                      placeholder="Title.."
+                      size="150"
+                      type="text"
+                      onChange={e => this.changeState(e)}
+                      value={this.state.title}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Link</Form.Label>
+                    <Form.Control
+                      name="link"
+                      placeholder="Link.."
+                      size="150"
+                      type="text"
+                      onChange={e => this.changeState(e)}
+                      value={this.state.link}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control
+                      name="description"
+                      placeholder="Description.."
+                      size="100"
+                      type="text"
+                      onChange={e => this.changeState(e)}
+                      value={this.state.description}
+                    />
+                  </Form.Group>
+                  <Form.Row>
+                    <Col sm="3">
+                      <Button
+                        type="submit"
+                        onClick={e => this.onSubmit(e)}
+                        variant="primary"
+                        type="submit"
+                      >
+                        Add
+                      </Button>
+                    </Col>
+                  </Form.Row>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

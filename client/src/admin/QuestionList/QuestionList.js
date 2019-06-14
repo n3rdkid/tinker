@@ -8,6 +8,8 @@ import Col from "react-bootstrap/Col";
 import Spinner from "../../UI/Spinner/Spinner";
 import { Redirect } from "react-router";
 import { connect } from "react-redux";
+import Aside from "../../UI/Admin/Aside";
+import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 class AssignmentQuestion extends React.Component {
   state = {
     data: ""
@@ -63,15 +65,14 @@ class AssignmentQuestion extends React.Component {
     }
     return (
       <div>
-        <Container>
-          {/*Need to add Heatmap ->*/}
+        <Container fluid style={{ padding: "0" }}>
+    
           <Row>
             <Col xs={3}>
              
-  
+            <Aside addHandler={this.addHandler} />
             </Col>
-            <Col xs={1}> </Col>
-            <Col xs={8}> {container}</Col>
+            <Col xs={9}> {container}</Col>
           </Row>
         </Container>
       </div>

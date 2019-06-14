@@ -11,6 +11,7 @@ class AddResources extends React.Component {
   onSubmit = e => {
     e.preventDefault();
     console.log(this.state);
+  
     axios
       .post(`http://localhost:5000/api/challenges/resources/`, this.state)
       .then(() => console.log("Resource added sucessfully"))

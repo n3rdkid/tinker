@@ -24,8 +24,7 @@ class SignIn extends React.Component {
   componentDidMount() {
     console.log("Role", this.props.auth.user.role);
     if (
-      this.props.auth.isAuthenticated &&
-      this.props.auth.user.role === "teacher"
+      this.props.auth.isAuthenticated 
     ) {
       this.props.history.push("/");
     } else if (this.props.auth.isAuthenticated) {
@@ -36,9 +35,14 @@ class SignIn extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   componentWillReceiveProps(nextProps) {
+    console.log("Next r")
+    if (nextProps.auth.user.role="teacher") {
+      this.props.history.push("/admin/assignments");
+    }
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/");
     }
+
     if (nextProps.errors) this.setState({ errors: nextProps.errors });
   }
 

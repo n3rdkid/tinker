@@ -52,7 +52,7 @@ class QuizResult extends React.Component {
       });
     });
 
-    //  console.log([newAnswersArray]);
+    console.log([newAnswersArray]);
 
     let reducedQuiz_id = [...new Set(quiz_id)];
     this.setState({ quizIdArray: reducedQuiz_id });
@@ -79,6 +79,13 @@ class QuizResult extends React.Component {
         score += 5;
       }
     }
+  }
+
+  updateDB() {
+    console.log("Component will called");
+  }
+  componentWillMount() {
+    this.updateDB();
   }
 
   render() {
@@ -109,7 +116,8 @@ class QuizResult extends React.Component {
         </ProgressBar>
         <div align="center">
           <h2>
-            You got {this.state.numOfCorrectAnswer} answer correct out of 5.
+            You got {this.state.numOfCorrectAnswer} answer correct out of{" "}
+            {correctAnswerArray.length}.
           </h2>
           <h2>
             Time taken: {this.props.stoppedMinute}:{this.props.stoppedSecond}

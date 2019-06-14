@@ -6,6 +6,7 @@ import QuizResult from "../QuizResult/QuizResult";
 import StopWatch from "../Countdown/StopWatch";
 let arrayResults = [];
 let stoppedMinute, stoppedSecond;
+let questionLength = 10;
 class QuizQuestion extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,7 @@ class QuizQuestion extends React.Component {
       nextQuestion: 0,
       timeLimit: 0,
       count: 1,
-      approxQuestion: 5,
+      approxQuestion: questionLength,
       completed: false,
       selectedAnswerIdArray: [],
       correctAnswerIdArray: [],
@@ -37,6 +38,7 @@ class QuizQuestion extends React.Component {
     this.setState({
       selectedAnswerIdArray: [...this.state.selectedAnswerIdArray, e.target.id]
     });
+
     this.setState({
       correctAnswerIdArray: [
         ...this.state.correctAnswerIdArray,
@@ -111,7 +113,6 @@ class QuizQuestion extends React.Component {
 
     this.stoppedMinute = stoppedMinute;
     this.stoppedSecond = stoppedSecond;
-    console.log("Stopped at:" + this.stoppedMinute + ":" + this.stoppedSecond);
   };
   render() {
     let answers = this.state.answers;
@@ -136,7 +137,7 @@ class QuizQuestion extends React.Component {
 
     let display;
     let quizResult = <p />;
-    if (this.props.questions !== null && this.state.count <= 5) {
+    if (this.props.questions !== null && this.state.count <= questionLength) {
       display = (
         <div className="row my-5">
           <div className="col-sm-9">

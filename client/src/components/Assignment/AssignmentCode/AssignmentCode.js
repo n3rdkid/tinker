@@ -52,9 +52,8 @@ class AssignmentCode extends React.Component {
       temp = eval(currentValue.concat(testcase.test));
       let t2 = performance.now();
       temp=JSON.stringify(temp);
+
       let testButton = document.querySelector(`#test${testCaseNo}`);
-      console.log("Temp is of type ",typeof temp)
-      console.log("Test is of type ",typeof testcase.result)
       if (isEqual(temp,testcase.result)) {
         if (testButton.classList.contains("bg-danger"))
           testButton.classList.remove("bg-danger", "text-white");

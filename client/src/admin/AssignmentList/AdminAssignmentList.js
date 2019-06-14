@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import Spinner from "../../UI/Spinner/Spinner";
 import "./AssignmentItem.css";
 import { MDBDataTable } from "mdbreact";
+import Aside from "../../UI/Admin/Aside";
 const dataTableData = {
   columns: [
     {
@@ -32,7 +33,7 @@ const dataTableData = {
 class AdminAssignmentList extends React.Component {
   state = {
     data: "",
-    loading:true
+    loading: true
   };
 
   componentDidMount = async () => {
@@ -49,7 +50,7 @@ class AdminAssignmentList extends React.Component {
       .catch(error => console.log(error));
 
     let assignmentData = this.state.data;
-    dataTableData.rows=[];
+    dataTableData.rows = [];
     for (let assignment of assignmentData) {
       dataTableData.rows.push({
         assignmentId: assignment.id,
@@ -65,48 +66,39 @@ class AdminAssignmentList extends React.Component {
         )
       });
     }
-    this.setState({loading:false});
+    this.setState({ loading: false });
   };
 
   clickHandler = e => {
-    console.log("View id ",e.target.id)
+    console.log("View id ", e.target.id);
     let id = e.target.id || e.target.parentElement.id;
     this.props.history.push(`/admin/assignments/${id}`);
   };
-  addHandler = () => {
-    this.props.history.push("/admin/add");
-  };
+  
 
   render() {
     let container = <p>No assignments yet</p>;
     if (this.state.loading) container = <Spinner />;
     else {
-      container =  <MDBDataTable
-      striped
-      hover
-      data={dataTableData}
-      searching={true}
-    />;
+      container = (
+        <MDBDataTable striped hover data={dataTableData} searching={true} />
+      );
     }
     return (
-      <div>
-        <Container>
+      <>
+          
+        <Container fluid style={{paddingLeft:"0"}}>
           {/*Need to add Heatmap ->*/}
+         
           <Row>
-            <Col xs={3}>
-              <Card>
-                <button class="btn btn-primary" onClick={this.addHandler}>
-                  Add Assignment
-                </button>
-              </Card>
-            </Col>
-            <Col xs={1}> </Col>
-            <Col xs={8}>
-              {container}
-            </Col>
+            <Col>
+            <Aside/>
+         
+          </Col>
+            <Col xs={9}>{container}</Col>
           </Row>
         </Container>
-      </div>
+   </>
     );
   }
 }

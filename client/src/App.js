@@ -12,6 +12,7 @@ import AddResources from "./components/ChallengeModule/AddResources/AddResources
 import AddChallenge from "./admin/AddChallenge";
 import AddResourcesAssignment from "./components/Assignment/AddResources/AddResources";
 import AddAssignment from "./admin/AddAssignments/AddAssignments";
+import UserGuide from "./userguide/UserGuide";
 import Footer from "./UI/Navigation/FooterPage";
 //import AddAssignment from "./container/AssignmentModule/AddAssignment";
 import jwt_decode from "jwt-decode";
@@ -32,6 +33,9 @@ import AdminSubmissions from "./admin/SubmissionList/AdminSubmissions";
 import Submission from "./admin/Submission/Submission";
 import restricted from "./UI/Restricted";
 import DefaultAside from "./UI/Admin/Aside";
+import EditAssignments from "./admin/EditAssignments/EditAssignments";
+import EditQuestion from "./admin/EditQuestion/EditQuestion";
+import EditTestCases from "./admin/EditTestCases/EditTestCases";
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -65,6 +69,7 @@ class App extends React.Component {
             <Route path="/challenges/resource" component={AddResources} exact />
             <Route path="/challenges/:id" component={ChallengeView} exact />
             <Route path="/AddChallenge" component={AddChallenge} />
+            <Route path="/UserGuide" component={UserGuide} />
 
             <Route
               path="/assignments/resource"
@@ -91,6 +96,9 @@ class App extends React.Component {
               exact
             />
             <Route path="/admin/add" component={AddAssignment} exact />
+            <Route path="/admin/edit" component={EditAssignments} exact />
+            <Route path="/admin/test" component={EditTestCases} exact />
+            <Route path="/admin/edit/:id" component={EditQuestion} exact />
             <Route
               path="/admin/assignments/:id"
               component={QuestionList}
@@ -107,7 +115,7 @@ class App extends React.Component {
             {/* POST  */}
           </Switch>
         </BrowserRouter>
-        <Footer />
+        {/* <Footer /> */}
       </Provider>
     );
   }
