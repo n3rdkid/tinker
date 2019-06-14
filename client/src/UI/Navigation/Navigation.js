@@ -44,7 +44,7 @@ class Navigation extends React.Component {
     const guestLinks = (
       <>
         <NavLink className="justify-content-end nav-link" to="/UserGuide">
-          User Guide
+          <Icon name="help" fitted /> User Guide
         </NavLink>
         <Button variant="outline-success" href="/Signin">
           Signin
