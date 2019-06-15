@@ -35,7 +35,6 @@ class AddResources extends React.Component {
                     <Form.Control
                       name="challenge_id"
                       placeholder="Challenge id"
-                      size="150"
                       type="text"
                       onChange={e => this.changeState(e)}
                       value={this.state.challenge_id}
@@ -47,7 +46,6 @@ class AddResources extends React.Component {
                     <Form.Control
                       name="title"
                       placeholder="Title.."
-                      size="150"
                       type="text"
                       onChange={e => this.changeState(e)}
                       value={this.state.title}
@@ -58,7 +56,6 @@ class AddResources extends React.Component {
                     <Form.Control
                       name="link"
                       placeholder="Link.."
-                      size="150"
                       type="text"
                       onChange={e => this.changeState(e)}
                       value={this.state.link}
@@ -66,13 +63,13 @@ class AddResources extends React.Component {
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Description</Form.Label>
-                    <Form.Control
+                    <Form.Control as={"textarea"}
                       name="description"
                       placeholder="Description.."
                       size="100"
                       type="text"
                       onChange={e => this.changeState(e)}
-                      value={this.state.description}
+                      value={this.state.description}rows={5}
                     />
                   </Form.Group>
                   <Form.Row>

@@ -37,8 +37,8 @@ class QuizAnswerList extends React.Component {
             <Header as="h4" />
             <Header as="h4" />
           </Divider> */}
-          <ListGroup.Item style={{marginTop:"16px",textAlign:"left",background:"#89a3b2"}} className="question" as="li">
-            <Label style={{borderRadius:"6px 6px 0 9 ",color:"white",background:"transparent",textAlign:"left"}} size="big">
+          <ListGroup.Item style={{marginTop:"16px",textAlign:"left",background:"#eaf5ff"}} className="question" as="li">
+            <Label style={{borderRadius:"6px 6px 0 9 ",color:"#4e4e4e",background:"transparent",textAlign:"left"}} size="big">
               {/* <Icon name="help" /> */}
               {index + 1}. {questionListWithID[quizId]}
             </Label>
@@ -72,7 +72,7 @@ class QuizAnswerList extends React.Component {
         });
         if (indexAnswer == indexOfCorrectAnswer) {
           li = (
-            <ListGroup.Item style={{textAlign:"left",paddingLeft:"20px"}} as="li" variant="success">
+            <ListGroup.Item style={{textAlign:"left",paddingLeft:"30px"}} as="li" variant="success">
               <div className="d-flex">
               {answer}
               <Icon className="ml-auto" name="checkmark" />
@@ -81,14 +81,14 @@ class QuizAnswerList extends React.Component {
           );
         } else if (indexAnswer == indexOfSelectedAnswer) {
           li = (
-            <ListGroup.Item style={{textAlign:"left",paddingLeft:"20px"}} as="li" variant="danger">
+            <ListGroup.Item style={{textAlign:"left",paddingLeft:"30px"}} as="li" variant="danger">
             <div className="d-flex">
               {answer}
               <Icon className="ml-auto"  name="cancel" />
               </div>
             </ListGroup.Item>
           );
-        } else li = <ListGroup.Item style={{textAlign:"left",paddingLeft:"20px"}} as="li">{answer}</ListGroup.Item>;
+        } else li = <ListGroup.Item style={{textAlign:"left",paddingLeft:"30px"}} as="li">{answer}</ListGroup.Item>;
         return li;
       });
       return [questionList, answerOfSingleQuestion];

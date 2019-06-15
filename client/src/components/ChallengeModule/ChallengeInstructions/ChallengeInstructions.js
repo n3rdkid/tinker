@@ -20,7 +20,7 @@ class ChallengeInstructions extends React.Component {
     if (this.state.instructions) {
       let instuctionInformation = this.state.instructions;
       instructions = (
-        <div className="bg-light my-2 p-2">
+        <div className="my-2 p-4" style={{background:"#f9f9f9"}}>
           <span className="d-block " style={{ fontSize: "28px" }}>
             {instuctionInformation.title}
           </span>

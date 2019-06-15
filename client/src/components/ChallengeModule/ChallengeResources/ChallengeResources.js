@@ -27,7 +27,7 @@ class ChallengeResources extends React.Component {
       this.state.resources.forEach(resource => {
         let resourceItem = (
           <div className="card my-2 p-2">
-              <h6 >{resource.title}</h6>
+              <h6 style={{fontSize:"1.3rem"}}>{resource.title}</h6>
               <span><a href={resource.link}>{resource.link}</a></span>
               <span className="my-1">{resource.description}</span>
           </div>
@@ -44,7 +44,7 @@ class ChallengeResources extends React.Component {
     return (
       <>
       <div className="d-flex">
-      <button className="btn btn-primary my-2 ml-auto" onClick={this.clickHandler}>Add resource</button>
+      <button className="btn my-2 ml-auto" style={{color:"white",backgroundColor:"rgb(101, 98, 91)"}} onClick={this.clickHandler}>Add resource</button>
       </div>
         {resourcesList}
       </>
