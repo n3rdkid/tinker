@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { NavLink } from "react-router-dom";
 import { Icon, Confirm } from "semantic-ui-react";
+import {withRouter} from "react-router-dom";
 import "./Navigation.css";
 class Navigation extends React.Component {
   state = { open: false };
@@ -16,6 +17,7 @@ class Navigation extends React.Component {
     this.setState({ open: false });
     e.preventDefault();
     this.props.logoutUser();
+    this.props.history.push("/");
   };
   render() {
     const { isAuthenticated } = this.props.auth;
@@ -26,13 +28,13 @@ class Navigation extends React.Component {
             {/* <Icon name="help" fitted /> */}
             User Guide
           </NavLink>
-          <Button variant="outline-info" disabled>
-            <Icon name="user" color="black" size="large" />
+          <span className="mx-1" style={{outline:"0",border:"0",color:"#454d66"}} disabled>
+            <Icon name="user" color="#454d66" size="large" />
             {this.props.auth.user.username}
-          </Button>
-          <Button onClick={this.open} variant="outline-success">
-            Logout
-          </Button>
+          </span>
+          <span style={{background:"transparent",padding:"4px",color:"#454d66"}} onClick={this.open} className="mx-1">
+             Logout
+          </span>
         </Form>
         <Confirm
           header="Hey whats up"
@@ -125,4 +127,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Navigation);
+)(withRouter(Navigation));
