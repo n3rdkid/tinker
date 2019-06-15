@@ -99,8 +99,7 @@ class AssignmentCode extends React.Component {
     if (this.state.question !== null) {
       codeMirror = (
         <CodeMirror
-        className="col-md-7 my-5"
-          autoFocus={true}
+             autoFocus={true}
           autoRefresh={true}
           value={this.state.question.starter}
           options={{

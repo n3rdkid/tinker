@@ -7,6 +7,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Col from "react-bootstrap/Col";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { Redirect } from "react-router";
+import {NavLink} from "react-router-dom";
 class AssignmentQuestion extends React.Component {
   state = {
     data: ""
@@ -58,39 +59,34 @@ class AssignmentQuestion extends React.Component {
       }
     }
     return (
-      <div>
-        <Container>
+      <>
+        <Container className="p-2 mt-2">
           {/*Need to add Heatmap ->*/}
-          <Row>
-            <Col xs={3}>
-              <Card border="danger" style={{ width: "18rem" }}>
-                <Card.Header style={{ backgroundColor: "#78B0CD" }}>
-                  Challenges
-                </Card.Header>
-                <ListGroup variant="outline-success">
-                  <ListGroup.Item action variant="success">
-                    Odd Test
-                  </ListGroup.Item>
-                  <ListGroup.Item action variant="success">
-                    Prime Test
-                  </ListGroup.Item>
-                  <ListGroup.Item action variant="success">
-                    Tower of honai problem
-                  </ListGroup.Item>
-                  <ListGroup.Item action variant="success">
-                    Chicken Leg problem
-                  </ListGroup.Item>
-                  <ListGroup.Item action variant="success">
-                    Budget calculation
-                  </ListGroup.Item>
-                </ListGroup>
+          <Row><Col xs={4}>
+            <div>
+              <Card className="text-center">
+                <Card.Header className="text-center">Notice</Card.Header>
+                <Card.Body>
+                  <Card.Title>Don't be Late</Card.Title>
+                  <p>No Exceptions will be allowed</p>
+                  <NavLink
+                    class="btn"
+                    style={{
+                      borderRadius: "0",
+                      background: "transparent",
+                      color: "#FF502F"
+                    }}
+                  >
+                    Read More
+                  </NavLink>
+                </Card.Body>
               </Card>
+            </div>
             </Col>
-            <Col xs={1}> </Col>
             <Col xs={8}> {container}</Col>
           </Row>
         </Container>
-      </div>
+      </>
     );
   }
 }

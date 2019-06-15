@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-
+import {NavLink} from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Spinner from "../../../UI/Spinner/Spinner";
 import { Redirect } from "react-router";
@@ -51,18 +51,31 @@ class AssignmentItem extends React.Component {
       container = assignmentList;
     }
     return (
-      <div>
-        <Container>
+      <>
+        <Container fluid={true} style={{background:"#f5f5f5",paddingTop:"16px",margin:"0"}}>
           {/*Need to add Heatmap ->*/}
           <Row>
-            <Col xs={3}>
-   
+            <Col xs={4}>
+              <div>
+                <Card className="text-center">
+                <Card.Header className="text-center">
+                      Notice
+                    </Card.Header>
+                  <Card.Body>
+                  <Card.Title>
+                  Don't be Late
+                  </Card.Title>
+                  <p>No Exceptions will be allowed</p>
+                  <NavLink class="btn" style={{borderRadius:"0",background:"transparent",color:"#FF502F"}}>Read More</NavLink>
+                  </Card.Body>
+                </Card>
+              </div>
+              {/* <HeatMap xLabels={xLabels} yLabels={yLabels} data={data} /> */}
             </Col>
-            <Col xs={1}> </Col>
             <Col xs={8}> {container}</Col>
           </Row>
         </Container>
-      </div>
+      </>
     );
   }
 }

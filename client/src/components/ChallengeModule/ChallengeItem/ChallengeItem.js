@@ -66,7 +66,7 @@ class ChallengeItem extends React.Component {
       container = challengeList;
     }
     return (
-      <div>
+      <>
         <Container fluid={true} style={{background:"#f5f5f5",paddingTop:"16px",margin:"0"}}>
           {/*Need to add Heatmap ->*/}
           <Row>
@@ -90,7 +90,7 @@ class ChallengeItem extends React.Component {
             <Col xs={8}> {container}</Col>
           </Row>
         </Container>
-      </div>
+      </>
     );
   }
 }

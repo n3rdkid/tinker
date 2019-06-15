@@ -22,7 +22,7 @@ class AddResources extends React.Component {
   };
   render() {
     return (
-      <Container>
+      <Container className="p-3">
         <Row className="justify-content-center align-items-center">
           <Col md="6">
             <Card>
@@ -65,12 +65,14 @@ class AddResources extends React.Component {
                   <Form.Group>
                     <Form.Label>Description</Form.Label>
                     <Form.Control
+                      as={"textarea"}
                       name="description"
                       placeholder="Description.."
                       size="100"
                       type="text"
                       onChange={e => this.changeState(e)}
                       value={this.state.description}
+                      rows={5}
                     />
                   </Form.Group>
                   <Form.Row>

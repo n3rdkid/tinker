@@ -44,7 +44,7 @@ class AssignmentResources extends React.Component {
     }
     return (
       <> <div className="d-flex">
-      <button className="btn btn-primary my-2 ml-auto" onClick={this.clickHandler}>Add resource</button>
+      <button className="btn my-2 ml-auto" style={{color:"white",backgroundColor:"rgb(101, 98, 91)"}} onClick={this.clickHandler}>Add resource</button>
       </div>
         {resourcesList}
       </>

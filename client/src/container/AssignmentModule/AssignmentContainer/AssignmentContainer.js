@@ -37,7 +37,7 @@ class AssignmentContainer extends React.Component {
   }
   render() {
     return (
-      <Container>
+      <Container fluid={true} style={{paddingTop:"16px"}}>
         <Row>
           <Col md="8">
             <Tabs defaultActiveKey="instructions" id="uncontrolled-tab-example">

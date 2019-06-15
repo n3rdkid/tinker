@@ -23,7 +23,7 @@ class AddResources extends React.Component {
   render() {
     console.log("Props", this.props);
     return (
-      <Container>
+      <Container className="p-3">
         <Row className="justify-content-center align-items-center">
           <Col md="6">
             <Card>
@@ -90,39 +90,7 @@ class AddResources extends React.Component {
           </Col>
         </Row>
       </Container>
-      // <Container>
-      //   <Row>
-      //     <Col>
-      //       <div className="card col-md-6 mx-auto">
-
-      //         <label>Title</label>
-      //         <input
-
-      //         />
-      //         <label>Link</label>
-      //         <input
-      //           name="link"
-      //           placeholder="Link.."
-      //           size="150"
-      //           type="text"
-      //           onChange={e => this.changeState(e)}
-      //           value={this.state.link}
-      //         />
-      //         <label>Description</label>
-      //         <input
-      //           name="description"
-      //           placeholder="Description.."
-      //           size="100"
-      //           type="text"
-      //           onChange={e => this.changeState(e)}
-      //           value={this.state.description}
-      //         />
-      //         <button onClick={e => this.onSubmit(e)}>Submit</button>
-      //       </div>
-      //     </Col>
-      //   </Row>
-      // </Container>
-    );
+     );
   }
 }
 export default AddResources;
