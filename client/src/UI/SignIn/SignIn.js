@@ -14,16 +14,21 @@ class SignIn extends React.Component {
   state = {
     username: "",
     password: "",
-    errors: {}
+    errors: ""
   };
 
   onSubmit = async e => {
     e.preventDefault();
     await this.props.loginUser(this.state);
     console.log("State  After onSubmit Signin ", this.state);
+    console.log("Errors",this.props.errors)
   };
   componentDidMount() {
+    if(this.props.errors.err)
+    this.setState({errors:this.props.errors.err})
     console.log("Role", this.props.auth.user.role);
+    if(this.props.auth.user.role=="teacher")
+    this.props.history.push("/admin/assignments");
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/");
     } else if (this.props.auth.isAuthenticated) {
@@ -148,7 +153,7 @@ class SignIn extends React.Component {
 }
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors["errors"]
+  errors: state.errors
 });
 
 export default connect(

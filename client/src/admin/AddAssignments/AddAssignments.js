@@ -180,7 +180,7 @@ class AddAssignment extends React.Component {
               </Col>
             </Row>
             <Row>
-              <Col>{display}</Col>
+              <Col >{display}</Col>
             </Row>
             <Row>
               <Col>{displayTestCases}</Col>

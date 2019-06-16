@@ -79,7 +79,7 @@ class Navigation extends React.Component {
     return (
       <>
         <Navbar
-          style={{ minHeight: "80px",borderBottom:"2px solid #FF502F"}}
+          style={{zIndex:"100", minHeight: "80px",borderBottom:"2px solid #FF502F"}}
           // sticky="top"
           bg="white"
           expand="md"

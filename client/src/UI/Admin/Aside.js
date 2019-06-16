@@ -29,12 +29,28 @@ class SideNavPage extends React.Component {
   render() {
     return (
       <SideNav
-        style={{ zIndex: "1000", position: "fixed", left: "0", top: "60px" }}
+        style={{ zIndex: "10", position: "fixed", left: "0", top: "80",bottom:"0",background:"black",color:"white" }}
         expanded={true}
     
       >
         {/* <SideNav.Toggle /> */}
         <SideNav.Nav>
+        <NavItem eventKey="edit">
+            <NavIcon>
+              {/* <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} /> */}
+            </NavIcon>
+            <NavText>
+              {/* <div onClick={this.editHandler}>Edit Assignment</div> */}
+            </NavText>
+          </NavItem>
+          <NavItem eventKey="edit">
+            <NavIcon>
+              {/* <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} /> */}
+            </NavIcon>
+            <NavText>
+              {/* <div onClick={this.editHandler}>Edit Assignment</div> */}
+            </NavText>
+          </NavItem>
         <NavItem eventKey="manage">
             <NavIcon>
               <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />

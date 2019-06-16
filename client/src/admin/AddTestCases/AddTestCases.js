@@ -142,7 +142,7 @@ class AddTestCases extends React.Component {
               value={this.state.result}
             />
             <br />
-            <button onClick={e => this.onSubmit(e)}>Submit</button>
+            <button className="btn btn-dark" onClick={e => this.onSubmit(e)}>Submit</button>
           </form>
           {/* {table} */}
         </div>

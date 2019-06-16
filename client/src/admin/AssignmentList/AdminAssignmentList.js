@@ -81,7 +81,7 @@ class AdminAssignmentList extends React.Component {
     if (this.state.loading) container = <Spinner />;
     else {
       container = (
-        <MDBDataTable striped hover data={dataTableData} searching={true} />
+        <MDBDataTable className="mt-3" striped hover data={dataTableData} searching={true} />
       );
     }
     return (
@@ -95,7 +95,7 @@ class AdminAssignmentList extends React.Component {
             <Aside/>
          
           </Col>
-            <Col xs={9}>{container}</Col>
+            <Col xs={9} className="p-3">{container}</Col>
           </Row>
         </Container>
    </>

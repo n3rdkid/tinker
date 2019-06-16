@@ -121,7 +121,7 @@ class EditAssignment extends React.Component {
           <Col xs="3">
             <Aside />
           </Col>
-          <Row xs={{ span: "9", offset: "3" }}>
+          <Row>
             <Row>
               <Col>{display}</Col>
             </Row>{" "}
