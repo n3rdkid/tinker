@@ -1,53 +1,17 @@
-.color {
-  color: red;
+#step {
+  padding: 6px;
+  background: "#f6f6f6";
+  margin-bottom: 4px;
+  background: rgb(250, 250, 250);
+  box-shadow: 0 0 2px 1px #dfdfdf;
 }
-.guide-container {
-  width: 100%;
-  display: flex;
+#step:hover {
+  cursor: pointer;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 0 4px 2px #919090;
 }
-
-.guide-description-quiz {
-  width: 60%;
-}
-.guide-description-quiz_steps {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-}
-.guide-description-quiz_steps_image {
-  width: 10%;
-  height: 100px;
-  background-image: url("https://www.bhphotovideo.com/images/images2500x2500/phase_one_50500548_capture_one_pro_multi_user_1447834.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.guide-description-quiz_steps_image1 {
-  width: 10%;
-  height: 100px;
-  background-image: url("http://www.clker.com/cliparts/s/o/d/3/u/o/blue-rounded-with-number-2-hi.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.guide-description-quiz_steps_container {
-  display: flex;
-  flex-direction: row;
-}
-.guide-description-quiz_steps_description_card {
-  width: 90%;
-  height: 100px;
-  font-size: 30px;
-  line-height: 1.6;
-}
-
-.guide-image {
-  background-image: url("./img/QuizAnswer.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 40%;
-  height: 30vh;
-}
-.guide-image:hover {
-  transform: scale(2);
-  transform-origin: right;
-  cursor: zoom-in;
+#step:active {
+  cursor: pointer;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 0 4px 2px #919090;
 }

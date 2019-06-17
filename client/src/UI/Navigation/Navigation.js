@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { NavLink } from "react-router-dom";
 import { Icon, Confirm } from "semantic-ui-react";
-import {withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "./Navigation.css";
 class Navigation extends React.Component {
   state = { open: false };
@@ -24,16 +24,32 @@ class Navigation extends React.Component {
     const authLinks = (
       <div>
         <Form inline>
-          <NavLink style={{ fontSize: "1.15rem", paddingTop: "10px"}} className="justify-content-end nav-link" to="/UserGuide">
+          <NavLink
+            style={{ fontSize: "1.15rem", paddingTop: "10px" }}
+            className="justify-content-end nav-link"
+            to="/UserGuide"
+          >
             {/* <Icon name="help" fitted /> */}
             User Guide
           </NavLink>
-          <span className="mx-1" style={{outline:"0",border:"0",color:"#454d66"}} disabled>
+          <span
+            className="mx-1"
+            style={{ outline: "0", border: "0", color: "#454d66" }}
+            disabled
+          >
             <Icon name="user" color="#454d66" size="large" />
             {this.props.auth.user.username}
           </span>
-          <span style={{background:"transparent",padding:"4px",color:"#454d66"}} onClick={this.open} className="mx-1">
-             Logout
+          <span
+            style={{
+              background: "transparent",
+              padding: "4px",
+              color: "#454d66"
+            }}
+            onClick={this.open}
+            className="mx-1"
+          >
+            Logout
           </span>
         </Form>
         <Confirm
@@ -46,15 +62,39 @@ class Navigation extends React.Component {
     );
     const guestLinks = (
       <>
-        <NavLink className="justify-content-end nav-link"     style={{ fontSize: "1.15rem", paddingTop: "10px"}} to="/UserGuide">
+        <NavLink
+          className="justify-content-end nav-link"
+          style={{ fontSize: "1.15rem", paddingTop: "10px" }}
+          to="/UserGuide"
+        >
           {/* <Icon name="help" fitted />  */}
           User Guide
         </NavLink>
-        <NavLink className="nav-link" style={{fontSize:"1.1rem",border:"0",borderRadius:"0",color:"#444f5a",outline:"0"}} to="/Signin">
+        <NavLink
+          className="nav-link"
+          style={{
+            fontSize: "1.1rem",
+            border: "0",
+            borderRadius: "0",
+            color: "#444f5a",
+            outline: "0"
+          }}
+          to="/Signin"
+        >
           Sign in
         </NavLink>
-        <NavLink className="nav-link" style={{fontSize:"1.1rem",border:"0",borderRadius:"0",background:"#525252",outline:"0"}} to="/Signup">
-          <span style={{color:"white"}}>Sign up</span>
+        <NavLink
+          className="nav-link"
+          style={{
+            fontSize: "1.1rem",
+            border: "0",
+            borderRadius: "0",
+            background: "#525252",
+            outline: "0"
+          }}
+          to="/Signup"
+        >
+          <span style={{ color: "white" }}>Sign up</span>
         </NavLink>
       </>
     );
@@ -62,7 +102,11 @@ class Navigation extends React.Component {
     let assignmentsLink = "";
     if (this.props.auth.user.role === "student") {
       assignmentsLink = (
-        <NavLink className="nav-link" style={{ fontSize: "1.15rem", paddingTop: "10px"}} to="/assignments">
+        <NavLink
+          className="nav-link"
+          style={{ fontSize: "1.15rem", paddingTop: "10px" }}
+          to="/assignments"
+        >
           {/* <Icon name="write" fitted /> */}
           Assignments
         </NavLink>
@@ -70,7 +114,11 @@ class Navigation extends React.Component {
     }
     if (this.props.auth.user.role === "teacher") {
       assignmentsLink = (
-        <NavLink className="nav-link" style={{ fontSize: "1.15rem", paddingTop: "10px"}} to="/admin/assignments">
+        <NavLink
+          className="nav-link"
+          style={{ fontSize: "1.15rem", paddingTop: "10px" }}
+          to="/admin/assignments"
+        >
           Manage Assignments
         </NavLink>
       );
@@ -79,13 +127,21 @@ class Navigation extends React.Component {
     return (
       <>
         <Navbar
-          style={{zIndex:"100", minHeight: "80px",borderBottom:"2px solid #FF502F"}}
+          style={{ minHeight: "80px", borderBottom: "2px solid #FF502F" }}
           // sticky="top"
           bg="white"
           expand="md"
           color="white"
         >
-          <Navbar.Brand href="/" style={{color:"#ff502f", fontSize: "2.5rem",textTransform:"uppercase",fontWeight:"600" }}>
+          <Navbar.Brand
+            href="/"
+            style={{
+              color: "#ff502f",
+              fontSize: "2.5rem",
+              textTransform: "uppercase",
+              fontWeight: "600"
+            }}
+          >
             {/* <Icon name="home" /> */}
             Tinker
           </Navbar.Brand>
@@ -95,16 +151,24 @@ class Navigation extends React.Component {
               {this.props.auth.user.role !== "teacher" ? (
                 <>
                   <NavLink
-                    style={{ fontSize: "1.15rem", paddingTop: "10px"}}
+                    style={{ fontSize: "1.15rem", paddingTop: "10px" }}
                     className="nav-link"
-                    to={this.props.auth.isAuthenticated?"/quiz/start":"/quiz"}>
-                  
+                    to={
+                      this.props.auth.isAuthenticated ? "/quiz/start" : "/quiz"
+                    }
+                  >
                     {/* <Icon name="bolt" fitted /> */}
                     Quiz
                   </NavLink>
-                  <NavLink 
-                      style={{ fontSize: "1.15rem", paddingTop: "10px"}}
-                  className="nav-link" to={this.props.auth.isAuthenticated?"/challenges":"/explore"}>
+                  <NavLink
+                    style={{ fontSize: "1.15rem", paddingTop: "10px" }}
+                    className="nav-link"
+                    to={
+                      this.props.auth.isAuthenticated
+                        ? "/challenges"
+                        : "/explore"
+                    }
+                  >
                     {/* <Icon name="chess knight" fitted /> */}
                     Challenges
                   </NavLink>

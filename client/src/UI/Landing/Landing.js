@@ -34,8 +34,11 @@ class Landing extends React.Component {
   render() {
     return (
       <>
-        <Jumbotron style={{padding:"0"}} fluid={true} class="hero">
-          <Row className="no-gutters" style={{minHeight:"500px",background: "#F7F7F7" }}>
+        <Jumbotron style={{ padding: "0" }} fluid={true} class="hero">
+          <Row
+            className="no-gutters"
+            style={{ minHeight: "500px", background: "#F7F7F7" }}
+          >
             <Col className="mt-5 ml-3 d-flex align-items-center" md="6">
               <div>
                 <h1 style={{ fontSize: "4rem", color: "#211717" }}>
@@ -50,7 +53,10 @@ class Landing extends React.Component {
               <img width="400px" src={hero} alt="hero" />
             </Col>
           </Row>
-          <Row className="no-gutters" style={{minHeight: "350px", background: "#525252" }}>
+          <Row
+            className="no-gutters"
+            style={{ minHeight: "350px", background: "#525252" }}
+          >
             <Col
               className="ml-3 d-flex align-items-center justify-content-center"
               md={5}
@@ -64,7 +70,8 @@ class Landing extends React.Component {
                     color: "white"
                   }}
                 >
-                  Continuously build your skills with <span style={{   color: "#f07b3f"}}>Tinker</span>
+                  Continuously build your skills with{" "}
+                  <span style={{ color: "#f07b3f" }}>Tinker</span>
                 </h2>
                 <p style={{ fontSize: "1.34rem", color: "#dedede" }}>
                   Whether you want to improve your problem solving skills,
@@ -74,17 +81,27 @@ class Landing extends React.Component {
                 </p>
               </div>
             </Col>
-            <Col md={6} className="d-flex justify-content-center align-items-center">
-                <NavLink
+            <Col
+              md={6}
+              className="d-flex justify-content-center align-items-center"
+            >
+              <NavLink
+                style={{
+                  display: "inline-block",
+                  color: "#f6f6f6",
+                  fontSize: "1.5rem"
+                }}
+                to="/signin"
+              >
+                <span
                   style={{
-                    display: "inline-block",
-                    color: "#f6f6f6",
-                    fontSize: "1.5rem"        
+                    borderBottom: "2px solid #f07b3f",
+                    paddingBottom: "5px"
                   }}
-                  to="/signin"
                 >
-                  <span style={{ borderBottom:"2px solid #f07b3f",  paddingBottom:"5px"}}>Try Now <span style={{color:"#f07b3f"}}>></span></span>
-                </NavLink>
+                  Try Now <span style={{ color: "#f07b3f" }}>></span>
+                </span>
+              </NavLink>
             </Col>
           </Row>
         </Jumbotron>

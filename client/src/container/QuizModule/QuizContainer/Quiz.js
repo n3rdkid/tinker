@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import QuizQuestion from "../../../components/QuizModule/QuizQuestion/QuizQuestion";
-import spinner from "../../../UI/Spinner/Spinner";
+import Spinner from "../../../UI/Spinner/Spinner";
 
 class Quiz extends React.Component {
   state = {
@@ -18,7 +18,7 @@ class Quiz extends React.Component {
   }
 
   render() {
-    let display = <spinner/>;
+    let display = <Spinner />;
     if (this.state.questions !== null)
       display = <QuizQuestion questions={this.state.questions} />;
     return <div className="container">{display}</div>;

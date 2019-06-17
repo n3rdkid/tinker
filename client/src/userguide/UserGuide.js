@@ -1,6 +1,9 @@
 import React from "react";
-import { Button, Grid, Header, Icon, Segment } from "semantic-ui-react";
 import { Row, Col, Image, Container } from "react-bootstrap";
+import { Button, Grid, Header, Icon, Segment } from "semantic-ui-react";
+import QuizGuide from "./QuizGuide";
+import ChallengeGuide from "./ChallengeGuide";
+import AssignmentGuide from "./AssignmentGuide";
 
 import "./UserGuide.css";
 
@@ -8,8 +11,35 @@ class UserGuide extends React.Component {
   state = {
     quizOpen: false,
     challengeOpen: false,
-    assignmentOpen: false
+    assignmentOpen: false,
+    quizClicked: false,
+    challengeClicked: false,
+    assignmentClicked: false
   };
+
+  onQuizClick = () => {
+    this.setState({
+      quizClicked: true,
+      challengeClicked: false,
+      assignmentClicked: false
+    });
+  };
+
+  onChallengeClick = () => {
+    this.setState({
+      quizClicked: false,
+      challengeClicked: true,
+      assignmentClicked: false
+    });
+  };
+  onAssignmentClick = () => {
+    this.setState({
+      quizClicked: false,
+      challengeClicked: false,
+      assignmentClicked: true
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -22,52 +52,36 @@ class UserGuide extends React.Component {
                     <Header icon>
                       <Icon name="bolt" />
                     </Header>
-                    <Button primary>View Quiz Guide</Button>
+                    <Button primary onClick={this.onQuizClick}>
+                      View Quiz Guide
+                    </Button>
                   </Grid.Column>
 
                   <Grid.Column>
                     <Header icon>
                       <Icon name="chess knight" />
                     </Header>
-                    <Button primary>View Challenge Guide</Button>
+                    <Button primary onClick={this.onChallengeClick}>
+                      View Challenge Guide
+                    </Button>
                   </Grid.Column>
 
                   <Grid.Column>
                     <Header icon>
                       <Icon name="write" />
                     </Header>
-                    <Button primary>View Assignment Guide</Button>
+                    <Button primary onClick={this.onAssignmentClick}>
+                      View Assignment Guide
+                    </Button>
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
             </Segment>
           </Col>
+          {this.state.quizClicked ? <QuizGuide /> : null}
+          {this.state.challengeClicked ? <ChallengeGuide /> : null}
+          {this.state.onAssignmentClicked ? <AssignmentGuide /> : null}
         </Row>
-        <div class="guide-container">
-          <div class="guide-description-quiz">
-            <div class="guide-description-quiz_title">
-              <h1>Quiz Guide</h1>
-
-              <div class="guide-description-quiz_steps">
-                <div class="guide-description-quiz_steps_container">
-                  <div class="guide-description-quiz_steps_image" />
-                  <div class="guide-description-quiz_steps_description_card">
-                    It includes total timer consumed by user to complete the
-                    quiz and the language of that particular quiz.
-                  </div>
-                </div>
-                <div class="guide-description-quiz_steps_container">
-                  <div class="guide-description-quiz_steps_image1" />
-                  <div class="guide-description-quiz_steps_description_card">
-                    It includes the number of remaining questions in the quiz.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="guide-image" />
-        </div>
       </React.Fragment>
     );
   }
