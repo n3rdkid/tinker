@@ -39,10 +39,10 @@ class EditAssignment extends React.Component {
 
   //   this.loadQuestions();
   // };
-  clickHandler=(e)=>{
-    let id=e.target.id;
+  clickHandler = e => {
+    let id = e.target.id;
     this.props.history.push(`/admin/edit/${id}`);
-  }
+  };
   loadQuestions = async () => {
     console.log("Inside Edit Assignments ", this.props);
     if (this.props.auth.user.role !== "teacher")
@@ -80,12 +80,10 @@ class EditAssignment extends React.Component {
     this.setState({ loading: false });
   };
 
-
   changeState = e => {
     console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   };
-
 
   render() {
     let display = (
@@ -115,21 +113,22 @@ class EditAssignment extends React.Component {
         <MDBDataTable striped hover data={dataTableData} searching={true} />
       );
     }
-      return (
+    return (
       <Container fluid style={{ padding: "0" }}>
         <Row>
           <Col xs="3">
             <Aside />
           </Col>
-          <Row>
+          <Col>
+            {" "}
             <Row>
               <Col>{display}</Col>
             </Row>{" "}
             <Row>
               <Col>{table}</Col>
             </Row>
-            <Row>{/* <Col>{displayTestCases}</Col> */}</Row>
-          </Row>
+            {/* <Row><Col>{displayTestCases}</Col></Row> */}
+          </Col>
         </Row>
       </Container>
     );

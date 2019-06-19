@@ -128,7 +128,7 @@ class Navigation extends React.Component {
       <>
         <Navbar
           style={{ minHeight: "80px", borderBottom: "2px solid #FF502F" }}
-          // sticky="top"
+          sticky="top"
           bg="white"
           expand="md"
           color="white"
