@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Icon, Step, Image, Row } from "semantic-ui-react";
 import step0 from "./img/challenges/step0.jpg";
+import step1 from "./img/challenges/step1.jpg";
 import step2 from "./img/challenges/step2.jpg";
 import step3 from "./img/challenges/step3.jpg";
 import step4 from "./img/challenges/step4.jpg";
@@ -12,8 +13,13 @@ class ChallengeGuide extends React.Component {
   state = {
     imageSource: step0
   };
+  clickedStep1 = event => {
+    this.setState({ imageSource: step1 });
+    console.log(event.target.step);
+  };
   clickedStep2 = event => {
     this.setState({ imageSource: step2 });
+    console.log(event.target.step);
   };
   clickedStep3 = () => {
     this.setState({ imageSource: step3 });

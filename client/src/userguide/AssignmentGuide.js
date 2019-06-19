@@ -1,34 +1,120 @@
 import React from "react";
-import { Button, Grid, Header, Icon, Segment, Step } from "semantic-ui-react";
+import { Grid, Icon, Step, Image, Row } from "semantic-ui-react";
+import step0 from "./img/assignment/step0.jpg";
+import step1 from "./img/assignment/step1.jpg";
+import step2 from "./img/assignment/step2.jpg";
+import step3 from "./img/challenges/step3.jpg";
+import step4 from "./img/challenges/step4.jpg";
+import step5 from "./img/challenges/step5.jpg";
+import step6 from "./img/challenges/step6.jpg";
+import "./UserGuide.css";
 
 class AssignmentGuide extends React.Component {
+  state = {
+    imageSource: step0
+  };
+  clickedStep1 = event => {
+    this.setState({ imageSource: step1 });
+  };
+  clickedStep2 = event => {
+    this.setState({ imageSource: step2 });
+  };
+  clickedStep3 = () => {
+    this.setState({ imageSource: step3 });
+  };
+  clickedStep4 = () => {
+    this.setState({ imageSource: step4 });
+  };
+  clickedStep5 = () => {
+    this.setState({ imageSource: step5 });
+  };
+  clickedStep6 = () => {
+    this.setState({ imageSource: step6 });
+  };
   render() {
     return (
-      <Step.Group widths={3}>
-        <Step>
-          <Icon name="question" />
-          <Step.Content>
-            <Step.Title>Quiz</Step.Title>
-            <Step.Description>Take the Quiz></Step.Description>
-          </Step.Content>
-        </Step>
+      <React.Fragment>
+        <Grid>
+          <Grid.Column width={5}>
+            <Step.Group vertical>
+              <div id="step" onClick={this.clickedStep1}>
+                <Step>
+                  <Icon name="write" />
+                  <Step.Content>
+                    <Step.Title>Assignments</Step.Title>
+                    <Step.Description>
+                      Select the assignment no.
+                    </Step.Description>
+                  </Step.Content>
+                </Step>
+              </div>
+              <div id="step" onClick={this.clickedStep2}>
+                <Step>
+                  <Icon name="window restore" />
+                  <Step.Content>
+                    <Step.Title>Multiple questions</Step.Title>
+                    <Step.Description>Select one question</Step.Description>
+                  </Step.Content>
+                </Step>
+              </div>
+              <div id="step" onClick={this.clickedStep3}>
+                <Step>
+                  <Icon name="book" />
+                  <Step.Content>
+                    <Step.Title>Instruction</Step.Title>
+                    <Step.Description>
+                      Carefully read the instruction
+                    </Step.Description>
+                  </Step.Content>
+                </Step>
+              </div>
+              <div id="step" onClick={this.clickedStep4}>
+                <Step>
+                  <Icon name="code" />
+                  <Step.Content>
+                    <Step.Title>Code</Step.Title>
+                    <Step.Description>
+                      Write a code as per instruciton
+                    </Step.Description>
+                  </Step.Content>
+                </Step>
+              </div>
+              <div id="step" onClick={this.clickedStep5}>
+                <Step>
+                  <Icon name="help" />
+                  <Step.Content>
+                    <Step.Title>Resource</Step.Title>
+                    <Step.Description>
+                      Stuck at code check resources
+                    </Step.Description>
+                  </Step.Content>
+                </Step>
+              </div>
+              <div id="step" onClick={this.clickedStep6}>
+                <Step>
+                  <Icon name="certificate" />
+                  <Step.Content>
+                    <Step.Title>Leaderboard</Step.Title>
+                    <Step.Description>
+                      Submit code.Check your time.
+                    </Step.Description>
+                  </Step.Content>
+                </Step>
+              </div>
+            </Step.Group>
+          </Grid.Column>
 
-        <Step>
-          <Icon name="play" />
-          <Step.Content>
-            <Step.Title>Questions & Answers</Step.Title>
-            <Step.Description>Play the Quiz</Step.Description>
-          </Step.Content>
-        </Step>
-
-        <Step disabled>
-          <Icon name="eye" />
-          <Step.Content>
-            <Step.Title>Result</Step.Title>
-            <Step.Description>View</Step.Description>
-          </Step.Content>
-        </Step>
-      </Step.Group>
+          <Grid.Column width={11}>
+            <Image
+              id="stepImage"
+              size="massive"
+              src={this.state.imageSource}
+              alt="step2"
+              fluid
+            />
+          </Grid.Column>
+        </Grid>
+      </React.Fragment>
     );
   }
 }
