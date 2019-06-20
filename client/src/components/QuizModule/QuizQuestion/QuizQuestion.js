@@ -145,10 +145,10 @@ class QuizQuestion extends React.Component {
               <div className="card-header bg-light">
                 <h5 className="card-title">
                   Skill Assessment : JavaScript{" "}
-                  <small className="ml-5">
-                    Approximately {this.state.approxQuestion} Questions
+                  <span className="ml-5">
+                    {this.state.approxQuestion} Questions
                     Remaining
-                  </small>
+                  </span>
                   <StopWatch
                     start={this.state.start}
                     displayStopWatchTimer={this.displayStopWatchTimer}

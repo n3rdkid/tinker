@@ -11,7 +11,7 @@ import { withRouter } from "react-router-dom";
 import "./Navigation.css";
 class Navigation extends React.Component {
   state = { open: false };
-  open = () => this.setState({ open: true });
+  open = (e) =>{e.preventDefault(); this.setState({ open: true })};
   close = () => this.setState({ open: false });
   onLogoutClicked = e => {
     this.setState({ open: false });
@@ -40,24 +40,14 @@ class Navigation extends React.Component {
             <Icon name="user" color="#454d66" size="large" />
             {this.props.auth.user.username}
           </span>
-          <span
-            style={{
-              background: "transparent",
-              padding: "4px",
-              color: "#454d66"
-            }}
+          <button
             onClick={this.open}
-            className="mx-1"
+            className="mx-1 btn btn-outline-dark"
           >
             Logout
-          </span>
+          </button>
         </Form>
-        <Confirm
-          header="Hey whats up"
-          open={this.state.open}
-          onCancel={this.close}
-          onConfirm={this.onLogoutClicked}
-        />
+      
       </div>
     );
     const guestLinks = (
@@ -181,6 +171,11 @@ class Navigation extends React.Component {
             {isAuthenticated ? authLinks : guestLinks}
           </Navbar.Collapse>
         </Navbar>
+        <Confirm className="mx-auto my-auto mt-5" style={{zIndex:5000,maxHeight:"150px",width:"300px",position:"absolute",top:100,right:0}}
+          open={this.state.open}
+          onCancel={this.close}
+          onConfirm={this.onLogoutClicked}
+        />
       </>
     );
   }

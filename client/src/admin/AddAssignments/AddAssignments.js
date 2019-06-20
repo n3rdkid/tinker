@@ -126,6 +126,7 @@ class AddAssignment extends React.Component {
               onChange={e => this.changeState(e)}
               value={this.state.label}
             >
+               <option value="">Select a label</option>
               <option value="array">array</option>
               <option value="condition">condition</option>
               <option value="function">function</option>

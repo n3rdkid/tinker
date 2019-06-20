@@ -26,6 +26,9 @@ class SideNavPage extends React.Component {
   manageHandler = () => {
     this.props.history.push("/admin/assignments");
   };
+  goBack = () => {
+    this.props.history.goBack();
+  };
   render() {
     return (
       <SideNav
@@ -81,6 +84,14 @@ class SideNavPage extends React.Component {
             </NavIcon>
             <NavText>
               <div onClick={this.editTestCases}>Edit TestCases</div>
+            </NavText>
+          </NavItem>
+          <NavItem eventKey="editTest">
+            <NavIcon>
+              <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
+            </NavIcon>
+            <NavText>
+              <div onClick={this.editTestCases}>Go back</div>
             </NavText>
           </NavItem>
           {/* <NavItem eventKey="edit">

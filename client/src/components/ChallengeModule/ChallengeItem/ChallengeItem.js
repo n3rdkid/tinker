@@ -81,7 +81,7 @@ class ChallengeItem extends React.Component {
                   Avoid polluting the global scope
                   </Card.Title>
                   <p>Declaring variables is a lot of fun. Sometimes, you may declare global variables even if you don't want to...</p>
-                  <NavLink class="btn" style={{borderRadius:"0",background:"transparent",color:"#FF502F"}}>Read More</NavLink>
+                  <a class="btn" href="https://code.tutsplus.com/tutorials/24-javascript-best-practices-for-beginners--net-5399" style={{borderRadius:"0",background:"transparent",color:"#FF502F"}}>Read More</a>
                   </Card.Body>
                 </Card>
               </div>
