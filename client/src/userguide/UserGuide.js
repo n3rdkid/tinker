@@ -80,7 +80,7 @@ class UserGuide extends React.Component {
           </Col>
           {this.state.quizClicked ? <QuizGuide /> : null}
           {this.state.challengeClicked ? <ChallengeGuide /> : null}
-          {this.state.onAssignmentClicked ? <AssignmentGuide /> : null}
+          {this.state.assignmentClicked ? <AssignmentGuide /> : null}
         </Row>
       </React.Fragment>
     );
