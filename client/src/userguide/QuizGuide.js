@@ -29,9 +29,21 @@ class ChallengeGuide extends React.Component {
         <Grid>
           <Grid.Column width={5}>
             <Step.Group vertical>
+              <Step.Group size="massive">
+                <Icon name="angle double down" />
+                <Step.Content>
+                  <Step>
+                    <Step.Title>
+                      <Icon size="big" color="green" name="angle double down" />
+                      Steps
+                      <Icon size="big" color="green" name="angle double down" />
+                    </Step.Title>
+                  </Step>
+                </Step.Content>
+              </Step.Group>
               <div id="step" onClick={this.clickedStep1}>
                 <Step>
-                  <Icon name="question circle no-outline" />
+                  <Icon name="help" />
                   <Step.Content>
                     <Step.Title>Quiz</Step.Title>
                     <Step.Description>Take the Quiz</Step.Description>

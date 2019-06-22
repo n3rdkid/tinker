@@ -39,6 +39,26 @@ class ChallengeGuide extends React.Component {
         <Grid>
           <Grid.Column width={5}>
             <Step.Group vertical>
+              <Step.Group size="medium">
+                <Icon name="angle double down" />
+                <Step.Content>
+                  <Step>
+                    <Step.Title>
+                      <Icon
+                        size="small"
+                        color="green"
+                        name="angle double down"
+                      />
+                      STEPS
+                      <Icon
+                        size="small"
+                        color="green"
+                        name="angle double down"
+                      />
+                    </Step.Title>
+                  </Step>
+                </Step.Content>
+              </Step.Group>
               <div id="step" onClick={this.clickedStep1}>
                 <Step>
                   <Icon name="chess" />
