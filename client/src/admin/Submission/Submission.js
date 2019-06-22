@@ -54,7 +54,8 @@ class Submission extends React.Component {
       let t1 = performance.now();
       temp = eval(currentValue.concat(testcase.test));
       let t2 = performance.now();
-      if (typeof temp === "boolean")  temp = JSON.stringify(temp);
+      temp = JSON.stringify(temp);
+
       let testButton = document.querySelector(`#test${testCaseNo}`);
       if (isEqual(temp,testcase.result)) {
         if (testButton.classList.contains("bg-danger"))
@@ -82,13 +83,11 @@ class Submission extends React.Component {
     if (this.state.submissionInfo !== null) {
       codeMirror = (
         <CodeMirror
-          className="col-md-7 my-5"
-          disabled
           value={this.state.submissionInfo}
           options={{
-            theme: "neo",
+            theme: "eclipse",
             lineNumbers: true,
-            mode: "jsx",
+            mode: "javascript",
             tabSize: 2,
             autofocus: true,
             foldGutter: false,
