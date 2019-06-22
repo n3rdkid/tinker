@@ -14,14 +14,16 @@ class AssignmentQuestion extends React.Component {
   state = {
     data: ""
   };
-  componentDidMount=async()=>{
-    console.log("Inside QuestionList ",this.props)
-    if(this.props.auth.user.role!=="teacher")
-    this.props.history.push("/restricted")
+  componentDidMount = async () => {
+    console.log("Inside QuestionList ", this.props);
+    if (this.props.auth.user.role !== "teacher")
+      this.props.history.push("/restricted");
 
     await axios
       .get(
-        `http://localhost:5000/api/admin/assignments/${this.props.match.params.id}`
+        `http://localhost:5000/api/admin/assignments/${
+          this.props.match.params.id
+        }`
       )
       .then(response => {
         this.setState({
@@ -29,7 +31,7 @@ class AssignmentQuestion extends React.Component {
         });
       })
       .catch(error => console.log(error));
-  }
+  };
   clickHandler = e => {
     let id = e.target.id || e.target.parentElement.id;
     this.props.history.push(`/admin/question/${id}`, {
@@ -42,7 +44,7 @@ class AssignmentQuestion extends React.Component {
     let container;
     if (this.state.data === "") container = <Spinner />;
     else {
-        console.log("data inside question Data",this.state.data)
+      console.log("data inside question Data", this.state.data);
       let questionData = this.state.data;
       let questionList = [];
       let i = 1;
@@ -66,20 +68,24 @@ class AssignmentQuestion extends React.Component {
     return (
       <div>
         <Container fluid style={{ padding: "0" }}>
-    
           <Row>
             <Col xs={3}>
-             
-            <Aside addHandler={this.addHandler} />
+              <Aside addHandler={this.addHandler} />
             </Col>
-            <Col xs={9}> {container}</Col>
+            <Col xs={9}>{container}<><button
+            className="btn btn-danger"
+            onClick={() => {
+              this.props.history.goBack();
+            }}
+          >
+            Go Back
+          </button></></Col>
           </Row>
         </Container>
       </div>
     );
   }
 }
-
 
 const mapStateToProps = state => ({
   auth: state.auth,

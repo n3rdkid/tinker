@@ -10,9 +10,9 @@ const restricted = () => (
     <div>
       <h4 className="text-center">RESTRICTED PAGE</h4>
      <div className="text-center">
-      <NavLink className="btn btn-danger" to="/">
+      <button className="btn btn-danger" onClick={()=>{this.props.history.goBack()}}>
         Let's Go Back
-      </NavLink>
+      </button>
       </div>
     </div>
   </div>

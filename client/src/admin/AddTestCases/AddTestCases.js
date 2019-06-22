@@ -30,7 +30,8 @@ class AddTestCases extends React.Component {
       result: "",
       testCases: null,
       loading: false,
-      flag:0
+      flag:0,
+      message:""
     };
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -93,7 +94,7 @@ class AddTestCases extends React.Component {
         ...data,
         question_id: "" + this.state.question_id
       })
-      .then(() => console.log("Submitted"))
+      .then((res) =>this.setState({message:res.data.message}))
       .catch(err => console.log(err.response.data));
     this.loadTestCases();
   };
@@ -143,6 +144,7 @@ class AddTestCases extends React.Component {
             />
             <br />
             <button className="btn btn-dark" onClick={e => this.onSubmit(e)}>Submit</button>
+              <div>{this.state.message}</div>
           </form>
           {/* {table} */}
         </div>

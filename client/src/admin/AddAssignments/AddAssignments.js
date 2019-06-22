@@ -14,7 +14,7 @@ class AddAssignment extends React.Component {
     starter: "",
     label: "",
     question_no: "",
-    displayTestCases: false
+    displayTestCases: false,message:""
   };
   componentDidMount = () => {
     console.log("Inside Add Assignments ", this.props);
@@ -45,11 +45,12 @@ class AddAssignment extends React.Component {
     await axios
       .post(`http://localhost:5000/api/assignments/question`, this.state)
       .then(res => {
-        let question_no = res.data.insertId;
+        let question_no = res.data.results.insertId;
         this.setState({
           ...this.state,
           question_no: "" + question_no,
-          displayTestCases: true
+          displayTestCases: true,
+          message:res.data.message
         });
       })
       .catch(err => console.log(err.response));

@@ -11,7 +11,9 @@ class EditQuestion extends React.Component {
     instruction: "",
     starter: "",
     label: "",
-    question_no: this.props.match.params.id
+    question_no: this.props.match.params.id,
+    message:"",
+    loading:true
   };
   componentDidMount = async () => {
     console.log("Inside Ediq ", this.props);
@@ -54,20 +56,23 @@ class EditQuestion extends React.Component {
           title: response.data.question.title,
           instruction: response.data.question.instruction,
           starter: response.data.question.starter,
-          label: response.data.question.label
+          label: response.data.question.label,
+          message:""
         });
       })
       .catch(error => console.log(error));
     //Git test
+    this.setState({loading:false})
   };
   onUpdateQuestion = async e => {
     e.preventDefault();
     await axios
       .put(`http://localhost:5000/api/assignments/question`, this.state)
       .then(res => {
-        console.log({ success: res });
+        this.setState({message:res.data.message},console.log(this.state))
       })
       .catch(err => console.log(err.response));
+      this.setState({loading:false})
   };
   changeState = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -149,6 +154,7 @@ class EditQuestion extends React.Component {
             >
               Update
             </button>
+            <div>{this.state.message}</div>
           </form>
         </div>
       </div>

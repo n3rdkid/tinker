@@ -1,15 +1,18 @@
 import React from "react";
 import axios from "axios";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Form, FormControl } from "react-bootstrap";
 import AddTestCases from "../AddTestCases/AddTestCases";
 import { connect } from "react-redux";
 import Aside from "../../UI/Admin/Aside";
+import classnames from "classnames";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 class EditQuestion extends React.Component {
   state = {
     test: "",
     result: "",
-    testId:1
+    testId: 1,
+    errors: "",
+    message: ""
   };
   componentDidMount() {
     if (this.props.auth.user.role !== "teacher")
@@ -24,12 +27,11 @@ class EditQuestion extends React.Component {
       )
       .then(response => {
         console.log(response);
-            this.setState({
-              testId: response.data[0].id,
-              test: response.data[0].test,
-              result: response.data[0].result
-            });
-  
+        this.setState({
+          testId: response.data[0].id,
+          test: response.data[0].test,
+          result: response.data[0].result
+        });
       })
       .catch(error => console.log(error));
     //Git test
@@ -40,16 +42,22 @@ class EditQuestion extends React.Component {
     await axios
       .put(`http://localhost:5000/api/assignments/test`, this.state)
       .then(res => {
-        console.log("Message",res)
+        if (res.data.errors) {
+          this.setState({ errors: res.data.errors, message: "" });
+        } else {
+          this.setState({ message: res.data.message });
+        }
       })
       .catch(err => console.log(err.response));
   };
   changeState = e => {
-    console.log([e.target.name],e.target.value)
+    console.log([e.target.name], e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
+    let { errors } = this.state;
+    console.log("Render Errors",errors);
     let display = (
       <div className="card offset-xs-1" id="assignment_card">
         <div className="card-header">
@@ -71,27 +79,36 @@ class EditQuestion extends React.Component {
           <div className="text-center text-dark" style={{ fontSize: "26px" }}>
             Edit Test Cases
           </div>
-          <form>
-            <div class="form-group">
-              <label style={{ fontSize: "20px" }}>Title</label>
-              <input
-                className="form-control"
+          <Form>
+          <Form.Group controlId="formBasicPassword">
+              <Form.Label style={{ fontSize: "20px" }}>Test</Form.Label>
+              <FormControl
+                className={classnames({ "is-invalid": errors.test })}
                 name="test"
                 placeholder={this.state.title}
                 type="text"
                 onChange={e => this.changeState(e)}
                 value={this.state.test}
               />
-            </div>
-            <label style={{ fontSize: "20px" }}>Result</label>
-            <textarea
-              className="form-control"
+              <Form.Control.Feedback type="invalid">
+                {errors.test}
+              </Form.Control.Feedback>
+            </Form.Group>  
+            
+            <Form.Group controlId="formBasicPassword"> 
+            <Form.Label style={{ fontSize: "20px" }}>Result</Form.Label>
+            <FormControl
+              className={classnames({ "is-invalid": errors.result })}
               name="result"
-              placeholder={this.state.instruction}
+              placeholder={this.state.result}
               type="text"
               onChange={e => this.changeState(e)}
               value={this.state.result}
             />
+            <Form.Control.Feedback type="invalid">
+              {errors.result}
+            </Form.Control.Feedback>
+            </Form.Group> 
             <br />
             <button
               class="btn btn-primary"
@@ -99,7 +116,8 @@ class EditQuestion extends React.Component {
             >
               Update
             </button>
-          </form>
+            <div className="text-primary">{this.state.message}</div>
+          </Form>
         </div>
       </div>
     );

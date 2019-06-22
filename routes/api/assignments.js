@@ -54,10 +54,8 @@ router.get("/", (req, res) => {
   });
 });
 router.post("/", (req, res) => {
-  console.dir(req.body);
 
   let dueDate = req.body.dueDate;
-  console.log(req.body.dueDate);
   let statement = "INSERT INTO assignments (dueDate) VALUES (?);";
   mysqlConnection.query(statement, dueDate, (err, results) => {
     if (!err) {
@@ -184,9 +182,9 @@ router.post("/submissions", (req, res) => {
     [submission, timeTaken, username, question_id],
     (err, results, fields) => {
       if (!err) {
-        res.send(results[0]);
+        res.json({type:"success",message:"Submitted Succesfully"});
       } else {
-        return res.status(400).json({ err });
+        return res.json({type:"error",message:"Failed to Submity"});
       }
     }
   );
@@ -236,9 +234,9 @@ router.post("/resources", (req, res) => {
     [title, link, description, question_id],
     (err, results, fields) => {
       if (!err) {
-        res.send("Inserted Successfully!");
+        res.json({type:"success",message:"Added resource succesfully"});
       } else {
-        return res.status(400).json({ error: "Failed to insert resources" });
+        return res.json({type:"error",message:"Failed to insert resources"});
       }
     }
   );
@@ -258,9 +256,10 @@ router.post("/question", (req, res) => {
     [title, instruction, starter, label, assignment_no],
     (err, results, fields) => {
       if (!err) {
-        res.json(results);
+        res.json({type:"success",message:"Added Question succesfully",results});
+
       } else {
-        return res.status(400).json({ error: "Failed to insert resources" });
+        return res.json({type:"error",message:"Failed to insert question"});
       }
     }
   );
@@ -280,9 +279,9 @@ router.post("/testcases", (req, res) => {
     [test, result, question_id],
     (err, results, fields) => {
       if (!err) {
-        res.send("Inserted Successfully into test table for question!");
+        res.json({type:"success",message:"Inserted Successfully!",results});
       } else {
-        return res.status(400).json({ error: "Failed to insert resources" });
+        return res.json({type:"error",message:"Failed to test resources"});
       }
     }
   );
@@ -314,9 +313,11 @@ router.put("/question", (req, res) => {
     [title, instruction, starter, label, question_no],
     (err, results, fields) => {
       if (!err) {
-        res.json({success:"done"});
+        res.json({type:"success",message:"Updated Succesfully",results});
+
       } else {
-        return res.status(400).json({ error: err });
+        return   res.json({type:"error",message:"Failed to update"});
+
       }
     }
   );
@@ -334,7 +335,7 @@ router.put("/test", (req, res) => {
     "UPDATE tests_assignments SET test=?,result=? WHERE id=?";
   mysqlConnection.query(statement, [test,result,testId], (err, results, fields) => {
     if (!err) {
-      res.json(results);
+     res.json({type:"success",message:"Updated Succesfully",results});
     } else {
       return res.status(400).json({ error: "No such resources" });
     }
