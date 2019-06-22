@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Spinner from "../../UI/Spinner/Spinner";
 import { UnControlled as CodeMirror } from "react-codemirror2";
+import isEqual from "is-equal";
 import { Container,Row,Col } from "react-bootstrap";
 import { connect } from "react-redux";
 let currentValue = "";
@@ -53,9 +54,9 @@ class Submission extends React.Component {
       let t1 = performance.now();
       temp = eval(currentValue.concat(testcase.test));
       let t2 = performance.now();
-      if (typeof temp === "boolean") temp = temp.toString();
+      if (typeof temp === "boolean")  temp = JSON.stringify(temp);
       let testButton = document.querySelector(`#test${testCaseNo}`);
-      if (temp == testcase.result) {
+      if (isEqual(temp,testcase.result)) {
         if (testButton.classList.contains("bg-danger"))
           testButton.classList.remove("bg-danger", "text-white");
         testButton.classList.add("bg-success", "text-white");
